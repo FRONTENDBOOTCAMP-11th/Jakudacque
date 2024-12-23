@@ -2090,12 +2090,12 @@ export const initData = async (clientId, nextSeq) => {
       {
         _id: "shippingFees",
         title: "배송비",
-        value: 3500,
+        value: 3000,
       },
       {
         _id: "freeShippingFees",
         title: "배송비 무료 금액",
-        value: 50000,
+        value: 30000,
       },
     ],
   };
