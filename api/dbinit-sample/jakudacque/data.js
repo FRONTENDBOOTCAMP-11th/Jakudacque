@@ -138,143 +138,143 @@ export const initData = async (clientId, nextSeq) => {
       {
         _id: await nextSeq("product"),
         seller_id: 2,
-        price: 22800,
+        price: 2200,
         shippingFees: 0,
         show: true,
         active: true,
-        name: "캥거루 스턴트 독 로봇완구",
+        name: "멍냥이 다이어리",
         quantity: 320,
         buyQuantity: 310,
         mainImages: [
           {
-            path: `/files/${clientId}/sample-dog.jpg`,
-            name: "sample-dog.jpg",
-            originalname: "스턴트 독.jpg",
+            path: `/files/${clientId}/KAnceE1JA.png`,
+            name: "KAnceE1JA.png",
+            originalname: "diary1.png",
           },
         ],
         content: `
           <div class="product-detail">
-            <p>캥거루 스턴트 독 로봇완구 상세 설명</p>
+            <p>멍냥이 다이어리 상세 설명</p>
           </div>`,
         createdAt: getTime(-41, -60 * 60 * 2),
         updatedAt: getTime(-40, -60 * 15),
         extra: {
           isNew: true,
           isBest: true,
-          category: ["PC03", "PC0301"],
-          sort: 5,
+          category: ["PC01"],
+          depth: 1,
         },
       },
       {
         _id: await nextSeq("product"),
         seller_id: 2,
-        price: 17260,
+        price: 1700,
         shippingFees: 2500,
         show: true,
         active: true,
-        name: "헬로카봇 스톰다이버",
+        name: "Daisy diary",
         quantity: 200,
         buyQuantity: 198,
         mainImages: [
           {
-            path: `/files/${clientId}/sample-diver.jpg`,
-            name: "sample-diver.jpg",
-            originalname: "헬로카봇.jpg",
+            path: `/files/${clientId}/9CdGarxdN.png`,
+            name: "9CdGarxdN.png",
+            originalname: "diary2.png",
           },
         ],
         content: `
           <div class="product-detail">
-            <p>헬로카봇 스톰다이버 상세 설명</p>
+            <p>Daisy diary 상세 설명</p>
           </div>`,
         createdAt: getTime(-38, -60 * 60 * 6),
         updatedAt: getTime(-33, -60 * 55),
         extra: {
           isNew: false,
-          isBest: true,
-          category: ["PC01", "PC0103"],
-          sort: 4,
+          isBest: false,
+          category: ["PC01"],
+          depth: 1,
         },
       },
       {
         _id: await nextSeq("product"),
         seller_id: 2,
-        price: 48870,
+        price: 2800,
         shippingFees: 0,
         show: true,
         active: true,
-        name: "레고 클래식 라지 조립 박스 10698",
+        name: "ioneco diary",
         quantity: 100,
         buyQuantity: 99,
         mainImages: [
           {
-            path: `/files/${clientId}/sample-classic.jpg`,
-            name: "sample-classic.jpg",
-            originalname: "레고 클래식.jpg",
+            path: `/files/${clientId}/jD71t4CdR.png`,
+            name: "jD71t4CdR.png",
+            originalname: "diary3.png",
           },
         ],
         content: `
           <div class="product-detail">
-            <p>레고 클래식 라지 조립 박스 10698 상세 설명</p>
+            <p>ioneco diary 상세 설명</p>
           </div>`,
         createdAt: getTime(-35, -60 * 60 * 6),
         updatedAt: getTime(-10, -60 * 19),
         extra: {
           isNew: true,
           isBest: true,
-          category: ["PC01", "PC0103"],
-          sort: 3,
+          category: ["PC01"],
+          depth: 1,
         },
       },
       {
         _id: await nextSeq("product"),
         seller_id: 3,
-        price: 45000,
+        price: 4500,
         shippingFees: 3500,
         show: true,
         active: true,
-        name: "레고 테크닉 42151 부가티 볼리드",
+        name: "blahblah diary",
         quantity: 100,
         buyQuantity: 89,
         mainImages: [
           {
-            path: `/files/${clientId}/sample-bugatti.png`,
-            name: "sample-bugatti.png",
-            originalname: "부가티.png",
+            path: `/files/${clientId}/JOq9BFz_b.png`,
+            name: "JOq9BFz_b.png",
+            originalname: "diary4.png",
           },
         ],
         content: `
           <div class="product-detail">
-            <p>레고 테크닉 42151 부가티 볼리드 상세 설명</p>
+            <p>blahblah diary", 상세 설명</p>
           </div>`,
         createdAt: getTime(-33, -60 * 60 * 7),
         updatedAt: getTime(-22, -60 * 60 * 3),
         extra: {
           isNew: false,
           isBest: true,
-          category: ["PC03", "PC0303"],
-          sort: 1,
+          category: ["PC01"],
+          depth: 1,
         },
       },
       {
         _id: await nextSeq("product"),
         seller_id: 2,
-        price: 45000,
+        price: 4500,
         shippingFees: 3500,
         show: true,
         active: true,
-        name: "레고 마인크래프트 21246 깊고 어두운 전장",
+        name: "심플 멍멍냥냥 다이어리",
         quantity: 100,
         buyQuantity: 98,
         mainImages: [
           {
-            path: `/files/${clientId}/sample-minecraft.png`,
-            name: "sample-minecraft.png",
-            originalname: "마인크래프트.png",
+            path: `/files/${clientId}/5-WndmOy2.png`,
+            name: "5-WndmOy2.png",
+            originalname: "diary5.png",
           },
         ],
         content: `
           <div class="product-detail">
-            <p>레고 마인크래프트 21246 깊고 어두운 전장 상세 설명</p>
+            <p>심플 멍멍냥냥 다이어리 상세 설명</p>
           </div>`,
         createdAt: getTime(-30, -60 * 60 * 10),
         updatedAt: getTime(-10, -60 * 56),
@@ -282,120 +282,120 @@ export const initData = async (clientId, nextSeq) => {
           isNew: true,
           isBest: false,
           today: true,
-          category: ["PC03", "PC0303"],
-          sort: 2,
+          category: ["PC01"],
+          depth: 1,
         },
       },
       {
         _id: await nextSeq("product"),
         seller_id: 2,
-        price: 54790,
+        price: 3500,
         shippingFees: 4000,
         show: false,
         active: true,
-        name: "레고 마블 76247 헐크버스터: 와칸다의 전투",
+        name: "고딕 스타일 다이어리",
         quantity: 100,
         buyQuantity: 99,
         mainImages: [
           {
-            path: `/files/${clientId}/sample-hulk.png`,
-            name: "sample-hulk.png",
-            originalname: "헐크.png",
+            path: `/files/${clientId}/unM8a6XUm.png`,
+            name: "unM8a6XUm.png",
+            originalname: "diary6.png",
           },
         ],
         content: `
           <div class="product-detail">
-            <p>레고 마블 76247 헐크버스터: 와칸다의 전투 상세 설명</p>
+            <p>고딕 스타일 다이어리 상세 설명</p>
           </div>`,
         createdAt: getTime(-30, -60 * 60 * 21),
         updatedAt: getTime(-20, -60 * 10),
         extra: {
           isNew: false,
           isBest: false,
-          category: ["PC03", "PC0303"],
-          sort: 1,
+          category: ["PC01"],
+          depth: 1,
         },
       },
       {
         _id: await nextSeq("product"),
         seller_id: 3,
-        price: 13000,
+        price: 1500,
         shippingFees: 3500,
         show: true,
         active: true,
-        name: "할리갈리 보드게임",
+        name: "심플 파스텔 다이어리",
         quantity: 100,
         buyQuantity: 98,
         mainImages: [
           {
-            path: `/files/${clientId}/sample-halligalli.jpg`,
-            name: "sample-halligalli.jpg",
-            originalname: "할리갈리.jpg",
+            path: `/files/${clientId}/SyMfOSLFP.png`,
+            name: "SyMfOSLFP.png",
+            originalname: "diary7.png",
           },
         ],
         content: `
           <div class="product-detail">
-            <p>할리갈리 보드게임 상세 설명</p>
+            <p>심플 파스텔 다이어리 상세 설명</p>
           </div>`,
         createdAt: getTime(-25, -60 * 60 * 12),
         updatedAt: getTime(-24, -60 * 23),
         extra: {
           isNew: false,
           isBest: true,
-          category: ["PC01", "PC0102", "PC010201"],
-          sort: 3,
+          category: ["PC01"],
+          depth: 1,
         },
       },
       {
         _id: await nextSeq("product"),
         seller_id: 2,
-        price: 26000,
+        price: 2500,
         shippingFees: 3000,
         show: true,
         active: true,
-        name: "루미큐브 클래식",
+        name: "케챱스마일 다이어리",
         quantity: 100,
         buyQuantity: 97,
         mainImages: [
           {
-            path: `/files/${clientId}/sample-rummikub.png`,
-            name: "sample-rummikub.png",
-            originalname: "루미큐브.png",
+            path: `/files/${clientId}/U-JRavpBz.png`,
+            name: "U-JRavpBz.png",
+            originalname: "diary8.png",
           },
         ],
         content: `
           <div class="product-detail">
-            <p>루미큐브 클래식 상세 설명</p>
+            <p>케챱스마일 다이어리 상세 설명</p>
           </div>`,
         createdAt: getTime(-22, -60 * 60 * 22),
         updatedAt: getTime(-20, -60 * 33),
         extra: {
           isNew: true,
           isBest: true,
-          category: ["PC01", "PC0102", "PC010202"],
-          sort: 8,
+          category: ["PC01"],
+          depth: 1,
         },
       },
       {
         _id: await nextSeq("product"),
         seller_id: 3,
-        price: 12000,
+        price: 3000,
         shippingFees: 3000,
         show: true,
         active: true,
-        name: "짱구는 못말려 숲속 산책 직소퍼즐",
+        name: "Rainbow 다이어리",
         quantity: 100,
         buyQuantity: 96,
         mainImages: [
           {
-            path: `/files/${clientId}/sample-jjangu.jpg`,
-            name: "sample-jjangu.jpg",
-            originalname: "짱구.jpg",
+            path: `/files/${clientId}/PV9O31xxi.png`,
+            name: "PV9O31xxi.png",
+            originalname: "daiary9.png",
           },
         ],
         content: `
           <div class="product-detail">
-            <p>짱구는 못말려 숲속 산책 직소퍼즐 상세 설명</p>
+            <p>Rainbow 다이어리" 상세 설명</p>
           </div>`,
         createdAt: getTime(-21, -60 * 60 * 4),
         updatedAt: getTime(-16, -60 * 15),
@@ -403,40 +403,41 @@ export const initData = async (clientId, nextSeq) => {
           isNew: true,
           isBest: false,
           today: true,
-          category: ["PC03", "PC0302"],
-          sort: 2,
+          category: ["PC01"],
+          depth: 1,
         },
       },
       {
         _id: await nextSeq("product"),
         seller_id: 3,
-        price: 24000,
+        price: 5000,
         shippingFees: 0,
         show: true,
         active: true,
-        name: "라푼젤 그녀의 꿈 직소퍼즐 KD-1000-001 + 그림 엽서(랜덤) + 품질보증서",
+        name: "폭신폭신 라푼젤 다이어리",
         quantity: 100,
         buyQuantity: 95,
         mainImages: [
           {
-            path: `/files/${clientId}/sample-rapunzel.jpg`,
-            name: "sample-rapunzel.jpg",
-            originalname: "라푼젤.jpg",
+            path: `/files/${clientId}/KCg7WPC4w.png`,
+            name: "KCg7WPC4w.png",
+            originalname: "diary10.png",
           },
         ],
         content: `
           <div class="product-detail">
-            <p>라푼젤 그녀의 꿈 직소퍼즐 KD-1000-001 + 그림 엽서(랜덤) + 품질보증서 상세 설명</p>
+            <p>폭신폭신 라푼젤 다이어리 상세 설명</p>
           </div>`,
         createdAt: getTime(-18, -60 * 60 * 7),
         updatedAt: getTime(-12, -60 * 33),
         extra: {
           isNew: false,
           isBest: true,
-          category: ["PC01", "PC0101"],
-          sort: 4,
+          category: ["PC01"],
+          depth: 1,
         },
       },
+      // 11번 상품, 여기부터 카테고리도 설정
       {
         _id: await nextSeq("product"),
         seller_id: 2,
@@ -444,28 +445,21 @@ export const initData = async (clientId, nextSeq) => {
         shippingFees: 3000,
         show: true,
         active: true,
-        name: "KC인증 스키비디 토일렛 피규어 블럭 8종 중국 호환 레고 블록 장난감 어린이 선물",
+        name: "모던 포레스트 다이어리",
         quantity: 100,
         buyQuantity: 94,
         mainImages: [
           {
-            path: `/files/${clientId}/sample-skibidi01.jpg`,
-            name: "sample-skibidi01.jpg",
-            originalname: "피규어1.jpg",
-          },
-          {
-            path: `/files/${clientId}/sample-skibidi02.jpg`,
-            name: "sample-skibidi02.jpg",
-            originalname: "피규어2.jpg",
+            path: `/files/${clientId}/WHiIGBK2d.png`,
+            name: "WHiIGBK2d.png",
+            originalname: "diary11.png",
           },
         ],
         content: `
           <div align="center"><p>*크리스마스 배송 안내</p></div>
           <div align="center"><p>택배사 물량 증가로 평소보다 2~3일 더 걸립니다.</p></div>
           <div align="center"><br></div>
-          <div align="center"><img src="${process.env.API_HOST}/files/${clientId}/sample-skibidi03.jpg"></div>
-          <div align="center"><br></div>
-          <div align="center"><img src="${process.env.API_HOST}/files/${clientId}/sample-skibidi04.jpg"></div>
+          <div align="center"><img src="${process.env.API_HOST}/files/${clientId}/WHiIGBK2d.png"></div>
           <div align="center"><br></div>
           <div align="center"><p>*반품 안내</p></div>`,
         createdAt: getTime(-16, -60 * 60 * 3),
@@ -474,8 +468,8 @@ export const initData = async (clientId, nextSeq) => {
           isNew: false,
           isBest: false,
           today: true,
-          category: ["PC01", "PC0103"], // 어린이 > 레고
-          sort: 6,
+          category: ["PC01"], // 다이어리
+          depth: 1,
         },
       },
       {
@@ -485,34 +479,31 @@ export const initData = async (clientId, nextSeq) => {
         shippingFees: 3000,
         show: true,
         active: true,
-        name: "스키비디 토일렛 봉제 인형 (25cm-30cm) 시리즈 크리스마스 선물",
+        name: "감고미 다이어리",
         quantity: 999,
         buyQuantity: 800,
         mainImages: [
           {
-            path: `/files/${clientId}/sample-skibidi11.jpg`,
-            name: "sample-skibidi11.jpg",
-            originalname: "토일렛.jpg",
+            path: `/files/${clientId}/EjtiieQ1d.png`,
+            name: "EjtiieQ1d.png",
+            originalname: "diagy12.png",
           },
         ],
         content: `
-          <div align="center"><img src="${process.env.API_HOST}/files/${clientId}/sample-skibidi12.jpg"></div>
-          <div align="center"><br></div>
-          <div align="center"><img src="${process.env.API_HOST}/files/${clientId}/sample-skibidi13.jpg"></div>
-          <div align="center"><br></div>
-          <div align="center"><img src="${process.env.API_HOST}/files/${clientId}/sample-skibidi14.jpg"></div>
-          <div align="center"><br></div>
-          <div align="center"><img src="${process.env.API_HOST}/files/${clientId}/sample-skibidi15.jpg"></div>`,
+          <div align="center">
+            <p>감고미 다이어리</p>
+          </div>
+          `,
         createdAt: getTime(-11, -60 * 60 * 12),
         updatedAt: getTime(-5, -60 * 60 * 6),
         extra: {
           isNew: true,
           isBest: true,
-          category: ["PC01", "PC0103"], // 어린이 > 레고
+          category: ["PC01"], // 다이어리
           sort: 7,
         },
       },
-      // 13번 상품
+      // 14번 상품, 키링
       {
         _id: await nextSeq("product"),
         seller_id: 3,
@@ -520,32 +511,55 @@ export const initData = async (clientId, nextSeq) => {
         shippingFees: 5500,
         show: true,
         active: true,
-        name: "KC인증 스키비디 토일렛 피규어 블럭 4종 중국 호환 레고 블록 장난감 어린이 선물",
+        name: "우유클로버 강아지쿠키 키링",
         quantity: 99,
         buyQuantity: 94,
         mainImages: [
           {
-            path: `/files/${clientId}/sample-skibidi21.jpg`,
-            name: "sample-skibidi21.jpg",
-            originalname: "스키비디.jpg",
+            path: `/files/${clientId}/Dt0L88Fmk.png`,
+            name: "Dt0L88Fmk.png",
+            originalname: "우유클로버 강아지쿠키 키링.png",
           },
         ],
-        content: `
-          <div align="center"><img src="${process.env.API_HOST}/files/${clientId}/sample-skibidi22.jpg"></div>
-          <div align="center"><br></div>
-          <div align="center"><img src="${process.env.API_HOST}/files/${clientId}/sample-skibidi23.jpg"></div>
-          <div align="center"><br></div>
-          <div align="center"><img src="${process.env.API_HOST}/files/${clientId}/sample-skibidi24.jpg"></div>`,
+        content: `                    
+          <div align="center"><img src="${process.env.API_HOST}/files/${clientId}/Dt0L88Fmk.png"></div>`,
         createdAt: getTime(-10, -60 * 60 * 12),
         updatedAt: getTime(-5, -60 * 60 * 6),
         extra: {
           isNew: true,
           isBest: false,
-          category: ["PC01", "PC0103"], // 어린이 > 레고
-          sort: 6,
+          category: ["PC05"], // 키링
+          depth: 1,
         },
       },
-      // 14번 상품. shippingFees가 없을 경우 config.shippingFees 사용
+      {
+        _id: await nextSeq("product"),
+        seller_id: 3,
+        price: 21600,
+        shippingFees: 5500,
+        show: true,
+        active: true,
+        name: "우유클로버 플라워토끼 키링",
+        quantity: 99,
+        buyQuantity: 94,
+        mainImages: [
+          {
+            path: `/files/${clientId}/_j8VmZrAw.png`,
+            name: "_j8VmZrAw.png",
+            originalname: "우유클러보 플라워토끼 키링.png",
+          },
+        ],
+        content: `
+          <div align="center"><img src="${process.env.API_HOST}/files/${clientId}/_j8VmZrAw.png"></div>`,
+        createdAt: getTime(-10, -60 * 60 * 12),
+        updatedAt: getTime(-5, -60 * 60 * 6),
+        extra: {
+          isNew: true,
+          isBest: false,
+          category: ["PC05"], // 키링
+          depth: 1,
+        },
+      },
       {
         _id: await nextSeq("product"),
         seller_id: 3,
@@ -553,43 +567,654 @@ export const initData = async (clientId, nextSeq) => {
         // shippingFees: 3500,
         show: true,
         active: true,
-        name: "푸쉬팝게임기 팝잇 푸시팝 게임기 두더지게임 핑거 뽁뽁이 애니멀 1+1",
+        name: "엑스디 덕이 키링",
         quantity: 300,
         buyQuantity: 298,
         mainImages: [
           {
-            path: `/files/${clientId}/sample-pushpop01.jpg`,
-            name: "sample-pushpop01.jpg",
-            originalname: "푸쉬팝1.jpg",
-          },
-          {
-            path: `/files/${clientId}/sample-pushpop02.jpg`,
-            name: "sample-pushpop02.jpg",
-            originalname: "푸쉬팝2.jpg",
-          },
-          {
-            path: `/files/${clientId}/sample-pushpop03.jpg`,
-            name: "sample-pushpop03.jpg",
-            originalname: "푸쉬팝3.jpg",
+            path: `/files/${clientId}/n_UbecHx1.png`,
+            name: "n_UbecHx1.png",
+            originalname: "엑스디 덕이 키링.png",
           },
         ],
         content: `
-          <div align="center"><p>푸쉬팝게임기 팝잇 푸시팝 게임기 두더지게임 핑거 뽁뽁이 애니멀을 구매하시는 모든 분께 사은품(무작위)으로 하나 더 드립니다.</p></div>
-          <div align="center"><img src="${process.env.API_HOST}/files/${clientId}/sample-pushpop04.gif"></div>
-          <div align="center"><br></div>
-          <div align="center"><img src="${process.env.API_HOST}/files/${clientId}/sample-pushpop05.jpg"></div>
-          <div align="center"><br></div>
-          <div align="center"><img src="${process.env.API_HOST}/files/${clientId}/sample-pushpop06.jpg"></div>`,
+          <div align="center">
+            <p>귀여운 오리 키링</p>
+          </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
         extra: {
           isNew: false,
           isBest: true,
-          category: ["PC01", "PC0102"], // 어린이 > 보드게임
+          category: ["PC05"], // 키링
           sort: 5,
         },
       },
-      // 15번 상품. 옵션이 있는 경우 메인 상품 정보
+      {
+        _id: await nextSeq("product"),
+        seller_id: 3,
+        price: 12900,
+        // shippingFees: 3500,
+        show: true,
+        active: true,
+        name: "모먼트미모먼트 흑백동물원 블랙 고양이 키링",
+        quantity: 300,
+        buyQuantity: 298,
+        mainImages: [
+          {
+            path: `/files/${clientId}/HPzBE4pNa.png`,
+            name: "HPzBE4pNa.png",
+            originalname: "모먼트미모먼트 흑백동물원 블랙 고양이 키링.png",
+          },
+        ],
+        content: `
+          <div align="center">
+            <p>모먼트미모먼트 흑백동물원 블랙 고양이 키링</p>
+          </div>`,
+        createdAt: getTime(-3, -60 * 60 * 12),
+        updatedAt: getTime(-3, -60 * 60 * 12),
+        extra: {
+          isNew: false,
+          isBest: true,
+          category: ["PC05"], // 키링
+          sort: 5,
+        },
+      },
+      // 19번 상품. 마스킹테이프
+      {
+        _id: await nextSeq("product"),
+        seller_id: 3,
+        price: 3500,
+        shippingFees: 3500,
+        show: true,
+        active: true,
+        name: "담담 눈사람 스몰 마스킹테이프",
+        quantity: 999999,
+        buyQuantity: 0,
+        mainImages: [
+          {
+            path: `/files/${clientId}/suFbEOrkQ.png`,
+            name: "suFbEOrkQ.png",
+            originalname: "마스킹테이프1.png",
+          },
+        ],
+        content: `담담 눈사람 스몰 마스킹테이프`,
+        createdAt: getTime(-3, -60 * 60 * 12),
+        updatedAt: getTime(-3, -60 * 60 * 12),
+        extra: {
+          depth: 1,
+          category: ["PC04"],
+        },
+      },
+      {
+        _id: await nextSeq("product"),
+        seller_id: 3,
+        price: 3500,
+        shippingFees: 3500,
+        show: true,
+        active: true,
+        name: "츄로네집 벌이내린꿀 글리터 다이컷 마스킹테이프",
+        quantity: 999999,
+        buyQuantity: 0,
+        mainImages: [
+          {
+            path: `/files/${clientId}/IGl3TY8aV.png`,
+            name: "IGl3TY8aV.png",
+            originalname: "마스킹테이프2.png",
+          },
+        ],
+        content: `담담 눈사람 스몰 마스킹테이프`,
+        createdAt: getTime(-3, -60 * 60 * 12),
+        updatedAt: getTime(-3, -60 * 60 * 12),
+        extra: {
+          depth: 1,
+          category: ["PC04"],
+        },
+      },
+      {
+        _id: await nextSeq("product"),
+        seller_id: 3,
+        price: 3500,
+        shippingFees: 3500,
+        show: true,
+        active: true,
+        name: "조무래기 오늘의 제목 마스킹테이프",
+        quantity: 999999,
+        buyQuantity: 0,
+        mainImages: [
+          {
+            path: `/files/${clientId}/mcW9k1bJK.png`,
+            name: "mcW9k1bJK.png",
+            originalname: "마스킹테이프3.png",
+          },
+        ],
+        content: `담담 눈사람 스몰 마스킹테이프`,
+        createdAt: getTime(-3, -60 * 60 * 12),
+        updatedAt: getTime(-3, -60 * 60 * 12),
+        extra: {
+          depth: 1,
+          category: ["PC04"],
+        },
+      },
+      {
+        _id: await nextSeq("product"),
+        seller_id: 3,
+        price: 3500,
+        shippingFees: 3500,
+        show: true,
+        active: true,
+        name: "버블 구름 글리터 다이컷 마스킹테이프",
+        quantity: 999999,
+        buyQuantity: 0,
+        mainImages: [
+          {
+            path: `/files/${clientId}/1nvBLja6q.png`,
+            name: "1nvBLja6q.png",
+            originalname: "마스킹테이프4.png",
+          },
+        ],
+        content: `버블 구름 글리터 다이컷 마스킹테이프`,
+        createdAt: getTime(-3, -60 * 60 * 12),
+        updatedAt: getTime(-3, -60 * 60 * 12),
+        extra: {
+          depth: 1,
+          category: ["PC04"],
+        },
+      },
+      {
+        _id: await nextSeq("product"),
+        seller_id: 3,
+        price: 3500,
+        shippingFees: 3500,
+        show: true,
+        active: true,
+        name: "유유클로버 빵고양이 마스킹테이프",
+        quantity: 999999,
+        buyQuantity: 0,
+        mainImages: [
+          {
+            path: `/files/${clientId}/JXu3f06wp.png`,
+            name: "JXu3f06wp.png",
+            originalname: "마스킹테이프5.png",
+          },
+        ],
+        content: `유유클로버 빵고양이 마스킹테이프`,
+        createdAt: getTime(-3, -60 * 60 * 12),
+        updatedAt: getTime(-3, -60 * 60 * 12),
+        extra: {
+          depth: 1,
+          category: ["PC04"],
+        },
+      },
+      {
+        _id: await nextSeq("product"),
+        seller_id: 3,
+        price: 3500,
+        shippingFees: 3500,
+        show: true,
+        active: true,
+        name: "유유클로버 꽃강아지 마스킹테이프",
+        quantity: 999999,
+        buyQuantity: 0,
+        mainImages: [
+          {
+            path: `/files/${clientId}/psr9E0kfH.png`,
+            name: "psr9E0kfH.png",
+            originalname: "마스킹테이프6.png",
+          },
+        ],
+        content: `유유클로버 꽃강아지 마스킹테이프`,
+        createdAt: getTime(-3, -60 * 60 * 12),
+        updatedAt: getTime(-3, -60 * 60 * 12),
+        extra: {
+          depth: 1,
+          isBest: true,
+          category: ["PC04"],
+        },
+      },
+      {
+        _id: await nextSeq("product"),
+        seller_id: 3,
+        price: 2500,
+        shippingFees: 3500,
+        show: true,
+        active: true,
+        name: "보돔보돔 래빗 마스킹테이프",
+        quantity: 999999,
+        buyQuantity: 0,
+        mainImages: [
+          {
+            path: `/files/${clientId}/Y9NuwEntA.png`,
+            name: "Y9NuwEntA.png",
+            originalname: "마스킹테이프7.png",
+          },
+        ],
+        content: `보돔보돔 래빗 마스킹테이프`,
+        createdAt: getTime(-3, -60 * 60 * 12),
+        updatedAt: getTime(-3, -60 * 60 * 12),
+        extra: {
+          depth: 1,
+          isBest: true,
+          category: ["PC04"],
+        },
+      },
+      {
+        _id: await nextSeq("product"),
+        seller_id: 3,
+        price: 2500,
+        shippingFees: 3500,
+        show: true,
+        active: true,
+        name: "보돔보돔 클로버 마스킹테이프",
+        quantity: 999999,
+        buyQuantity: 0,
+        mainImages: [
+          {
+            path: `/files/${clientId}/zv16u5gr0.png`,
+            name: "zv16u5gr0.png",
+            originalnam8: "마스킹테이프8.png",
+          },
+        ],
+        content: `보돔보돔 클로버 마스킹테이프`,
+        createdAt: getTime(-3, -60 * 60 * 12),
+        updatedAt: getTime(-3, -60 * 60 * 12),
+        extra: {
+          depth: 1,
+          category: ["PC04"],
+        },
+      },
+      {
+        _id: await nextSeq("product"),
+        seller_id: 3,
+        price: 2500,
+        shippingFees: 3500,
+        show: true,
+        active: true,
+        name: "별구름 유테 마스킹테이프",
+        quantity: 999999,
+        buyQuantity: 0,
+        mainImages: [
+          {
+            path: `/files/${clientId}/_xyf_8V4z.png`,
+            name: "_xyf_8V4z.png",
+            originalnam9: "마스킹테이프9.png",
+          },
+        ],
+        content: `별구름 유테 마스킹테이프`,
+        createdAt: getTime(-3, -60 * 60 * 12),
+        updatedAt: getTime(-3, -60 * 60 * 12),
+        extra: {
+          depth: 1,
+          category: ["PC04"],
+        },
+      },
+      {
+        _id: await nextSeq("product"),
+        seller_id: 3,
+        price: 2500,
+        shippingFees: 3500,
+        show: true,
+        active: true,
+        name: "미찌샵 멍멍 마스킹테이프",
+        quantity: 999999,
+        buyQuantity: 0,
+        mainImages: [
+          {
+            path: `/files/${clientId}/A1ybUe8Pd.png`,
+            name: "A1ybUe8Pd.png",
+            originalnam9: "마스킹테이프10.png",
+          },
+        ],
+        content: `미찌샵 멍멍 마스킹테이프`,
+        createdAt: getTime(-3, -60 * 60 * 12),
+        updatedAt: getTime(-3, -60 * 60 * 12),
+        extra: {
+          depth: 1,
+          category: ["PC04"],
+        },
+      },
+      // 29번 상품 메모지
+      {
+        _id: await nextSeq("product"),
+        seller_id: 3,
+        price: 3500,
+        shippingFees: 3500,
+        show: true,
+        active: true,
+        name: "미찌샵 곰돌이 메모지",
+        quantity: 999999,
+        buyQuantity: 0,
+        mainImages: [
+          {
+            path: `/files/${clientId}/eCc5FppIX.png`,
+            name: "eCc5FppIX.png",
+            originalnam9: "memo1.png",
+          },
+        ],
+        content: `
+          <div class="product-detail">
+            <p>미찌샵 곰돌이 메모지</p>
+          </div>`,
+        createdAt: getTime(-3, -60 * 60 * 12),
+        updatedAt: getTime(-3, -60 * 60 * 12),
+        extra: {
+          depth: 1,
+          isBest: true,
+          isNew: true,
+          category: ["PC03"],
+        },
+      },
+      {
+        _id: await nextSeq("product"),
+        seller_id: 3,
+        price: 3500,
+        shippingFees: 3500,
+        show: true,
+        active: true,
+        name: "키치키치 아이캔두잇 떡메모지",
+        quantity: 999999,
+        buyQuantity: 0,
+        mainImages: [
+          {
+            path: `/files/${clientId}/q2o2QvjGN.png`,
+            name: "q2o2QvjGN.png",
+            originalnam9: "memo2.png",
+          },
+        ],
+        content: `
+          <div class="product-detail">
+            <p>키치키치 아이캔두잇 떡메모지</p>
+          </div>`,
+        createdAt: getTime(-3, -60 * 60 * 12),
+        updatedAt: getTime(-3, -60 * 60 * 12),
+        extra: {
+          depth: 1,
+          isBest: true,
+          isNew: true,
+          category: ["PC03"],
+        },
+      },
+      {
+        _id: await nextSeq("product"),
+        seller_id: 3,
+        price: 3500,
+        shippingFees: 3500,
+        show: true,
+        active: true,
+        name: "수집가무무 미니메모지 오트밀체크",
+        quantity: 999999,
+        buyQuantity: 0,
+        mainImages: [
+          {
+            path: `/files/${clientId}/0GsRh-yDj.png`,
+            name: "0GsRh-yDj.png",
+            originalnam9: "memo3.png",
+          },
+        ],
+        content: `
+          <div class="product-detail">
+            <p>수집가무무 미니메모지 오트밀체크</p>
+          </div>`,
+        createdAt: getTime(-3, -60 * 60 * 12),
+        updatedAt: getTime(-3, -60 * 60 * 12),
+        extra: {
+          depth: 1,
+          category: ["PC03"],
+        },
+      },
+      {
+        _id: await nextSeq("product"),
+        seller_id: 3,
+        price: 3500,
+        shippingFees: 3500,
+        show: true,
+        active: true,
+        name: "키치키치 체크리스트 떡메모지",
+        quantity: 999999,
+        buyQuantity: 0,
+        mainImages: [
+          {
+            path: `/files/${clientId}/XV_uoXImA.png`,
+            name: "XV_uoXImA.png",
+            originalnam9: "memo4.png",
+          },
+        ],
+        content: `
+          <div class="product-detail">
+            <p>키치키치 체크리스트 떡메모지</p>
+          </div>`,
+        createdAt: getTime(-3, -60 * 60 * 12),
+        updatedAt: getTime(-3, -60 * 60 * 12),
+        extra: {
+          depth: 1,
+          category: ["PC03"],
+        },
+      },
+      {
+        _id: await nextSeq("product"),
+        seller_id: 3,
+        price: 3500,
+        shippingFees: 3500,
+        show: true,
+        active: true,
+        name: "모먼트미모먼트 픽미 핑크 떡메모지",
+        quantity: 999999,
+        buyQuantity: 0,
+        mainImages: [
+          {
+            path: `/files/${clientId}/iOsypaLrm.png`,
+            name: "iOsypaLrm.png",
+            originalnam9: "memo5.png",
+          },
+        ],
+        content: `
+          <div class="product-detail">
+            <p>모먼트미모먼트 픽미 핑크 떡메모지</p>
+          </div>`,
+        createdAt: getTime(-3, -60 * 60 * 12),
+        updatedAt: getTime(-3, -60 * 60 * 12),
+        extra: {
+          depth: 1,
+          category: ["PC03"],
+        },
+      },
+      {
+        _id: await nextSeq("product"),
+        seller_id: 3,
+        price: 3500,
+        shippingFees: 3500,
+        show: true,
+        active: true,
+        name: "람지 봄꽃 메모지",
+        quantity: 999999,
+        buyQuantity: 0,
+        mainImages: [
+          {
+            path: `/files/${clientId}/1v8dEQ7RA.png`,
+            name: "1v8dEQ7RA.png",
+            originalnam9: "memo6.png",
+          },
+        ],
+        content: `
+          <div class="product-detail">
+            <p>람지 봄꽃 메모지</p>
+          </div>`,
+        createdAt: getTime(-3, -60 * 60 * 12),
+        updatedAt: getTime(-3, -60 * 60 * 12),
+        extra: {
+          depth: 1,
+          category: ["PC03"],
+        },
+      },
+      {
+        _id: await nextSeq("product"),
+        seller_id: 3,
+        price: 3500,
+        shippingFees: 3500,
+        show: true,
+        active: true,
+        name: "엑스디 에그위클리 떡메모지",
+        quantity: 999999,
+        buyQuantity: 0,
+        mainImages: [
+          {
+            path: `/files/${clientId}/Cu1S2KnL7.png`,
+            name: "Cu1S2KnL7.png",
+            originalnam9: "memo7.png",
+          },
+        ],
+        content: `
+          <div class="product-detail">
+            <p>엑스디 에그위클리 떡메모지</p>
+          </div>`,
+        createdAt: getTime(-3, -60 * 60 * 12),
+        updatedAt: getTime(-3, -60 * 60 * 12),
+        extra: {
+          depth: 1,
+          category: ["PC03"],
+        },
+      },
+      {
+        _id: await nextSeq("product"),
+        seller_id: 3,
+        price: 3500,
+        shippingFees: 3500,
+        show: true,
+        active: true,
+        name: "게이트17 영수증 떡메모지",
+        quantity: 999999,
+        buyQuantity: 0,
+        mainImages: [
+          {
+            path: `/files/${clientId}/_vAhcQlQN.png`,
+            name: "_vAhcQlQN.png",
+            originalnam9: "memo8.png",
+          },
+        ],
+        content: `
+          <div class="product-detail">
+            <p>게이트17 영수증 떡메모지</p>
+          </div>`,
+        createdAt: getTime(-3, -60 * 60 * 12),
+        updatedAt: getTime(-3, -60 * 60 * 12),
+        extra: {
+          depth: 1,
+          category: ["PC03"],
+        },
+      },
+      {
+        _id: await nextSeq("product"),
+        seller_id: 3,
+        price: 3500,
+        shippingFees: 3500,
+        show: true,
+        active: true,
+        name: "게이트17 보딩패스 떡메모지",
+        quantity: 999999,
+        buyQuantity: 0,
+        mainImages: [
+          {
+            path: `/files/${clientId}/usmF3VrjY.png`,
+            name: "usmF3VrjY.png",
+            originalnam9: "memo9.png",
+          },
+        ],
+        content: `
+          <div class="product-detail">
+            <p>게이트17 보딩패스 떡메모지</p>
+          </div>`,
+        createdAt: getTime(-3, -60 * 60 * 12),
+        updatedAt: getTime(-3, -60 * 60 * 12),
+        extra: {
+          depth: 1,
+          category: ["PC03"],
+        },
+      },
+      // 27번 상품. 스티커
+      {
+        _id: await nextSeq("product"),
+        seller_id: 3,
+        price: 2900,
+        shippingFees: 3500,
+        show: true,
+        active: true,
+        name: "햄찌세자매 줄줄이 스티커",
+        quantity: 999999,
+        buyQuantity: 0,
+        mainImages: [
+          {
+            path: `/files/${clientId}/jcIHJbEz_.png`,
+            name: "jcIHJbEz_.png",
+            originalnam9: "sticker1.png",
+          },
+        ],
+        content: `
+          <div class="product-detail">
+            <p>햄찌세자매 줄줄이 스티커</p>
+          </div>`,
+        createdAt: getTime(-3, -60 * 60 * 12),
+        updatedAt: getTime(-3, -60 * 60 * 12),
+        extra: {
+          depth: 1,
+          category: ["PC02"],
+        },
+      },
+      {
+        _id: await nextSeq("product"),
+        seller_id: 3,
+        price: 2900,
+        shippingFees: 3500,
+        show: true,
+        active: true,
+        name: "소다냥 스티커",
+        quantity: 999999,
+        buyQuantity: 0,
+        mainImages: [
+          {
+            path: `/files/${clientId}/lPQauMHO5.png`,
+            name: "lPQauMHO5.png",
+            originalnam9: "sticker2.png",
+          },
+        ],
+        content: `
+          <div class="product-detail">
+            <p>소다냥 스티커</p>
+          </div>`,
+        createdAt: getTime(-3, -60 * 60 * 12),
+        updatedAt: getTime(-3, -60 * 60 * 12),
+        extra: {
+          depth: 1,
+          category: ["PC02"],
+        },
+      },
+      {
+        _id: await nextSeq("product"),
+        seller_id: 3,
+        price: 2900,
+        shippingFees: 3500,
+        show: true,
+        active: true,
+        name: "미어독 스티커",
+        quantity: 999999,
+        buyQuantity: 0,
+        mainImages: [
+          {
+            path: `/files/${clientId}/Pp946WtoZ.png`,
+            name: "Pp946WtoZ.png",
+            originalnam9: "sticker3.png",
+          },
+        ],
+        content: `
+          <div class="product-detail">
+            <p>미어독 스티커</p>
+          </div>`,
+        createdAt: getTime(-3, -60 * 60 * 12),
+        updatedAt: getTime(-3, -60 * 60 * 12),
+        extra: {
+          depth: 1,
+          category: ["PC02"],
+        },
+      },
       {
         _id: await nextSeq("product"),
         seller_id: 3,
@@ -597,48 +1222,257 @@ export const initData = async (clientId, nextSeq) => {
         shippingFees: 3500,
         show: true,
         active: true,
-        name: "샤넬 NO.5",
+        name: "오늘은 뭐할까? 스티커팩",
         quantity: 999999,
         buyQuantity: 0,
         mainImages: [
           {
-            path: `/files/${clientId}/sample-pushpop01.jpg`,
-            name: "sample-pushpop01.jpg",
-            originalname: "샤넬.jpg",
+            path: `/files/${clientId}/Wye2NG_OB.png`,
+            name: "Wye2NG_OB.png",
+            originalnam9: "sticker4.png",
           },
         ],
-        content: `샤넬 향수`,
+        content: `
+          <div class="product-detail">
+            <p>오늘은 뭐할까? 스티커팩</p>
+          </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
         extra: {
           depth: 1,
+          isNew: true,
+          category: ["PC02"],
         },
       },
-      // 16번 상품. 옵션이 있는 경우 옵션 상품 정보. 15번 상품의 하위 상품(옵션)
       {
         _id: await nextSeq("product"),
         seller_id: 3,
-        price: 6900,
+        price: 8000,
         shippingFees: 3500,
-        name: "샤넬 NO.5",
-        quantity: 1,
-        buyQuantity: 0,
         show: true,
         active: true,
+        name: "달콤한 여름간식! 스티커팩",
+        quantity: 999999,
+        buyQuantity: 0,
         mainImages: [
           {
-            path: `/files/${clientId}/sample-pushpop03.jpg`,
-            name: "sample-pushpop03.jpg",
-            originalname: "샤넬.jpg",
+            path: `/files/${clientId}/7MqP5fX2r.png`,
+            name: "7MqP5fX2r.png",
+            originalnam9: "sticker5.png",
           },
         ],
-        content: `3달 쓴 향수입니다.`,
+        content: `
+          <div class="product-detail">
+            <p>달콤한 여름간식! 스티커팩</p>
+          </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
         extra: {
-          depth: 2,
-          parent: 15,
-          size: "200mm",
+          depth: 1,
+          isNew: true,
+          category: ["PC02"],
+        },
+      },
+      {
+        _id: await nextSeq("product"),
+        seller_id: 3,
+        price: 8000,
+        shippingFees: 3500,
+        show: true,
+        active: true,
+        name: "꽃향기가 나는날팩 스티커팩",
+        quantity: 999999,
+        buyQuantity: 0,
+        mainImages: [
+          {
+            path: `/files/${clientId}/CjKEIa_31.png`,
+            name: "CjKEIa_31.png",
+            originalnam9: "sticker6.png",
+          },
+        ],
+        content: `
+          <div class="product-detail">
+            <p>꽃향기가 나는날팩 스티커팩</p>
+            <p>유테씰 3종 + 모조지 스티커 3종</p>
+          </div>`,
+        createdAt: getTime(-3, -60 * 60 * 12),
+        updatedAt: getTime(-3, -60 * 60 * 12),
+        extra: {
+          depth: 1,
+          isNew: true,
+          category: ["PC02"],
+        },
+      },
+      {
+        _id: await nextSeq("product"),
+        seller_id: 3,
+        price: 2500,
+        shippingFees: 3500,
+        show: true,
+        active: true,
+        name: "폼폼컨페티 메론",
+        quantity: 999999,
+        buyQuantity: 0,
+        mainImages: [
+          {
+            path: `/files/${clientId}/uohUPajtN.png`,
+            name: "uohUPajtN.png",
+            originalnam9: "sticker7.png",
+          },
+        ],
+        content: `
+          <div class="product-detail">
+            <p>폼폼컨페티 메론</p>
+            <p>리무버블 약 6.33 * 14</p>
+          </div>`,
+        createdAt: getTime(-3, -60 * 60 * 12),
+        updatedAt: getTime(-3, -60 * 60 * 12),
+        extra: {
+          depth: 1,
+          category: ["PC02"],
+        },
+      },
+      {
+        _id: await nextSeq("product"),
+        seller_id: 3,
+        price: 2500,
+        shippingFees: 3500,
+        show: true,
+        active: true,
+        name: "폼폼컨페티 딸기",
+        quantity: 999999,
+        buyQuantity: 0,
+        mainImages: [
+          {
+            path: `/files/${clientId}/Asxq8GHyW.png`,
+            name: "Asxq8GHyW.png",
+            originalnam9: "sticker8.png",
+          },
+        ],
+        content: `
+          <div class="product-detail">
+            <p>폼폼컨페티 딸기</p>
+            <p>리무버블 약 6.33 * 14</p>
+          </div>`,
+        createdAt: getTime(-3, -60 * 60 * 12),
+        updatedAt: getTime(-3, -60 * 60 * 12),
+        extra: {
+          depth: 1,
+          category: ["PC02"],
+        },
+      },
+      {
+        _id: await nextSeq("product"),
+        seller_id: 3,
+        price: 2500,
+        shippingFees: 3500,
+        show: true,
+        active: true,
+        name: "폼폼컨페티 푸딩",
+        quantity: 999999,
+        buyQuantity: 0,
+        mainImages: [
+          {
+            path: `/files/${clientId}/wpDsHVKll.png`,
+            name: "wpDsHVKll.png",
+            originalnam9: "sticker9.png",
+          },
+        ],
+        content: `
+          <div class="product-detail">
+            <p>폼폼컨페티 푸딩</p>
+            <p>리무버블 약 6.33 * 14</p>
+          </div>`,
+        createdAt: getTime(-3, -60 * 60 * 12),
+        updatedAt: getTime(-3, -60 * 60 * 12),
+        extra: {
+          depth: 1,
+          category: ["PC02"],
+        },
+      },
+      {
+        _id: await nextSeq("product"),
+        seller_id: 3,
+        price: 2500,
+        shippingFees: 3500,
+        show: true,
+        active: true,
+        name: "폼폼컨페티 스노우",
+        quantity: 999999,
+        buyQuantity: 0,
+        mainImages: [
+          {
+            path: `/files/${clientId}/oe5VQpDnh.png`,
+            name: "oe5VQpDnh.png",
+            originalnam9: "sticker10.png",
+          },
+        ],
+        content: `
+          <div class="product-detail">
+            <p>폼폼컨페티 스노우</p>
+            <p>리무버블 약 6.33 * 14</p>
+          </div>`,
+        createdAt: getTime(-3, -60 * 60 * 12),
+        updatedAt: getTime(-3, -60 * 60 * 12),
+        extra: {
+          depth: 1,
+          category: ["PC02"],
+        },
+      },
+      {
+        _id: await nextSeq("product"),
+        seller_id: 3,
+        price: 3000,
+        shippingFees: 3500,
+        show: true,
+        active: true,
+        name: "손글씨 알파벳 스티커",
+        quantity: 999999,
+        buyQuantity: 0,
+        mainImages: [
+          {
+            path: `/files/${clientId}/344pDx8Hx.png`,
+            name: "344pDx8Hx.png",
+            originalnam9: "sticker11.png",
+          },
+        ],
+        content: `
+          <div class="product-detail">
+            <p>손글씨 알파벳 스티커</p>            
+          </div>`,
+        createdAt: getTime(-3, -60 * 60 * 12),
+        updatedAt: getTime(-3, -60 * 60 * 12),
+        extra: {
+          depth: 1,
+          category: ["PC02"],
+        },
+      },
+      {
+        _id: await nextSeq("product"),
+        seller_id: 3,
+        price: 3000,
+        shippingFees: 3500,
+        show: true,
+        active: true,
+        name: "플러피 알파벳 스티커",
+        quantity: 999999,
+        buyQuantity: 0,
+        mainImages: [
+          {
+            path: `/files/${clientId}/i4D0RKFw7.png`,
+            name: "i4D0RKFw7.png",
+            originalnam9: "sticker12.png",
+          },
+        ],
+        content: `
+          <div class="product-detail">
+            <p>플러피 알파벳 스티커</p>            
+          </div>`,
+        createdAt: getTime(-3, -60 * 60 * 12),
+        updatedAt: getTime(-3, -60 * 60 * 12),
+        extra: {
+          depth: 1,
+          category: ["PC02"],
         },
       },
     ],
@@ -1119,108 +1953,34 @@ export const initData = async (clientId, nextSeq) => {
         title: "상품 카테고리",
         codes: [
           {
-            sort: 2,
+            sort: 1,
             code: "PC01",
-            value: "어린이",
+            value: "다이어리",
             depth: 1,
           },
           {
-            sort: 3,
-            code: "PC0101",
-            value: "퍼즐",
-            parent: "PC01",
-            depth: 2,
-          },
-          {
-            sort: 1,
-            code: "PC0102",
-            value: "보드게임",
-            parent: "PC01",
-            depth: 2,
-          },
-          {
             sort: 2,
-            code: "PC010201",
-            value: "2인용",
-            parent: "PC0102",
-            depth: 3,
-          },
-          {
-            sort: 1,
-            code: "PC010202",
-            value: "3~4인용",
-            parent: "PC0102",
-            depth: 3,
-          },
-          {
-            sort: 2,
-            code: "PC0103",
-            value: "레고",
-            parent: "PC01",
-            depth: 2,
-          },
-          {
-            sort: 4,
-            code: "PC0104",
-            value: "로봇",
-            parent: "PC01",
-            depth: 2,
-          },
-
-          {
-            sort: 1,
             code: "PC02",
-            value: "스포츠",
+            value: "스티커",
             depth: 1,
           },
-          {
-            sort: 1,
-            code: "PC0201",
-            value: "축구",
-            parent: "PC02",
-            depth: 2,
-          },
-          {
-            sort: 3,
-            code: "PC0202",
-            value: "야구",
-            parent: "PC02",
-            depth: 2,
-          },
-          {
-            sort: 2,
-            code: "PC0203",
-            value: "농구",
-            parent: "PC02",
-            depth: 2,
-          },
-
           {
             sort: 3,
             code: "PC03",
-            value: "어른",
+            value: "메모지",
             depth: 1,
           },
           {
-            sort: 1,
-            code: "PC0301",
-            value: "원격 조종",
-            parent: "PC03",
-            depth: 2,
+            sort: 4,
+            code: "PC04",
+            value: "마스킹테이프",
+            depth: 1,
           },
           {
-            sort: 2,
-            code: "PC0302",
-            value: "퍼즐",
-            parent: "PC03",
-            depth: 2,
-          },
-          {
-            sort: 3,
-            code: "PC0303",
-            value: "레고",
-            parent: "PC03",
-            depth: 2,
+            sort: 5,
+            code: "PC05",
+            value: "키링",
+            depth: 1,
           },
         ],
       },
@@ -1244,7 +2004,7 @@ export const initData = async (clientId, nextSeq) => {
             value: "배송 준비중",
           },
           {
-            sort: 4,
+            depth: 1,
             code: "OS035",
             value: "배송중",
           },
@@ -1254,7 +2014,7 @@ export const initData = async (clientId, nextSeq) => {
             value: "배송 완료",
           },
           {
-            sort: 6,
+            depth: 1,
             code: "OS110",
             value: "반품 요청",
           },
