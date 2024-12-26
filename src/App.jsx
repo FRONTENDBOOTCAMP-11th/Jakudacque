@@ -1,5 +1,6 @@
 import { RouterProvider } from "react-router-dom";
 import router from "@/routes";
+import './assets/css/typography.css';
 
 function App() {
   return (

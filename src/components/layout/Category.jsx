@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './Category.css';
+import '@/assets/css/typography.css'; 
 
 const Category = () => {
     const [activeItem, setActiveItem] = useState(null);
