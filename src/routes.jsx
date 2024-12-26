@@ -15,6 +15,7 @@ import New from "@pages/admin/product/New";
 import AdminOrderList from "@pages/admin/order/List";
 
 import Layout from "@components/layout";
+import AdminLayout from "@components/layout/AdminLayout";
 import { createBrowserRouter } from "react-router-dom";
 
 const router = createBrowserRouter([
@@ -38,8 +39,9 @@ const router = createBrowserRouter([
       // admin
       {
         path: "admin",
-        element: <AdminHome />, // 어드민 홈
+        element: <AdminLayout />, // 어드민 레이아웃(리다이렉트 로직)
         children: [
+          { index: true, element: <AdminHome /> }, // 어드민 홈
           {
             path: "product", // 상품 관리
             children: [
