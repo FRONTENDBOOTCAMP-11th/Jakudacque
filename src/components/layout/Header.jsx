@@ -1,5 +1,5 @@
 import tw from "tailwind-styled-components";
-// import useUserStore from "@zustand/userStore";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { IoSearch } from "react-icons/io5";
@@ -8,9 +8,11 @@ import { IoSettingsOutline } from "react-icons/io5";
 
 function SearchBar() {
   const [keyword, setKeyword] = useState("");
+  const navigate = useNavigate();
 
   const handleSearch = event => {
     event.preventDefault();
+    navigate(`/list?keyword=${keyword}`);
     console.log("검색어:", keyword);
   };
 
