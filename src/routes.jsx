@@ -1,5 +1,5 @@
 // main
-import Main from "@pages/product/index";
+import Main from "@pages/index";
 // product
 import ProductList from "@pages/product/List";
 import Detail from "@pages/product/Detail";
@@ -14,7 +14,7 @@ import Edit from "@pages/admin/product/Edit";
 import New from "@pages/admin/product/New";
 import AdminOrderList from "@pages/admin/order/List";
 
-import Layout from "Layout";
+import Layout from "@components/layout";
 import { createBrowserRouter } from "react-router-dom";
 
 const router = createBrowserRouter([
@@ -41,7 +41,7 @@ const router = createBrowserRouter([
         element: <AdminHome />, // 어드민 홈
         children: [
           {
-            path: "products", // 상품 관리
+            path: "product", // 상품 관리
             children: [
               { index: true, element: <AdminProductList /> }, // 상품 목록
               { path: "edit/:id", element: <Edit /> }, // 상품 수정
