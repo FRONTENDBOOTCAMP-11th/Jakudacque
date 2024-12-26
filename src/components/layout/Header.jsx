@@ -43,7 +43,7 @@ export default function Header() {
   };
 
   return (
-    <header className="relative px-2 py-4 text-gray-800 border-b sm:py-2 md:px-8 min-w-80">
+    <header className="relative px-2 py-4 border-b sm:py-2 md:px-8 min-w-80">
       <nav className="flex flex-wrap items-center justify-between ">
         <Link to="/">
           <img
