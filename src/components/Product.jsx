@@ -8,7 +8,7 @@ export default function Product({ product }) {
       <img
         src={product.image}
         alt={product.name}
-        className="w-40 h-40 object-cover rounded-lg my-2 lg:w-64 lg:h-64"
+        className="w-40 h-40 object-cover rounded-lg my-2 lg:w-72 lg:h-72 hover:scale-105 transition-transform duration-300"
       />
       <div className="flex flex-col pb-3 px-1">
         <p className="text-sm font-medium lg:text-lg">{product.name}</p>
