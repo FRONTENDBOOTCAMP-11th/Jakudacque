@@ -88,9 +88,9 @@ export default function List() {
                   </StyledTd>
                   <StyledTd>
                     <div className="flex justify-end gap-2">
-                      <button>
-                        <IoOpenOutline size={24} className="" />
-                      </button>
+                      <Link to={`${location.pathname}/edit/${item._id}`}>
+                        <IoOpenOutline size={24} className=" hover:text-info" />
+                      </Link>
                       <button onClick={() => handleDelete(item._id)}>
                         <IoTrashOutline size={24} className="text-error" />
                       </button>
@@ -112,5 +112,5 @@ export default function List() {
 }
 
 const LinkButton = tw(Link)`
-  p-1 rounded hover:bg-gray-200 flex-shrink-0
+  p-1 rounded text-white bg-green-500 hover:bg-green-600 flex-shrink-0
 `;
