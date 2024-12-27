@@ -24,7 +24,7 @@ function SearchBar() {
         className="flex-1 focus:outline-none"
         value={keyword}
         onChange={event => setKeyword(event.target.value)}
-        onKeyPress={event => event.key === "Enter" && handleSearch(event)}
+        onKeyDown={event => event.key === "Enter" && handleSearch(event)}
       />
       <button className="p-1" onClick={handleSearch}>
         <IoSearch />
