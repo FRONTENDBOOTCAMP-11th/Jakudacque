@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { IoChevronBackOutline } from "react-icons/io5";
 import { IoChevronForwardOutline } from "react-icons/io5";
 
@@ -14,6 +14,12 @@ Pagination.propTypes = {
 export default function Pagination({ maxPage = 10, currentPage = 1 }) {
   const [width, setWidth] = useState(900);
   const [paginationArray, setPaginationArray] = useState([]);
+
+  // 현재 페이지의 쿼리스트링을 제외한 나머지 쿼리스트링을 가져옴
+  const location = useLocation();
+  const currentSearchParams = new URLSearchParams(location.search)
+    .toString()
+    .replace(/page=\d+&?/g, "");
 
   // 브라우저 리사이즈 이벤트. width 상태 변경
   useEffect(() => {
@@ -70,16 +76,22 @@ export default function Pagination({ maxPage = 10, currentPage = 1 }) {
       <div className="flex flex-col gap-2">
         <div className="flex justify-center flex-1 gap-2">
           <ArrowBtn
-            to={
-              currentPage === 1 ? "#" : `/admin/product?page=${currentPage - 1}`
-            }
+            to={{
+              pathname: location.pathname,
+              search: `?${currentSearchParams}&page=${
+                currentPage === maxPage ? "#" : currentPage - 1
+              }`,
+            }}
           >
             <IoChevronBackOutline />
           </ArrowBtn>
           {paginationArray.map((page, index) => {
             return (
               <PageBtn
-                to={page === "..." ? "#" : `/admin/product?page=${page}`}
+                to={{
+                  pathname: location.pathname,
+                  search: `?${currentSearchParams}$page=${page}`,
+                }}
                 key={index}
                 $isActive={currentPage === page}
               >
@@ -89,11 +101,12 @@ export default function Pagination({ maxPage = 10, currentPage = 1 }) {
           })}
           <>
             <ArrowBtn
-              to={
-                currentPage === maxPage
-                  ? "#"
-                  : `/admin/product?page=${currentPage + 1}`
-              }
+              to={{
+                pathname: location.pathname,
+                search: `?${currentSearchParams}&page=${
+                  currentPage === maxPage ? "#" : currentPage + 1
+                }`,
+              }}
             >
               <IoChevronForwardOutline />
             </ArrowBtn>
@@ -112,7 +125,7 @@ const BtnSquare = tw(Link)`
 `;
 const PageBtn = tw(BtnSquare)`
   ${({ $isActive = false }) =>
-    $isActive ? `bg-blue-500 text-white	` : `hover:bg-blue-100`}
+    $isActive ? `bg-gray-500 text-white	` : `hover:bg-gray-100`}
 `;
 const ArrowBtn = tw(BtnSquare)`
   bg-gray-200
