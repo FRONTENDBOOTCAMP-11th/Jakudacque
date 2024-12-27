@@ -37,7 +37,7 @@ AdminSearchBar.propTypes = {
 
 export default function AdminSearchBar({ children }) {
   return (
-    <div className="flex justify-between mt-4">
+    <div className="flex items-center justify-between mt-4">
       <SearchBar />
       {children}
     </div>
