@@ -174,7 +174,7 @@ export default function index() {
       </StyledSwiper>
 
       <StyledSwiper>
-        <div className="relative mx-16 mt-20">
+        <div className="relative mt-20 px-8 mx-auto max-w-[1280px]">
           <h1 className="text-xl font-semibold">Best Item</h1>
           <Swiper // BEST 아이템 리스트
             navigation={true}
@@ -202,7 +202,7 @@ export default function index() {
       </StyledSwiper>
 
       <StyledSwiper>
-        <div className="relative mx-16 mt-20">
+        <div className="relative mt-20 px-8 mx-auto max-w-[1280px]">
           <h1 className="text-xl font-semibold">New Item</h1>
           <Swiper // NEW 아이템 리스트
             navigation={true}
