@@ -19,7 +19,7 @@ export default function Pagination({ maxPage = 10, currentPage = 1 }) {
   const location = useLocation();
   const currentSearchParams = new URLSearchParams(location.search)
     .toString()
-    .replace(/page=\d+&?/g, "");
+    .replace(/&?page=\d+&?/g, "");
 
   // 브라우저 리사이즈 이벤트. width 상태 변경
   useEffect(() => {
@@ -90,7 +90,7 @@ export default function Pagination({ maxPage = 10, currentPage = 1 }) {
               <PageBtn
                 to={{
                   pathname: location.pathname,
-                  search: `?${currentSearchParams}$page=${page}`,
+                  search: `?${currentSearchParams}&page=${page}`,
                 }}
                 key={index}
                 $isActive={currentPage === page}
