@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { IoCaretDown, IoChevronBackOutline } from "react-icons/io5";
 import Product from '../../components/Product' 
+import { useNavigate } from 'react-router-dom';
 
 export default function List() {
   // 정렬 방식 상태 (나중에 개발)
@@ -8,6 +9,8 @@ export default function List() {
   
   // 드롭다운 메뉴의 열림/닫힘 상태를 관리하는 state
   const [isOpen, setIsOpen] = useState(false)
+
+  const navigate = useNavigate();
   
   // 상품 데이터 (샘플)
   const products = [
@@ -45,14 +48,16 @@ export default function List() {
     <div className="max-w-7xl mx-auto px-4 py-8">
     {/* 뒤로가기 */}
     <div className="mb-8">
-      <button className="flex items-center gap-2">
+      <button 
+       onClick={() => navigate(-1)} // 뒤로가기 기능
+      className="flex items-center gap-2">
         <IoChevronBackOutline  className="text-xl" />
         다이어리
       </button>
     </div>
-
-     {/* 상품 카운트 */}
+     {/* 상품 카운트, 정렬*/}
      <div className="flex justify-between items-center mb-8">
+        {/* 상품 카운트 */}
         <div className="text-sm font-medium">1000 ITEMS</div>
         {/* 상품 정렬 */}
         <div className="relative">
@@ -79,7 +84,7 @@ export default function List() {
         </div>
       </div>
 
-     {/* 상품 그리드 - Product 컴포넌트 사용 */}
+     {/* 상품리스트 (Product 컴포넌트 사용) */}
      <div className="grid grid-cols-4 gap-8">
         {products.map(product => (
           <Product key={product.id} product={product} />
