@@ -46,7 +46,11 @@ export default function List() {
   console.log(data);
 
   if (!data) {
-    return <Spinner />;
+    return (
+      <div className="w-full h-screen">
+        <Spinner />
+      </div>
+    );
   }
 
   return (
