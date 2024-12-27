@@ -1,3 +1,4 @@
+import tw from "tailwind-styled-components";
 import {
   TableTitle,
   StyledTable,
@@ -5,16 +6,18 @@ import {
   StyledTh,
   StyledTd,
 } from "@components/AdminTable";
-import AdminSearchBar from "@components/\bAdminSearchBar";
+import AdminSearchBar from "@components/AdminSearchBar";
 import Pagination from "@components/Pagenation.jsx";
+import Spinner from "@components/Spinner";
 import useAxiosInstance from "@hooks/useAxiosInstance";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import useQueryStr from "@hooks/useQueryStr";
-import Spinner from "@components/Spinner";
+import { Link, useLocation } from "react-router-dom";
 import { IoTrashOutline } from "react-icons/io5";
 import { IoOpenOutline } from "react-icons/io5";
 
 export default function List() {
+  const location = useLocation();
   let page = useQueryStr().get("page") || 1;
   let keyword = useQueryStr().get("keyword") || "";
 
@@ -52,7 +55,7 @@ export default function List() {
         <TableTitle>상품 리스트</TableTitle>
 
         <AdminSearchBar>
-          <button>상품 등록</button>
+          <LinkButton to={`${location.pathname}/new`}>상품 등록</LinkButton>
         </AdminSearchBar>
 
         <>
@@ -107,3 +110,7 @@ export default function List() {
     </>
   );
 }
+
+const LinkButton = tw(Link)`
+  p-1 rounded hover:bg-gray-200 flex-shrink-0
+`;
