@@ -11,15 +11,15 @@ export default function Product({ product }) {
         className="w-40 h-40 object-cover rounded-lg my-2 lg:w-72 lg:h-72 hover:scale-105 transition-transform duration-300"
       />
       <div className="flex flex-col pb-3 px-1">
-        <p className="text-sm font-medium lg:text-lg">{product.name}</p>
+        <p className="text-sm font-medium">{product.name}</p>
         <div className="flex items-center">
-          <p className="text-sm font-medium lg:text-lg">{product.price}</p>
-          <span className="ml-1 lg:text-lg">원</span>
+          <p className="text-sm font-medium">{product.price}</p>
+          <span className="ml-1">원</span>
         </div>
       </div>
-      <div className="flex gap-2 px-1 mb-3 lg:size-24">
-        <IoHeartOutline className="lg:size-24" size={20} />
-        <IoCartOutline className="lg:size-24" size={20} />
+      <div className="flex gap-2 px-1 mb-3">
+        <IoCartOutline size={20} />
+        <IoHeartOutline size={20} />
       </div>
     </Link>
   );
