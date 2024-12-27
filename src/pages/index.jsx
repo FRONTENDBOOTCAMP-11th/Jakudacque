@@ -7,6 +7,22 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { Link } from "react-router-dom";
 import Product from "@components/Product";
 
+// Swiper 내부 클래스 재정의
+const StyledSwiper = styled.div`
+  .swiper-pagination-bullet {
+    background-color: #fde047;
+  }
+
+  .swiper-pagination-bullet-active {
+    background-color: #fde047;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: #fde047;
+  }
+`;
+
 export default function index() {
   // 메인 베너 슬라이드 데이터
   const slides = [
@@ -128,22 +144,6 @@ export default function index() {
     },
   ];
 
-  // Swiper 내부 클래스 재정의
-  const StyledSwiper = styled.div`
-    .swiper-pagination-bullet {
-      background-color: #fde047;
-    }
-
-    .swiper-pagination-bullet-active {
-      background-color: #fde047;
-    }
-
-    .swiper-button-next,
-    .swiper-button-prev {
-      color: #fde047;
-    }
-  `;
-
   return (
     <div className="h-full mb-20">
       <StyledSwiper>
@@ -154,7 +154,7 @@ export default function index() {
             disableOnInteraction: false,
           }}
           modules={[Pagination, Autoplay]}
-          className="w-full h-full"
+          className="w-full h-[500px] lg:h-[500px] md:h-[400px] mx-auto max-w-[1280px]"
         >
           {slides.map((slide, index) => (
             <SwiperSlide
