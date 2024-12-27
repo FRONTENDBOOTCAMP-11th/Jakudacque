@@ -5,7 +5,8 @@ const Category = () => {
 
   const menuItems = [
     "전체상품",
-    "신상&베스트",
+    "신상",
+    "BEST",
     "다이어리",
     "스티커",
     "메모지",
