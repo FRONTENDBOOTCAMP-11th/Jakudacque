@@ -73,7 +73,7 @@ export default function List() {
                 {['등록순', '인기순', '낮은가격순', '높은가격순', '이름순'].map((option) => (
                   <li 
                     key={option}
-                    className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-sm"
+                    className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-sm" // cursor-pointer 마우스가 해당 요소 위에 올라갔을 때 커서의 모양을 손가락 모양(👆)으로 변경경
                   >
                     {option}
                   </li>
