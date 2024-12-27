@@ -46,6 +46,18 @@ export default function SignUp() {
             />
           </div>
           <div className="mb-4">
+            <label className="block mb-2" htmlFor="passwordConfirm">
+              비밀번호 확인
+            </label>
+            <input
+              type="password"
+              id="passwordConfirm"
+              placeholder="비밀번호를 다시 입력하세요"
+              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-secondary-base"
+              // {...register("passwordConfirm", { required: "비밀번호 확인은 필수입니다." })}
+            />
+          </div>
+          <div className="mb-4">
             <label className="block  mb-2" htmlFor="name">
               핸드폰
             </label>
