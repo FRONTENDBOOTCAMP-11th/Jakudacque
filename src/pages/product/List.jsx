@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { IoCaretDown, IoCartOutline, IoChevronBackOutline, IoHeartOutline } from "react-icons/io5";
+import { IoCaretDown, IoChevronBackOutline } from "react-icons/io5";
+import Product from '../../components/Product' 
 
 export default function List() {
   // 정렬 방식 상태 (나중에 개발)
@@ -14,29 +15,29 @@ export default function List() {
       id: 1,
       name: '심플 멍냥이 다이어리',
       price: 2200,
-      reviews: 0,
-      image: '/api/dbinit-sample/jakudacque/uploadFiles/diary1.png'
+      image: '/api/dbinit-sample/jakudacque/uploadFiles/diary1.png',
+      link: '/product/1'
     },
     {
       id: 2, 
       name: 'Daisy diary',
       price: 1700,
-      reviews: 0,
-      image: '/api/dbinit-sample/jakudacque/uploadFiles/diary2.png'
+      image: '/api/dbinit-sample/jakudacque/uploadFiles/diary2.png',
+      link: '/product/2'
     },
     {
       id: 3,
       name: 'ioneco diary',
       price: 2800,
-      reviews: 0,
-      image: '/api/dbinit-sample/jakudacque/uploadFiles/diary3.png'
+      image: '/api/dbinit-sample/jakudacque/uploadFiles/diary3.png',
+      link: '/product/3'
     },
     {
       id: 4,
       name: 'blahblah diary',
       price: 4500,
-      reviews: 0,
-      image: '/api/dbinit-sample/jakudacque/uploadFiles/diary4.png'
+      image: '/api/dbinit-sample/jakudacque/uploadFiles/diary4.png',
+      link: '/product/1'
     }
   ]
 
@@ -78,27 +79,10 @@ export default function List() {
         </div>
       </div>
 
-      {/* 상품 그리드 - 1줄에 4개씩 */}
-      <div className="grid grid-cols-4 gap-8">
+     {/* 상품 그리드 - Product 컴포넌트 사용 */}
+     <div className="grid grid-cols-4 gap-8">
         {products.map(product => (
-          <div key={product.id} className="group cursor-pointer">
-            {/* 이미지 */}
-            <div className="w-full aspect-[1/1] overflow-hidden bg-gray-100 mb-4">
-              <img
-                src={product.image}
-                alt={product.name}
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-            {/* 상품 정보 */}
-            <div>
-              <h3 className="text-sm font-medium mb-2">{product.name}</h3>
-              <p className="text-sm font-medium mb-1">
-                {product.price.toLocaleString()}원
-              </p>
-              <IoHeartOutline /><IoCartOutline />
-            </div>
-          </div>
+          <Product key={product.id} product={product} />
         ))}
       </div>
     </div>
