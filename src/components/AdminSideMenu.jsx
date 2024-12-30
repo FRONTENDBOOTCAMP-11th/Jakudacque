@@ -41,7 +41,7 @@ export default function AdminSideMenu({ menuList }) {
           {/* admin-menus */}
           {menuList.map((item, _idx) => {
             return (
-              <Link key={_idx} to={item.path}>
+              <Link key={_idx} to={item.path} className="hover:bg-gray-100">
                 <MenuItem className="pl-4">{item.title}</MenuItem>
               </Link>
             );
