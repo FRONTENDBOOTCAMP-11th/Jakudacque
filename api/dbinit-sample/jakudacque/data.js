@@ -1485,13 +1485,13 @@ export const initData = async (clientId, nextSeq) => {
         products: [
           {
             _id: 2,
-            seller_id: 3,
+            seller_id: 2,
             state: "OS020",
             name: "심플 파스텔 다이어리리",
             image: {
-              path: `/files/${clientId}/SyMfOSLFP.png`,
-              name: "SyMfOSLFP.png",
-              originalname: "diary7.jpg",
+              path: `/files/${clientId}/diary7.png`,
+              name: "diary7.png",
+              originalname: "diary7.png",
             },
             quantity: 2,
             price: 1500,
@@ -1521,12 +1521,12 @@ export const initData = async (clientId, nextSeq) => {
         products: [
           {
             _id: 3,
-            seller_id: 3,
+            seller_id: 2,
             state: "OS010",
             name: "엑스디 덕이 키링",
             image: {
-              path: `/files/${clientId}/n_UbecHx1.png`,
-              name: "n_UbecHx1.png",
+              path: `/files/${clientId}/keyring3.png`,
+              name: "keyring3.png",
               originalname: "엑스디 덕이 키링.png",
             },
             quantity: 2,
@@ -1534,12 +1534,12 @@ export const initData = async (clientId, nextSeq) => {
           },
           {
             _id: 4,
-            seller_id: 3,
+            seller_id: 2,
             state: "OS010",
             name: "담담 눈사람 스몰 마스킹테이프",
             image: {
-              path: `/files/${clientId}/suFbEOrkQ.png`,
-              name: "suFbEOrkQ.png",
+              path: `/files/${clientId}/maskingtape1.png`,
+              name: "maskingtape1.png",
               originalname: "마스킹테이프1.png",
             },
             quantity: 2,
@@ -1570,12 +1570,12 @@ export const initData = async (clientId, nextSeq) => {
         products: [
           {
             _id: 4,
-            seller_id: 3,
+            seller_id: 2,
             state: "OS110",
             name: "람지 봄꽃 메모지",
             image: {
-              path: `/files/${clientId}/1v8dEQ7RA.png`,
-              name: "1v8dEQ7RA.png",
+              path: `/files/${clientId}/memo6.png`,
+              name: "memo6.png",
               originalnam9: "memo6.png",
             },
             quantity: 3,
@@ -1638,12 +1638,12 @@ export const initData = async (clientId, nextSeq) => {
         products: [
           {
             _id: 2,
-            seller_id: 3,
+            seller_id: 2,
             state: "OS310",
             name: "소다냥 스티커",
             image: {
-              path: `/files/${clientId}/lPQauMHO5.png`,
-              name: "lPQauMHO5.png",
+              path: `/files/${clientId}/sticker2.png`,
+              name: "sticker2.png",
               originalnam9: "sticker2.png",
             },
             quantity: 2,
