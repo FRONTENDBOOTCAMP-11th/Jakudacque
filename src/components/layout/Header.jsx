@@ -1,6 +1,6 @@
 import tw from "tailwind-styled-components";
-import useUserStore from "@zustand/userStore";
-import { useNavigate } from "react-router-dom";
+//import useUserStore from "@zustand/userStore";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { IoSearch } from "react-icons/io5";
@@ -9,13 +9,22 @@ import { IoSettingsOutline } from "react-icons/io5";
 
 function SearchBar() {
   const [keyword, setKeyword] = useState("");
-
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleSearch = event => {
     event.preventDefault();
-    navigate(`/list?keyword=${keyword}`);
-    console.log("검색어:", keyword);
+    if (!keyword.trim()) return;
+  
+    // 현재 URL이 /search인 경우
+    if (location.pathname === '/search') {
+      // URL을 변경하고 페이지 리로드
+      navigate(`/search?keyword=${keyword}`, { replace: true });
+      navigate(0); 
+    } else {
+      // 다른 페이지에서 검색하는 경우
+      navigate(`/search?keyword=${keyword}`);
+    }
   };
 
   return (

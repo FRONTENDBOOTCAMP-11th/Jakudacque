@@ -1,4 +1,6 @@
 import useUserStore from "@zustand/userStore";
+import useCodeStore from "@zustand/codeStore";
+import useAxiosInstance from "@hooks/useAxiosInstance";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import AdminSideMenu from "@components/AdminSideMenu";
@@ -9,6 +11,25 @@ export default function AdminLayout() {
   // const { user } = useUserStore();
   const user = { id: 1, username: "test", type: "admin" };
   // const user = null;
+
+  // codes fetch
+  const axios = useAxiosInstance();
+  const { codes, setCodes } = useCodeStore();
+
+  useEffect(() => {
+    if (codes) return;
+
+    axios.get("/codes").then(res => {
+      let codeMap = {};
+      const codes = res.data.item.flatten;
+
+      for (let code in codes) {
+        codeMap[code] = codes[code].value;
+      }
+
+      setCodes(codeMap);
+    });
+  }, [codes]);
 
   const navigate = useNavigate();
 
