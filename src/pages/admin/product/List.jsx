@@ -9,6 +9,7 @@ import {
 import AdminSearchBar from "@components/AdminSearchBar";
 import Pagination from "@components/Pagenation.jsx";
 import Spinner from "@components/Spinner";
+import useCodeStore from "@zustand/codeStore";
 import useAxiosInstance from "@hooks/useAxiosInstance";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import useQueryStr from "@hooks/useQueryStr";
@@ -20,6 +21,8 @@ export default function List() {
   const location = useLocation();
   let page = useQueryStr().get("page") || 1;
   let keyword = useQueryStr().get("keyword") || "";
+
+  const { codes } = useCodeStore();
 
   const axios = useAxiosInstance();
   const queryClient = useQueryClient();
@@ -88,7 +91,12 @@ export default function List() {
                 <StyledTd>{item.price.toLocaleString()} 원</StyledTd>
                 <StyledTd>{item.quantity}</StyledTd>
                 <StyledTd>
-                  {item.extra.category && item.extra.category.join(" / ")}
+                  {item.extra.category &&
+                    item.extra.category
+                      .map(el => {
+                        return codes[el];
+                      })
+                      .join(" / ")}
                 </StyledTd>
                 <StyledTd>
                   <div className="flex justify-end gap-2">

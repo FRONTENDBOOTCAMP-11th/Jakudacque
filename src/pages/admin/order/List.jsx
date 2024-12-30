@@ -1,4 +1,4 @@
-import tw from "tailwind-styled-components";
+// import tw from "tailwind-styled-components";
 import {
   TableTitle,
   StyledTable,
@@ -6,9 +6,10 @@ import {
   StyledTh,
   StyledTd,
 } from "@components/AdminTable";
-import AdminSearchBar from "@components/AdminSearchBar";
+// import AdminSearchBar from "@components/AdminSearchBar";
 import Pagination from "@components/Pagenation.jsx";
 import Spinner from "@components/Spinner";
+import useCodeStore from "@zustand/codeStore";
 import useAxiosInstance from "@hooks/useAxiosInstance";
 import { useQuery } from "@tanstack/react-query";
 import useQueryStr from "@hooks/useQueryStr";
@@ -19,6 +20,8 @@ export default function List() {
   const location = useLocation();
   let page = useQueryStr().get("page") || 1;
   let keyword = useQueryStr().get("keyword") || "";
+
+  const { codes } = useCodeStore();
 
   const axios = useAxiosInstance();
   // const queryClient = useQueryClient();
@@ -90,7 +93,7 @@ export default function List() {
                 <StyledTd>{item.cost.products.toLocaleString()}</StyledTd>
                 <StyledTd>{item.cost.shippingFees.toLocaleString()}</StyledTd>
                 <StyledTd>{item.cost.total.toLocaleString()}</StyledTd>
-                <StyledTd>{item.state}</StyledTd>
+                <StyledTd>{codes[item.state]}</StyledTd>
                 <StyledTd>
                   <Link to={`${location.pathname}/edit/${item._id}`}>
                     <IoOpenOutline size={24} className=" hover:text-info" />
