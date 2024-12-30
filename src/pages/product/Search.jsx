@@ -94,7 +94,7 @@ export default function Search() {
               />
               <button 
                 onClick={handleSearch}
-                className="px-6 py-2 text-white bg-blue-500 rounded-full hover:bg-blue-600 transition-colors"
+                className="px-6 py-2 text-white bg-secondary-base rounded-full hover:bg-secondary-dark transition-colors"
               >
                 <IoSearch className="text-xl" />
               </button>
@@ -143,7 +143,7 @@ export default function Search() {
             />
             <button 
               onClick={handleSearch}
-              className="px-6 py-2 text-white bg-blue-500 rounded-full hover:bg-blue-600 transition-colors"
+              className="px-6 py-2 text-white bg-secondary-base rounded-full hover:bg-secondary-dark transition-colors"
             >
               <IoSearch className="text-xl" />
             </button>
