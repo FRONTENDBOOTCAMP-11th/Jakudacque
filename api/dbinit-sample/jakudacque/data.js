@@ -147,8 +147,8 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 310,
         mainImages: [
           {
-            path: `/files/${clientId}/KAnceE1JA.png`,
-            name: "KAnceE1JA.png",
+            path: `/files/${clientId}/diary1.png`,
+            name: "diary1.png",
             originalname: "diary1.png",
           },
         ],
@@ -177,8 +177,8 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 198,
         mainImages: [
           {
-            path: `/files/${clientId}/9CdGarxdN.png`,
-            name: "9CdGarxdN.png",
+            path: `/files/${clientId}/diary2.png`,
+            name: "diary2.png",
             originalname: "diary2.png",
           },
         ],
@@ -207,8 +207,8 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 99,
         mainImages: [
           {
-            path: `/files/${clientId}/jD71t4CdR.png`,
-            name: "jD71t4CdR.png",
+            path: `/files/${clientId}/diary3.png`,
+            name: "diary3.png",
             originalname: "diary3.png",
           },
         ],
@@ -237,8 +237,8 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 89,
         mainImages: [
           {
-            path: `/files/${clientId}/JOq9BFz_b.png`,
-            name: "JOq9BFz_b.png",
+            path: `/files/${clientId}/diary4.png`,
+            name: "diary4.png",
             originalname: "diary4.png",
           },
         ],
@@ -267,8 +267,8 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 98,
         mainImages: [
           {
-            path: `/files/${clientId}/5-WndmOy2.png`,
-            name: "5-WndmOy2.png",
+            path: `/files/${clientId}/diary5.png`,
+            name: "diary5.png",
             originalname: "diary5.png",
           },
         ],
@@ -298,8 +298,8 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 99,
         mainImages: [
           {
-            path: `/files/${clientId}/unM8a6XUm.png`,
-            name: "unM8a6XUm.png",
+            path: `/files/${clientId}/diary6.png`,
+            name: "diary6.png",
             originalname: "diary6.png",
           },
         ],
@@ -328,8 +328,8 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 98,
         mainImages: [
           {
-            path: `/files/${clientId}/SyMfOSLFP.png`,
-            name: "SyMfOSLFP.png",
+            path: `/files/${clientId}/diary7.png`,
+            name: "diary7.png",
             originalname: "diary7.png",
           },
         ],
@@ -358,8 +358,8 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 97,
         mainImages: [
           {
-            path: `/files/${clientId}/U-JRavpBz.png`,
-            name: "U-JRavpBz.png",
+            path: `/files/${clientId}/diary8.png`,
+            name: "diary8.png",
             originalname: "diary8.png",
           },
         ],
@@ -388,8 +388,8 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 96,
         mainImages: [
           {
-            path: `/files/${clientId}/PV9O31xxi.png`,
-            name: "PV9O31xxi.png",
+            path: `/files/${clientId}/diary9.png`,
+            name: "diary9.png",
             originalname: "daiary9.png",
           },
         ],
@@ -419,8 +419,8 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 95,
         mainImages: [
           {
-            path: `/files/${clientId}/KCg7WPC4w.png`,
-            name: "KCg7WPC4w.png",
+            path: `/files/${clientId}/diary10.png`,
+            name: "diary10.png",
             originalname: "diary10.png",
           },
         ],
@@ -450,8 +450,8 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 94,
         mainImages: [
           {
-            path: `/files/${clientId}/WHiIGBK2d.png`,
-            name: "WHiIGBK2d.png",
+            path: `/files/${clientId}/diary11.png`,
+            name: "diary11.png",
             originalname: "diary11.png",
           },
         ],
@@ -459,7 +459,7 @@ export const initData = async (clientId, nextSeq) => {
           <div align="center"><p>*크리스마스 배송 안내</p></div>
           <div align="center"><p>택배사 물량 증가로 평소보다 2~3일 더 걸립니다.</p></div>
           <div align="center"><br></div>
-          <div align="center"><img src="${process.env.API_HOST}/files/${clientId}/WHiIGBK2d.png"></div>
+          <div align="center"><img src="${process.env.API_HOST}/files/${clientId}/diary11.png"></div>
           <div align="center"><br></div>
           <div align="center"><p>*반품 안내</p></div>`,
         createdAt: getTime(-16, -60 * 60 * 3),
@@ -484,8 +484,8 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 800,
         mainImages: [
           {
-            path: `/files/${clientId}/EjtiieQ1d.png`,
-            name: "EjtiieQ1d.png",
+            path: `/files/${clientId}/diary12.png`,
+            name: "diary12.png",
             originalname: "diagy12.png",
           },
         ],
@@ -516,13 +516,13 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 94,
         mainImages: [
           {
-            path: `/files/${clientId}/Dt0L88Fmk.png`,
-            name: "Dt0L88Fmk.png",
+            path: `/files/${clientId}/keyring2.png`,
+            name: "keyring2.png",
             originalname: "우유클로버 강아지쿠키 키링.png",
           },
         ],
         content: `                    
-          <div align="center"><img src="${process.env.API_HOST}/files/${clientId}/Dt0L88Fmk.png"></div>`,
+          <div align="center"><img src="${process.env.API_HOST}/files/${clientId}/keyring2.png"></div>`,
         createdAt: getTime(-10, -60 * 60 * 12),
         updatedAt: getTime(-5, -60 * 60 * 6),
         extra: {
@@ -544,13 +544,13 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 94,
         mainImages: [
           {
-            path: `/files/${clientId}/_j8VmZrAw.png`,
-            name: "_j8VmZrAw.png",
+            path: `/files/${clientId}/keyring1.png`,
+            name: "keyring1.png",
             originalname: "우유클러보 플라워토끼 키링.png",
           },
         ],
         content: `
-          <div align="center"><img src="${process.env.API_HOST}/files/${clientId}/_j8VmZrAw.png"></div>`,
+          <div align="center"><img src="${process.env.API_HOST}/files/${clientId}/keyring1.png"></div>`,
         createdAt: getTime(-10, -60 * 60 * 12),
         updatedAt: getTime(-5, -60 * 60 * 6),
         extra: {
@@ -572,8 +572,8 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 298,
         mainImages: [
           {
-            path: `/files/${clientId}/n_UbecHx1.png`,
-            name: "n_UbecHx1.png",
+            path: `/files/${clientId}/keyring3.png`,
+            name: "keyring3.png",
             originalname: "엑스디 덕이 키링.png",
           },
         ],
@@ -602,8 +602,8 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 298,
         mainImages: [
           {
-            path: `/files/${clientId}/HPzBE4pNa.png`,
-            name: "HPzBE4pNa.png",
+            path: `/files/${clientId}/keyring4.png`,
+            name: "keyring4.png",
             originalname: "모먼트미모먼트 흑백동물원 블랙 고양이 키링.png",
           },
         ],
@@ -633,8 +633,8 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 0,
         mainImages: [
           {
-            path: `/files/${clientId}/suFbEOrkQ.png`,
-            name: "suFbEOrkQ.png",
+            path: `/files/${clientId}/maskingtape1.png`,
+            name: "maskingtape1.png",
             originalname: "마스킹테이프1.png",
           },
         ],
@@ -658,8 +658,8 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 0,
         mainImages: [
           {
-            path: `/files/${clientId}/IGl3TY8aV.png`,
-            name: "IGl3TY8aV.png",
+            path: `/files/${clientId}/maskingtape2.png`,
+            name: "maskingtape2.png",
             originalname: "마스킹테이프2.png",
           },
         ],
@@ -683,8 +683,8 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 0,
         mainImages: [
           {
-            path: `/files/${clientId}/mcW9k1bJK.png`,
-            name: "mcW9k1bJK.png",
+            path: `/files/${clientId}/maskingtape3.png`,
+            name: "maskingtape3.png",
             originalname: "마스킹테이프3.png",
           },
         ],
@@ -708,8 +708,8 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 0,
         mainImages: [
           {
-            path: `/files/${clientId}/1nvBLja6q.png`,
-            name: "1nvBLja6q.png",
+            path: `/files/${clientId}/maskingtape4.png`,
+            name: "maskingtape4.png",
             originalname: "마스킹테이프4.png",
           },
         ],
@@ -733,8 +733,8 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 0,
         mainImages: [
           {
-            path: `/files/${clientId}/JXu3f06wp.png`,
-            name: "JXu3f06wp.png",
+            path: `/files/${clientId}/maskingtape5.png`,
+            name: "maskingtape5.png",
             originalname: "마스킹테이프5.png",
           },
         ],
@@ -758,8 +758,8 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 0,
         mainImages: [
           {
-            path: `/files/${clientId}/psr9E0kfH.png`,
-            name: "psr9E0kfH.png",
+            path: `/files/${clientId}/maskingtape6.png`,
+            name: "maskingtape6.png",
             originalname: "마스킹테이프6.png",
           },
         ],
@@ -784,8 +784,8 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 0,
         mainImages: [
           {
-            path: `/files/${clientId}/Y9NuwEntA.png`,
-            name: "Y9NuwEntA.png",
+            path: `/files/${clientId}/maskingtape7.png`,
+            name: "maskingtape7.png",
             originalname: "마스킹테이프7.png",
           },
         ],
@@ -810,8 +810,8 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 0,
         mainImages: [
           {
-            path: `/files/${clientId}/zv16u5gr0.png`,
-            name: "zv16u5gr0.png",
+            path: `/files/${clientId}/maskingtape8.png`,
+            name: "maskingtape8.png",
             originalnam8: "마스킹테이프8.png",
           },
         ],
@@ -835,8 +835,8 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 0,
         mainImages: [
           {
-            path: `/files/${clientId}/_xyf_8V4z.png`,
-            name: "_xyf_8V4z.png",
+            path: `/files/${clientId}/maskingtape9.png`,
+            name: "maskingtape9.png",
             originalnam9: "마스킹테이프9.png",
           },
         ],
@@ -860,8 +860,8 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 0,
         mainImages: [
           {
-            path: `/files/${clientId}/A1ybUe8Pd.png`,
-            name: "A1ybUe8Pd.png",
+            path: `/files/${clientId}/maskingtape10.png`,
+            name: "maskingtape10.png",
             originalnam9: "마스킹테이프10.png",
           },
         ],
@@ -886,8 +886,8 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 0,
         mainImages: [
           {
-            path: `/files/${clientId}/eCc5FppIX.png`,
-            name: "eCc5FppIX.png",
+            path: `/files/${clientId}/memo1.png`,
+            name: "memo1.png",
             originalnam9: "memo1.png",
           },
         ],
@@ -916,8 +916,8 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 0,
         mainImages: [
           {
-            path: `/files/${clientId}/q2o2QvjGN.png`,
-            name: "q2o2QvjGN.png",
+            path: `/files/${clientId}/memo2.png`,
+            name: "memo2.png",
             originalnam9: "memo2.png",
           },
         ],
@@ -946,8 +946,8 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 0,
         mainImages: [
           {
-            path: `/files/${clientId}/0GsRh-yDj.png`,
-            name: "0GsRh-yDj.png",
+            path: `/files/${clientId}/memo3.png`,
+            name: "memo3.png",
             originalnam9: "memo3.png",
           },
         ],
@@ -974,8 +974,8 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 0,
         mainImages: [
           {
-            path: `/files/${clientId}/XV_uoXImA.png`,
-            name: "XV_uoXImA.png",
+            path: `/files/${clientId}/memo4.png`,
+            name: "memo4.png",
             originalnam9: "memo4.png",
           },
         ],
@@ -1002,8 +1002,8 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 0,
         mainImages: [
           {
-            path: `/files/${clientId}/iOsypaLrm.png`,
-            name: "iOsypaLrm.png",
+            path: `/files/${clientId}/memo5.png`,
+            name: "memo5.png",
             originalnam9: "memo5.png",
           },
         ],
@@ -1030,8 +1030,8 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 0,
         mainImages: [
           {
-            path: `/files/${clientId}/1v8dEQ7RA.png`,
-            name: "1v8dEQ7RA.png",
+            path: `/files/${clientId}/memo6.png`,
+            name: "memo6.png",
             originalnam9: "memo6.png",
           },
         ],
@@ -1058,8 +1058,8 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 0,
         mainImages: [
           {
-            path: `/files/${clientId}/Cu1S2KnL7.png`,
-            name: "Cu1S2KnL7.png",
+            path: `/files/${clientId}/memo7.png`,
+            name: "memo7.png",
             originalnam9: "memo7.png",
           },
         ],
@@ -1086,8 +1086,8 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 0,
         mainImages: [
           {
-            path: `/files/${clientId}/_vAhcQlQN.png`,
-            name: "_vAhcQlQN.png",
+            path: `/files/${clientId}/memo8.png`,
+            name: "memo8.png",
             originalnam9: "memo8.png",
           },
         ],
@@ -1114,8 +1114,8 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 0,
         mainImages: [
           {
-            path: `/files/${clientId}/usmF3VrjY.png`,
-            name: "usmF3VrjY.png",
+            path: `/files/${clientId}/memo9.png`,
+            name: "memo9.png",
             originalnam9: "memo9.png",
           },
         ],
@@ -1143,8 +1143,8 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 0,
         mainImages: [
           {
-            path: `/files/${clientId}/jcIHJbEz_.png`,
-            name: "jcIHJbEz_.png",
+            path: `/files/${clientId}/sticker1.png`,
+            name: "sticker1.png",
             originalnam9: "sticker1.png",
           },
         ],
@@ -1171,8 +1171,8 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 0,
         mainImages: [
           {
-            path: `/files/${clientId}/lPQauMHO5.png`,
-            name: "lPQauMHO5.png",
+            path: `/files/${clientId}/sticker2.png`,
+            name: "sticker2.png",
             originalnam9: "sticker2.png",
           },
         ],
@@ -1199,8 +1199,8 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 0,
         mainImages: [
           {
-            path: `/files/${clientId}/Pp946WtoZ.png`,
-            name: "Pp946WtoZ.png",
+            path: `/files/${clientId}/sticker3.png`,
+            name: "sticker3.png",
             originalnam9: "sticker3.png",
           },
         ],
@@ -1227,8 +1227,8 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 0,
         mainImages: [
           {
-            path: `/files/${clientId}/Wye2NG_OB.png`,
-            name: "Wye2NG_OB.png",
+            path: `/files/${clientId}/sticker4.png`,
+            name: "sticker4.png",
             originalnam9: "sticker4.png",
           },
         ],
@@ -1256,8 +1256,8 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 0,
         mainImages: [
           {
-            path: `/files/${clientId}/7MqP5fX2r.png`,
-            name: "7MqP5fX2r.png",
+            path: `/files/${clientId}/sticker5.png`,
+            name: "sticker5.png",
             originalnam9: "sticker5.png",
           },
         ],
@@ -1285,8 +1285,8 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 0,
         mainImages: [
           {
-            path: `/files/${clientId}/CjKEIa_31.png`,
-            name: "CjKEIa_31.png",
+            path: `/files/${clientId}/sticker6.png`,
+            name: "sticker6.png",
             originalnam9: "sticker6.png",
           },
         ],
@@ -1315,8 +1315,8 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 0,
         mainImages: [
           {
-            path: `/files/${clientId}/uohUPajtN.png`,
-            name: "uohUPajtN.png",
+            path: `/files/${clientId}/sticker7.png`,
+            name: "sticker7.png",
             originalnam9: "sticker7.png",
           },
         ],
@@ -1344,8 +1344,8 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 0,
         mainImages: [
           {
-            path: `/files/${clientId}/Asxq8GHyW.png`,
-            name: "Asxq8GHyW.png",
+            path: `/files/${clientId}/sticker8.png`,
+            name: "sticker8.png",
             originalnam9: "sticker8.png",
           },
         ],
@@ -1373,8 +1373,8 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 0,
         mainImages: [
           {
-            path: `/files/${clientId}/wpDsHVKll.png`,
-            name: "wpDsHVKll.png",
+            path: `/files/${clientId}/sticker9.png`,
+            name: "sticker9.png",
             originalnam9: "sticker9.png",
           },
         ],
@@ -1402,8 +1402,8 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 0,
         mainImages: [
           {
-            path: `/files/${clientId}/oe5VQpDnh.png`,
-            name: "oe5VQpDnh.png",
+            path: `/files/${clientId}/sticker10.png`,
+            name: "sticker10.png",
             originalnam9: "sticker10.png",
           },
         ],
@@ -1431,8 +1431,8 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 0,
         mainImages: [
           {
-            path: `/files/${clientId}/344pDx8Hx.png`,
-            name: "344pDx8Hx.png",
+            path: `/files/${clientId}/sticker11.png`,
+            name: "sticker11.png",
             originalnam9: "sticker11.png",
           },
         ],
@@ -1459,8 +1459,8 @@ export const initData = async (clientId, nextSeq) => {
         buyQuantity: 0,
         mainImages: [
           {
-            path: `/files/${clientId}/i4D0RKFw7.png`,
-            name: "i4D0RKFw7.png",
+            path: `/files/${clientId}/sticker12.png`,
+            name: "sticker12.png",
             originalnam9: "sticker12.png",
           },
         ],
