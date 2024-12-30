@@ -42,7 +42,7 @@ export default function AdminSideMenu({ menuList }) {
           {menuList.map((item, _idx) => {
             return (
               <Link key={_idx} to={item.path}>
-                <MenuItem>{item.title}</MenuItem>
+                <MenuItem className="pl-4">{item.title}</MenuItem>
               </Link>
             );
           })}
@@ -51,7 +51,7 @@ export default function AdminSideMenu({ menuList }) {
           {/* logout */}
           <MenuItem onClick={handleLogout}>
             <IoLogOutOutline size={24} />
-            <span>Log out</span>
+            <span>로그아웃</span>
           </MenuItem>
         </MenuList>
       </SideMenuContainer>
