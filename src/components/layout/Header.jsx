@@ -1,4 +1,5 @@
 import tw from "tailwind-styled-components";
+import useUserStore from "@zustand/userStore";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -8,6 +9,7 @@ import { IoSettingsOutline } from "react-icons/io5";
 
 function SearchBar() {
   const [keyword, setKeyword] = useState("");
+
   const navigate = useNavigate();
 
   const handleSearch = event => {
@@ -28,14 +30,16 @@ function SearchBar() {
       />
       <button className="p-1" onClick={handleSearch}>
         <IoSearch />
-      </button>{" "}
+      </button>
     </div>
   );
 }
 
 export default function Header() {
-  const user = false;
+  // 권한에 따른 리다이렉트 로직 추가
   // const { user, resetUser } = useUserStore();
+  const user = { id: 1, username: "test", type: "admin" };
+  // const user = null;
 
   const handleLogout = event => {
     event.preventDefault();
@@ -44,7 +48,7 @@ export default function Header() {
 
   return (
     <header className="relative px-2 py-4 border-b sm:py-2 md:px-8 min-w-80">
-      <nav className="flex flex-wrap items-center justify-between ">
+      <nav className="flex flex-wrap items-center justify-between">
         <Link to="/">
           <img
             className="h-9 sm:h-12"
@@ -73,7 +77,7 @@ export default function Header() {
             <span className="hidden">장바구니</span>
             <IoCartOutline size={24} />
           </LinkButton>
-          {user && (
+          {user && user.type !== "user" && (
             <LinkButton to="/admin">
               <span className="hidden">관리자 페이지</span>
               <IoSettingsOutline size={24} />

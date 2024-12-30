@@ -79,7 +79,7 @@ export default function Pagination({ maxPage = 10, currentPage = 1 }) {
             to={{
               pathname: location.pathname,
               search: `?${currentSearchParams}&page=${
-                currentPage === maxPage ? "#" : currentPage - 1
+                currentPage === 1 ? 1 : currentPage - 1
               }`,
             }}
           >
@@ -104,7 +104,7 @@ export default function Pagination({ maxPage = 10, currentPage = 1 }) {
               to={{
                 pathname: location.pathname,
                 search: `?${currentSearchParams}&page=${
-                  currentPage === maxPage ? "#" : currentPage + 1
+                  currentPage === maxPage ? maxPage : currentPage + 1
                 }`,
               }}
             >
