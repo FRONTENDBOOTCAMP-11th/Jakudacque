@@ -4,6 +4,7 @@ import Main from "@pages/index";
 import ProductList from "@pages/product/List";
 import Detail from "@pages/product/Detail";
 import Cart from "@pages/product/Cart";
+import Search from "@pages/product/Search";
 // user
 import SignIn from "@pages/user/SignIn";
 import SignUp from "@pages/user/SignUp";
@@ -32,6 +33,7 @@ const router = createBrowserRouter([
           { path: ":id", element: <Detail /> }, // 상품 상세
         ],
       },
+      { path: "search", element: <Search /> }, // 검색색
       { path: "cart", element: <Cart /> }, // 장바구니
       // user
       { path: "signin", element: <SignIn /> }, // 로그인
