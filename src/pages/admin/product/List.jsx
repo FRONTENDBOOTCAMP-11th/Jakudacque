@@ -28,7 +28,7 @@ export default function List() {
     queryKey: ["productList", page, keyword],
     // 로그인 기능 완성 후 /seller/products로 변경
     queryFn: () =>
-      axios.get("/products", { params: { page, keyword, limit: 15 } }),
+      axios.get("/seller/products", { params: { page, keyword, limit: 15 } }),
     select: res => res.data,
     staleTime: 1000 * 10,
   });
@@ -56,7 +56,7 @@ export default function List() {
 
   return (
     <>
-      <TableTitle>상품 리스트</TableTitle>
+      <TableTitle>상품 관리</TableTitle>
 
       <AdminSearchBar>
         <LinkButton to={`${location.pathname}/new`}>상품 등록</LinkButton>
@@ -85,7 +85,7 @@ export default function List() {
                     className="w-16 h-16"
                   />
                 </StyledTd>
-                <StyledTd>{item.price}</StyledTd>
+                <StyledTd>{item.price.toLocaleString()} 원</StyledTd>
                 <StyledTd>{item.quantity}</StyledTd>
                 <StyledTd>
                   {item.extra.category && item.extra.category.join(" / ")}
