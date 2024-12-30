@@ -33,7 +33,7 @@ const router = createBrowserRouter([
           { path: ":id", element: <Detail /> }, // 상품 상세
         ],
       },
-      { path: "search", element: <Search /> }, // 검색색
+      { path: "search", element: <Search /> }, // 검색
       { path: "cart", element: <Cart /> }, // 장바구니
       // user
       { path: "signin", element: <SignIn /> }, // 로그인

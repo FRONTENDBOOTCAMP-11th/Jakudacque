@@ -19,36 +19,23 @@ export default function List() {
    // API로 상품 데이터 가져오기 - 페이지네이션 추가
    const { data, isLoading } = useQuery({
     queryKey: ["productList", page],
-    queryFn: async () => {
-      try {
-        const response = await axios.get("/products", {
-          params: {
-            page,
-            limit: 20,
-            category: ["PC01"],
-          },
-        });
-        
-        // 데이터가 없고, 페이지가 1보다 크면 첫 페이지로 이동
-        if (!response.data.item?.length && page > 1) {
-          navigate('/list?page=1');
-          return null;
-        }
-        
-        return response;
-      } catch (error) {
-        console.error("Error fetching products:", error);
-        throw error;
-      }
-    },
+    queryFn: () => axios.get("/products", {
+      params: {
+        page,
+        limit: 20,
+        category: ["PC01"],
+      },
+    }),
     select: res => res.data,
     staleTime: 1000 * 10,
   });
 
   if (isLoading) return <Spinner />;
-  if (!data) return null;
-  
-
+  if (!data || !data.item?.length) {
+    // 데이터가 없는 경우 첫 페이지로 리다이렉트
+    navigate('/list?page=1');
+    return null;
+  }
   // API 데이터를 Product 컴포넌트에 맞는 형식으로 변환
   const products = data.item.map(item => ({
     id: item._id,
@@ -91,7 +78,7 @@ export default function List() {
 
       {/* 상품 카운트, 정렬 */}
       <div className="flex justify-between items-center mb-8">
-        <div className="text-sm font-medium">{data.pagination.totalCount} ITEMS</div>
+        <div className="text-sm font-medium">1000 ITEMS</div>
         <div className="relative">
           <button
             onClick={() => setIsOpen(!isOpen)}
@@ -117,7 +104,7 @@ export default function List() {
           )}
         </div>
       </div>
-      {/* 상품리스트 - 4*5 */}
+      {/* 상품리스트 */}
       <div className="grid grid-cols-4 gap-8 mb-8">
         {products.map(product => (
           <Product key={product.id} product={product} />
