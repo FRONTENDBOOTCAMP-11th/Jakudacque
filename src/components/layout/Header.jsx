@@ -15,11 +15,12 @@ function SearchBar() {
   const handleSearch = event => {
     event.preventDefault();
     if (!keyword.trim()) return;
-
+  
     // 현재 URL이 /search인 경우
     if (location.pathname === '/search') {
       // URL을 변경하고 페이지 리로드
-      window.location.href = `/search?keyword=${keyword}`;
+      navigate(`/search?keyword=${keyword}`, { replace: true });
+      navigate(0); 
     } else {
       // 다른 페이지에서 검색하는 경우
       navigate(`/search?keyword=${keyword}`);
