@@ -26,7 +26,7 @@ export default function List() {
   const axios = useAxiosInstance();
   // const queryClient = useQueryClient();
 
-  const { data } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["orderList", page, keyword],
     // 로그인 기능 완성 후 /seller/orders 로 변경
     queryFn: () =>
@@ -48,12 +48,15 @@ export default function List() {
 
   console.log(data);
 
-  if (!data) {
+  if (isLoading) {
     return (
       <div className="w-full h-screen">
         <Spinner />
       </div>
     );
+  }
+  if (!data) {
+    return <div>데이터가 없습니다.</div>;
   }
 
   return (
