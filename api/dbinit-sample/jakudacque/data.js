@@ -668,8 +668,8 @@ export const initData = async (clientId, nextSeq) => {
         show: true,
         active: true,
         name: "유유클로버 플라워토끼 키링",
-        quantity: 99,
-        buyQuantity: 94,
+        quantity: 999999,
+        buyQuantity: 0,
         mainImages: [
           {
             path: `/files/${clientId}/keyring1.png`,
