@@ -1,6 +1,3 @@
-export default function index() {
-  return(
-   <>
-   </>
-  );
+export default function AdminHome() {
+  return <></>;
 }

@@ -69,7 +69,7 @@ const SideMenuContainer = tw.div`
   text-black border-r border-b border-gray-200
   transition-all duration-300
 `;
-const MenuList = tw.div`
+const MenuList = tw.nav`
   w-full h-full
   flex flex-col gap-2
 `;
