@@ -92,6 +92,7 @@ export default function List() {
                 <StyledTd>{item.quantity}</StyledTd>
                 <StyledTd>
                   {item.extra.category &&
+                    codes &&
                     item.extra.category
                       .map(el => {
                         return codes[el];

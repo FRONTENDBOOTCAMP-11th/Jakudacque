@@ -93,7 +93,7 @@ export default function List() {
                 <StyledTd>{item.cost.products.toLocaleString()}</StyledTd>
                 <StyledTd>{item.cost.shippingFees.toLocaleString()}</StyledTd>
                 <StyledTd>{item.cost.total.toLocaleString()}</StyledTd>
-                <StyledTd>{codes[item.state]}</StyledTd>
+                <StyledTd>{codes && codes[item.state]}</StyledTd>
                 <StyledTd>
                   <Link to={`${location.pathname}/edit/${item._id}`}>
                     <IoOpenOutline size={24} className=" hover:text-info" />
