@@ -47,7 +47,7 @@ const StyledThead = tw.thead`
   text-xs text-gray-700 bg-gray-50
 `;
 const StyledTh = tw.th`
-  p-4
+  p-4 pl-2
   text-xs text-start
   border-b  
 `;
