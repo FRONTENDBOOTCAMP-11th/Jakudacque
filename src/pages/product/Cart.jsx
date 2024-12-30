@@ -67,9 +67,19 @@ export default function Cart() {
                     <h2 className="text-lg font-medium">
                       <Link to={product.link}>{product.name}</Link>
                     </h2>
-                    <p className="text-sm text-[#555]">
-                      수량 : {product.quantity}
-                    </p>
+                    <div className="flex items-center mt-2">
+                      <span className="text-sm text-[#555] mr-2">수량 :</span>
+                      <select
+                        value={product.quantity}
+                        className="border rounded-md px-2 py-1 text-sm"
+                      >
+                        {[1, 2, 3, 4, 5].map(quantity => (
+                          <option key={quantity} value={quantity}>
+                            {quantity}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
                   </div>
                 </div>
                 <div className="text-right">
@@ -83,7 +93,7 @@ export default function Cart() {
           </div>
         </div>
       ) : (
-        <div className="flex flex-col items-center text-gray-400 my-52">
+        <div className="flex flex-col items-center text-[#999] my-52">
           <IoCartOutline size={56} />
           <p className="mt-4 text-lg">장바구니가 비었습니다</p>
         </div>
