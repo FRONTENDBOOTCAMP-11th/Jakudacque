@@ -138,23 +138,33 @@ export const initData = async (clientId, nextSeq) => {
       {
         _id: await nextSeq("product"),
         seller_id: 2,
-        price: 2200,
-        shippingFees: 0,
+        price: 6000,
+        shippingFees: 3000,
         show: true,
         active: true,
-        name: "멍냥이 다이어리",
-        quantity: 320,
-        buyQuantity: 310,
+        name: "2025 두들링 다이어리",
+        quantity: 999999,
+        buyQuantity: 0,
         mainImages: [
           {
             path: `/files/${clientId}/diary1.png`,
             name: "diary1.png",
             originalname: "diary1.png",
           },
+          {
+            path: `/files/${clientId}/diary1-detail_1.png`,
+            name: "diary1-detail_1.png",
+            originalname: "diary1-detail_1.png",
+          },
+          {
+            path: `/files/${clientId}/diary1-detail_2.png`,
+            name: "diary1-detail_2.png",
+            originalname: "diary1-detail_2.png",
+          },
         ],
         content: `
           <div class="product-detail">
-            <p>멍냥이 다이어리 상세 설명</p>
+            <p>2025 두들링 다이어리</p>          
           </div>`,
         createdAt: getTime(-41, -60 * 60 * 2),
         updatedAt: getTime(-40, -60 * 15),
@@ -168,23 +178,38 @@ export const initData = async (clientId, nextSeq) => {
       {
         _id: await nextSeq("product"),
         seller_id: 2,
-        price: 1700,
-        shippingFees: 2500,
+        price: 18000,
+        shippingFees: 3000,
         show: true,
         active: true,
-        name: "Daisy diary",
-        quantity: 200,
-        buyQuantity: 198,
+        name: "[B6] 블랭크북 ver.2",
+        quantity: 999999,
+        buyQuantity: 0,
         mainImages: [
           {
             path: `/files/${clientId}/diary2.png`,
             name: "diary2.png",
             originalname: "diary2.png",
           },
+          {
+            path: `/files/${clientId}/diary2-detail_1.png`,
+            name: "diary2-detail_1.png",
+            originalname: "diary2-detail_1.png",
+          },
+          {
+            path: `/files/${clientId}/diary2-detail_2.png`,
+            name: "diary2-detail_2.png",
+            originalname: "diary2-detail_2.png",
+          },
+          {
+            path: `/files/${clientId}/diary2-detail_3.png`,
+            name: "diary2-detail_3.png",
+            originalname: "diary2-detail_3.png",
+          },
         ],
         content: `
           <div class="product-detail">
-            <p>Daisy diary 상세 설명</p>
+            <p>[B6] 블랭크북 ver.2</p>         
           </div>`,
         createdAt: getTime(-38, -60 * 60 * 6),
         updatedAt: getTime(-33, -60 * 55),
@@ -198,23 +223,33 @@ export const initData = async (clientId, nextSeq) => {
       {
         _id: await nextSeq("product"),
         seller_id: 2,
-        price: 2800,
-        shippingFees: 0,
+        price: 3150,
+        shippingFees: 3000,
         show: true,
         active: true,
-        name: "ioneco diary",
-        quantity: 100,
-        buyQuantity: 99,
+        name: "[wawa109] 중철노트 핑크",
+        quantity: 999999,
+        buyQuantity: 0,
         mainImages: [
           {
             path: `/files/${clientId}/diary3.png`,
             name: "diary3.png",
             originalname: "diary3.png",
           },
+          {
+            path: `/files/${clientId}/diary3-detail_1.png`,
+            name: "diary3-detail_1.png",
+            originalname: "diary3-detail_1.png",
+          },
+          {
+            path: `/files/${clientId}/diary3-detail_2.png`,
+            name: "diary3-detail_2.png",
+            originalname: "diary3-detail_2.png",
+          },
         ],
         content: `
           <div class="product-detail">
-            <p>ioneco diary 상세 설명</p>
+            <p>[wawa109] 중철노트 핑크</p>           
           </div>`,
         createdAt: getTime(-35, -60 * 60 * 6),
         updatedAt: getTime(-10, -60 * 19),
@@ -228,23 +263,38 @@ export const initData = async (clientId, nextSeq) => {
       {
         _id: await nextSeq("product"),
         seller_id: 3,
-        price: 4500,
-        shippingFees: 3500,
+        price: 9600,
+        shippingFees: 3000,
         show: true,
         active: true,
-        name: "blahblah diary",
-        quantity: 100,
-        buyQuantity: 89,
+        name: "아이코닉 2025 이겨낸다 다이어리",
+        quantity: 999999,
+        buyQuantity: 0,
         mainImages: [
           {
             path: `/files/${clientId}/diary4.png`,
             name: "diary4.png",
             originalname: "diary4.png",
           },
+          {
+            path: `/files/${clientId}/diary4-detail_1.png`,
+            name: "diary4-detail_1.png",
+            originalname: "diary4-detail_1.png",
+          },
+          {
+            path: `/files/${clientId}/diary4-detail_2.png`,
+            name: "diary4-detail_2.png",
+            originalname: "diary4-detail_2.png",
+          },
+          {
+            path: `/files/${clientId}/diary4-detail_3.png`,
+            name: "diary4-detail_3.png",
+            originalname: "diary4-detail_3.png",
+          },
         ],
         content: `
           <div class="product-detail">
-            <p>blahblah diary", 상세 설명</p>
+            <p>아이코닉 2025 이겨낸다 다이어리</p>          
           </div>`,
         createdAt: getTime(-33, -60 * 60 * 7),
         updatedAt: getTime(-22, -60 * 60 * 3),
@@ -258,23 +308,38 @@ export const initData = async (clientId, nextSeq) => {
       {
         _id: await nextSeq("product"),
         seller_id: 2,
-        price: 4500,
-        shippingFees: 3500,
+        price: 6000,
+        shippingFees: 3000,
         show: true,
         active: true,
-        name: "심플 멍멍냥냥 다이어리",
-        quantity: 100,
-        buyQuantity: 98,
+        name: "[날짜형] 나의색 나의하루 vol.7 2025 다이어리",
+        quantity: 999999,
+        buyQuantity: 0,
         mainImages: [
           {
             path: `/files/${clientId}/diary5.png`,
             name: "diary5.png",
             originalname: "diary5.png",
           },
+          {
+            path: `/files/${clientId}/diary5-detail_1.png`,
+            name: "diary5-detail_1.png",
+            originalname: "diary5-detail_1.png",
+          },
+          {
+            path: `/files/${clientId}/diary5-detail_2.png`,
+            name: "diary5-detail_2.png",
+            originalname: "diary5-detail_2.png",
+          },
+          {
+            path: `/files/${clientId}/diary5-detail_3.png`,
+            name: "diary5-detail_3.png",
+            originalname: "diary5-detail_3.png",
+          },
         ],
         content: `
           <div class="product-detail">
-            <p>심플 멍멍냥냥 다이어리 상세 설명</p>
+            <p>[날짜형] 나의색 나의하루 vol.7 2025 다이어리</p>          
           </div>`,
         createdAt: getTime(-30, -60 * 60 * 10),
         updatedAt: getTime(-10, -60 * 56),
@@ -289,23 +354,38 @@ export const initData = async (clientId, nextSeq) => {
       {
         _id: await nextSeq("product"),
         seller_id: 2,
-        price: 3500,
-        shippingFees: 4000,
+        price: 4860,
+        shippingFees: 3000,
         show: false,
         active: true,
-        name: "고딕 스타일 다이어리",
-        quantity: 100,
-        buyQuantity: 99,
+        name: "[만년형] 컴포지션스튜디오 컴포지션 북 스택 먼슬리 다이어리",
+        quantity: 999999,
+        buyQuantity: 0,
         mainImages: [
           {
             path: `/files/${clientId}/diary6.png`,
             name: "diary6.png",
             originalname: "diary6.png",
           },
+          {
+            path: `/files/${clientId}/diary6-detail_1.png`,
+            name: "diary6-detail_1.png",
+            originalname: "diary6-detail_1.png",
+          },
+          {
+            path: `/files/${clientId}/diary6-detail_2.png`,
+            name: "diary6-detail_2.png",
+            originalname: "diary6-detail_2.png",
+          },
+          {
+            path: `/files/${clientId}/diary6-detail_3.png`,
+            name: "diary6-detail_3.png",
+            originalname: "diary6-detail_3.png",
+          },
         ],
         content: `
           <div class="product-detail">
-            <p>고딕 스타일 다이어리 상세 설명</p>
+            <p>[만년형] 컴포지션스튜디오 컴포지션 북 스택 먼슬리 다이어리</p>          
           </div>`,
         createdAt: getTime(-30, -60 * 60 * 21),
         updatedAt: getTime(-20, -60 * 10),
@@ -319,11 +399,11 @@ export const initData = async (clientId, nextSeq) => {
       {
         _id: await nextSeq("product"),
         seller_id: 3,
-        price: 1500,
-        shippingFees: 3500,
+        price: 16800,
+        shippingFees: 3000,
         show: true,
         active: true,
-        name: "심플 파스텔 다이어리",
+        name: "[만년형] 러빗띵스 라벨 다이어리 세트",
         quantity: 100,
         buyQuantity: 98,
         mainImages: [
@@ -332,10 +412,30 @@ export const initData = async (clientId, nextSeq) => {
             name: "diary7.png",
             originalname: "diary7.png",
           },
+          {
+            path: `/files/${clientId}/diary7-detail_1.png`,
+            name: "diary7-detail_1.png",
+            originalname: "diary7-detail_1.png",
+          },
+          {
+            path: `/files/${clientId}/diary7-detail_2.png`,
+            name: "diary7-detail_2.png",
+            originalname: "diary7-detail_2.png",
+          },
+          {
+            path: `/files/${clientId}/diary7-detail_3.png`,
+            name: "diary7-detail_3.png",
+            originalname: "diary7-detail_3.png",
+          },
+          {
+            path: `/files/${clientId}/diary7-detail_4.png`,
+            name: "diary7-detail_4.png",
+            originalname: "diary7-detail_4.png",
+          },
         ],
         content: `
           <div class="product-detail">
-            <p>심플 파스텔 다이어리 상세 설명</p>
+            <p>[만년형] 러빗띵스 라벨 다이어리 세트</p>         
           </div>`,
         createdAt: getTime(-25, -60 * 60 * 12),
         updatedAt: getTime(-24, -60 * 23),
@@ -349,23 +449,33 @@ export const initData = async (clientId, nextSeq) => {
       {
         _id: await nextSeq("product"),
         seller_id: 2,
-        price: 2500,
+        price: 28800,
         shippingFees: 3000,
         show: true,
         active: true,
-        name: "케챱스마일 다이어리",
-        quantity: 100,
-        buyQuantity: 97,
+        name: "Thence Scrap Book Set",
+        quantity: 999999,
+        buyQuantity: 0,
         mainImages: [
           {
             path: `/files/${clientId}/diary8.png`,
             name: "diary8.png",
             originalname: "diary8.png",
           },
+          {
+            path: `/files/${clientId}/diary8-detail_1.png`,
+            name: "diary8-detail_1.png",
+            originalname: "diary8-detail_1.png",
+          },
+          {
+            path: `/files/${clientId}/diary8-detail_2.png`,
+            name: "diary8-detail_2.png",
+            originalname: "diary8-detail_2.png",
+          },
         ],
         content: `
           <div class="product-detail">
-            <p>케챱스마일 다이어리 상세 설명</p>
+            <p>Thence Scrap Book Set</p>        
           </div>`,
         createdAt: getTime(-22, -60 * 60 * 22),
         updatedAt: getTime(-20, -60 * 33),
@@ -379,11 +489,11 @@ export const initData = async (clientId, nextSeq) => {
       {
         _id: await nextSeq("product"),
         seller_id: 3,
-        price: 3000,
+        price: 14560,
         shippingFees: 3000,
         show: true,
         active: true,
-        name: "Rainbow 다이어리",
+        name: "2025 레인보우 다이어리 L",
         quantity: 100,
         buyQuantity: 96,
         mainImages: [
@@ -392,10 +502,15 @@ export const initData = async (clientId, nextSeq) => {
             name: "diary9.png",
             originalname: "daiary9.png",
           },
+          {
+            path: `/files/${clientId}/diary9-detail.png`,
+            name: "diary9-detail.png",
+            originalname: "daiary9-detail.png",
+          },
         ],
         content: `
           <div class="product-detail">
-            <p>Rainbow 다이어리" 상세 설명</p>
+            <p>2025 레인보우 다이어리 L</p>          
           </div>`,
         createdAt: getTime(-21, -60 * 60 * 4),
         updatedAt: getTime(-16, -60 * 15),
@@ -410,23 +525,38 @@ export const initData = async (clientId, nextSeq) => {
       {
         _id: await nextSeq("product"),
         seller_id: 3,
-        price: 5000,
-        shippingFees: 0,
+        price: 26000,
+        shippingFees: 3000,
         show: true,
         active: true,
-        name: "폭신폭신 라푼젤 다이어리",
-        quantity: 100,
-        buyQuantity: 95,
+        name: "Shabby Rose book cover",
+        quantity: 999999,
+        buyQuantity: 0,
         mainImages: [
           {
             path: `/files/${clientId}/diary10.png`,
             name: "diary10.png",
             originalname: "diary10.png",
           },
+          {
+            path: `/files/${clientId}/diary10-detail_1.png`,
+            name: "diary10-detail_1.png",
+            originalname: "diary10-detail_1.png",
+          },
+          {
+            path: `/files/${clientId}/diary10-detail_2.png`,
+            name: "diary10-detail_2.png",
+            originalname: "diary10-detail_2.png",
+          },
+          {
+            path: `/files/${clientId}/diary10-detail_3.png`,
+            name: "diary10-detail_3.png",
+            originalname: "diary10-detail_3.png",
+          },
         ],
         content: `
           <div class="product-detail">
-            <p>폭신폭신 라푼젤 다이어리 상세 설명</p>
+            <p>Shabby Rose book cover</p>         
           </div>`,
         createdAt: getTime(-18, -60 * 60 * 7),
         updatedAt: getTime(-12, -60 * 33),
@@ -441,27 +571,39 @@ export const initData = async (clientId, nextSeq) => {
       {
         _id: await nextSeq("product"),
         seller_id: 2,
-        price: 14400,
+        price: 10620,
         shippingFees: 3000,
         show: true,
         active: true,
-        name: "모던 포레스트 다이어리",
-        quantity: 100,
-        buyQuantity: 94,
+        name: "2025 동동 다이어리",
+        quantity: 999999,
+        buyQuantity: 0,
         mainImages: [
           {
             path: `/files/${clientId}/diary11.png`,
             name: "diary11.png",
             originalname: "diary11.png",
           },
+          {
+            path: `/files/${clientId}/diary11-detail_1.png`,
+            name: "diary11-detail_1.png",
+            originalname: "diary11-detail_1.png",
+          },
+          {
+            path: `/files/${clientId}/diary11-detail_2.png`,
+            name: "diary11-detail_2.png",
+            originalname: "diary11-detail_2.png",
+          },
+          {
+            path: `/files/${clientId}/diary11-detail_3.png`,
+            name: "diary11-detail_3.png",
+            originalname: "diary11-detail_3.png",
+          },
         ],
         content: `
-          <div align="center"><p>*크리스마스 배송 안내</p></div>
-          <div align="center"><p>택배사 물량 증가로 평소보다 2~3일 더 걸립니다.</p></div>
-          <div align="center"><br></div>
-          <div align="center"><img src="${process.env.API_HOST}/files/${clientId}/diary11.png"></div>
-          <div align="center"><br></div>
-          <div align="center"><p>*반품 안내</p></div>`,
+          <div class="product-detail">
+            <p>2025 동동 다이어리</p>        
+          </div>`,
         createdAt: getTime(-16, -60 * 60 * 3),
         updatedAt: getTime(-15, -60 * 45),
         extra: {
@@ -479,21 +621,35 @@ export const initData = async (clientId, nextSeq) => {
         shippingFees: 3000,
         show: true,
         active: true,
-        name: "감고미 다이어리",
-        quantity: 999,
-        buyQuantity: 800,
+        name: "큐피드곰 그림 일기장",
+        quantity: 999999,
+        buyQuantity: 0,
         mainImages: [
           {
             path: `/files/${clientId}/diary12.png`,
             name: "diary12.png",
             originalname: "diagy12.png",
           },
+          {
+            path: `/files/${clientId}/diary12-detail_1.png`,
+            name: "diary12-detail_1.png",
+            originalname: "diary12-detail_1.png",
+          },
+          {
+            path: `/files/${clientId}/diary12-detail_2.png`,
+            name: "diary12-detail_2.png",
+            originalname: "diary12-detail_2.png",
+          },
+          {
+            path: `/files/${clientId}/diary12-detail_3.png`,
+            name: "diary12-detail_3.png",
+            originalname: "diary12-detail_3.png",
+          },
         ],
         content: `
-          <div align="center">
-            <p>감고미 다이어리</p>
-          </div>
-          `,
+          <div class="product-detail">
+            <p>큐피드곰 그림 일기장</p>        
+          </div>`,
         createdAt: getTime(-11, -60 * 60 * 12),
         updatedAt: getTime(-5, -60 * 60 * 6),
         extra: {
@@ -508,49 +664,48 @@ export const initData = async (clientId, nextSeq) => {
         _id: await nextSeq("product"),
         seller_id: 3,
         price: 21600,
-        shippingFees: 5500,
+        shippingFees: 3000,
         show: true,
         active: true,
-        name: "우유클로버 강아지쿠키 키링",
-        quantity: 99,
-        buyQuantity: 94,
-        mainImages: [
-          {
-            path: `/files/${clientId}/keyring2.png`,
-            name: "keyring2.png",
-            originalname: "우유클로버 강아지쿠키 키링.png",
-          },
-        ],
-        content: `                    
-          <div align="center"><img src="${process.env.API_HOST}/files/${clientId}/keyring2.png"></div>`,
-        createdAt: getTime(-10, -60 * 60 * 12),
-        updatedAt: getTime(-5, -60 * 60 * 6),
-        extra: {
-          isNew: true,
-          isBest: false,
-          category: ["PC05"], // 키링
-          depth: 1,
-        },
-      },
-      {
-        _id: await nextSeq("product"),
-        seller_id: 3,
-        price: 21600,
-        shippingFees: 5500,
-        show: true,
-        active: true,
-        name: "우유클로버 플라워토끼 키링",
-        quantity: 99,
-        buyQuantity: 94,
+        name: "유유클로버 플라워토끼 키링",
+        quantity: 999999,
+        buyQuantity: 0,
         mainImages: [
           {
             path: `/files/${clientId}/keyring1.png`,
             name: "keyring1.png",
-            originalname: "우유클러보 플라워토끼 키링.png",
+            originalname: "keyring1.png",
+          },
+          {
+            path: `/files/${clientId}/keyring1-2-detail_1.png`,
+            name: "keyring1-2-detail_1.png",
+            originalname: "keyring1-2-detail_1.png",
+          },
+          {
+            path: `/files/${clientId}/keyring1-2-detail_2.png`,
+            name: "keyring1-2-detail_2.png",
+            originalname: "keyring1-2-detail_2.png",
+          },
+          {
+            path: `/files/${clientId}/keyring1-2-detail_3.png`,
+            name: "keyring1-2-detail_3.png",
+            originalname: "keyring1-2-detail_3.png",
+          },
+          {
+            path: `/files/${clientId}/keyring1-2-detail_4.png`,
+            name: "keyring1-2-detail_4.png",
+            originalname: "keyring1-2-detail_4.png",
+          },
+          {
+            path: `/files/${clientId}/keyring1-2-detail_5.png`,
+            name: "keyring1-2-detail_5.png",
+            originalname: "keyring1-2-detail_5.png",
           },
         ],
         content: `
-          <div align="center"><img src="${process.env.API_HOST}/files/${clientId}/keyring1.png"></div>`,
+          <div class="product-detail">
+            <p>유유클로버 플라워토끼 키링</p>        
+          </div>`,
         createdAt: getTime(-10, -60 * 60 * 12),
         updatedAt: getTime(-5, -60 * 60 * 6),
         extra: {
@@ -563,23 +718,83 @@ export const initData = async (clientId, nextSeq) => {
       {
         _id: await nextSeq("product"),
         seller_id: 3,
-        price: 12900,
-        // shippingFees: 3500,
+        price: 6000,
+        shippingFees: 3000,
         show: true,
         active: true,
-        name: "엑스디 덕이 키링",
-        quantity: 300,
-        buyQuantity: 298,
+        name: "유유클로버 강아지쿠키 키링",
+        quantity: 999999,
+        buyQuantity: 0,
+        mainImages: [
+          {
+            path: `/files/${clientId}/keyring2.png`,
+            name: "keyring2.png",
+            originalname: "keyring2.png",
+          },
+          {
+            path: `/files/${clientId}/keyring1-2-detail_1.png`,
+            name: "keyring1-2-detail_1.png",
+            originalname: "keyring1-2-detail_1.png",
+          },
+          {
+            path: `/files/${clientId}/keyring1-2-detail_2.png`,
+            name: "keyring1-2-detail_2.png",
+            originalname: "keyring1-2-detail_2.png",
+          },
+          {
+            path: `/files/${clientId}/keyring1-2-detail_3.png`,
+            name: "keyring1-2-detail_3.png",
+            originalname: "keyring1-2-detail_3.png",
+          },
+          {
+            path: `/files/${clientId}/keyring1-2-detail_4.png`,
+            name: "keyring1-2-detail_4.png",
+            originalname: "keyring1-2-detail_4.png",
+          },
+          {
+            path: `/files/${clientId}/keyring1-2-detail_5.png`,
+            name: "keyring1-2-detail_5.png",
+            originalname: "keyring1-2-detail_5.png",
+          },
+        ],
+        content: `
+          <div class="product-detail">
+            <p>유유클로버 강아지쿠키 키링</p>        
+          </div>`,
+        createdAt: getTime(-10, -60 * 60 * 12),
+        updatedAt: getTime(-5, -60 * 60 * 6),
+        extra: {
+          isNew: true,
+          isBest: false,
+          category: ["PC05"], // 키링
+          depth: 1,
+        },
+      },
+      {
+        _id: await nextSeq("product"),
+        seller_id: 3,
+        price: 7000,
+        shippingFees: 3000,
+        show: true,
+        active: true,
+        name: "차냐 자동차 햄스터 키링",
+        quantity: 999999,
+        buyQuantity: 0,
         mainImages: [
           {
             path: `/files/${clientId}/keyring3.png`,
             name: "keyring3.png",
-            originalname: "엑스디 덕이 키링.png",
+            originalname: "keyring3.png",
+          },
+          {
+            path: `/files/${clientId}/keyring3-detail.png`,
+            name: "keyring3-detail.png",
+            originalname: "keyring3-detail.png",
           },
         ],
         content: `
-          <div align="center">
-            <p>귀여운 오리 키링</p>
+          <div class="product-detail">
+            <p>차냐 자동차 햄스터 키링</p>         
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -593,23 +808,28 @@ export const initData = async (clientId, nextSeq) => {
       {
         _id: await nextSeq("product"),
         seller_id: 3,
-        price: 12900,
-        // shippingFees: 3500,
+        price: 9000,
+        shippingFees: 3000,
         show: true,
         active: true,
-        name: "모먼트미모먼트 흑백동물원 블랙 고양이 키링",
+        name: "엑스디 덕이 키링",
         quantity: 300,
         buyQuantity: 298,
         mainImages: [
           {
             path: `/files/${clientId}/keyring4.png`,
             name: "keyring4.png",
-            originalname: "모먼트미모먼트 흑백동물원 블랙 고양이 키링.png",
+            originalname: "keyring4.png",
+          },
+          {
+            path: `/files/${clientId}/keyring4-detail.png`,
+            name: "keyring4-detail.png",
+            originalname: "keyring4-detail.png",
           },
         ],
         content: `
-          <div align="center">
-            <p>모먼트미모먼트 흑백동물원 블랙 고양이 키링</p>
+          <div class="product-detail">
+            <p>엑스디 덕이 키링</p>          
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -624,8 +844,8 @@ export const initData = async (clientId, nextSeq) => {
       {
         _id: await nextSeq("product"),
         seller_id: 3,
-        price: 3500,
-        shippingFees: 3500,
+        price: 5000,
+        shippingFees: 3000,
         show: true,
         active: true,
         name: "담담 눈사람 스몰 마스킹테이프",
@@ -635,10 +855,23 @@ export const initData = async (clientId, nextSeq) => {
           {
             path: `/files/${clientId}/maskingtape1.png`,
             name: "maskingtape1.png",
-            originalname: "마스킹테이프1.png",
+            originalname: "maskingtape1.png",
+          },
+          {
+            path: `/files/${clientId}/matae1-detail_1.png`,
+            name: "matae1-detail_1.png",
+            originalname: "matae1-detail_1.png",
+          },
+          {
+            path: `/files/${clientId}/matae1-detail_2.png`,
+            name: "matae1-detail_2.png",
+            originalname: "matae1-detail_2.png",
           },
         ],
-        content: `담담 눈사람 스몰 마스킹테이프`,
+        content: `
+          <div class="product-detail">
+            <p>담담 눈사람 스몰 마스킹테이프</p>         
+          </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
         extra: {
@@ -649,21 +882,34 @@ export const initData = async (clientId, nextSeq) => {
       {
         _id: await nextSeq("product"),
         seller_id: 3,
-        price: 3500,
-        shippingFees: 3500,
+        price: 4500,
+        shippingFees: 3000,
         show: true,
         active: true,
-        name: "츄로네집 벌이내린꿀 글리터 다이컷 마스킹테이프",
+        name: "츄로네집 별이내린꿀 글리터 다이컷 마스킹테이프",
         quantity: 999999,
         buyQuantity: 0,
         mainImages: [
           {
             path: `/files/${clientId}/maskingtape2.png`,
             name: "maskingtape2.png",
-            originalname: "마스킹테이프2.png",
+            originalname: "maskingtape2.png",
+          },
+          {
+            path: `/files/${clientId}/matae2-detail_1.png`,
+            name: "matae2-detail_1.png",
+            originalname: "matae2-detail_1.png",
+          },
+          {
+            path: `/files/${clientId}/matae2-detail_2.png`,
+            name: "matae2-detail_2.png",
+            originalname: "matae2-detail_2.png",
           },
         ],
-        content: `담담 눈사람 스몰 마스킹테이프`,
+        content: `
+          <div class="product-detail">
+            <p>츄로네집 별이내린꿀 글리터 다이컷 마스킹테이프</p>            
+          </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
         extra: {
@@ -674,8 +920,8 @@ export const initData = async (clientId, nextSeq) => {
       {
         _id: await nextSeq("product"),
         seller_id: 3,
-        price: 3500,
-        shippingFees: 3500,
+        price: 4200,
+        shippingFees: 3000,
         show: true,
         active: true,
         name: "조무래기 오늘의 제목 마스킹테이프",
@@ -685,10 +931,18 @@ export const initData = async (clientId, nextSeq) => {
           {
             path: `/files/${clientId}/maskingtape3.png`,
             name: "maskingtape3.png",
-            originalname: "마스킹테이프3.png",
+            originalname: "maskingtape3.png",
+          },
+          {
+            path: `/files/${clientId}/matae3-detail.png`,
+            name: "matae3-detail.png",
+            originalname: "matae3-detail.png",
           },
         ],
-        content: `담담 눈사람 스몰 마스킹테이프`,
+        content: `
+          <div class="product-detail">
+            <p>조무래기 오늘의 제목 마스킹테이프</p>
+          </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
         extra: {
@@ -699,21 +953,29 @@ export const initData = async (clientId, nextSeq) => {
       {
         _id: await nextSeq("product"),
         seller_id: 3,
-        price: 3500,
-        shippingFees: 3500,
+        price: 5500,
+        shippingFees: 3000,
         show: true,
         active: true,
-        name: "버블 구름 글리터 다이컷 마스킹테이프",
+        name: "츄로네집 버블 구름 마스킹테이프 5종",
         quantity: 999999,
         buyQuantity: 0,
         mainImages: [
           {
             path: `/files/${clientId}/maskingtape4.png`,
             name: "maskingtape4.png",
-            originalname: "마스킹테이프4.png",
+            originalname: "maskingtape4.png",
+          },
+          {
+            path: `/files/${clientId}/matae4-detail.png`,
+            name: "matae4-detail.png",
+            originalname: "matae4-detail.png",
           },
         ],
-        content: `버블 구름 글리터 다이컷 마스킹테이프`,
+        content: `
+          <div class="product-detail">
+            <p>츄로네집 버블 구름 마스킹테이프 5종</p>         
+          </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
         extra: {
@@ -724,21 +986,39 @@ export const initData = async (clientId, nextSeq) => {
       {
         _id: await nextSeq("product"),
         seller_id: 3,
-        price: 3500,
-        shippingFees: 3500,
+        price: 5000,
+        shippingFees: 3000,
         show: true,
         active: true,
-        name: "유유클로버 빵고양이 마스킹테이프",
+        name: "보돔보돔 보송블러 키스컷 마스킹테이프",
         quantity: 999999,
         buyQuantity: 0,
         mainImages: [
           {
             path: `/files/${clientId}/maskingtape5.png`,
             name: "maskingtape5.png",
-            originalname: "마스킹테이프5.png",
+            originalname: "maskingtape5.png",
+          },
+          {
+            path: `/files/${clientId}/matae5-detail_1.png`,
+            name: "matae5-detail_1.png",
+            originalname: "matae5-detail_1.png",
+          },
+          {
+            path: `/files/${clientId}/matae5-detail_2.png`,
+            name: "matae5-detail_2.png",
+            originalname: "matae5-detail_2.png",
+          },
+          {
+            path: `/files/${clientId}/matae5-detail_3.png`,
+            name: "matae5-detail_3.png",
+            originalname: "matae5-detail_3.png",
           },
         ],
-        content: `유유클로버 빵고양이 마스킹테이프`,
+        content: `
+          <div class="product-detail">
+            <p>보돔보돔 보송블러 키스컷 마스킹테이프</p>         
+          </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
         extra: {
@@ -749,21 +1029,39 @@ export const initData = async (clientId, nextSeq) => {
       {
         _id: await nextSeq("product"),
         seller_id: 3,
-        price: 3500,
-        shippingFees: 3500,
+        price: 7000,
+        shippingFees: 3000,
         show: true,
         active: true,
-        name: "유유클로버 꽃강아지 마스킹테이프",
+        name: "보돔보돔 메모이지컷 마스킹테이프",
         quantity: 999999,
         buyQuantity: 0,
         mainImages: [
           {
             path: `/files/${clientId}/maskingtape6.png`,
             name: "maskingtape6.png",
-            originalname: "마스킹테이프6.png",
+            originalname: "maskingtape6.png",
+          },
+          {
+            path: `/files/${clientId}/matae6-detail_1.png`,
+            name: "matae6-detail_1.png",
+            originalname: "matae6-detail_1.png",
+          },
+          {
+            path: `/files/${clientId}/matae6-detail_2.png`,
+            name: "matae6-detail_2.png",
+            originalname: "matae6-detail_2.png",
+          },
+          {
+            path: `/files/${clientId}/matae6-detail_3.png`,
+            name: "matae6-detail_3.png",
+            originalname: "matae6-detail_3.png",
           },
         ],
-        content: `유유클로버 꽃강아지 마스킹테이프`,
+        content: `
+          <div class="product-detail">
+            <p>보돔보돔 메모이지컷 마스킹테이프</p>          
+          </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
         extra: {
@@ -775,8 +1073,8 @@ export const initData = async (clientId, nextSeq) => {
       {
         _id: await nextSeq("product"),
         seller_id: 3,
-        price: 2500,
-        shippingFees: 3500,
+        price: 5500,
+        shippingFees: 3000,
         show: true,
         active: true,
         name: "보돔보돔 래빗 마스킹테이프",
@@ -786,10 +1084,18 @@ export const initData = async (clientId, nextSeq) => {
           {
             path: `/files/${clientId}/maskingtape7.png`,
             name: "maskingtape7.png",
-            originalname: "마스킹테이프7.png",
+            originalname: "maskingtape7.png",
+          },
+          {
+            path: `/files/${clientId}/matae7-detail.png`,
+            name: "matae7-detail.png",
+            originalname: "matae7-detail.png",
           },
         ],
-        content: `보돔보돔 래빗 마스킹테이프`,
+        content: `
+          <div class="product-detail">
+            <p>보돔보돔 래빗 마스킹테이프</p>          
+          </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
         extra: {
@@ -801,8 +1107,8 @@ export const initData = async (clientId, nextSeq) => {
       {
         _id: await nextSeq("product"),
         seller_id: 3,
-        price: 2500,
-        shippingFees: 3500,
+        price: 5500,
+        shippingFees: 3000,
         show: true,
         active: true,
         name: "보돔보돔 클로버 마스킹테이프",
@@ -812,10 +1118,18 @@ export const initData = async (clientId, nextSeq) => {
           {
             path: `/files/${clientId}/maskingtape8.png`,
             name: "maskingtape8.png",
-            originalnam8: "마스킹테이프8.png",
+            originalname: "maskingtape8.png",
+          },
+          {
+            path: `/files/${clientId}/matae8-detail.png`,
+            name: "matae8-detail.png",
+            originalname: "matae8-detail.png",
           },
         ],
-        content: `보돔보돔 클로버 마스킹테이프`,
+        content: `
+          <div class="product-detail">
+            <p>보돔보돔 클로버 마스킹테이프</p>         
+          </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
         extra: {
@@ -826,21 +1140,29 @@ export const initData = async (clientId, nextSeq) => {
       {
         _id: await nextSeq("product"),
         seller_id: 3,
-        price: 2500,
-        shippingFees: 3500,
+        price: 4500,
+        shippingFees: 3000,
         show: true,
         active: true,
-        name: "별구름 유테 마스킹테이프",
+        name: "츄로네집 별구름 유테 마스킹테이프",
         quantity: 999999,
         buyQuantity: 0,
         mainImages: [
           {
             path: `/files/${clientId}/maskingtape9.png`,
             name: "maskingtape9.png",
-            originalnam9: "마스킹테이프9.png",
+            originalname: "maskingtape9.png",
+          },
+          {
+            path: `/files/${clientId}/matae9-detail.png`,
+            name: "matae9-detail.png",
+            originalname: "matae9-detail.png",
           },
         ],
-        content: `별구름 유테 마스킹테이프`,
+        content: `
+          <div class="product-detail">
+            <p>츄로네집 별구름 유테 마스킹테이프</p>  
+          </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
         extra: {
@@ -851,8 +1173,8 @@ export const initData = async (clientId, nextSeq) => {
       {
         _id: await nextSeq("product"),
         seller_id: 3,
-        price: 2500,
-        shippingFees: 3500,
+        price: 4500,
+        shippingFees: 3000,
         show: true,
         active: true,
         name: "미찌샵 멍멍 마스킹테이프",
@@ -862,10 +1184,23 @@ export const initData = async (clientId, nextSeq) => {
           {
             path: `/files/${clientId}/maskingtape10.png`,
             name: "maskingtape10.png",
-            originalnam9: "마스킹테이프10.png",
+            originalname: "maskingtape10.png",
+          },
+          {
+            path: `/files/${clientId}/matae10-detail_1.png`,
+            name: "matae10-detail_1.png",
+            originalname: "matae10-detail_1.png",
+          },
+          {
+            path: `/files/${clientId}/matae10-detail_2.png`,
+            name: "matae10-detail_2.png",
+            originalname: "matae10-detail_2.png",
           },
         ],
-        content: `미찌샵 멍멍 마스킹테이프`,
+        content: `
+          <div class="product-detail">
+            <p>미찌샵 멍멍 마스킹테이프</p>         
+          </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
         extra: {
@@ -877,23 +1212,33 @@ export const initData = async (clientId, nextSeq) => {
       {
         _id: await nextSeq("product"),
         seller_id: 3,
-        price: 3500,
-        shippingFees: 3500,
+        price: 2500,
+        shippingFees: 3000,
         show: true,
         active: true,
-        name: "미찌샵 곰돌이 메모지",
+        name: "모나니스튜디오 도람이 메모지",
         quantity: 999999,
         buyQuantity: 0,
         mainImages: [
           {
             path: `/files/${clientId}/memo1.png`,
             name: "memo1.png",
-            originalnam9: "memo1.png",
+            originalname: "memo1.png",
+          },
+          {
+            path: `/files/${clientId}/memo1-2-3-detail_1.png`,
+            name: "memo1-2-3-detail_1.png",
+            originalname: "memo1-2-3-detail_1.png",
+          },
+          {
+            path: `/files/${clientId}/memo1-detail_2.png`,
+            name: "memo1-detail_2.png",
+            originalname: "memo1-detail_2.png",
           },
         ],
         content: `
           <div class="product-detail">
-            <p>미찌샵 곰돌이 메모지</p>
+            <p>모나니스튜디오 도람이 메모지</p>        
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -907,23 +1252,43 @@ export const initData = async (clientId, nextSeq) => {
       {
         _id: await nextSeq("product"),
         seller_id: 3,
-        price: 3500,
-        shippingFees: 3500,
+        price: 3000,
+        shippingFees: 3000,
         show: true,
         active: true,
-        name: "키치키치 아이캔두잇 떡메모지",
+        name: "모나니스튜디오 모아 클로버 메모지",
         quantity: 999999,
         buyQuantity: 0,
         mainImages: [
           {
             path: `/files/${clientId}/memo2.png`,
             name: "memo2.png",
-            originalnam9: "memo2.png",
+            originalname: "memo2.png",
+          },
+          {
+            path: `/files/${clientId}/memo1-2-3-detail_1.png`,
+            name: "memo1-2-3-detail_1.png",
+            originalname: "memo1-2-3-detail_1.png",
+          },
+          {
+            path: `/files/${clientId}/memo2-detail_2.png`,
+            name: "memo2-detail_2.png",
+            originalname: "memo2-detail_2.png",
+          },
+          {
+            path: `/files/${clientId}/memo2-detail_3.png`,
+            name: "memo2-detail_3.png",
+            originalname: "memo2-detail_3.png",
+          },
+          {
+            path: `/files/${clientId}/memo2-detail_4.png`,
+            name: "memo2-detail_4.png",
+            originalname: "memo2-detail_4.png",
           },
         ],
         content: `
           <div class="product-detail">
-            <p>키치키치 아이캔두잇 떡메모지</p>
+            <p>모나니스튜디오 모아 클로버 메모지</p>  
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -938,22 +1303,42 @@ export const initData = async (clientId, nextSeq) => {
         _id: await nextSeq("product"),
         seller_id: 3,
         price: 3500,
-        shippingFees: 3500,
+        shippingFees: 3000,
         show: true,
         active: true,
-        name: "수집가무무 미니메모지 오트밀체크",
+        name: "모나니스튜디오 모아 풀밭 메모지",
         quantity: 999999,
         buyQuantity: 0,
         mainImages: [
           {
             path: `/files/${clientId}/memo3.png`,
             name: "memo3.png",
-            originalnam9: "memo3.png",
+            originalname: "memo3.png",
+          },
+          {
+            path: `/files/${clientId}/memo1-2-3-detail_1.png`,
+            name: "memo1-2-3-detail_1.png",
+            originalname: "memo1-2-3-detail_1.png",
+          },
+          {
+            path: `/files/${clientId}/memo3-detail_2.png`,
+            name: "memo3-detail_2.png",
+            originalname: "memo3-detail_2.png",
+          },
+          {
+            path: `/files/${clientId}/memo3-detail_3.png`,
+            name: "memo3-detail_3.png",
+            originalname: "memo3-detail_3.png",
+          },
+          {
+            path: `/files/${clientId}/memo3-detail_4.png`,
+            name: "memo3-detail_4.png",
+            originalname: "memo3-detail_4.png",
           },
         ],
         content: `
           <div class="product-detail">
-            <p>수집가무무 미니메모지 오트밀체크</p>
+            <p>모나니스튜디오 모아 풀밭 메모지</p>            
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -965,23 +1350,28 @@ export const initData = async (clientId, nextSeq) => {
       {
         _id: await nextSeq("product"),
         seller_id: 3,
-        price: 3500,
-        shippingFees: 3500,
+        price: 5000,
+        shippingFees: 3000,
         show: true,
         active: true,
-        name: "키치키치 체크리스트 떡메모지",
+        name: "컬루 노트패드 메모지",
         quantity: 999999,
         buyQuantity: 0,
         mainImages: [
           {
             path: `/files/${clientId}/memo4.png`,
             name: "memo4.png",
-            originalnam9: "memo4.png",
+            originalname: "memo4.png",
+          },
+          {
+            path: `/files/${clientId}/memo4-detail.png`,
+            name: "memo4-detail.png",
+            originalname: "memo4-detail.png",
           },
         ],
         content: `
           <div class="product-detail">
-            <p>키치키치 체크리스트 떡메모지</p>
+            <p>컬루 노트패드 메모지</p>            
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -993,23 +1383,28 @@ export const initData = async (clientId, nextSeq) => {
       {
         _id: await nextSeq("product"),
         seller_id: 3,
-        price: 3500,
-        shippingFees: 3500,
+        price: 5000,
+        shippingFees: 3000,
         show: true,
         active: true,
-        name: "모먼트미모먼트 픽미 핑크 떡메모지",
+        name: "엑스디 에그위클리 메모지",
         quantity: 999999,
         buyQuantity: 0,
         mainImages: [
           {
             path: `/files/${clientId}/memo5.png`,
             name: "memo5.png",
-            originalnam9: "memo5.png",
+            originalname: "memo5.png",
+          },
+          {
+            path: `/files/${clientId}/memo5-detail.png`,
+            name: "memo5-detail.png",
+            originalname: "memo5-detail.png",
           },
         ],
         content: `
           <div class="product-detail">
-            <p>모먼트미모먼트 픽미 핑크 떡메모지</p>
+            <p>엑스디 에그위클리 메모지</p>            
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -1021,23 +1416,28 @@ export const initData = async (clientId, nextSeq) => {
       {
         _id: await nextSeq("product"),
         seller_id: 3,
-        price: 3500,
-        shippingFees: 3500,
+        price: 2000,
+        shippingFees: 3000,
         show: true,
         active: true,
-        name: "람지 봄꽃 메모지",
+        name: "보돔보돔 포근 메모지",
         quantity: 999999,
         buyQuantity: 0,
         mainImages: [
           {
             path: `/files/${clientId}/memo6.png`,
             name: "memo6.png",
-            originalnam9: "memo6.png",
+            originalname: "memo6.png",
+          },
+          {
+            path: `/files/${clientId}/memo6-detail.png`,
+            name: "memo6-detail.png",
+            originalname: "memo6-detail.png",
           },
         ],
         content: `
           <div class="product-detail">
-            <p>람지 봄꽃 메모지</p>
+            <p>보돔보돔 포근 메모지</p>            
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -1049,23 +1449,38 @@ export const initData = async (clientId, nextSeq) => {
       {
         _id: await nextSeq("product"),
         seller_id: 3,
-        price: 3500,
-        shippingFees: 3500,
+        price: 3200,
+        shippingFees: 3000,
         show: true,
         active: true,
-        name: "엑스디 에그위클리 떡메모지",
+        name: "키치키치 체크리스트 메모지",
         quantity: 999999,
         buyQuantity: 0,
         mainImages: [
           {
             path: `/files/${clientId}/memo7.png`,
             name: "memo7.png",
-            originalnam9: "memo7.png",
+            originalname: "memo7.png",
+          },
+          {
+            path: `/files/${clientId}/memo7-detail_1.png`,
+            name: "memo7-detail_1.png",
+            originalname: "memo7-detail_1.png",
+          },
+          {
+            path: `/files/${clientId}/memo7-detail_2.png`,
+            name: "memo7-detail_2.png",
+            originalname: "memo7-detail_2.png",
+          },
+          {
+            path: `/files/${clientId}/memo7-detail_3.png`,
+            name: "memo7-detail_3.png",
+            originalname: "memo7-detail_3.png",
           },
         ],
         content: `
           <div class="product-detail">
-            <p>엑스디 에그위클리 떡메모지</p>
+            <p>키치키치 체크리스트 메모지</p>            
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -1077,23 +1492,28 @@ export const initData = async (clientId, nextSeq) => {
       {
         _id: await nextSeq("product"),
         seller_id: 3,
-        price: 3500,
-        shippingFees: 3500,
+        price: 2500,
+        shippingFees: 3000,
         show: true,
         active: true,
-        name: "게이트17 영수증 떡메모지",
+        name: "게이트17 영수증 메모지",
         quantity: 999999,
         buyQuantity: 0,
         mainImages: [
           {
             path: `/files/${clientId}/memo8.png`,
             name: "memo8.png",
-            originalnam9: "memo8.png",
+            originalname: "memo8.png",
+          },
+          {
+            path: `/files/${clientId}/memo8-detail.png`,
+            name: "memo8-detail.png",
+            originalname: "memo8-detail.png",
           },
         ],
         content: `
           <div class="product-detail">
-            <p>게이트17 영수증 떡메모지</p>
+            <p>게이트17 영수증 메모지</p>            
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -1105,18 +1525,23 @@ export const initData = async (clientId, nextSeq) => {
       {
         _id: await nextSeq("product"),
         seller_id: 3,
-        price: 3500,
-        shippingFees: 3500,
+        price: 2500,
+        shippingFees: 3000,
         show: true,
         active: true,
-        name: "게이트17 보딩패스 떡메모지",
+        name: "게이트17 보딩패스 메모지",
         quantity: 999999,
         buyQuantity: 0,
         mainImages: [
           {
             path: `/files/${clientId}/memo9.png`,
             name: "memo9.png",
-            originalnam9: "memo9.png",
+            originalname: "memo9.png",
+          },
+          {
+            path: `/files/${clientId}/memo9-detail.png`,
+            name: "memo9-detail.png",
+            originalname: "memo9-detail.png",
           },
         ],
         content: `
@@ -1134,23 +1559,28 @@ export const initData = async (clientId, nextSeq) => {
       {
         _id: await nextSeq("product"),
         seller_id: 3,
-        price: 2900,
-        shippingFees: 3500,
+        price: 2800,
+        shippingFees: 3000,
         show: true,
         active: true,
-        name: "햄찌세자매 줄줄이 스티커",
+        name: "모서리스튜디오 햄찌세자매 줄줄이 스티커",
         quantity: 999999,
         buyQuantity: 0,
         mainImages: [
           {
             path: `/files/${clientId}/sticker1.png`,
             name: "sticker1.png",
-            originalnam9: "sticker1.png",
+            originalname: "sticker1.png",
+          },
+          {
+            path: `/files/${clientId}/sticker1-detail.png`,
+            name: "sticker1-detail.png",
+            originalname: "sticker1-detail.png",
           },
         ],
         content: `
           <div class="product-detail">
-            <p>햄찌세자매 줄줄이 스티커</p>
+            <p>모서리스튜디오 햄찌세자매 줄줄이 스티커</p>            
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -1162,23 +1592,28 @@ export const initData = async (clientId, nextSeq) => {
       {
         _id: await nextSeq("product"),
         seller_id: 3,
-        price: 2900,
-        shippingFees: 3500,
+        price: 2800,
+        shippingFees: 3000,
         show: true,
         active: true,
-        name: "소다냥 스티커",
+        name: "모서리스튜디오 소다냥 스티커",
         quantity: 999999,
         buyQuantity: 0,
         mainImages: [
           {
             path: `/files/${clientId}/sticker2.png`,
             name: "sticker2.png",
-            originalnam9: "sticker2.png",
+            originalname: "sticker2.png",
+          },
+          {
+            path: `/files/${clientId}/sticker2-detail.png`,
+            name: "sticker2-detail.png",
+            originalname: "sticke2-detail.png",
           },
         ],
         content: `
           <div class="product-detail">
-            <p>소다냥 스티커</p>
+            <p>모서리스튜디오 소다냥 스티커</p>            
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -1190,23 +1625,28 @@ export const initData = async (clientId, nextSeq) => {
       {
         _id: await nextSeq("product"),
         seller_id: 3,
-        price: 2900,
-        shippingFees: 3500,
+        price: 2800,
+        shippingFees: 3000,
         show: true,
         active: true,
-        name: "미어독 스티커",
+        name: "모서리스튜디오 미어독 스티커",
         quantity: 999999,
         buyQuantity: 0,
         mainImages: [
           {
             path: `/files/${clientId}/sticker3.png`,
             name: "sticker3.png",
-            originalnam9: "sticker3.png",
+            originalname: "sticker3.png",
+          },
+          {
+            path: `/files/${clientId}/sticker3-detail.png`,
+            name: "sticker3-detail.png",
+            originalname: "sticke3-detail.png",
           },
         ],
         content: `
           <div class="product-detail">
-            <p>미어독 스티커</p>
+            <p>모서리스튜디오 미어독 스티커</p>            
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -1218,23 +1658,28 @@ export const initData = async (clientId, nextSeq) => {
       {
         _id: await nextSeq("product"),
         seller_id: 3,
-        price: 12900,
-        shippingFees: 3500,
+        price: 8000,
+        shippingFees: 3000,
         show: true,
         active: true,
-        name: "오늘은 뭐할까? 스티커팩",
+        name: "메이빈 오늘은 뭐할까 스티커팩",
         quantity: 999999,
         buyQuantity: 0,
         mainImages: [
           {
             path: `/files/${clientId}/sticker4.png`,
             name: "sticker4.png",
-            originalnam9: "sticker4.png",
+            originalname: "sticker4.png",
+          },
+          {
+            path: `/files/${clientId}/sticker4-detail.png`,
+            name: "sticker4-detail.png",
+            originalname: "sticke4-detail.png",
           },
         ],
         content: `
           <div class="product-detail">
-            <p>오늘은 뭐할까? 스티커팩</p>
+            <p>메이빈 오늘은 뭐할까 스티커팩</p>            
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -1248,22 +1693,27 @@ export const initData = async (clientId, nextSeq) => {
         _id: await nextSeq("product"),
         seller_id: 3,
         price: 8000,
-        shippingFees: 3500,
+        shippingFees: 3000,
         show: true,
         active: true,
-        name: "달콤한 여름간식! 스티커팩",
+        name: "메이빈 달콤한 여름 간식 스티커팩",
         quantity: 999999,
         buyQuantity: 0,
         mainImages: [
           {
             path: `/files/${clientId}/sticker5.png`,
             name: "sticker5.png",
-            originalnam9: "sticker5.png",
+            originalname: "sticker5.png",
+          },
+          {
+            path: `/files/${clientId}/sticker5-detail.png`,
+            name: "sticker5-detail.png",
+            originalname: "sticke5-detail.png",
           },
         ],
         content: `
           <div class="product-detail">
-            <p>달콤한 여름간식! 스티커팩</p>
+            <p>메이빈 달콤한 여름 간식 스티커팩</p>            
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -1277,23 +1727,27 @@ export const initData = async (clientId, nextSeq) => {
         _id: await nextSeq("product"),
         seller_id: 3,
         price: 8000,
-        shippingFees: 3500,
+        shippingFees: 3000,
         show: true,
         active: true,
-        name: "꽃향기가 나는날팩 스티커팩",
+        name: "메이빈 꽃 향기 나는 날 스티커팩",
         quantity: 999999,
         buyQuantity: 0,
         mainImages: [
           {
             path: `/files/${clientId}/sticker6.png`,
             name: "sticker6.png",
-            originalnam9: "sticker6.png",
+            originalname: "sticker6.png",
+          },
+          {
+            path: `/files/${clientId}/sticker6-detail.png`,
+            name: "sticker6-detail.png",
+            originalname: "sticke6-detail.png",
           },
         ],
         content: `
           <div class="product-detail">
-            <p>꽃향기가 나는날팩 스티커팩</p>
-            <p>유테씰 3종 + 모조지 스티커 3종</p>
+            <p>메이빈 꽃 향기 나는 날 스티커팩</p>            
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -1307,23 +1761,34 @@ export const initData = async (clientId, nextSeq) => {
         _id: await nextSeq("product"),
         seller_id: 3,
         price: 2500,
-        shippingFees: 3500,
+        shippingFees: 3000,
         show: true,
         active: true,
-        name: "폼폼컨페티 메론",
+        name: "조무래기 폼폼컨페티 메론 씰스티커",
         quantity: 999999,
         buyQuantity: 0,
         mainImages: [
           {
             path: `/files/${clientId}/sticker7.png`,
             name: "sticker7.png",
-            originalnam9: "sticker7.png",
+            originalname: "sticker7.png",
+          },
+          {
+            path: `/files/${clientId}/sticker7-8-detail_1.png`,
+            name: "sticker7-8-detail_1.png",
+            originalname: "sticker7-8-detail_1.png",
+          },
+          {
+            path: `/files/${clientId}/sticker7-8-detail_2.png`,
+            name: "sticker7-8-detail_2.png",
+            originalname: "sticker7-8-detail_2.png",
           },
         ],
         content: `
           <div class="product-detail">
-            <p>폼폼컨페티 메론</p>
-            <p>리무버블 약 6.33 * 14</p>
+            <p>조무래기 폼폼컨페티 메론 씰스티커</p>
+            <p>사이즈: 80 * 175 mm</p>
+            <p>구성: 1 Sheet</p>
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -1336,23 +1801,34 @@ export const initData = async (clientId, nextSeq) => {
         _id: await nextSeq("product"),
         seller_id: 3,
         price: 2500,
-        shippingFees: 3500,
+        shippingFees: 3000,
         show: true,
         active: true,
-        name: "폼폼컨페티 딸기",
+        name: "조무래기 폼폼컨페티 딸기 씰스티커",
         quantity: 999999,
         buyQuantity: 0,
         mainImages: [
           {
             path: `/files/${clientId}/sticker8.png`,
             name: "sticker8.png",
-            originalnam9: "sticker8.png",
+            originalname: "sticker8.png",
+          },
+          {
+            path: `/files/${clientId}/sticker7-8-detail_1.png`,
+            name: "sticker7-8-detail_1.png",
+            originalname: "sticker7-8-detail_1.png",
+          },
+          {
+            path: `/files/${clientId}/sticker7-8-detail_2.png`,
+            name: "sticker7-8-detail_2.png",
+            originalname: "sticker7-8-detail_2.png",
           },
         ],
         content: `
           <div class="product-detail">
-            <p>폼폼컨페티 딸기</p>
-            <p>리무버블 약 6.33 * 14</p>
+            <p>조무래기 폼폼컨페티 딸기 씰스티커</p>
+            <p>사이즈: 80 * 175 mm</p>
+            <p>구성: 1 Sheet</p>
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -1365,23 +1841,39 @@ export const initData = async (clientId, nextSeq) => {
         _id: await nextSeq("product"),
         seller_id: 3,
         price: 2500,
-        shippingFees: 3500,
+        shippingFees: 3000,
         show: true,
         active: true,
-        name: "폼폼컨페티 푸딩",
+        name: "조무래기 폼폼컨페티 푸딩 씰스티커",
         quantity: 999999,
         buyQuantity: 0,
         mainImages: [
           {
             path: `/files/${clientId}/sticker9.png`,
             name: "sticker9.png",
-            originalnam9: "sticker9.png",
+            originalname: "sticker9.png",
+          },
+          {
+            path: `/files/${clientId}/sticker9-detail_1.png`,
+            name: "sticker9-detail_1.png",
+            originalname: "sticker9-detail_1.png",
+          },
+          {
+            path: `/files/${clientId}/sticker9-detail_2.png`,
+            name: "sticker9-detail_2.png",
+            originalname: "sticker9-detail_2.png",
+          },
+          {
+            path: `/files/${clientId}/sticker9-detail_3.png`,
+            name: "sticker9-detail_3.png",
+            originalname: "sticker9-detail_3.png",
           },
         ],
         content: `
           <div class="product-detail">
-            <p>폼폼컨페티 푸딩</p>
-            <p>리무버블 약 6.33 * 14</p>
+            <p>조무래기 폼폼컨페티 푸딩 씰스티커</p>
+            <p>사이즈: 80 * 175 mm</p>
+            <p>구성: 1 Sheet</p>
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -1394,23 +1886,39 @@ export const initData = async (clientId, nextSeq) => {
         _id: await nextSeq("product"),
         seller_id: 3,
         price: 2500,
-        shippingFees: 3500,
+        shippingFees: 3000,
         show: true,
         active: true,
-        name: "폼폼컨페티 스노우",
+        name: "조무래기 폼폼컨페티 스노우 씰스티커",
         quantity: 999999,
         buyQuantity: 0,
         mainImages: [
           {
             path: `/files/${clientId}/sticker10.png`,
             name: "sticker10.png",
-            originalnam9: "sticker10.png",
+            originalname: "sticker10.png",
+          },
+          {
+            path: `/files/${clientId}/sticker10-detail_1.png`,
+            name: "sticker10-detail_1.png",
+            originalname: "sticker10-detail_1.png",
+          },
+          {
+            path: `/files/${clientId}/sticker10-detail_2.png`,
+            name: "sticker10-detail_2.png",
+            originalname: "sticker10-detail_2.png",
+          },
+          {
+            path: `/files/${clientId}/sticker10-detail_3.png`,
+            name: "sticker10-detail_3.png",
+            originalname: "sticker10-detail_3.png",
           },
         ],
         content: `
           <div class="product-detail">
-            <p>폼폼컨페티 스노우</p>
-            <p>리무버블 약 6.33 * 14</p>
+            <p>조무래기 폼폼컨페티 스노우 씰스티커</p>
+            <p>사이즈: 80 * 175 mm</p>
+            <p>구성: 1 Sheet</p>
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -1422,18 +1930,23 @@ export const initData = async (clientId, nextSeq) => {
       {
         _id: await nextSeq("product"),
         seller_id: 3,
-        price: 3000,
-        shippingFees: 3500,
+        price: 2500,
+        shippingFees: 3000,
         show: true,
         active: true,
-        name: "손글씨 알파벳 스티커",
+        name: "게이트17 손글씨 알파벳 스티커",
         quantity: 999999,
         buyQuantity: 0,
         mainImages: [
           {
             path: `/files/${clientId}/sticker11.png`,
             name: "sticker11.png",
-            originalnam9: "sticker11.png",
+            originalname: "sticker11.png",
+          },
+          {
+            path: `/files/${clientId}/sticker11-detail.png`,
+            name: "sticker11-detail.png",
+            originalname: "sticke11-detail.png",
           },
         ],
         content: `
@@ -1451,7 +1964,7 @@ export const initData = async (clientId, nextSeq) => {
         _id: await nextSeq("product"),
         seller_id: 3,
         price: 3000,
-        shippingFees: 3500,
+        shippingFees: 3000,
         show: true,
         active: true,
         name: "플러피 알파벳 스티커",
@@ -1461,7 +1974,12 @@ export const initData = async (clientId, nextSeq) => {
           {
             path: `/files/${clientId}/sticker12.png`,
             name: "sticker12.png",
-            originalnam9: "sticker12.png",
+            originalname: "sticker12.png",
+          },
+          {
+            path: `/files/${clientId}/sticker12-detail.png`,
+            name: "sticker12-detail.png",
+            originalname: "sticke12-detail.png",
           },
         ],
         content: `
@@ -1500,7 +2018,7 @@ export const initData = async (clientId, nextSeq) => {
         ],
         cost: {
           products: 1500,
-          shippingFees: 3500,
+          shippingFees: 3000,
           discount: {
             products: 0,
             shippingFees: 0,
@@ -2090,7 +2608,7 @@ export const initData = async (clientId, nextSeq) => {
       {
         _id: "shippingFees",
         title: "배송비",
-        value: 3500,
+        value: 3000,
       },
       {
         _id: "freeShippingFees",
