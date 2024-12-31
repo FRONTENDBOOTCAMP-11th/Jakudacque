@@ -2,7 +2,6 @@ import tw from "tailwind-styled-components";
 import PropTypes from "prop-types";
 
 InputToggle.propTypes = {
-  id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
   checked: PropTypes.bool,
@@ -13,9 +12,7 @@ export default function InputToggle({ label, disabled, checked, onChange }) {
   return (
     <>
       <label className="inline-flex items-center gap-2 mb-4 cursor-pointer">
-        <span className="text-sm after:content-['*'] after:text-red-500">
-          {label}
-        </span>
+        <span className="text-sm">{label}</span>
         <input
           className="sr-only peer"
           type="checkbox"

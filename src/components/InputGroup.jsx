@@ -21,10 +21,7 @@ export default function InputGroup({
 }) {
   return (
     <div className="flex flex-col mb-4">
-      <label
-        className="mb-1 text-sm after:content-['*'] after:text-red-500"
-        htmlFor={id}
-      >
+      <label className="mb-1 text-sm" htmlFor={id}>
         {label}
       </label>
       <input

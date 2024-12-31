@@ -83,6 +83,7 @@ export default function Pagination({ maxPage = 10, currentPage = 1 }) {
               }`,
             }}
           >
+            <span className="sr-only ">이전 페이지</span>
             <IoChevronBackOutline />
           </ArrowBtn>
           {paginationArray.map((page, index) => {
@@ -108,6 +109,7 @@ export default function Pagination({ maxPage = 10, currentPage = 1 }) {
                 }`,
               }}
             >
+              <span className="sr-only ">다음 페이지</span>
               <IoChevronForwardOutline />
             </ArrowBtn>
           </>
