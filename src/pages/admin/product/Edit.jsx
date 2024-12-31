@@ -1,12 +1,13 @@
-import tw from "tailwind-styled-components";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import useAxiosInstance from "@hooks/useAxiosInstance";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
+import useCodeStore from "@zustand/codeStore";
 import { TableTitle } from "@components/AdminTable";
 import Spinner from "@components/Spinner";
 import InputGroup from "@components/InputGroup";
 import InputToggle from "@components/InputToggle";
+import InputSelect from "@components/InputSelect";
 import { PRODUCT_KEYS } from "@constants/admin";
 
 export default function Edit() {
@@ -28,6 +29,18 @@ export default function Edit() {
   const axios = useAxiosInstance();
   const queryClient = useQueryClient();
   const { _id } = useParams();
+
+  // 카테고리 코드 데이터 가져오기
+  const { codes } = useCodeStore();
+  const selectOptions = useMemo(() => {
+    if (!codes) return [];
+    return Object.keys(codes.productCategory).map(key => ({
+      value: key,
+      label: codes.productCategory[key],
+    }));
+  }, [codes]);
+
+  // 상품 정보 가져오기
   const { data, isLoading } = useQuery({
     queryKey: ["productItem"],
     // 로그인 기능 완성 후 /seller/products로 변경
@@ -61,7 +74,16 @@ export default function Edit() {
   // 상품 데이터 변경 시 상태 업데이트
   const handleChange = (e, key) => {
     const newData = { ...product };
-    newData[key] = e.target.value;
+    // 숫자 입력 필드는 숫자만 입력되도록 제한
+    switch (key) {
+      case "price":
+      case "quantity":
+      case "shippingFees":
+        newData[key] = e.target.value.replace(/[^0-9]/g, "");
+        break;
+      default:
+        newData[key] = e.target.value;
+    }
     setProduct(newData);
   };
 
@@ -78,14 +100,69 @@ export default function Edit() {
 
   return (
     <>
-      <TableTitle>상품 관리</TableTitle>
+      <TableTitle>
+        <div className="flex items-center justify-between">
+          상품 관리
+          <div className="flex items-center gap-4">
+            <button className="btn">취소</button>
+            <button
+              className="btn"
+              onClick={() => {
+                console.log(product);
+              }}
+            >
+              저장
+            </button>
+          </div>
+        </div>
+      </TableTitle>
       <div className="grid grid-cols-12 my-8">
         <div className="col-span-5">
-          <InputToggle
-            label="노출여부"
-            checked={product.show}
-            onChange={e => setProduct({ ...product, show: e.target.checked })}
-          />
+          {/* 토글 속성들 */}
+          <div className="flex items-center gap-4">
+            <InputToggle
+              label="노출여부"
+              checked={product.show}
+              onChange={e => setProduct({ ...product, show: e.target.checked })}
+            />
+            <InputToggle
+              label="신상품"
+              checked={product.extra.isNew}
+              onChange={e =>
+                setProduct({
+                  ...product,
+                  extra: { ...product.extra, isNew: e.target.checked },
+                })
+              }
+            />
+            <InputToggle
+              label="베스트 상품"
+              checked={product.extra.isBest}
+              onChange={e =>
+                setProduct({
+                  ...product,
+                  extra: { ...product.extra, isBest: e.target.checked },
+                })
+              }
+            />
+          </div>
+
+          {/* category */}
+          {codes?.productCategory && (
+            <InputSelect
+              id="category"
+              label="카테고리"
+              value={product.extra.category[0]}
+              options={selectOptions}
+              onChange={e =>
+                setProduct({
+                  ...product,
+                  extra: { ...product.extra, category: [e.target.value] },
+                })
+              }
+            />
+          )}
+
           {Object.keys(product).map(key => {
             if (
               key !== "content" &&
@@ -98,31 +175,14 @@ export default function Edit() {
                   id={key}
                   label={PRODUCT_KEYS[key]}
                   placeholder={PRODUCT_KEYS[key]}
-                  value={product[key]}
+                  value={product[key].toString()}
                   onChange={e => handleChange(e, key)}
                 />
               );
             } else {
-              // return (
-              //   <InputGroup
-              //     key={key}
-              //     id={key}
-              //     label={key}
-              //     placeholder={key}
-              //     value={product[key]}
-              //     onChange={e => handleChange(e, key)}
-              //   />
-              // );
               return null;
             }
           })}
-          {/* <InputGroup
-            id="name"
-            label="상품명"
-            placeholder="상품명을 입력하세요."
-            value={product.name}
-            onChange={e => handleChange(e, "name")}
-          /> */}
         </div>
       </div>
     </>
