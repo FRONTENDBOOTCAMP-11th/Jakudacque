@@ -47,7 +47,7 @@ export default function List() {
     }
   };
 
-  console.log(data);
+  console.log(codes);
 
   if (isLoading) {
     return (
@@ -98,7 +98,7 @@ export default function List() {
                     codes &&
                     item.extra.category
                       .map(el => {
-                        return codes[el];
+                        return codes.productCategory[el];
                       })
                       .join(" / ")}
                 </StyledTd>

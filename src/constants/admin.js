@@ -9,3 +9,8 @@ export const PRODUCT_KEYS = {
   isNew: "신상품 여부",
   isBest: "베스트 상품 여부",
 };
+export const CODE_KEYS = {
+  productCategory: "상품 카테고리",
+  orderState: "주문 상태",
+  membershipClass: "회원 등급",
+};
