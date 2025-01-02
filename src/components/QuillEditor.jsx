@@ -1,17 +1,15 @@
 import useAxiosInstance from "@hooks/useAxiosInstance";
 import { useRef, useState, useCallback } from "react";
 import ReactQuill from "react-quill-new";
-import { produce } from "immer";
 import "react-quill/dist/quill.snow.css";
 import PropTypes from "prop-types";
 
 QuillEditor.propTypes = {
   content: PropTypes.string.isRequired,
-  setProduct: PropTypes.func.isRequired,
+  setContent: PropTypes.func.isRequired,
 };
 
-export default function QuillEditor({ content, setProduct }) {
-  // const [content, setContent] = useState("");
+export default function QuillEditor({ content, setContent }) {
   const [preview, setPreview] = useState("");
   const quillInstance = useRef(null);
   const axios = useAxiosInstance();
@@ -29,8 +27,6 @@ export default function QuillEditor({ content, setProduct }) {
 
         const formData = new FormData();
         formData.append("attach", file);
-        console.log(file);
-        console.log(formData);
 
         const response = await axios("/files", {
           method: "POST",
@@ -72,11 +68,7 @@ export default function QuillEditor({ content, setProduct }) {
   };
 
   const handleChange = value => {
-    setProduct(prev =>
-      produce(prev, draft => {
-        draft.content = value;
-      }),
-    );
+    setContent(value);
     setPreview(value);
   };
 

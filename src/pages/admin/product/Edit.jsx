@@ -3,6 +3,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import useAxiosInstance from "@hooks/useAxiosInstance";
 import { useState, useEffect, useMemo } from "react";
 import useCodeStore from "@zustand/codeStore";
+import { produce } from "immer";
 import { TableTitle } from "@components/AdminTable";
 import Spinner from "@components/Spinner";
 import InputGroup from "@components/InputGroup";
@@ -10,7 +11,7 @@ import InputToggle from "@components/InputToggle";
 import InputSelect from "@components/InputSelect";
 import ImageUploader from "@components/ImageUploader";
 import QuillEditor from "@components/QuillEditor";
-import { PRODUCT_KEYS } from "@constants/admin";
+import { PRODUCT_KEYS, IMAGE_URL_PREFIX } from "@constants/admin";
 
 export default function Edit() {
   const [product, setProduct] = useState({
@@ -92,10 +93,8 @@ export default function Edit() {
   const saveProduct = async () => {
     console.log("saveProduct", product);
 
-    return;
-
     try {
-      await axios.put(`/seller/products/${_id}`, product);
+      await axios.patch(`/seller/products/${_id}`, product);
       queryClient.invalidateQueries("productItem");
       navigate(-1);
     } catch (error) {
@@ -200,19 +199,41 @@ export default function Edit() {
               return null;
             }
           })}
-
-          {/* QuillEditor */}
         </div>
 
         {/* right */}
         {/* 이미지 업로드 */}
         <div className="col-span-6 col-start-7">
-          <ImageUploader />
+          <ImageUploader
+            imgUrl={
+              product?.mainImages[0]?.path &&
+              IMAGE_URL_PREFIX + product?.mainImages[0].path
+            }
+            setImgUrl={url =>
+              setProduct(prev =>
+                produce(prev, draft => {
+                  if (url === "") {
+                    draft.mainImages = [];
+                    return;
+                  }
+                  draft.mainImages[0].path = url;
+                }),
+              )
+            }
+          />
         </div>
 
-        {product.content && (
-          <QuillEditor content={product.content} setProduct={setProduct} />
-        )}
+        {/* QuillEditor */}
+        <QuillEditor
+          content={product.content}
+          setContent={value => {
+            setProduct(prev =>
+              produce(prev, draft => {
+                draft.content = value;
+              }),
+            );
+          }}
+        />
       </div>
     </>
   );

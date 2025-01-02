@@ -1,22 +1,35 @@
 import tw from "tailwind-styled-components";
-import { useRef, useState } from "react";
-
+import useAxiosInstance from "@hooks/useAxiosInstance";
+import { useRef } from "react";
 import { IoPencilSharp } from "react-icons/io5";
+import PropTypes from "prop-types";
 // import { resolve } from "path";
 
-export default function ImageUploader() {
-  const [imgUrl, setImgUrl] = useState("");
+ImageUploader.propTypes = {
+  imgUrl: PropTypes.string,
+  setImgUrl: PropTypes.func.isRequired,
+};
+
+export default function ImageUploader({ imgUrl, setImgUrl }) {
   const image = useRef(null);
-  const onFileChanged = e => {
+  const axios = useAxiosInstance();
+
+  const onFileChanged = async e => {
     const file = e.target.files && e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = data => {
-        setImgUrl(data.target?.result);
-        // resolve();
-      };
-    }
+    if (!file) return;
+    const formData = new FormData();
+    formData.append("attach", file);
+
+    const response = await axios("/files", {
+      method: "POST",
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+      data: formData,
+    });
+
+    const data = await response.data.item[0];
+    setImgUrl(data.path);
   };
   const onRemoveImage = () => {
     setImgUrl("");

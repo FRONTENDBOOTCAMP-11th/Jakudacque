@@ -14,3 +14,4 @@ export const CODE_KEYS = {
   orderState: "주문 상태",
   membershipClass: "회원 등급",
 };
+export const IMAGE_URL_PREFIX = "https://11.fesp.shop";
