@@ -7,6 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import Spinner from "@components/Spinner";
 import useQueryStr from "@hooks/useQueryStr";
 import Pagination from "@components/Pagenation";
+import BackButton from "@components/BackButton";
 
 export default function List() {
   const [isOpen, setIsOpen] = useState(false);
@@ -48,7 +49,7 @@ export default function List() {
   // 상품이 없을 경우 처리
   if (!data?.item?.length) {
     return (
-      <div className="max-w-7xl mx-auto px-4 py-8">
+      <div className="w-full max-w-7xl mx-auto px-4 py-8">
         <div className="mb-8">
           <button
             onClick={() => navigate(-1)}
@@ -64,17 +65,8 @@ export default function List() {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8">
-      {/* 뒤로가기 */}
-      <div className="mb-8">
-        <button
-          onClick={() => navigate(-1)}
-          className="flex items-center gap-2"
-        >
-          <IoChevronBackOutline className="text-xl" />
-          다이어리
-        </button>
-      </div>
+    <div className="w-full max-w-7xl mx-auto px-4 py-8">
+      <BackButton />
 
       {/* 상품 카운트, 정렬 */}
       <div className="flex justify-between items-center mb-8">
@@ -104,14 +96,16 @@ export default function List() {
           )}
         </div>
       </div>
+
       {/* 상품리스트 */}
-      <div className="grid grid-cols-4 gap-8 mb-8">
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mb-8">
         {products.map(product => (
           <Product key={product.id} product={product} />
         ))}
       </div>
 
-      <div className="mt-8">
+      {/* 페이지네이션 */}
+      <div className="mt-8 flex justify-center">
         <Pagination
           maxPage={data.pagination.totalPages || Math.ceil(data.pagination.totalCount / 20)}
           currentPage={Number(page)}
