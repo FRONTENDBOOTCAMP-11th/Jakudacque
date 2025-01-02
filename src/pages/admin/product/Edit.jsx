@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import useAxiosInstance from "@hooks/useAxiosInstance";
 import { useState, useEffect, useMemo } from "react";
@@ -8,6 +8,7 @@ import Spinner from "@components/Spinner";
 import InputGroup from "@components/InputGroup";
 import InputToggle from "@components/InputToggle";
 import InputSelect from "@components/InputSelect";
+import ImageUploader from "@components/ImageUploader";
 import QuillEditor from "@components/QuillEditor";
 import { PRODUCT_KEYS } from "@constants/admin";
 
@@ -16,7 +17,7 @@ export default function Edit() {
     name: "상품명", // 상품명(필수)
     price: 0, // 상품 가격(필수)
     quantity: 0, // 상품 수량(필수)
-    content: "상품 설명", // 상품 설명(필수)
+    content: "", // 상품 설명(필수)
     shippingFees: 0, // 배송비
     mainImages: [], // 상품 이미지
     extra: {
@@ -30,6 +31,7 @@ export default function Edit() {
   const axios = useAxiosInstance();
   const queryClient = useQueryClient();
   const { _id } = useParams();
+  const navigate = useNavigate();
 
   // 카테고리 코드 데이터 가져오기
   const { codes } = useCodeStore();
@@ -86,6 +88,21 @@ export default function Edit() {
     setProduct(newData);
   };
 
+  // 상품 저장
+  const saveProduct = async () => {
+    console.log("saveProduct", product);
+
+    return;
+
+    try {
+      await axios.put(`/seller/products/${_id}`, product);
+      queryClient.invalidateQueries("productItem");
+      navigate(-1);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   if (isLoading) {
     return (
       <div className="w-full h-screen">
@@ -99,54 +116,53 @@ export default function Edit() {
 
   return (
     <>
-      <TableTitle>
-        <div className="flex items-center justify-between">
-          상품 관리
-          <div className="flex items-center gap-4">
-            <button className="btn">취소</button>
-            <button
-              className="btn"
-              onClick={() => {
-                console.log(product);
-              }}
-            >
-              저장
-            </button>
-          </div>
-        </div>
-      </TableTitle>
-      <div className="grid grid-cols-12 my-8">
-        {/* left */}
-        <div className="col-span-5">
-          {/* 토글 속성들 */}
-          <div className="flex items-center gap-4">
-            <InputToggle
-              label="노출여부"
-              checked={product.show}
-              onChange={e => setProduct({ ...product, show: e.target.checked })}
-            />
-            <InputToggle
-              label="신상품"
-              checked={product.extra.isNew}
-              onChange={e =>
-                setProduct({
-                  ...product,
-                  extra: { ...product.extra, isNew: e.target.checked },
-                })
-              }
-            />
-            <InputToggle
-              label="베스트 상품"
-              checked={product.extra.isBest}
-              onChange={e =>
-                setProduct({
-                  ...product,
-                  extra: { ...product.extra, isBest: e.target.checked },
-                })
-              }
-            />
-          </div>
+      <TableTitle>상품 관리</TableTitle>
+      <div className="flex items-center justify-end gap-2">
+        <button
+          className="px-4 py-2 rounded-md btn bg-warning"
+          onClick={() => navigate(-1)}
+        >
+          목록
+        </button>
+        <button
+          className="px-4 py-2 rounded-md btn bg-info"
+          onClick={saveProduct}
+        >
+          저장
+        </button>
+      </div>
 
+      <div className="grid grid-cols-12 gap-4 my-8">
+        {/* 토글 속성들 */}
+        <div className="flex items-center col-span-12 gap-4 mb-4">
+          <InputToggle
+            label="노출여부"
+            checked={product.show}
+            onChange={e => setProduct({ ...product, show: e.target.checked })}
+          />
+          <InputToggle
+            label="신상품"
+            checked={product.extra.isNew}
+            onChange={e =>
+              setProduct({
+                ...product,
+                extra: { ...product.extra, isNew: e.target.checked },
+              })
+            }
+          />
+          <InputToggle
+            label="베스트 상품"
+            checked={product.extra.isBest}
+            onChange={e =>
+              setProduct({
+                ...product,
+                extra: { ...product.extra, isBest: e.target.checked },
+              })
+            }
+          />
+        </div>
+        {/* left */}
+        <div className="col-span-6">
           {/* category */}
           {codes?.productCategory && (
             <InputSelect
@@ -189,12 +205,9 @@ export default function Edit() {
         </div>
 
         {/* right */}
-        <div className="col-span-5 col-start-7">{/* 이미지 업로드 */}</div>
-        <div className="col-span-12">
-          <QuillEditor
-            content={product.content}
-            handleContent={value => setProduct({ ...product, content: value })}
-          />
+        {/* 이미지 업로드 */}
+        <div className="col-span-6 col-start-7">
+          <ImageUploader />
         </div>
 
         {product.content && (
