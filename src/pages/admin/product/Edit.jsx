@@ -8,6 +8,7 @@ import Spinner from "@components/Spinner";
 import InputGroup from "@components/InputGroup";
 import InputToggle from "@components/InputToggle";
 import InputSelect from "@components/InputSelect";
+import QuillEditor from "@components/QuillEditor";
 import { PRODUCT_KEYS } from "@constants/admin";
 
 export default function Edit() {
@@ -58,8 +59,6 @@ export default function Edit() {
           newProduct[key] = data.item[key];
         }
       }
-      console.log(newProduct);
-
       setProduct(newProduct);
     }
   }, [data]);
@@ -117,6 +116,7 @@ export default function Edit() {
         </div>
       </TableTitle>
       <div className="grid grid-cols-12 my-8">
+        {/* left */}
         <div className="col-span-5">
           {/* 토글 속성들 */}
           <div className="flex items-center gap-4">
@@ -163,6 +163,7 @@ export default function Edit() {
             />
           )}
 
+          {/* input-Group */}
           {Object.keys(product).map(key => {
             if (
               key !== "content" &&
@@ -183,6 +184,17 @@ export default function Edit() {
               return null;
             }
           })}
+
+          {/* QuillEditor */}
+        </div>
+
+        {/* right */}
+        <div className="col-span-5 col-start-7">{/* 이미지 업로드 */}</div>
+        <div className="col-span-12">
+          <QuillEditor
+            content={product.content}
+            handleContent={value => setProduct({ ...product, content: value })}
+          />
         </div>
       </div>
     </>
