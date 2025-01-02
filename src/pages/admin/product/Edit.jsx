@@ -196,6 +196,10 @@ export default function Edit() {
             handleContent={value => setProduct({ ...product, content: value })}
           />
         </div>
+
+        {product.content && (
+          <QuillEditor content={product.content} setProduct={setProduct} />
+        )}
       </div>
     </>
   );

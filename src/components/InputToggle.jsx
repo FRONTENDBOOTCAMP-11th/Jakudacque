@@ -11,7 +11,7 @@ InputToggle.propTypes = {
 export default function InputToggle({ label, disabled, checked, onChange }) {
   return (
     <>
-      <label className="inline-flex items-center gap-2 mb-4 cursor-pointer">
+      <label className="inline-flex items-center gap-2 cursor-pointer">
         <span className="text-sm">{label}</span>
         <input
           className="sr-only peer"

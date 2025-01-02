@@ -1,15 +1,16 @@
 import useAxiosInstance from "@hooks/useAxiosInstance";
 import { useRef, useState, useCallback } from "react";
 import ReactQuill from "react-quill-new";
+import { produce } from "immer";
 import "react-quill/dist/quill.snow.css";
 import PropTypes from "prop-types";
 
 QuillEditor.propTypes = {
   content: PropTypes.string.isRequired,
-  handleContent: PropTypes.func.isRequired,
+  setProduct: PropTypes.func.isRequired,
 };
 
-export default function QuillEditor({ content, handleContent }) {
+export default function QuillEditor({ content, setProduct }) {
   // const [content, setContent] = useState("");
   const [preview, setPreview] = useState("");
   const quillInstance = useRef(null);
@@ -70,14 +71,18 @@ export default function QuillEditor({ content, handleContent }) {
     },
   };
 
-  const handleChange = useCallback(value => {
-    handleContent(value);
+  const handleChange = value => {
+    setProduct(prev =>
+      produce(prev, draft => {
+        draft.content = value;
+      }),
+    );
     setPreview(value);
-  }, []);
+  };
 
   return (
-    <div className="container flex justify-between gap-4 p-4 mx-auto">
-      <div className="flex-1 mb-4 editor-container">
+    <>
+      <div className="col-span-6 mb-4 editor-container">
         <h3 className="mb-2 text-lg font-bold">Edit</h3>
         <ReactQuill
           ref={el => {
@@ -92,13 +97,13 @@ export default function QuillEditor({ content, handleContent }) {
         />
       </div>
 
-      <div className="flex-1 preview-container">
+      <div className="col-span-6 preview-container">
         <h3 className="mb-2 text-lg font-bold">Preview</h3>
         <div
           className="p-4 preview-content"
           dangerouslySetInnerHTML={{ __html: preview }}
         ></div>
       </div>
-    </div>
+    </>
   );
 }
