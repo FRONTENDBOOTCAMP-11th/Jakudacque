@@ -1,5 +1,5 @@
 import useAxiosInstance from "@hooks/useAxiosInstance";
-import { useRef, useState, useCallback } from "react";
+import { useRef, useState, useCallback, useEffect } from "react";
 import ReactQuill from "react-quill-new";
 import "react-quill/dist/quill.snow.css";
 import PropTypes from "prop-types";
@@ -13,6 +13,10 @@ export default function QuillEditor({ content, setContent }) {
   const [preview, setPreview] = useState("");
   const quillInstance = useRef(null);
   const axios = useAxiosInstance();
+
+  useEffect(() => {
+    setPreview(content);
+  }, [content]);
 
   const imageHandler = useCallback(async () => {
     try {
@@ -69,7 +73,6 @@ export default function QuillEditor({ content, setContent }) {
 
   const handleChange = value => {
     setContent(value);
-    setPreview(value);
   };
 
   return (
