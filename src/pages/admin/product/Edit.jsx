@@ -5,6 +5,7 @@ import { useState, useEffect, useMemo } from "react";
 import useCodeStore from "@zustand/codeStore";
 import { produce } from "immer";
 import { TableTitle } from "@components/AdminTable";
+import Button from "@components/Button";
 import Spinner from "@components/Spinner";
 import InputGroup from "@components/InputGroup";
 import InputToggle from "@components/InputToggle";
@@ -15,11 +16,11 @@ import { PRODUCT_KEYS, IMAGE_URL_PREFIX } from "@constants/admin";
 
 export default function Edit() {
   const [product, setProduct] = useState({
-    name: "상품명", // 상품명(필수)
+    name: "", // 상품명(필수)
     price: 0, // 상품 가격(필수)
     quantity: 0, // 상품 수량(필수)
     content: "", // 상품 설명(필수)
-    shippingFees: 0, // 배송비
+    shippingFees: 3000, // 배송비
     mainImages: [], // 상품 이미지
     extra: {
       category: [], // 카테고리
@@ -89,6 +90,19 @@ export default function Edit() {
     setProduct(newData);
   };
 
+  // mainImages 상태 업데이트
+  const setMainImage = data => {
+    setProduct(prev =>
+      produce(prev, draft => {
+        if (!data) {
+          draft.mainImages = [];
+          return;
+        }
+        draft.mainImages = [data];
+      }),
+    );
+  };
+
   // 상품 저장
   const saveProduct = async () => {
     console.log("saveProduct", product);
@@ -117,18 +131,12 @@ export default function Edit() {
     <>
       <TableTitle>상품 관리</TableTitle>
       <div className="flex items-center justify-end gap-2">
-        <button
-          className="px-4 py-2 rounded-md btn bg-warning"
-          onClick={() => navigate(-1)}
-        >
+        <Button color="warning" onClick={() => navigate(-1)}>
           목록
-        </button>
-        <button
-          className="px-4 py-2 rounded-md btn bg-info"
-          onClick={saveProduct}
-        >
+        </Button>
+        <Button color="info" onClick={saveProduct}>
           저장
-        </button>
+        </Button>
       </div>
 
       <div className="grid grid-cols-12 gap-4 my-8">
@@ -209,17 +217,7 @@ export default function Edit() {
               product?.mainImages[0]?.path &&
               IMAGE_URL_PREFIX + product?.mainImages[0].path
             }
-            setImgUrl={url =>
-              setProduct(prev =>
-                produce(prev, draft => {
-                  if (url === "") {
-                    draft.mainImages = [];
-                    return;
-                  }
-                  draft.mainImages[0].path = url;
-                }),
-              )
-            }
+            setMainImage={setMainImage}
           />
         </div>
 
