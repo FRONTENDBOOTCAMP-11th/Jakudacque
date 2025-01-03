@@ -39,7 +39,7 @@ export default function Search() {
 
   // 검색 결과 데이터 가져오기
   const { data, isLoading } = useQuery({
-    queryKey: ["searchResults", queryStr.get("keyword"), page], // location.search 대신 실제 검색어와 페이지를 사용
+    queryKey: ["searchResults", queryStr.get("keyword"), page], 
     queryFn: async () => {
       try {
         const currentKeyword = queryStr.get("keyword"); // URL에서 직접 키워드 가져오기
