@@ -3,6 +3,7 @@ import Category from "@components/layout/Category";
 import Footer from "@components/layout/Footer";
 import { useLocation } from "react-router-dom";
 import { Outlet } from "react-router-dom";
+import TopButton from "@components/layout/TopButton";
 
 export default function Layout() {
   const location = useLocation();
@@ -21,6 +22,8 @@ export default function Layout() {
       <Outlet />
 
       {!IS_ADMIN && <Footer />}
+
+      <TopButton />
     </div>
   );
 }
