@@ -30,7 +30,7 @@ const router = createBrowserRouter([
         path: "list",
         children: [
           { index: true, element: <ProductList /> }, // 상품 리스트
-          { path: ":id", element: <Detail /> }, // 상품 상세
+          { path: ":_id", element: <Detail /> }, // 상품 상세
         ],
       },
       { path: "search", element: <Search /> }, // 검색
@@ -48,7 +48,7 @@ const router = createBrowserRouter([
             path: "product", // 상품 관리
             children: [
               { index: true, element: <AdminProductList /> }, // 상품 목록
-              { path: "edit/:id", element: <Edit /> }, // 상품 수정
+              { path: "edit/:_id", element: <Edit /> }, // 상품 수정
               { path: "new", element: <New /> }, // 상품 추가
             ],
           },

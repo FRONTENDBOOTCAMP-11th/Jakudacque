@@ -28,7 +28,7 @@ export default function AdminSideMenu({ menuList }) {
         <MenuList>
           {/* logo */}
           <Link to="/">
-            <MenuItem className="py-2 ">
+            <MenuItem className="py-2">
               <img
                 className="h-9 sm:h-12"
                 src="/images/logo.png"
