@@ -1,4 +1,3 @@
-import tw from "tailwind-styled-components";
 import {
   TableTitle,
   StyledTable,
@@ -6,6 +5,7 @@ import {
   StyledTh,
   StyledTd,
 } from "@components/AdminTable";
+import Button from "@components/Button";
 import AdminSearchBar from "@components/AdminSearchBar";
 import Pagination from "@components/Pagenation.jsx";
 import Spinner from "@components/Spinner";
@@ -47,8 +47,6 @@ export default function List() {
     }
   };
 
-  console.log(data);
-
   if (isLoading) {
     return (
       <div className="w-full h-screen">
@@ -65,7 +63,9 @@ export default function List() {
       <TableTitle>상품 관리</TableTitle>
 
       <AdminSearchBar>
-        <LinkButton to={`${location.pathname}/new`}>상품 등록</LinkButton>
+        <Link to={`${location.pathname}/new`}>
+          <Button color="success">상품 등록</Button>
+        </Link>
       </AdminSearchBar>
 
       <>
@@ -98,7 +98,7 @@ export default function List() {
                     codes &&
                     item.extra.category
                       .map(el => {
-                        return codes[el];
+                        return codes.productCategory[el];
                       })
                       .join(" / ")}
                 </StyledTd>
@@ -124,7 +124,3 @@ export default function List() {
     </>
   );
 }
-
-const LinkButton = tw(Link)`
-  p-1 rounded text-white bg-green-500 hover:bg-green-600 flex-shrink-0
-`;
