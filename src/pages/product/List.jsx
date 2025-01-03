@@ -1,6 +1,6 @@
 // List.jsx
 import { useState } from "react";
-import { IoCaretDown, IoChevronBackOutline } from "react-icons/io5";
+import { IoCaretDown } from "react-icons/io5";
 import Product from "../../components/Product";
 import { useNavigate } from "react-router-dom";
 import useAxiosInstance from "@hooks/useAxiosInstance";
@@ -65,13 +65,8 @@ export default function List() {
   return (
     <div className="w-full max-w-7xl mx-auto px-4 py-8">
       <div className="mb-8">
-        <button
-          onClick={() => navigate(-1)}
-          className="flex items-center gap-2"
-        >
-          <IoChevronBackOutline className="text-xl" />
-          {currentCategory} {/* 카테고리명 */}
-        </button>
+        {/* 현재 페이지 정보 (카테고리명) */}
+          {currentCategory} 
       </div>
 
       {/* 상품 카운트, 정렬 */}
