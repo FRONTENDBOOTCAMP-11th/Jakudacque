@@ -16,16 +16,17 @@ export default function List() {
   let page = useQueryStr().get("page") || 1;
   page = Number(page);
 
-   // API로 상품 데이터 가져오기 - 페이지네이션 추가
-   const { data, isLoading } = useQuery({
+  // API로 상품 데이터 가져오기 - 페이지네이션 추가
+  const { data, isLoading } = useQuery({
     queryKey: ["productList", page],
-    queryFn: () => axios.get("/products", {
-      params: {
-        page,
-        limit: 20,
-        category: ["PC01"],
-      },
-    }),
+    queryFn: () =>
+      axios.get("/products", {
+        params: {
+          page,
+          limit: 20,
+          category: ["PC01"],
+        },
+      }),
     select: res => res.data,
     staleTime: 1000 * 10,
   });
@@ -33,7 +34,7 @@ export default function List() {
   if (isLoading) return <Spinner />;
   if (!data || !data.item?.length) {
     // 데이터가 없는 경우 첫 페이지로 리다이렉트
-    navigate('/list?page=1');
+    navigate("/list?page=1");
     return null;
   }
   // API 데이터를 Product 컴포넌트에 맞는 형식으로 변환
@@ -113,7 +114,10 @@ export default function List() {
 
       <div className="mt-8">
         <Pagination
-          maxPage={data.pagination.totalPages || Math.ceil(data.pagination.totalCount / 20)}
+          maxPage={
+            data.pagination.totalPages ||
+            Math.ceil(data.pagination.totalCount / 20)
+          }
           currentPage={Number(page)}
         />
       </div>
