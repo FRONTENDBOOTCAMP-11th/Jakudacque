@@ -88,7 +88,7 @@ export default function Search() {
                 type="text"
                 placeholder="찾으시는 상품을 검색해보세요"
                 className="flex-1 px-4 py-2 text-base focus:outline-none"
-                value={inputKeyword} // searchedKeyword 대신 inputKeyword 사용
+                value={inputKeyword} 
                 onChange={handleInputChange}
                 onKeyDown={e => e.key === "Enter" && handleSearch(e)}
               />
@@ -152,7 +152,7 @@ export default function Search() {
         </div>
       </div>
 
-      {/* 뒤로가기 & 검색어 표시 - searchedKeyword 사용 */}
+      {/* 뒤로가기 & 검색어 표시 */}
       <div className="mb-8">
         <button
           onClick={() => navigate(-1)}
@@ -167,7 +167,7 @@ export default function Search() {
       {/* 상품 카운트, 정렬 */}
       <div className="flex justify-between items-center mb-8">
         <div className="text-sm font-medium">
-          {data?.item?.length ? `${data.item.length} ITEMS` : "0 ITEMS"}
+          {data?.pagination?.total || "0"} ITEMS
         </div>
         <div className="relative">
           <button

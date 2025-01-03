@@ -77,7 +77,7 @@ export default function List() {
       {/* 상품 카운트, 정렬 */}
       <div className="flex justify-between items-center mb-8">
         <div className="text-sm font-medium">
-          {data?.item?.length ? `${data.item.length} ITEMS` : "0 ITEMS"}
+          {data?.pagination?.total || "0"} ITEMS
         </div>
         <div className="relative">
           <button
@@ -115,7 +115,7 @@ export default function List() {
       {/* 페이지네이션 */}
       <div className="mt-8 flex justify-center">
         <Pagination
-          maxPage={data?.pagination?.totalPages || Math.ceil(data?.item?.length / 20) || 1}
+          maxPage={data.pagination.totalPages || Math.ceil(data.pagination.totalCount / 20)}
           currentPage={Number(page)}
         />
       </div>
