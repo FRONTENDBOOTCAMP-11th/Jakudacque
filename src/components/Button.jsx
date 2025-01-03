@@ -10,23 +10,23 @@ Button.propTypes = {
 
 export default function Button({ children, ...rest }) {
   return (
-    <StyledButton rest={rest} onClick={rest.onClick}>
+    <StyledButton $rest={rest} onClick={rest.onClick}>
       {children}
     </StyledButton>
   );
 }
 
 const StyledButton = tw.button`
-  ${({ rest }) => {
+  ${({ $rest }) => {
     let className = "";
 
-    if (rest.color) {
-      className += `bg-${rest.color} `;
+    if ($rest.color) {
+      className += `bg-${$rest.color} `;
     }
-    if (rest.text) {
-      className += `text-${rest.text} `;
+    if ($rest.text) {
+      className += `text-${$rest.text} `;
     }
     return className;
   }}  
-  px-4 py-2 rounded flex-shrink-0
+  px-4 py-2 rounded flex-shrink-0 min-w-20
 `;
