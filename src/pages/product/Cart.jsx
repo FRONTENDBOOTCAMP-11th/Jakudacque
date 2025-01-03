@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { IoCartOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const products = [
   {
     id: 1,
     name: "2025 두들링 다이어리",
     link: "#",
-    color: "pink",
     price: "12000",
     quantity: 1,
     imageSrc: "images/diary1.png",
@@ -17,7 +17,6 @@ const products = [
     id: 2,
     name: "유유클로버 플라워토끼 키링",
     link: "#",
-    color: "",
     price: "6000",
     quantity: 1,
     imageSrc: "images/keyring1.png",
@@ -29,6 +28,10 @@ export default function Cart() {
   const [cartProducts] = useState(products);
 
   const hasProducts = cartProducts.length > 0;
+
+  const handlePurchase = () => {
+    toast("주문이 완료되었습니다!"); // 주문완료 Toast 메시지 호출
+  };
 
   return (
     <div className="container mx-auto p-6">
@@ -54,14 +57,15 @@ export default function Cart() {
             {products.map(product => (
               <div
                 key={product.id}
-                className="flex items-center justify-between border border-gray-00 rounded-lg p-5"
+                className="flex items-center justify-between border rounded-lg p-5"
               >
                 <div className="flex items-center">
                   <input type="checkbox" className="w-4 h-4 mr-4" />
+
                   <img
                     src={product.imageSrc}
                     alt={product.imageAlt}
-                    className="w-24 h-24 object-cover rounded-md"
+                    className="w-36 h-36 object-cover rounded-md"
                   />
                   <div className="ml-4">
                     <h2 className="text-lg font-medium">
@@ -70,11 +74,11 @@ export default function Cart() {
                     <div className="flex items-center mt-2">
                       <span className="text-sm text-[#555] mr-2">수량 :</span>
                       <select
-                        value={product.quantity}
+                        defaultValue={product.quantity}
                         className="border rounded-md px-2 py-1 text-sm"
                       >
                         {[1, 2, 3, 4, 5].map(quantity => (
-                          <option key={quantity} value={quantity}>
+                          <option key={quantity} defaultValue={quantity}>
                             {quantity}
                           </option>
                         ))}
@@ -84,7 +88,7 @@ export default function Cart() {
                 </div>
                 <div className="text-right">
                   <p className="text-lg font-medium">{product.price} 원</p>
-                  <button className="text-sm font-medium border rounded-md px-4 py-1 hover:bg-secondary-base mt-2">
+                  <button className="text-sm font-medium border rounded-md shadow px-4 py-1 hover:bg-secondary-base mt-2">
                     삭제
                   </button>
                 </div>
@@ -116,7 +120,10 @@ export default function Cart() {
         </div>
         <div className="flex justify-center max-w-3xl mx-auto mt-6 mb-8">
           <div className=" flex gap-8 w-full">
-            <button className="flex-1 text-center rounded-md border px-6 py-3 font-medium shadow hover:bg-secondary-base">
+            <button
+              onClick={handlePurchase}
+              className="flex-1 text-center rounded-md border px-6 py-3 font-medium shadow hover:bg-secondary-base"
+            >
               주문하기
             </button>
             <button className="flex-1 text-center rounded-md border px-6 py-3 font-medium shadow hover:bg-secondary-base">
