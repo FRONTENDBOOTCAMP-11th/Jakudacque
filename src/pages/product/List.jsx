@@ -7,7 +7,6 @@ import { useQuery } from "@tanstack/react-query";
 import Spinner from "@components/Spinner";
 import useQueryStr from "@hooks/useQueryStr";
 import Pagination from "@components/Pagenation";
-import TopButton from "@components/TopButton";
 
 export default function List() {
   const [isOpen, setIsOpen] = useState(false);
@@ -122,7 +121,6 @@ export default function List() {
           currentPage={Number(page)}
         />
       </div>
-      <TopButton />
     </div>
   );
 }

@@ -6,7 +6,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { Link } from "react-router-dom";
 import Product from "@components/Product";
-import TopButton from "@components/TopButton";
 
 // Swiper 내부 클래스 재정의
 const StyledSwiper = styled.div`
@@ -229,7 +228,6 @@ export default function index() {
           </Swiper>
         </div>
       </StyledSwiper>
-      <TopButton />
     </div>
   );
 }
