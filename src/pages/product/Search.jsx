@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { IoCaretDown, IoChevronBackOutline, IoSearch } from "react-icons/io5";
+import { IoCaretDown, IoSearch } from "react-icons/io5";
 import Product from "../../components/Product";
 import useAxiosInstance from "@hooks/useAxiosInstance";
 import { useQuery } from "@tanstack/react-query";
@@ -152,15 +152,9 @@ export default function Search() {
         </div>
       </div>
 
-      {/* 뒤로가기 & 검색어 표시 */}
+      {/* 페이지 정보 (검색어 표시) */}
       <div className="mb-8">
-        <button
-          onClick={() => navigate(-1)}
-          className="flex items-center gap-2"
-        >
-          <IoChevronBackOutline className="text-xl" />
           {searchedKeyword && `${searchedKeyword}`}
-        </button>
       </div>
    
       
