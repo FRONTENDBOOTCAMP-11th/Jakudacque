@@ -15,23 +15,28 @@ export default function Search() {
   const queryStr = useQueryStr();
 
   const [isOpen, setIsOpen] = useState(false);
-  const [keyword, setKeyword] = useState(queryStr.get("keyword") || "");
 
-  // URL이 변경될 때마다 keyword 업데이트
+   // 현재 입력 중인 키워드와 실제 검색된 키워드를 분리
+   const [inputKeyword, setInputKeyword] = useState(queryStr.get("keyword") || "");
+   const [searchedKeyword, setSearchedKeyword] = useState(queryStr.get("keyword") || "");
+ 
+
+  // URL이 변경될 때마다 inputKeyword와 searchedKeyword 모두 업데이트
   useEffect(() => {
-    const searchKeyword = queryStr.get("keyword") || "";
-    setKeyword(searchKeyword);
+    const keyword = queryStr.get("keyword") || "";
+    setInputKeyword(keyword);
+    setSearchedKeyword(keyword);
   }, [location.search]);
 
   const handleInputChange = (e) => {
-    setKeyword(e.target.value);
+    setInputKeyword(e.target.value);
   };
 
-  // 검색 실행 함수
+   // 검색 실행 함수
   const handleSearch = (event) => {
     event.preventDefault();
-    if (!keyword.trim()) return;
-    navigate(`/search?keyword=${keyword}`, { replace: true });
+    if (!inputKeyword.trim()) return;
+    navigate(`/search?keyword=${inputKeyword}`, { replace: true });
   };
   
   // URL에서 page 파라미터 가져오기
@@ -40,30 +45,24 @@ export default function Search() {
 
   // 검색 결과 데이터 가져오기
   const { data, isLoading } = useQuery({
-    queryKey: ["searchResults", queryStr.get("keyword"), page], // 실제 검색어와 페이지를 사용
+    queryKey: ["searchResults", queryStr.get("keyword"), page],
     queryFn: async () => {
-      try {
-        const currentKeyword = queryStr.get("keyword"); // URL에서 직접 키워드 가져오기
-        const response = await axios.get("/products", {
-          params: {
-            keyword: currentKeyword,
-            page,
-            limit: 20,
-          },
-        });
-        
-        if (!response.data.item?.length && page > 1) {
-          navigate(`/search?keyword=${currentKeyword}&page=1`);
-          return null;
-        }
-        
-        return response;
-      } catch (error) {
-        console.error("Error fetching search results:", error);
-        throw error;
+      const response = await axios.get("/products", {
+        params: {
+          keyword: queryStr.get("keyword"),
+          page,
+          limit: 20,
+        },
+      });
+  
+      // 데이터가 없고 1페이지보다 큰 경우 첫 페이지로 이동
+      if (!response.data.item?.length && page > 1) {
+        navigate(`/search?keyword=${queryStr.get("keyword")}&page=1`);
+        return null;
       }
+  
+      return response.data;
     },
-    select: res => res.data,
     staleTime: 1000 * 10,
   });
 
@@ -78,8 +77,8 @@ export default function Search() {
     link: `/product/${item._id}`,
   }));
 
-  // 검색 결과가 없는 경우의 UI
-  if (!data?.item?.length) {
+   // 검색 결과가 없는 경우의 UI
+   if (!data?.item?.length) {
     return (
       <div className="w-full max-w-7xl mx-auto px-4 py-8">
         <div className="mb-8">
@@ -89,7 +88,7 @@ export default function Search() {
                 type="text"
                 placeholder="찾으시는 상품을 검색해보세요"
                 className="flex-1 px-4 py-2 text-base focus:outline-none"
-                value={keyword}
+                value={inputKeyword} // searchedKeyword 대신 inputKeyword 사용
                 onChange={handleInputChange}
                 onKeyDown={e => e.key === "Enter" && handleSearch(e)}
               />
@@ -114,7 +113,7 @@ export default function Search() {
                 <button
                   key={term}
                   onClick={() => {
-                    setKeyword(term);
+                    setInputKeyword(term);
                     navigate(`/search?keyword=${term}`, { replace: true });
                   }}
                   className="px-4 py-2 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors"
@@ -127,7 +126,7 @@ export default function Search() {
         </div>
       </div>
     );
-   }
+  }
 
    return (
     <div className="max-w-7xl mx-auto px-4 py-8">
@@ -139,7 +138,7 @@ export default function Search() {
               type="text"
               placeholder="찾으시는 상품을 검색해보세요"
               className="flex-1 px-4 py-2 text-base focus:outline-none"
-              value={keyword}
+              value={inputKeyword}
               onChange={handleInputChange}
               onKeyDown={e => e.key === "Enter" && handleSearch(e)}
             />
@@ -152,22 +151,23 @@ export default function Search() {
           </div>
         </div>
       </div>
-   
-      {/* 뒤로가기 */}
+
+      {/* 뒤로가기 & 검색어 표시 - searchedKeyword 사용 */}
       <div className="mb-8">
         <button
           onClick={() => navigate(-1)}
           className="flex items-center gap-2"
         >
           <IoChevronBackOutline className="text-xl" />
-          다이어리
+          {searchedKeyword && `${searchedKeyword}`}
         </button>
       </div>
    
+      
       {/* 상품 카운트, 정렬 */}
       <div className="flex justify-between items-center mb-8">
         <div className="text-sm font-medium">
-          1000 ITEMS
+          {data?.item?.length ? `${data.item.length} ITEMS` : "0 ITEMS"}
         </div>
         <div className="relative">
           <button
@@ -203,14 +203,12 @@ export default function Search() {
       </div>
    
       {/* 페이지네이션 */}
-      {data.pagination && (
-        <div className="mt-8 flex justify-center">
-          <Pagination
-            maxPage={Math.max(1, Math.ceil(data.pagination.totalCount / 20))}
-            currentPage={page}
-          />
-        </div>
-      )}
+     <div className="mt-8 flex justify-center">
+        <Pagination
+          maxPage={data?.pagination?.totalPages || Math.ceil(data?.item?.length / 20) || 1}
+          currentPage={Number(page)}
+        />
+      </div>
     </div>
    );
   }
