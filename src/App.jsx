@@ -1,10 +1,14 @@
 import { RouterProvider } from "react-router-dom";
 import router from "@/routes";
-import './assets/css/typography.css';
+import "./assets/css/typography.css";
+import ToastProvider from "@components/Toast";
 
 function App() {
   return (
-    <RouterProvider router={router} future={{ v7_startTransition: true }} />
+    <>
+      <ToastProvider />
+      <RouterProvider router={router} future={{ v7_startTransition: true }} />
+    </>
   );
 }
 
