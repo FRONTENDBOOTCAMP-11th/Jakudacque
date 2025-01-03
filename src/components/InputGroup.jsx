@@ -25,7 +25,10 @@ export default function InputGroup({
         {label}
       </label>
       <input
-        className="p-2 border border-gray-300 rounded-lg active:outline-none focus:outline-none focus:border-error"
+        className={`${disabled && "bg-gray-100"} 
+          p-2 border border-gray-300 rounded-lg 
+          active:outline-none focus:outline-none focus:border-error
+        `}
         id={id}
         type={type}
         placeholder={placeholder}

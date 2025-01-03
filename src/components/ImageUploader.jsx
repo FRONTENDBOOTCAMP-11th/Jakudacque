@@ -7,10 +7,10 @@ import PropTypes from "prop-types";
 
 ImageUploader.propTypes = {
   imgUrl: PropTypes.string,
-  setImgUrl: PropTypes.func.isRequired,
+  setMainImage: PropTypes.func.isRequired,
 };
 
-export default function ImageUploader({ imgUrl, setImgUrl }) {
+export default function ImageUploader({ imgUrl, setMainImage }) {
   const image = useRef(null);
   const axios = useAxiosInstance();
 
@@ -29,10 +29,10 @@ export default function ImageUploader({ imgUrl, setImgUrl }) {
     });
 
     const data = await response.data.item[0];
-    setImgUrl(data.path);
+    setMainImage(data);
   };
   const onRemoveImage = () => {
-    setImgUrl("");
+    setMainImage(null);
   };
   const onClick = () => {
     image.current && image.current.click();
