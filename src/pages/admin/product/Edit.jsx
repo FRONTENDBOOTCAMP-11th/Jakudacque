@@ -105,12 +105,10 @@ export default function Edit() {
 
   // 상품 저장
   const saveProduct = async () => {
-    console.log("saveProduct", product);
-
     try {
       await axios.patch(`/seller/products/${_id}`, product);
       queryClient.invalidateQueries("productItem");
-      navigate(-1);
+      navigate("/admin/product");
     } catch (error) {
       console.error(error);
     }
