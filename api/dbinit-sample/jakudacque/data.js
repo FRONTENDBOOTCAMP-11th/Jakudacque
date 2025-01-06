@@ -2532,7 +2532,7 @@ export const initData = async (clientId, nextSeq) => {
             value: "배송 완료",
           },
           {
-            depth: 1,
+            sort: 6,
             code: "OS110",
             value: "반품 요청",
           },
