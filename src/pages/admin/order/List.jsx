@@ -68,10 +68,14 @@ export default function List() {
           <StyledThead>
             <tr>
               <StyledTh>주문일시</StyledTh>
+              <StyledTh>주문자</StyledTh>
               <StyledTh>주문상품</StyledTh>
-              <StyledTh>상품금액</StyledTh>
+              <StyledTh>상품금액 합계</StyledTh>
               <StyledTh>배송비</StyledTh>
               <StyledTh>총 금액</StyledTh>
+              {/* <StyledTh>결제수단</StyledTh> */}
+              <StyledTh>주소</StyledTh>
+              <StyledTh>배송정보</StyledTh>
               <StyledTh>상태</StyledTh>
               <StyledTh className="w-16"></StyledTh>
             </tr>
@@ -80,6 +84,11 @@ export default function List() {
             {data.item.map(item => (
               <tr key={item._id}>
                 <StyledTd>{item.createdAt}</StyledTd>
+                <StyledTd>
+                  {item.user.name}
+                  <br />
+                  {item.user.email}
+                </StyledTd>
                 <StyledTd>
                   <div className="flex items-center gap-2">
                     <img
@@ -96,6 +105,21 @@ export default function List() {
                 <StyledTd>{item.cost.products.toLocaleString()}</StyledTd>
                 <StyledTd>{item.cost.shippingFees.toLocaleString()}</StyledTd>
                 <StyledTd>{item.cost.total.toLocaleString()}</StyledTd>
+                {/* <StyledTd>결제수단</StyledTd> */}
+                <StyledTd>
+                  {item.address.name} <br />
+                  {item.address.value}
+                </StyledTd>
+                <StyledTd>
+                  {item.delivery ? (
+                    <>
+                      {item.delivery.company} <br />
+                      {item.delivery.trackingNumber}
+                    </>
+                  ) : (
+                    "배송 준비중"
+                  )}
+                </StyledTd>
                 <StyledTd>{codes && codes.orderState[item.state]}</StyledTd>
                 <StyledTd>
                   <Link to={`${location.pathname}/edit/${item._id}`}>

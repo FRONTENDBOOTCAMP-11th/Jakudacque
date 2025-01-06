@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 
 InputGroup.propTypes = {
-  id: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
+  id: PropTypes.string,
+  label: PropTypes.string,
   type: PropTypes.string,
   placeholder: PropTypes.string,
   disabled: PropTypes.bool,
