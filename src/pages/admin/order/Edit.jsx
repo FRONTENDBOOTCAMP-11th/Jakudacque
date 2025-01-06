@@ -19,12 +19,11 @@ import InputSelect from "@components/InputSelect";
 export default function Edit() {
   const [order, setOrder] = useState(null);
   const [orderState, setOrderState] = useState({
-    state: "OS035",
-    memo: "레고 클래식 상품을 구매한 고객님께 서비스로 미니 레고 블럭을 드립니다.",
+    state: "OS010",
+    memo: "",
     delivery: {
-      company: "CJ 대한통운",
-      trackingNumber: "364746065376",
-      url: "https://trace.cjlogistics.com/next/tracking.html?wblNo=364746065376",
+      company: "",
+      trackingNumber: "",
     },
   });
 
@@ -43,12 +42,7 @@ export default function Edit() {
     }));
   }, [codes]);
 
-  const products = useMemo(() => {
-    if (!order || !order.products) return [];
-    return order.products;
-  }, [order]);
-
-  // 상품 정보 가져오기
+  // 주문 정보 가져오기
   const { data, isLoading } = useQuery({
     queryKey: ["orderItem"],
     // 로그인 기능 완성 후 /seller/products로 변경
@@ -57,7 +51,7 @@ export default function Edit() {
     staleTime: 1000 * 10,
   });
 
-  // 상품 정보가 로드되면 상품 정보를 상태에 반영
+  // 주문 정보가 로드되면 상품 정보를 상태에 반영
   useEffect(() => {
     if (data) {
       setOrder(data.item);
@@ -80,7 +74,7 @@ export default function Edit() {
   const saveOrder = async () => {
     return;
     try {
-      await axios.patch(`/seller/orders/${_id}`, order);
+      await axios.patch(`/seller/orders/${_id}`, orderState);
       queryClient.invalidateQueries("orderItem");
       navigate("/admin/order");
     } catch (error) {
@@ -135,7 +129,7 @@ export default function Edit() {
             </tr>
           </StyledThead>
           <tbody>
-            {products.map(item => (
+            {order.products.map(item => (
               <tr key={item._id}>
                 <StyledTd>
                   <div className="flex items-center gap-2">
@@ -203,10 +197,15 @@ export default function Edit() {
           </div>
           {/* right */}
           <div className="col-span-6 col-start-7">
-            <InputGroup label="배송사" value={orderState?.delivery?.company} />
+            <InputGroup
+              label="배송사"
+              value={orderState?.delivery?.company}
+              placeholder="배송사를 입력하세요."
+            />
             <InputGroup
               label="송장번호"
               value={orderState?.delivery?.trackingNumber}
+              placeholder="송장 번호를 입력하세요."
             />
           </div>
         </div>
