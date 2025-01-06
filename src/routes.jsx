@@ -11,9 +11,10 @@ import SignUp from "@pages/user/SignUp";
 // admin
 import AdminHome from "@pages/admin/index";
 import AdminProductList from "@pages/admin/product/List";
-import Edit from "@pages/admin/product/Edit";
+import AdminProductEdit from "@pages/admin/product/Edit";
 import New from "@pages/admin/product/New";
 import AdminOrderList from "@pages/admin/order/List";
+import AdminOrderEdit from "@pages/admin/order/Edit";
 
 import Layout from "@components/layout";
 import AdminLayout from "@components/layout/AdminLayout";
@@ -48,13 +49,16 @@ const router = createBrowserRouter([
             path: "product", // 상품 관리
             children: [
               { index: true, element: <AdminProductList /> }, // 상품 목록
-              { path: "edit/:_id", element: <Edit /> }, // 상품 수정
+              { path: "edit/:_id", element: <AdminProductEdit /> }, // 상품 수정
               { path: "new", element: <New /> }, // 상품 추가
             ],
           },
           {
             path: "order", // 주문 관리
-            children: [{ index: true, element: <AdminOrderList /> }], // 주문 목록
+            children: [
+              { index: true, element: <AdminOrderList /> }, // 주문 목록
+              { path: "edit/:_id", element: <AdminOrderEdit /> }, // 주문정보 수정
+            ],
           },
         ],
       },
