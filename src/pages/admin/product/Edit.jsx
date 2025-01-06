@@ -12,6 +12,7 @@ import InputToggle from "@components/InputToggle";
 import InputSelect from "@components/InputSelect";
 import ImageUploader from "@components/ImageUploader";
 import QuillEditor from "@components/QuillEditor";
+import { toast } from "react-toastify";
 import { PRODUCT_KEYS, IMAGE_URL_PREFIX } from "@constants/admin";
 
 export default function Edit() {
@@ -108,6 +109,7 @@ export default function Edit() {
     try {
       await axios.patch(`/seller/products/${_id}`, product);
       queryClient.invalidateQueries("productItem");
+      toast("상품 정보를 저장했습니다.");
       navigate("/admin/product");
     } catch (error) {
       console.error(error);

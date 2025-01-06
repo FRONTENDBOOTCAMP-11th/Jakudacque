@@ -11,7 +11,7 @@ Button.propTypes = {
 export default function Button({ children, ...rest }) {
   return (
     <StyledButton $rest={rest} onClick={rest.onClick}>
-      {children}
+      <span className="font-bold ">{children}</span>
     </StyledButton>
   );
 }
