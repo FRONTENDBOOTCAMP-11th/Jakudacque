@@ -87,7 +87,6 @@ export default function Edit() {
       };
     }
 
-    console.log(newState);
     try {
       await axios.patch(`/seller/orders/${_id}`, newState);
       queryClient.invalidateQueries("orderItem");
