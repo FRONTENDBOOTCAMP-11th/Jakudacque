@@ -58,6 +58,11 @@ export default function Edit() {
       setOrderState(prev => {
         return produce(prev, draft => {
           draft.state = data.item.state;
+          draft.memo = data.item.memo;
+          draft.delivery = {
+            company: data.item.delivery?.company || "",
+            trackingNumber: data.item.delivery?.trackingNumber || "",
+          };
         });
       });
     }
@@ -72,9 +77,19 @@ export default function Edit() {
 
   // 주문 정보 저장
   const saveOrder = async () => {
-    return;
+    const newState = {
+      state: orderState.state,
+      memo: orderState.memo,
+    };
+    if (orderState.delivery.company || orderState.delivery.trackingNumber) {
+      newState.delivery = {
+        ...orderState.delivery,
+      };
+    }
+
+    console.log(newState);
     try {
-      await axios.patch(`/seller/orders/${_id}`, orderState);
+      await axios.patch(`/seller/orders/${_id}`, newState);
       queryClient.invalidateQueries("orderItem");
       navigate("/admin/order");
     } catch (error) {
@@ -199,13 +214,27 @@ export default function Edit() {
           <div className="col-span-6 col-start-7">
             <InputGroup
               label="배송사"
-              value={orderState?.delivery?.company}
               placeholder="배송사를 입력하세요."
+              value={orderState.delivery.company}
+              onChange={e => {
+                setOrderState(prev => {
+                  return produce(prev, draft => {
+                    draft.delivery.company = e.target.value;
+                  });
+                });
+              }}
             />
             <InputGroup
               label="송장번호"
-              value={orderState?.delivery?.trackingNumber}
               placeholder="송장 번호를 입력하세요."
+              value={orderState?.delivery?.trackingNumber}
+              onChange={e => {
+                setOrderState(prev => {
+                  return produce(prev, draft => {
+                    draft.delivery.trackingNumber = e.target.value;
+                  });
+                });
+              }}
             />
           </div>
         </div>
@@ -219,6 +248,7 @@ export default function Edit() {
           <div className="col-span-6">
             <InputGroup label="주문자명" value={order?.user?.name} disabled />
             <InputGroup label="이메일" value={order?.user?.email} disabled />
+            <InputGroup label="장소" value={order?.address?.name} disabled />
             <InputGroup label="주소" value={order?.address?.value} disabled />
           </div>
           {/* right */}
