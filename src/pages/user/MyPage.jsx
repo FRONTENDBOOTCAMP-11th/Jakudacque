@@ -133,7 +133,7 @@ export default function MyPage() {
 
           {/* 찜 리스트 */}
           <div className="max-[600px]:px-2 hidden">
-            <div className="max-w-[1120px] grid gap-5 pt-10 grid-cols-4 max-[1000px]:grid-cols-3 max-[600px]:grid-cols-2">
+            <div className="max-w-[1120px] grid gap-5 pt-10 grid-cols-4 max-[1000px]:grid-cols-3 max-[600px]:grid-cols-2 max-[700px]:pt-0">
               <Product product={product} />
               <Product product={product} />
               <Product product={product} />
