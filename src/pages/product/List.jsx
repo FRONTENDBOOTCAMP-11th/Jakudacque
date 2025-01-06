@@ -1,4 +1,3 @@
-// List.jsx
 import { useState } from "react";
 import { IoCaretDown } from "react-icons/io5";
 import Product from "../../components/Product";
@@ -13,60 +12,63 @@ export default function List() {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const axios = useAxiosInstance();
-  const queryStr = useQueryStr();
-
-  // URL에서 카테고리 코드 가져오기
-  const category = queryStr.get("category") || "PC01";
-  let page = queryStr.get("page") || 1;
-  page = Number(page);
-
+  const queryStr = useQueryStr();  // URL의 query string을 가져오는 custom hook
+  const category = queryStr.get("category") || "ALL";  // URL에서 category 파라미터 추출
+  const page = Number(queryStr.get("page") || 1);  // URL에서 page 파라미터 추출
+  
   // 카테고리 정보 가져오기
-  const { data: categoryList } = useQuery({
-    queryKey: ["codes", "productCategory"],
-    queryFn: () => axios.get("/codes/productCategory"),
-    staleTime: 1000 * 60 * 5,
-  });
+  const CATEGORY_MAP = {
+    ALL: "전체상품",
+    PC01: "다이어리",
+    PC02: "스티커",
+    PC03: "메모지",
+    PC04: "마스킹 테이프",
+    PC05: "키링"
+  };
 
   // 현재 카테고리명 찾기
-  const currentCategory = categoryList?.data?.codes?.find(
-    cat => cat.code === category
-  )?.value || "전체상품";
+  const currentCategory = CATEGORY_MAP[category] || "전체상품";
 
   // 상품 데이터 가져오기
   const { data, isLoading } = useQuery({
     queryKey: ["productList", category, page],
     queryFn: async () => {
-      const response = await axios.get("/products", {
-        params: {
-          category: [category],
-          page,
-          limit: 20,
-        },
-      });
+      const params = {
+        page,
+        limit: 20
+      };
+
+      // custom 파라미터를 사용하여 카테고리 필터링
+      if (category !== "ALL") {
+        params.custom = JSON.stringify({
+          "extra.category": category
+        });
+      }
+
+      const response = await axios.get("/products", { params });
       return response.data;
-    },
+    }
   });
-  
-  
+
   if (isLoading) return <Spinner />;
   if (!data?.item?.length) {
     navigate(`/list?category=${category}&page=1`);
     return null;
   }
 
-  const products = data.item.map(item => ({
+  const products = data?.item?.map(item => ({
     id: item._id,
     name: item.name,
     price: item.price,
-    image: "https://11.fesp.shop" + item.mainImages[0].path,
+    image: item.mainImages?.[0]?.path ? "https://11.fesp.shop" + item.mainImages[0].path : "",
     link: `/product/${item._id}`,
-  }));
+  })) || [];
 
   return (
     <div className="w-full max-w-7xl mx-auto px-4 py-8">
       <div className="mb-8">
         {/* 현재 페이지 정보 (카테고리명) */}
-          {currentCategory} 
+        {currentCategory} 
       </div>
 
       {/* 상품 카운트, 정렬 */}
