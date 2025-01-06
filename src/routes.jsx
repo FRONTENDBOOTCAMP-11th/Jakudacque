@@ -8,6 +8,7 @@ import Search from "@pages/product/Search";
 // user
 import SignIn from "@pages/user/SignIn";
 import SignUp from "@pages/user/SignUp";
+import MyPage from "@pages/user/MyPage";
 // admin
 import AdminHome from "@pages/admin/index";
 import AdminProductList from "@pages/admin/product/List";
@@ -38,6 +39,7 @@ const router = createBrowserRouter([
       // user
       { path: "signin", element: <SignIn /> }, // 로그인
       { path: "signup", element: <SignUp /> }, // 회원가입
+      { path: "mypage", element: <MyPage /> }, // 마이페이지
       // admin
       {
         path: "admin",
