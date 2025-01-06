@@ -7,22 +7,6 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { Link } from "react-router-dom";
 import Product from "@components/Product";
 
-// Swiper 내부 클래스 재정의
-const StyledSwiper = styled.div`
-  .swiper-pagination-bullet {
-    background-color: #fde047;
-  }
-
-  .swiper-pagination-bullet-active {
-    background-color: #fde047;
-  }
-
-  .swiper-button-next,
-  .swiper-button-prev {
-    color: #fde047;
-  }
-`;
-
 export default function index() {
   // 메인 베너 슬라이드 데이터
   const slides = [
@@ -154,7 +138,7 @@ export default function index() {
             disableOnInteraction: false,
           }}
           modules={[Pagination, Autoplay]}
-          className="w-full h-[500px] lg:h-[500px] md:h-[400px] mx-auto max-w-[1280px]"
+          className="w-full h-[200px] xl:h-[500px] lg:h-[400px] md:h-[400px] sm:h-[300px] mx-auto max-w-[1240px]"
         >
           {slides.map((slide, index) => (
             <SwiperSlide
@@ -174,7 +158,7 @@ export default function index() {
       </StyledSwiper>
 
       <StyledSwiper>
-        <div className="relative mt-20 px-8 mx-auto max-w-[1280px]">
+        <div className="relative mt-20 mx-auto max-w-[1240px]">
           <h1 className="text-xl font-semibold">Best Item</h1>
           <Swiper // BEST 아이템 리스트
             navigation={true}
@@ -202,7 +186,7 @@ export default function index() {
       </StyledSwiper>
 
       <StyledSwiper>
-        <div className="relative mt-20 px-8 mx-auto max-w-[1280px]">
+        <div className="relative mt-20 mx-auto max-w-[1240px]">
           <h1 className="text-xl font-semibold">New Item</h1>
           <Swiper // NEW 아이템 리스트
             navigation={true}
@@ -231,3 +215,19 @@ export default function index() {
     </div>
   );
 }
+
+// Swiper 내부 클래스 재정의
+const StyledSwiper = styled.div`
+  .swiper-pagination-bullet {
+    background-color: #fde047;
+  }
+
+  .swiper-pagination-bullet-active {
+    background-color: #fde047;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: #fde047;
+  }
+`;
