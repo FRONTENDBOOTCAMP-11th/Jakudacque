@@ -37,10 +37,8 @@ export default function List() {
   });
 
   const handleDelete = id => {
-    const result = confirm("정말 삭제하시겠습니까?");
-    if (result) {
-      console.log("삭제", id);
-
+    const isConfirmed = confirm("정말 삭제하시겠습니까?");
+    if (isConfirmed) {
       axios.delete(`/seller/products/${id}`).then(() => {
         queryClient.invalidateQueries("productList");
       });

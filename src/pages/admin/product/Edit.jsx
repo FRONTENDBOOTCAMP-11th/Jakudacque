@@ -106,6 +106,8 @@ export default function Edit() {
 
   // 상품 저장
   const saveProduct = async () => {
+    const isConfirmed = confirm("상품 정보를 저장하시겠습니까?");
+    if (!isConfirmed) return;
     try {
       await axios.patch(`/seller/products/${_id}`, product);
       queryClient.invalidateQueries("productItem");

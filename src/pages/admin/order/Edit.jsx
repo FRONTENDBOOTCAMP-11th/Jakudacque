@@ -15,6 +15,7 @@ import Button from "@components/Button";
 import Spinner from "@components/Spinner";
 import InputGroup from "@components/InputGroup";
 import InputSelect from "@components/InputSelect";
+import { toast } from "react-toastify";
 
 export default function Edit() {
   const [order, setOrder] = useState(null);
@@ -77,6 +78,9 @@ export default function Edit() {
 
   // 주문 정보 저장
   const saveOrder = async () => {
+    const isConfirmed = confirm("주문 정보를 저장하시겠습니까?");
+    if (!isConfirmed) return;
+
     const newState = {
       state: orderState.state,
       memo: orderState.memo,
@@ -90,6 +94,7 @@ export default function Edit() {
     try {
       await axios.patch(`/seller/orders/${_id}`, newState);
       queryClient.invalidateQueries("orderItem");
+      toast("주문 정보를 저장했습니다.");
       navigate("/admin/order");
     } catch (error) {
       console.error(error);
