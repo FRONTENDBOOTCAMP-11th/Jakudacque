@@ -125,6 +125,18 @@ export default function Edit() {
           주문 일시 : <span className="font-bold ">{order.createdAt}</span>
         </div>
         <div>
+          상품총액 :{" "}
+          <span className="font-bold">
+            {order.cost?.products?.toLocaleString() || 0}원
+          </span>
+        </div>
+        <div>
+          배송비 :{" "}
+          <span className="font-bold">
+            {order.cost?.shippingFees?.toLocaleString() || 0}원
+          </span>
+        </div>
+        <div>
           주문총액 :{" "}
           <span className="font-bold">
             {order.cost?.total?.toLocaleString() || 0}원
