@@ -10,6 +10,7 @@ import Pagination from "@components/Pagenation";
 
 export default function List() {
   const [isOpen, setIsOpen] = useState(false);
+  const [sortOption, setSortOption] = useState("등록순");  // 정렬 상태
   const navigate = useNavigate();
   const axios = useAxiosInstance();
   const queryStr = useQueryStr();  // URL의 query string을 가져오는 custom hook
@@ -26,35 +27,53 @@ export default function List() {
     PC05: "키링"
   };
 
+  // 정렬 옵션 맵핑
+  const SORT_MAP = {
+    "등록순": { key: "createdAt", order: -1 }, // -1은 내림차순
+    "인기순": { key: "buyQuantity", order: -1 },
+    "낮은가격순": { key: "price", order: 1 }, // 1은 오름차순 
+    "높은가격순": { key: "price", order: -1 },
+    "이름순": { key: "name", order: 1 }
+  };
+
   // 현재 카테고리명 찾기
   const currentCategory = CATEGORY_MAP[category] || "전체상품";
 
-  // 상품 데이터 가져오기
-  const { data, isLoading } = useQuery({
-    queryKey: ["productList", category, page],
-    queryFn: async () => {
-      const params = {
-        page,
-        limit: 20
-      };
+ // 상품 데이터 가져오기
+ const { data, isLoading } = useQuery({
+  queryKey: ["productList", category, page, sortOption],
+  queryFn: async () => {
+    const params = {
+      page,
+      limit: 20,
+      sort: JSON.stringify({
+        [SORT_MAP[sortOption].key]: SORT_MAP[sortOption].order
+      })
+    };
 
-      // custom 파라미터를 사용하여 카테고리 필터링
-      if (category !== "ALL") {
-        params.custom = JSON.stringify({
-          "extra.category": category
-        });
-      }
-
-      const response = await axios.get("/products", { params });
-      return response.data;
+    // custom 파라미터를 사용하여 카테고리 필터링
+    if (category !== "ALL") {
+      params.custom = JSON.stringify({
+        "extra.category": category
+      });
     }
-  });
+
+    const response = await axios.get("/products", { params });
+    return response.data;
+  }
+});
 
   if (isLoading) return <Spinner />;
   if (!data?.item?.length) {
     navigate(`/list?category=${category}&page=1`);
     return null;
   }
+
+  // 정렬 옵션 클릭 핸들러
+  const handleSortClick = (option) => {
+    setSortOption(option); // 선택된 정렬 옵션 업데이트
+    setIsOpen(false);
+  };
 
   const products = data?.item?.map(item => ({
     id: item._id,
@@ -81,21 +100,22 @@ export default function List() {
             onClick={() => setIsOpen(!isOpen)}
             className="px-4 py-2 border border-gray-200 rounded-full text-sm hover:border-gray-400 flex items-center gap-2"
           >
-            정렬방식 <IoCaretDown />
+            {sortOption} <IoCaretDown />
           </button>
           {isOpen && (
             <div className="absolute right-0 mt-2 w-32 bg-white border border-gray-200 rounded-lg shadow-lg z-10">
               <ul className="py-1">
-                {["등록순", "인기순", "낮은가격순", "높은가격순", "이름순"].map(
-                  option => (
-                    <li
-                      key={option}
-                      className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-sm"
-                    >
-                      {option}
-                    </li>
-                  ),
-                )}
+                {Object.keys(SORT_MAP).map(option => (
+                  <li
+                    key={option}
+                    className={`px-4 py-2 hover:bg-gray-100 cursor-pointer text-sm ${
+                      sortOption === option ? 'text-yellow-300' : ''
+                    }`}
+                    onClick={() => handleSortClick(option)}
+                  >
+                    {option}
+                  </li>
+                ))}
               </ul>
             </div>
           )}
