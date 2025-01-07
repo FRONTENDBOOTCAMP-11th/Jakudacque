@@ -89,7 +89,7 @@ export default function Header() {
             </LinkButton>
             <LinkButton to={user ? "/mypage" : "/signin"}>
               <span className="hidden">{user ? "마이페이지" : "로그인"}</span>
-              <IoPersonOutline size={24} />
+              <IoPersonOutline size={22} />
             </LinkButton>
           </div>
         </nav>
