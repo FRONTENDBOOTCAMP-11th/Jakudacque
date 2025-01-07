@@ -1,4 +1,47 @@
+import InputError from "@components/InputError";
+import useAxiosInstance from "@hooks/useAxiosInstance";
+import { useMutation } from "@tanstack/react-query";
+import { useForm } from "react-hook-form";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+
 export default function SignUp() {
+  const axios = useAxiosInstance();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+    setError,
+  } = useForm();
+
+  // 회원가입 api
+  const addUser = useMutation({
+    mutationFn: async userInfo => {
+      userInfo.type = "user";
+      delete userInfo.passwordConfirm;
+      return axios.post(`/users`, userInfo);
+    },
+    onSuccess: res => {
+      const user = res.data.item;
+      toast(user.name + "님, 환영합니다!");
+      navigate("/signin");
+    },
+    onError: err => {
+      console.error(err);
+      if (err.response?.data.errors) {
+        err.response?.data.errors.forEach(error =>
+          setError(error.path, { message: error.msg }),
+        );
+      } else {
+        alert(err.response?.data.message || "잠시후 다시 요청하세요.");
+      }
+    },
+  });
+
   return (
     <main className="min-w-80 flex-grow flex items-center justify-center">
       <div className="p-10 rounded-lg w-full max-w-md">
@@ -10,7 +53,7 @@ export default function SignUp() {
           </div>
         </div>
 
-        <form>
+        <form onSubmit={handleSubmit(addUser.mutate)}>
           <div className="mb-4">
             <label className="block mb-2" htmlFor="name">
               <span className="text-red-500 before:content-['*'] before:mr-1"></span>
@@ -21,8 +64,9 @@ export default function SignUp() {
               id="name"
               placeholder="이름을 입력하세요"
               className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-secondary-base"
-              // {...register("name", { required: "이름은 필수입니다." })}
+              {...register("name", { required: "이름은 필수입니다." })}
             />
+            <InputError target={errors.name} />
           </div>
           <div className="mb-4">
             <label className="block mb-2" htmlFor="email">
@@ -34,11 +78,12 @@ export default function SignUp() {
               id="email"
               placeholder="이메일을 입력하세요"
               className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-secondary-base"
-              // {...register("email", { required: "이메일은 필수입니다." })}
+              {...register("email", { required: "이메일은 필수입니다." })}
             />
+            <InputError target={errors.email} />
           </div>
           <div className="mb-4">
-            <label className="block  mb-2" htmlFor="password">
+            <label className="block mb-2" htmlFor="password">
               <span className="text-red-500 before:content-['*'] before:mr-1"></span>
               비밀번호
             </label>
@@ -47,8 +92,9 @@ export default function SignUp() {
               id="password"
               placeholder="비밀번호를 입력하세요"
               className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-secondary-base"
-              // {...register("password", { required: "비밀번호는 필수입니다." })}
+              {...register("password", { required: "비밀번호는 필수입니다." })}
             />
+            <InputError target={errors.password} />
           </div>
           <div className="mb-4">
             <label className="block mb-2" htmlFor="passwordConfirm">
@@ -60,30 +106,37 @@ export default function SignUp() {
               id="passwordConfirm"
               placeholder="비밀번호를 다시 입력하세요"
               className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-secondary-base"
-              // {...register("passwordConfirm", { required: "비밀번호 확인은 필수입니다." })}
+              {...register("passwordConfirm", {
+                required: "비밀번호 확인은 필수입니다.",
+                validate: value =>
+                  value === watch("password") ||
+                  "비밀번호가 일치하지 않습니다.",
+              })}
             />
+            <InputError target={errors.passwordConfirm} />
           </div>
           <div className="mb-4">
-            <label className="block  mb-2" htmlFor="name">
+            <label className="block mb-2" htmlFor="phone">
               핸드폰
             </label>
             <input
               type="text"
-              id="name"
+              id="phone"
               placeholder="핸드폰 번호를 입력하세요"
               className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-secondary-base"
-              // {...register("name", { required: "핸드폰 번호는 필수입니다." })}
+              {...register("phone")}
             />
           </div>
           <div className="mb-4">
-            <label className="block  mb-2" htmlFor="name">
+            <label className="block mb-2" htmlFor="address">
               주소
             </label>
             <input
               type="text"
-              id="name"
+              id="address"
               placeholder="주소를 입력하세요"
               className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-secondary-base"
+              {...register("address")}
             />
           </div>
 
@@ -94,9 +147,16 @@ export default function SignUp() {
             >
               회원가입
             </button>
-            <button className="py-2 px-6 font-semibold hover:underline">
+            <Link
+              to="#"
+              onClick={e => {
+                e.preventDefault();
+                navigate(location.state?.from || `/`); // 이전 페이지로 이동, 없으면 홈으로 이동
+              }}
+              className="py-2 px-6 font-semibold hover:underline"
+            >
               취소
-            </button>
+            </Link>
           </div>
         </form>
       </div>
