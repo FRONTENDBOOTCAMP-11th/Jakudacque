@@ -8,9 +8,7 @@ import { Outlet } from "react-router-dom";
 
 export default function AdminLayout() {
   // 권한에 따른 리다이렉트 로직 추가
-  // const { user } = useUserStore();
-  const user = { id: 1, username: "test", type: "admin" };
-  // const user = null;
+  const { user } = useUserStore();
 
   // codes fetch
   const axios = useAxiosInstance();
@@ -40,10 +38,10 @@ export default function AdminLayout() {
     if (!user) {
       navigate("/signin");
     }
-    if (user && user.type === "user") {
+    if (user.type === "user") {
       navigate("/");
     }
-  }, [user]);
+  }, []);
 
   return (
     <>
