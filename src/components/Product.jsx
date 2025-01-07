@@ -8,7 +8,7 @@ export default function Product({ product }) {
       <img
         src={product.image}
         alt={product.name}
-        className="w-40 h-40 object-cover rounded-lg my-2 lg:w-72 lg:h-72 hover:scale-105 transition-transform duration-300"
+        className="min-w-40 min-h-40 object-cover rounded-lg my-2 lg:w-72 lg:h-72 hover:scale-105 transition-transform duration-300"
       />
       <div className="flex flex-col pb-3 px-1">
         <p className="text-sm font-medium">{product.name}</p>
@@ -26,10 +26,10 @@ export default function Product({ product }) {
 }
 
 Product.propTypes = {
- product: PropTypes.shape({
-   image: PropTypes.string.isRequired,
-   name: PropTypes.string.isRequired,
-   price: PropTypes.number.isRequired,
-   link: PropTypes.string.isRequired,
- }).isRequired,
+  product: PropTypes.shape({
+    image: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    link: PropTypes.string.isRequired,
+  }).isRequired,
 };
