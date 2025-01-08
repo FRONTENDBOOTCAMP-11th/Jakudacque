@@ -52,15 +52,15 @@
   border: 1px solid transparent;
   cursor: pointer;
   &:not(.disabled):hover {
-    background-color: #facc15;
+    @apply bg-info;
     color: white;
   }
   &.selected {
-    background-color: #f1f1f1;
+    @apply bg-gray-100;
     color: #0d0d0d;
 
     &.endpoints {
-      background-color: #facc15;
+      @apply bg-info;
       color: white;
     }
   }
