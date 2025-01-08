@@ -3,7 +3,7 @@ import useAxiosInstance from "@hooks/useAxiosInstance";
 import useQueryStr from "@hooks/useQueryStr";
 import { useMutation } from "@tanstack/react-query";
 import useUserStore from "@zustand/userStore";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -19,11 +19,13 @@ export default function SignIn() {
 
   const { setError } = useForm();
 
+  const isCalled = useRef(false);
+
   useEffect(() => {
     const code = queryStr.get("code");
-    if (code) {
+    if (code && !isCalled.current) {
+      isCalled.current = true;
       kakaoLogin.mutate(code);
-      console.log(code);
     }
   }, []);
 
@@ -36,6 +38,7 @@ export default function SignIn() {
       }),
     onSuccess: res => {
       const user = res.data.item;
+
       setUser({
         _id: user._id,
         name: user.name,
