@@ -46,8 +46,9 @@ export default function SignIn() {
         refreshToken: user.token.refreshToken,
       });
 
-      if (user?.type === "admin") {
-        return navigate("/admin"); // 관리자(admin)이면 관리자 홈으로 이동
+      // user가 아니면(seller, admin) 관리자 홈으로 이동
+      if (user?.type !== "user") {
+        return navigate("/admin");
       } else {
         navigate(-1);
       }
