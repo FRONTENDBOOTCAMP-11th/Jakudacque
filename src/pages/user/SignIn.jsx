@@ -2,6 +2,7 @@ import InputError from "@components/InputError";
 import useAxiosInstance from "@hooks/useAxiosInstance";
 import { useMutation } from "@tanstack/react-query";
 import useUserStore from "@zustand/userStore";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -37,16 +38,21 @@ export default function SignIn() {
     mutationFn: formData => axios.post(`/users/login`, formData),
     onSuccess: res => {
       const user = res.data.item;
-
       setUser({
         _id: user._id,
         name: user.name,
+        type: user.type,
         accessToken: user.token.accessToken,
         refreshToken: user.token.refreshToken,
       });
 
+      if (user?.type === "admin") {
+        return navigate("/admin"); // 관리자(admin)이면 관리자 홈으로 이동
+      } else {
+        navigate(-1);
+      }
+
       toast(user.name + "님, 로그인 되었습니다!");
-      navigate(-1);
     },
     onError: err => {
       console.error(err);
@@ -59,6 +65,12 @@ export default function SignIn() {
       }
     },
   });
+
+  useEffect(() => {
+    if (!setUser) {
+      navigate("/user/signin");
+    }
+  }, [setUser, navigate]);
 
   return (
     <main className="min-w-80 flex-grow flex items-center justify-center">
