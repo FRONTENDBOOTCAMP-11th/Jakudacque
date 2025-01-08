@@ -11,12 +11,12 @@ import SignInKakao from "@pages/user/SignInKakao";
 import SignUp from "@pages/user/SignUp";
 import MyPage from "@pages/user/MyPage";
 // admin
-import AdminHome from "@pages/admin/index";
-import AdminProductList from "@pages/admin/product/List";
-import AdminProductEdit from "@pages/admin/product/Edit";
-import New from "@pages/admin/product/New";
-import AdminOrderList from "@pages/admin/order/List";
-import AdminOrderEdit from "@pages/admin/order/Edit";
+import AdminDashboard from "@pages/admin/seller/Dashboard";
+import AdminProductList from "@pages/admin/seller/product/List";
+import AdminProductEdit from "@pages/admin/seller/product/Edit";
+import New from "@pages/admin/seller/product/New";
+import AdminOrderList from "@pages/admin/seller/order/List";
+import AdminOrderEdit from "@pages/admin/seller/order/Edit";
 
 import Layout from "@components/layout";
 import AdminLayout from "@components/layout/AdminLayout";
@@ -58,19 +58,19 @@ const router = createBrowserRouter([
         path: "admin",
         element: <AdminLayout />, // 어드민 레이아웃(리다이렉트 로직)
         children: [
-          { index: true, element: <AdminHome /> }, // 어드민 홈
+          { path: "s/dashboard", element: <AdminDashboard /> }, // 어드민 홈
           {
-            path: "product", // 상품 관리
+            path: "s/product", // 상품 관리
+            element: <AdminProductList />, // 상품 리스트
             children: [
-              { index: true, element: <AdminProductList /> }, // 상품 목록
               { path: "edit/:_id", element: <AdminProductEdit /> }, // 상품 수정
               { path: "new", element: <New /> }, // 상품 추가
             ],
           },
           {
-            path: "order", // 주문 관리
+            path: "s/order", // 주문 관리
+            element: <AdminOrderList />,
             children: [
-              { index: true, element: <AdminOrderList /> }, // 주문 목록
               { path: "edit/:_id", element: <AdminOrderEdit /> }, // 주문정보 수정
             ],
           },
