@@ -16,7 +16,7 @@ import useAxiosInstance from "@hooks/useAxiosInstance";
 import { useState, useEffect, useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
 import useQueryStr from "@hooks/useQueryStr";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useSearchParams } from "react-router-dom";
 import { IoCalendarClearOutline } from "react-icons/io5";
 import { IoOpenOutline } from "react-icons/io5";
 
@@ -45,34 +45,36 @@ export default function List() {
     [period.endDate],
   );
 
-  const [orderState, setOrderState] = useState("OS010");
+  const [orderState, setOrderState] = useState("");
 
   const location = useLocation();
   let page = useQueryStr().get("page") || 1;
-  let state = useQueryStr().get("state") || "OS010";
+  let state = useQueryStr().get("state") || "";
   let startDateQuery = useQueryStr().get("startDate") || startDate;
   let endDateQuery = useQueryStr().get("endDate") || endDate;
 
+  const [searchParams, setSearchParams] = useSearchParams();
   // 기간과 주문 상태 변경시 쿼리스트링 변경
   useEffect(() => {
-    console.log("useEffect");
+    console.log(searchParams);
 
-    const searchParams = new URLSearchParams(location.search);
-    searchParams.set("startDate", startDate);
-    searchParams.set("endDate", endDate);
-    searchParams.set("state", orderState);
-    searchParams.set("page", 1);
-    location.search = searchParams.toString();
+    setSearchParams({
+      startDate: startDate.replace(/\s+/g, ""),
+      endDate: endDate.replace(/\s+/g, ""),
+      state: orderState,
+      page: 1,
+    });
   }, [startDate, endDate, orderState]);
 
   // 카테고리 코드 데이터 가져오기
   const { codes } = useCodeStore();
   const orderStateOptions = useMemo(() => {
     if (!codes) return [];
-    return Object.keys(codes.orderState).map(key => ({
+    const options = Object.keys(codes.orderState).map(key => ({
       value: key,
       label: codes.orderState[key],
     }));
+    return [{ value: "", label: "전체" }, ...options];
   }, [codes]);
 
   const axios = useAxiosInstance();
@@ -81,7 +83,20 @@ export default function List() {
   const { data, isLoading } = useQuery({
     queryKey: ["orderList", page, state, startDateQuery, endDateQuery],
     // 로그인 기능 완성 후 /seller/orders 로 변경
-    queryFn: () => axios.get("/seller/orders", { params: { page, limit: 15 } }),
+    queryFn: () =>
+      axios.get("/seller/orders", {
+        params: {
+          state,
+          custom: JSON.stringify({
+            createdAt: {
+              $gte: startDateQuery,
+              $lt: endDateQuery,
+            },
+          }),
+          page,
+          limit: 15,
+        },
+      }),
     select: res => res.data,
     staleTime: 1000 * 10,
   });
@@ -178,8 +193,14 @@ export default function List() {
                 <StyledTd>{item.cost.total.toLocaleString()}</StyledTd>
                 {/* <StyledTd>결제수단</StyledTd> */}
                 <StyledTd>
-                  {item.address.name} <br />
-                  {item.address.value}
+                  {item.address ? (
+                    <>
+                      {item.address?.name} <br />
+                      {item.address?.value}
+                    </>
+                  ) : (
+                    "주소 없음"
+                  )}
                 </StyledTd>
                 <StyledTd>
                   {item.delivery ? (
