@@ -42,12 +42,19 @@ export default function SignIn() {
       setUser({
         _id: user._id,
         name: user.name,
+        type: user.type,
         accessToken: user.token.accessToken,
         refreshToken: user.token.refreshToken,
       });
 
+      // user가 아니면(seller, admin) 관리자 홈으로 이동
+      if (user?.type !== "user") {
+        return navigate("/admin");
+      } else {
+        navigate("/");
+      }
+
       toast(user.name + "님, 로그인 되었습니다!");
-      navigate("/");
     },
     onError: err => {
       console.error(err);
