@@ -85,7 +85,6 @@ export default function Detail() {
         },
       }),
     onSuccess: () => {
-      toast("상품 찜이 완료되었습니다");
       refetch();
     },
     onError: err => {
@@ -103,7 +102,6 @@ export default function Detail() {
         },
       }),
     onSuccess: () => {
-      toast("상품 찜이 취소되었습니다");
       refetch();
     },
     onError: err => {
