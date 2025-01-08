@@ -6,45 +6,64 @@ import {
   StyledTh,
   StyledTd,
 } from "@components/AdminTable";
+import InputSelect from "@components/InputSelect";
+import PeriodCalendar from "@components/PeriodCalendar/CalendarContainer";
 // import AdminSearchBar from "@components/AdminSearchBar";
 import Pagination from "@components/Pagenation.jsx";
 import Spinner from "@components/Spinner";
+import { produce } from "immer";
 import useCodeStore from "@zustand/codeStore";
 import useAxiosInstance from "@hooks/useAxiosInstance";
+import { useState, useEffect, useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
 import useQueryStr from "@hooks/useQueryStr";
 import { Link, useLocation } from "react-router-dom";
+import { IoCalendarClearOutline } from "react-icons/io5";
 import { IoOpenOutline } from "react-icons/io5";
 
 export default function List() {
+  const [period, setPeriod] = useState({
+    startDate: new Date().setMonth(new Date().getMonth() - 1),
+    endDate: new Date(),
+  });
+  const [calendarOpen, setCalendarOpen] = useState(false);
+  const startDate = useMemo(
+    () => new Date(period.startDate).toISOString().slice(0, 10),
+    [period.startDate],
+  );
+  const endDate = useMemo(
+    () => new Date(period.endDate).toISOString().slice(0, 10),
+    [period.endDate],
+  );
+
+  const [orderState, setOrderState] = useState({
+    state: "",
+  });
+
+  // 카테고리 코드 데이터 가져오기
+
   const location = useLocation();
   let page = useQueryStr().get("page") || 1;
-  let keyword = useQueryStr().get("keyword") || "";
 
   const { codes } = useCodeStore();
+  const orderStateOptions = useMemo(() => {
+    if (!codes) return [];
+    return Object.keys(codes.orderState).map(key => ({
+      value: key,
+      label: codes.orderState[key],
+    }));
+  }, [codes]);
 
   const axios = useAxiosInstance();
   // const queryClient = useQueryClient();
 
   const { data, isLoading } = useQuery({
-    queryKey: ["orderList", page, keyword],
+    queryKey: ["orderList", page],
     // 로그인 기능 완성 후 /seller/orders 로 변경
-    queryFn: () =>
-      axios.get("/seller/orders", { params: { page, keyword, limit: 15 } }),
+    queryFn: () => axios.get("/seller/orders", { params: { page, limit: 15 } }),
     select: res => res.data,
     staleTime: 1000 * 10,
   });
-
-  // const handleDelete = id => {
-  //   const result = confirm("정말 삭제하시겠습니까?");
-  //   if (result) {
-  //     console.log("삭제", id);
-
-  //     axios.delete(`/seller/products/${id}`).then(() => {
-  //       queryClient.invalidateQueries("productList");
-  //     });
-  //   }
-  // };
 
   console.log(data);
 
@@ -62,6 +81,43 @@ export default function List() {
   return (
     <>
       <TableTitle>주문 관리</TableTitle>
+      {/* date-input */}
+      <div className="flex gap-4 mt-4">
+        <InputSelect
+          id="category"
+          label="주문 상태"
+          value={orderState.state}
+          options={orderStateOptions}
+          onChange={e => {
+            setOrderState(prev => {
+              return produce(prev, draft => {
+                draft.state = e.target.value;
+              });
+            });
+          }}
+        />
+
+        <div className="relative">
+          <span className="text-sm">기간</span>
+          <button
+            className="bg-gray-50 top- border flex items-center gap-4 border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5"
+            onClick={() => setCalendarOpen(prev => !prev)}
+          >
+            <div>
+              {startDate} ~ {endDate}
+            </div>
+            <IoCalendarClearOutline size={18} />
+          </button>
+
+          {calendarOpen && (
+            <PeriodCalendar
+              period={period}
+              setPeriod={setPeriod}
+              onClose={() => setCalendarOpen(false)}
+            />
+          )}
+        </div>
+      </div>
 
       <>
         <StyledTable>
