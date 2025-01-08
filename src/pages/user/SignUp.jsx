@@ -2,13 +2,12 @@ import InputError from "@components/InputError";
 import useAxiosInstance from "@hooks/useAxiosInstance";
 import { useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 export default function SignUp() {
   const axios = useAxiosInstance();
   const navigate = useNavigate();
-  const location = useLocation();
 
   const {
     register,
@@ -149,9 +148,8 @@ export default function SignUp() {
             </button>
             <Link
               to="#"
-              onClick={e => {
-                e.preventDefault();
-                navigate(location.state?.from || `/`); // 이전 페이지로 이동, 없으면 홈으로 이동
+              onClick={() => {
+                navigate(-1);
               }}
               className="py-2 px-6 font-semibold hover:underline"
             >
