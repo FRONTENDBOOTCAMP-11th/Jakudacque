@@ -15,3 +15,8 @@ export const CODE_KEYS = {
   membershipClass: "회원 등급",
 };
 export const IMAGE_URL_PREFIX = "https://11.fesp.shop";
+
+const CURRENT_YEAR = new Date().getFullYear();
+const DAY_OF_WEEK = ["일", "월", "화", "수", "목", "금", "토"];
+
+export { CURRENT_YEAR, DAY_OF_WEEK };
