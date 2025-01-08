@@ -2,13 +2,14 @@ import useUserStore from "@zustand/userStore";
 import useCodeStore from "@zustand/codeStore";
 import useAxiosInstance from "@hooks/useAxiosInstance";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import AdminSideMenu from "@components/AdminSideMenu";
 import { Outlet } from "react-router-dom";
 
 export default function AdminLayout() {
   // 권한에 따른 리다이렉트 로직 추가
   const { user } = useUserStore();
+  const { type } = useParams();
   const [menuList, setMenuList] = useState([]);
 
   // codes fetch
@@ -48,7 +49,18 @@ export default function AdminLayout() {
         { title: "상품관리", path: "s/product" },
         { title: "주문관리", path: "s/order" },
       ]);
-      navigate("s/dashboard");
+      if (type !== "s") {
+        navigate("s/dashboard");
+      }
+    }
+    if (user.type === "admin") {
+      setMenuList([
+        { title: "회원관리", path: "a/user" },
+        { title: "카테고리관리", path: "a/category" },
+      ]);
+      if (type !== "a") {
+        navigate("a/user");
+      }
     }
   }, []);
 
