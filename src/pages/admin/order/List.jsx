@@ -11,7 +11,6 @@ import PeriodCalendar from "@components/PeriodCalendar/CalendarContainer";
 // import AdminSearchBar from "@components/AdminSearchBar";
 import Pagination from "@components/Pagenation.jsx";
 import Spinner from "@components/Spinner";
-import { produce } from "immer";
 import useCodeStore from "@zustand/codeStore";
 import useAxiosInstance from "@hooks/useAxiosInstance";
 import { useState, useEffect, useMemo } from "react";
@@ -28,23 +27,45 @@ export default function List() {
   });
   const [calendarOpen, setCalendarOpen] = useState(false);
   const startDate = useMemo(
-    () => new Date(period.startDate).toISOString().slice(0, 10),
+    () =>
+      new Date(period.startDate).toLocaleDateString("ko-KR", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+      }),
     [period.startDate],
   );
   const endDate = useMemo(
-    () => new Date(period.endDate).toISOString().slice(0, 10),
+    () =>
+      new Date(period.endDate).toLocaleDateString("ko-KR", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+      }),
     [period.endDate],
   );
 
-  const [orderState, setOrderState] = useState({
-    state: "",
-  });
-
-  // 카테고리 코드 데이터 가져오기
+  const [orderState, setOrderState] = useState("OS010");
 
   const location = useLocation();
   let page = useQueryStr().get("page") || 1;
+  let state = useQueryStr().get("state") || "OS010";
+  let startDateQuery = useQueryStr().get("startDate") || startDate;
+  let endDateQuery = useQueryStr().get("endDate") || endDate;
 
+  // 기간과 주문 상태 변경시 쿼리스트링 변경
+  useEffect(() => {
+    console.log("useEffect");
+
+    const searchParams = new URLSearchParams(location.search);
+    searchParams.set("startDate", startDate);
+    searchParams.set("endDate", endDate);
+    searchParams.set("state", orderState);
+    searchParams.set("page", 1);
+    location.search = searchParams.toString();
+  }, [startDate, endDate, orderState]);
+
+  // 카테고리 코드 데이터 가져오기
   const { codes } = useCodeStore();
   const orderStateOptions = useMemo(() => {
     if (!codes) return [];
@@ -58,14 +79,12 @@ export default function List() {
   // const queryClient = useQueryClient();
 
   const { data, isLoading } = useQuery({
-    queryKey: ["orderList", page],
+    queryKey: ["orderList", page, state, startDateQuery, endDateQuery],
     // 로그인 기능 완성 후 /seller/orders 로 변경
     queryFn: () => axios.get("/seller/orders", { params: { page, limit: 15 } }),
     select: res => res.data,
     staleTime: 1000 * 10,
   });
-
-  console.log(data);
 
   if (isLoading) {
     return (
@@ -86,14 +105,10 @@ export default function List() {
         <InputSelect
           id="category"
           label="주문 상태"
-          value={orderState.state}
+          value={orderState}
           options={orderStateOptions}
           onChange={e => {
-            setOrderState(prev => {
-              return produce(prev, draft => {
-                draft.state = e.target.value;
-              });
-            });
+            setOrderState(e.target.value);
           }}
         />
 
