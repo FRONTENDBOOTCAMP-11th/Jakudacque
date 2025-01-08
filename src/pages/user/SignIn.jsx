@@ -1,20 +1,19 @@
 import InputError from "@components/InputError";
 import useAxiosInstance from "@hooks/useAxiosInstance";
-// import useQueryStr from "@hooks/useQueryStr";
 import { useMutation } from "@tanstack/react-query";
 import useUserStore from "@zustand/userStore";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
-const REST_API_KEY = "a30d718509473f620fe5233b40a67565";
-const REDIRECT_URI = "http://localhost:5173/signin";
+const REST_API_KEY = "7b635f7b3d4379252462f78787fc908b";
+const REDIRECT_URI = "http://localhost:5173/user/signin/kakao";
 
 export default function SignIn() {
   const setUser = useUserStore(store => store.setUser);
 
   const axios = useAxiosInstance();
   const navigate = useNavigate();
-  // const queryStr = useQueryStr();
 
   const {
     register,
@@ -23,7 +22,7 @@ export default function SignIn() {
     setError,
   } = useForm({
     defaultValues: {
-      email: "admin@market.com",
+      email: "u1@market.com",
       password: "11111111",
     },
   });
@@ -46,6 +45,7 @@ export default function SignIn() {
         refreshToken: user.token.refreshToken,
       });
 
+      toast(user.name + "님, 로그인 되었습니다!");
       navigate(-1);
     },
     onError: err => {
@@ -105,7 +105,7 @@ export default function SignIn() {
               </button>
               <button type="button" onClick={loginHandler}>
                 <img
-                  src="kakao_login.png"
+                  src="/kakao_login.png"
                   alt="카카오 로그인"
                   style={{ width: "200px", height: "auto" }}
                 />
