@@ -2,6 +2,12 @@ import tw from "tailwind-styled-components";
 import styles from "./CalendarStyle.module.css";
 import classNames from "classnames";
 import { DAY_OF_WEEK } from "@constants/admin";
+import PropTypes from "prop-types";
+
+CalendarHeader.propTypes = {
+  year: PropTypes.number.isRequired,
+  month: PropTypes.number.isRequired,
+};
 
 function CalendarHeader({ year, month }) {
   return (
@@ -20,6 +26,14 @@ function CalendarWeeks() {
     </div>
   );
 }
+
+CalendarMonth.propTypes = {
+  year: PropTypes.number.isRequired,
+  month: PropTypes.number.isRequired,
+  period: PropTypes.object.isRequired,
+  setPeriod: PropTypes.func.isRequired,
+  isStart: PropTypes.object.isRequired,
+};
 
 export default function CalendarMonth({
   year,

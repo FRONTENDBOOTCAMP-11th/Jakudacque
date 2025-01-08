@@ -1,7 +1,14 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import CalendarMonth from "./CalendarMonth";
 import styles from "./CalendarStyle.module.css";
 import { CURRENT_YEAR } from "@constants/admin";
+import PropTypes from "prop-types";
+
+CalendarBody.propTypes = {
+  year: PropTypes.number.isRequired,
+  period: PropTypes.object.isRequired,
+  setPeriod: PropTypes.func.isRequired,
+};
 
 export default function CalendarBody({ year, period, setPeriod }) {
   const isStart = useRef(true);
