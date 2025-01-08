@@ -7,6 +7,7 @@ import Cart from "@pages/product/Cart";
 import Search from "@pages/product/Search";
 // user
 import SignIn from "@pages/user/SignIn";
+import SignInKakao from "@pages/user/SignInKakao";
 import SignUp from "@pages/user/SignUp";
 import MyPage from "@pages/user/MyPage";
 // admin
@@ -38,9 +39,20 @@ const router = createBrowserRouter([
       { path: "search", element: <Search /> }, // 검색
       { path: "cart", element: <Cart /> }, // 장바구니
       // user
-      { path: "signin", element: <SignIn /> }, // 로그인
-      { path: "signup", element: <SignUp /> }, // 회원가입
-      { path: "mypage", element: <MyPage /> }, // 마이페이지
+      {
+        path: "user",
+        children: [
+          {
+            path: "signin", // 로그인
+            children: [
+              { index: true, element: <SignIn /> }, // 로그인
+              { path: "kakao", element: <SignInKakao /> }, // 카카오 로그인
+            ],
+          },
+          { path: "signup", element: <SignUp /> }, // 회원가입
+          { path: "mypage", element: <MyPage /> }, // 마이페이지
+        ],
+      },
       // admin
       {
         path: "admin",
