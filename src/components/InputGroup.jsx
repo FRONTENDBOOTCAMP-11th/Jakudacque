@@ -20,7 +20,7 @@ export default function InputGroup({
   onChange,
 }) {
   return (
-    <div className="flex flex-col mb-4">
+    <div className="flex flex-col">
       <label className="mb-1 text-sm" htmlFor={id}>
         {label}
       </label>
