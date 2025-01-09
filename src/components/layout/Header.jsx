@@ -88,8 +88,7 @@ export default function Header() {
               <IoCartOutline size={24} />
             </LinkButton>
             <LinkButton to={user ? "/user/mypage" : "/user/signin"}>
-              <span className="hidden">{user ? "마이페이지" : "로그인"}</span>
-              <IoPersonOutline size={22} />
+              {user ? <IoPersonOutline size={22} /> : <span>로그인</span>}
             </LinkButton>
           </div>
         </nav>
