@@ -1,20 +1,19 @@
 import Spinner from "@components/Spinner";
 import useAxiosInstance from "@hooks/useAxiosInstance";
 import { useMutation, useQuery } from "@tanstack/react-query";
+import CartModal from "@components/CartModal";
 import useCounterState from "@zustand/counter";
-import useWishState from "@zustand/wishState";
+import useModalState from "@zustand/modalState";
 import { IoAdd } from "react-icons/io5";
 import { IoRemove } from "react-icons/io5";
 import { IoHeartOutline } from "react-icons/io5";
 import { IoHeartSharp } from "react-icons/io5";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useHandleWish } from "@hooks/useHandleWish";
+import useWishState from "@zustand/wishState";
 
 export default function Detail() {
-  // 임시 토큰
-  const accessToken =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOjExLCJ0eXBlIjoidXNlciIsIm5hbWUiOiLqsJXsiJjsoJUiLCJlbWFpbCI6InNqa2FuZ0BqYWt1ZGFjcXVlLmNvbSIsImltYWdlIjoiL2ZpbGVzLzAwLXNhbXBsZS9wcm9maWxlLmpwZyIsImxvZ2luVHlwZSI6ImVtYWlsIiwiaWF0IjoxNzM2MjMyMTYxLCJleHAiOjE3MzYzMTg1NjEsImlzcyI6IkZFU1AifQ.AMJqi0DTCx2YB1Se0ALWxXiR7g90Peq4i1fZav2TYR4";
-
   const { _id } = useParams();
 
   const axios = useAxiosInstance();
@@ -42,12 +41,7 @@ export default function Detail() {
 
   // 상품 구매
   const orderProduct = useMutation({
-    mutationFn: products =>
-      axios.post("/orders", products, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      }),
+    mutationFn: products => axios.post("/orders", products),
     onSuccess: () => {
       toast("주문이 완료되었습니다!");
       refetch();
@@ -58,64 +52,13 @@ export default function Detail() {
     },
   });
 
-  // 찜
-  const { wish } = useWishState();
+  const { refetchWish } = useHandleWish(_id);
 
-  const handleWish = useWishState(state => state.handleWish);
+  const isWished = useWishState(state => state.isWished);
+  console.log(isWished(_id));
 
-  // 상품 찜 한 건 조회
-  const { data: wishData } = useQuery({
-    queryKey: ["product", _id],
-    queryFn: () =>
-      axios.get(`bookmarks/product/${_id}`, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      }),
-    select: res => res.data.item,
-    enabled: wish,
-  });
-
-  // 상품 찜하기
-  const registerWish = useMutation({
-    mutationFn: products =>
-      axios.post(`/bookmarks/product/`, products, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      }),
-    onSuccess: () => {
-      refetch();
-    },
-    onError: err => {
-      toast.error(err.message);
-      console.log(err);
-    },
-  });
-
-  // 상품 찜 취소하기
-  const removeWish = useMutation({
-    mutationFn: () =>
-      axios.delete(`/bookmarks/${Number(wishData?._id)}`, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      }),
-    onSuccess: () => {
-      refetch();
-    },
-    onError: err => {
-      toast.error(err.message);
-      console.log(err);
-    },
-  });
-
-  const handleToggleWish = () => {
-    wish
-      ? removeWish.mutate()
-      : registerWish.mutate({ target_id: Number(_id) });
-    handleWish();
-  };
+  // 장바구니 모달 상태 변경
+  const handleModal = useModalState(state => state.handleModal);
 
   return (
     <div className="w-full">
@@ -197,14 +140,17 @@ export default function Detail() {
                 >
                   구매하기
                 </button>
-                <button className="grow basis-[198px] border border-[#ddd] rounded hover:border-[#999] flex justify-center items-center">
+                <button
+                  className="grow basis-[198px] border border-[#ddd] rounded hover:border-[#999] flex justify-center items-center"
+                  onClick={() => handleModal()}
+                >
                   장바구니
                 </button>
                 <button
                   className="grow basis-[100px] border border-[#ddd] rounded hover:border-[#999] flex justify-center items-center"
-                  onClick={handleToggleWish}
+                  onClick={refetchWish}
                 >
-                  {wish ? <IoHeartSharp /> : <IoHeartOutline />}찜
+                  {isWished(_id) ? <IoHeartSharp /> : <IoHeartOutline />}찜
                 </button>
               </div>
             </div>
@@ -221,6 +167,7 @@ export default function Detail() {
           />
         </div>
       )}
+      <CartModal />
     </div>
   );
 }
