@@ -2,66 +2,78 @@ import { useEffect, useRef } from 'react';
 import useUserStore from '@zustand/userStore';
 
 export default function ChannelTalk() {
- const channelTalkRef = useRef(null);
- const user = useUserStore(state => state.user); // 사용자 정보 가져오기
+  const channelTalkRef = useRef(null);
+  const user = useUserStore(state => state.user);
 
- useEffect(() => {
-   const initChannelTalk = () => {
-     if (window.ChannelIO) {
-       return;
-     }
+  const isAuthPage = () => {
+    const path = window.location.pathname;
+    return path.startsWith('/admin') || 
+           path.includes('/signin') || 
+           path.includes('/signup');
+  };
 
-     const w = window;
-     if (w.ChannelIO) return;
+  useEffect(() => {
+    // 관리자 페이지나 인증 페이지면 초기화하지 않음
+    if (isAuthPage()) return;
 
-     const ch = function() {
-       ch.c(arguments);
-     };
-     ch.q = [];
-     ch.c = function(args) {
-       ch.q.push(args);
-     };
-     w.ChannelIO = ch;
+    const initChannelTalk = () => {
+      if (window.ChannelIO) {
+        return;
+      }
 
-     const script = document.createElement('script');
-     script.async = true;
-     script.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
-     channelTalkRef.current = script;
+      const w = window;
+      if (w.ChannelIO) return;
 
-     script.onload = () => {
-       w.ChannelIO('boot', {
-         "pluginKey": "81010319-9027-4bd0-8c9d-2f19caa0f5d1",
-         "memberId": user?.id,
-         "profile": {
-           "name": user?.name || '게스트',
-           "email": user?.email
-         }
-       });
-     };
+      const ch = function() {
+        ch.c(arguments);
+      };
+      ch.q = [];
+      ch.c = function(args) {
+        ch.q.push(args);
+      };
+      w.ChannelIO = ch;
 
-     document.head.appendChild(script);
-   };
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+      channelTalkRef.current = script;
 
-   initChannelTalk();
+      script.onload = () => {
+        w.ChannelIO('boot', {
+          "pluginKey": "81010319-9027-4bd0-8c9d-2f19caa0f5d1",
+          "memberId": user?.id,
+          "profile": {
+            "name": user?.name || '게스트',
+            "email": user?.email
+          }
+        });
+      };
 
-   // 사용자 정보가 변경될 때 채널톡 업데이트
-   if (window.ChannelIO && user) {
-     window.ChannelIO('updateUser', {
-       "memberId": user.id,
-       "name": user.name,
-       "email": user.email
-     });
-   }
+      document.head.appendChild(script);
+    };
 
-   return () => {
-     if (window.ChannelIO) {
-       window.ChannelIO('shutdown');
-     }
-     if (channelTalkRef.current && channelTalkRef.current.parentNode) {
-       channelTalkRef.current.parentNode.removeChild(channelTalkRef.current);
-     }
-   };
- }, [user]);
+    initChannelTalk();
 
- return null;
+    if (window.ChannelIO && user) {
+      window.ChannelIO('updateUser', {
+        "memberId": user.id,
+        "name": user.name,
+        "email": user.email
+      });
+    }
+
+    return () => {
+      if (window.ChannelIO) {
+        window.ChannelIO('shutdown');
+      }
+      if (channelTalkRef.current && channelTalkRef.current.parentNode) {
+        channelTalkRef.current.parentNode.removeChild(channelTalkRef.current);
+      }
+    };
+  }, [user]);
+
+  // 관리자 페이지나 인증 페이지면 null 반환
+  if (isAuthPage()) return null;
+
+  return null;
 }
