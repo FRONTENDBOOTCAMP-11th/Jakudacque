@@ -11,15 +11,15 @@ import SignInKakao from "@pages/user/SignInKakao";
 import SignUp from "@pages/user/SignUp";
 import MyPage from "@pages/user/MyPage";
 // admin
-import AdminDashboard from "@pages/admin/seller/Dashboard";
-import AdminProductList from "@pages/admin/seller/product/List";
-import AdminProductEdit from "@pages/admin/seller/product/Edit";
-import New from "@pages/admin/seller/product/New";
-import AdminOrderList from "@pages/admin/seller/order/List";
-import AdminOrderEdit from "@pages/admin/seller/order/Edit";
+import AdminDashboard from "@pages/admin/Dashboard";
+import AdminProductList from "@pages/admin/product/List";
+import AdminProductEdit from "@pages/admin/product/Edit";
+import New from "@pages/admin/product/New";
+import AdminOrderList from "@pages/admin/order/List";
+import AdminOrderEdit from "@pages/admin/order/Edit";
 
-import AdminUserList from "@pages/admin/master/user/List";
-import AdminCategory from "@pages/admin/master/category/List";
+import AdminUserList from "@pages/admin/user/List";
+import AdminCategory from "@pages/admin/category/List";
 
 import Layout from "@components/layout";
 import AdminLayout from "@components/layout/AdminLayout";
