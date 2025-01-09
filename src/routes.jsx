@@ -61,10 +61,9 @@ const router = createBrowserRouter([
         path: "admin",
         element: <AdminLayout />, // 어드민 레이아웃(리다이렉트 로직)
         children: [
-          // seller
-          { path: ":type/dashboard", element: <AdminDashboard /> }, // 어드민 홈
+          { index: true, element: <AdminDashboard /> }, // 어드민 홈
           {
-            path: ":type/product", // 상품 관리
+            path: "product", // 상품 관리
             element: <AdminProductList />, // 상품 리스트
             children: [
               { path: "edit/:_id", element: <AdminProductEdit /> }, // 상품 수정
@@ -72,15 +71,14 @@ const router = createBrowserRouter([
             ],
           },
           {
-            path: ":type/order", // 주문 관리
+            path: "order", // 주문 관리
             element: <AdminOrderList />,
             children: [
               { path: "edit/:_id", element: <AdminOrderEdit /> }, // 주문정보 수정
             ],
           },
-          // admin
-          { path: ":type/user", element: <AdminUserList /> }, // 어드민 유저 리스트
-          { path: ":type/category", element: <AdminCategory /> }, // 어드민 카테고리 관리
+          { path: "user", element: <AdminUserList /> }, // 어드민 유저 리스트
+          { path: "category", element: <AdminCategory /> }, // 어드민 카테고리 관리
         ],
       },
     ],
