@@ -1,5 +1,6 @@
 import Product from "@components/Product";
 import useUserStore from "@zustand/userStore";
+import useWishState from "@zustand/wishState";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -12,11 +13,13 @@ export default function MyPage() {
   };
 
   const { resetUser } = useUserStore();
+  const { resetWishState } = useWishState();
   const navigate = useNavigate();
 
   const handleLogout = event => {
     event.preventDefault();
     resetUser();
+    resetWishState();
     navigate("/");
     toast("로그아웃 되었습니다!");
   };
