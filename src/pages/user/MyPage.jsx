@@ -1,5 +1,7 @@
 import Product from "@components/Product";
-import { Link } from "react-router-dom";
+import useUserStore from "@zustand/userStore";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export default function MyPage() {
   const product = {
@@ -8,6 +10,17 @@ export default function MyPage() {
     price: 1500,
     link: "https://example.com/page1",
   };
+
+  const { resetUser } = useUserStore();
+  const navigate = useNavigate();
+
+  const handleLogout = event => {
+    event.preventDefault();
+    resetUser();
+    navigate("/");
+    toast("로그아웃 되었습니다!");
+  };
+
   return (
     <div className="w-full">
       <div className="max-w-screen-xl mx-auto">
@@ -33,7 +46,8 @@ export default function MyPage() {
             </div>
           </div>
           <Link
-            to="/"
+            to="/user/signin"
+            onClick={handleLogout}
             className="leading-none border-b border-[#444] absolute bottom-3 right-4 text-[16px] max-[700px]:text-[14px]"
           >
             로그아웃
