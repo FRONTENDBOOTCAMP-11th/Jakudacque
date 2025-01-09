@@ -189,7 +189,7 @@ export default function Edit() {
         <h3 className="mb-2 text-lg font-bold">주문 상태</h3>
         <div className="grid grid-cols-12 gap-4 my-4">
           {/* left */}
-          <div className="col-span-6">
+          <div className="flex flex-col col-span-6 gap-4">
             {/* 주문 상태 */}
             {codes?.orderState && (
               <InputSelect
@@ -208,26 +208,28 @@ export default function Edit() {
             )}
 
             {/* 메모 */}
-            <label className="mb-1 text-sm" htmlFor="memo">
-              메모
-            </label>
-            <textarea
-              id="memo"
-              rows="6"
-              className="block p-2.5 w-full text-sm rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 "
-              placeholder="메모를 입력하세요."
-              value={orderState.memo}
-              onChange={e => {
-                setOrderState(prev => {
-                  return produce(prev, draft => {
-                    draft.memo = e.target.value;
+            <div>
+              <label className="mb-1 text-sm" htmlFor="memo">
+                메모
+              </label>
+              <textarea
+                id="memo"
+                rows="6"
+                className="block p-2.5 w-full text-sm rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 "
+                placeholder="메모를 입력하세요."
+                value={orderState.memo}
+                onChange={e => {
+                  setOrderState(prev => {
+                    return produce(prev, draft => {
+                      draft.memo = e.target.value;
+                    });
                   });
-                });
-              }}
-            ></textarea>
+                }}
+              />
+            </div>
           </div>
           {/* right */}
-          <div className="col-span-6 col-start-7">
+          <div className="flex flex-col col-span-6 col-start-7 gap-4">
             <InputGroup
               label="배송사"
               placeholder="배송사를 입력하세요."
@@ -261,7 +263,7 @@ export default function Edit() {
         <h3 className="mb-2 text-lg font-bold">주문자/배송지 정보</h3>
         <div className="grid grid-cols-12 gap-4 my-4">
           {/* left */}
-          <div className="col-span-6">
+          <div className="flex flex-col col-span-6 gap-4">
             <InputGroup label="주문자명" value={order?.user?.name} disabled />
             <InputGroup label="이메일" value={order?.user?.email} disabled />
             <InputGroup label="장소" value={order?.address?.name} disabled />
@@ -269,7 +271,7 @@ export default function Edit() {
           </div>
           {/* right */}
           {order.delivery && (
-            <div className="col-span-6 col-start-7">
+            <div className="flex flex-col col-span-6 col-start-7 gap-4">
               <InputGroup
                 label="배송사"
                 value={order?.delivery?.company}
