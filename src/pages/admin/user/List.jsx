@@ -10,7 +10,6 @@ import AdminSearchBar from "@components/AdminSearchBar";
 import Pagination from "@components/Pagenation.jsx";
 import Spinner from "@components/Spinner";
 import { useState } from "react";
-import useCodeStore from "@zustand/codeStore";
 import useAxiosInstance from "@hooks/useAxiosInstance";
 import { useQuery } from "@tanstack/react-query";
 import useQueryStr from "@hooks/useQueryStr";
@@ -25,8 +24,6 @@ export default function List() {
 
   let page = useQueryStr().get("page") || 1;
   let keyword = useQueryStr().get("keyword") || "";
-
-  const { codes } = useCodeStore();
 
   const axios = useAxiosInstance();
 
@@ -74,7 +71,6 @@ export default function List() {
         <StyledTable>
           <StyledThead>
             <tr>
-              <StyledTh>등급</StyledTh>
               <StyledTh>이름</StyledTh>
               <StyledTh>연락처</StyledTh>
               <StyledTh>주소</StyledTh>
@@ -84,11 +80,6 @@ export default function List() {
           <tbody>
             {data.item.map(user => (
               <tr key={user._id}>
-                <StyledTd>
-                  {user.extra?.membershipClass
-                    ? codes?.membershipClass[user.extra.membershipClass]
-                    : ""}
-                </StyledTd>
                 <StyledTd>{user.name}</StyledTd>
                 <StyledTd>
                   {user.phone} <br />
