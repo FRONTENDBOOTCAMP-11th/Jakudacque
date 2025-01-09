@@ -64,16 +64,16 @@ const router = createBrowserRouter([
           { index: true, element: <AdminDashboard /> }, // 어드민 홈
           {
             path: "product", // 상품 관리
-            element: <AdminProductList />, // 상품 리스트
             children: [
+              { index: true, element: <AdminProductList /> }, // 상품 리스트
               { path: "edit/:_id", element: <AdminProductEdit /> }, // 상품 수정
               { path: "new", element: <New /> }, // 상품 추가
             ],
           },
           {
             path: "order", // 주문 관리
-            element: <AdminOrderList />,
             children: [
+              { index: true, element: <AdminOrderList /> }, // 주문 리스트
               { path: "edit/:_id", element: <AdminOrderEdit /> }, // 주문정보 수정
             ],
           },
