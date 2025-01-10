@@ -187,10 +187,9 @@ export default function MyPage() {
             <div className="max-w-[1120px] grid gap-5 pt-10 grid-cols-4 max-[1000px]:grid-cols-3 max-[600px]:grid-cols-2 max-[700px]:pt-0">
               {Array.isArray(product) ? (
                 <>
-                  <Product product={product[0]} />
-                  <Product product={product[1]} />
-                  <Product product={product[2]} />
-                  <Product product={product[3]} />
+                  {product.map(e => (
+                    <Product key={e.id} product={e} />
+                  ))}
                 </>
               ) : (
                 <></>
