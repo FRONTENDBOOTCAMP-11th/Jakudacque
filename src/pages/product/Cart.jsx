@@ -2,7 +2,7 @@ import { IoAdd, IoCartOutline, IoRemove } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import useAxiosInstance from "@hooks/useAxiosInstance";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import Spinner from "@components/Spinner";
 import { useState } from "react";
 import useCounterState from "@zustand/counter";
@@ -13,23 +13,35 @@ export default function Cart() {
   const [checkedIdsSet, setCheckedIdsSet] = useState(new Set());
   const numChecked = checkedIdsSet.size;
   const { countUp, countDown } = useCounterState();
+  const queryClient = useQueryClient();
 
   // 주문완료 Toast 메시지 호출
   const handlePurchase = () => {
     toast("주문이 완료되었습니다!");
   };
 
-  // 장바구니 목록 조회 api (로그인시)
+  // 장바구니 목록 조회(로그인시) api
   const { data, isLoading } = useQuery({
     queryKey: ["carts"],
     queryFn: () => axios.get(`/carts`),
     select: res => res.data,
   });
 
-  // 수량 변경 api
+  // 장바구니 상품 삭제(한건) api
+  const deleteItem = useMutation({
+    mutationFn: async _id => {
+      await axios.delete(`/carts/${_id}`);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["carts"] });
+    },
+  });
+
+  // 상품 수량 변경 api
   const updateQuantity = async (_id, quantity) => {
     try {
       const response = await axios.patch(`/carts/${_id}`, { quantity });
+      queryClient.invalidateQueries({ queryKey: ["carts"] });
       return response.data;
     } catch (error) {
       console.error("API 호출 에러:", error);
@@ -40,6 +52,23 @@ export default function Cart() {
   if (isLoading) {
     return <Spinner />;
   }
+
+  // 수량 변경 핸들러
+  const handleQuantityChange = async (items, increment) => {
+    const newQuantity = items.quantity + increment;
+    if (newQuantity < 1) return;
+
+    try {
+      await updateQuantity(items._id, newQuantity);
+      if (increment > 0) {
+        countUp(increment);
+      } else {
+        countDown(-increment);
+      }
+    } catch (error) {
+      console.error("수량 변경 중 에러 발생:", error);
+    }
+  };
 
   // Set()을 이용한 체크박스 토글 설정
   const updateSet = (set, _id) => {
@@ -58,7 +87,7 @@ export default function Cart() {
     setCheckedIdsSet(prevSet => updateSet(prevSet, _id));
   };
 
-  // 전체선택/해제
+  // 전체 선택/해제
   const toggleAllCheckedById = ({ target: { checked } }) => {
     if (checked) {
       const allChecked = new Set(data.item.map(({ _id }) => _id));
@@ -73,22 +102,12 @@ export default function Cart() {
     .filter(item => checkedIdsSet.has(item.product_id))
     .reduce((total, item) => total + item.product.price * item.quantity, 0);
 
-  // 수량 변경 핸들러
-  const handleQuantityChange = async (items, increment) => {
-    const newQuantity = items.quantity + increment;
-    if (newQuantity < 1 || newQuantity > 9999) return;
+  // 배송비 계산
+  const shippingFee = selectedTotalPrice >= 30000 ? 0 : data.cost.shippingFees;
 
-    try {
-      await updateQuantity(items._id, newQuantity);
-      if (increment > 0) {
-        countUp(increment);
-      } else {
-        countDown(-increment);
-      }
-    } catch (error) {
-      console.error("수량 변경 중 에러 발생:", error);
-    }
-  };
+  // 최종 금액 계산
+  const finalTotalPrice =
+    selectedTotalPrice === 0 ? 0 : selectedTotalPrice + shippingFee;
 
   return (
     <div className="max-w-7xl container mx-auto px-5 py-6">
@@ -166,7 +185,10 @@ export default function Cart() {
                   <p className="text-2xl font-medium">
                     {(items.product.price * items.quantity).toLocaleString()} 원
                   </p>
-                  <button className="font-medium border rounded-md shadow px-4 py-1 hover:bg-secondary-base mt-2">
+                  <button
+                    className="font-medium border rounded-md shadow px-4 py-1 hover:bg-secondary-base mt-2"
+                    onClick={() => deleteItem.mutate(items._id)}
+                  >
                     삭제
                   </button>
                 </div>
@@ -180,24 +202,11 @@ export default function Cart() {
                 </p>
                 <p className="flex justify-between w-full">
                   <span>배송비</span>
-                  <span>
-                    +{" "}
-                    {selectedTotalPrice >= 30000
-                      ? 0
-                      : data.cost.shippingFees.toLocaleString()}{" "}
-                    원
-                  </span>
+                  <span>+ {shippingFee.toLocaleString()} 원</span>
                 </p>
                 <p className="flex justify-between w-full text-3xl font-semibold">
                   <span>총 주문 금액</span>
-                  <span>
-                    {" "}
-                    {(
-                      selectedTotalPrice +
-                      (selectedTotalPrice >= 30000 ? 0 : data.cost.shippingFees)
-                    ).toLocaleString()}{" "}
-                    원
-                  </span>
+                  <span>{finalTotalPrice.toLocaleString()} 원</span>
                 </p>
               </div>
               <div className="flex justify-center mx-auto mt-6 mb-8">
