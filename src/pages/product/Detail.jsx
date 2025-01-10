@@ -9,9 +9,10 @@ import { IoRemove } from "react-icons/io5";
 import { IoHeartOutline } from "react-icons/io5";
 import { IoHeartSharp } from "react-icons/io5";
 import { useParams } from "react-router-dom";
-import { toast } from "react-toastify";
 import { useHandleWish } from "@hooks/useHandleWish";
 import useWishState from "@zustand/wishState";
+import { useAddCart } from "@hooks/useAddCart";
+import { useOrder } from "@hooks/useOrder";
 
 export default function Detail() {
   const { _id } = useParams();
@@ -19,7 +20,7 @@ export default function Detail() {
   const axios = useAxiosInstance();
 
   // 상품 상세 조회
-  const { data, isLoading, refetch } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["products", _id],
     queryFn: () => axios.get(`/products/${_id}`),
     select: res => res.data.item,
@@ -40,26 +41,23 @@ export default function Detail() {
   const productPrice = data && changeNotation(data.price * count);
 
   // 상품 구매
-  const orderProduct = useMutation({
-    mutationFn: products => axios.post("/orders", products),
-    onSuccess: () => {
-      toast("주문이 완료되었습니다!");
-      refetch();
-    },
-    onError: err => {
-      toast.error(err.message);
-      console.log(err);
-    },
-  });
+  const { orderProduct } = useOrder();
 
   const { refetchWish } = useHandleWish(_id);
 
+  // 찜 상태 조회하는 함수
   const isWished = useWishState(state => state.isWished);
-  console.log(isWished(_id));
 
   // 장바구니 모달 상태 변경
   const handleModal = useModalState(state => state.handleModal);
 
+  // 장바구니 추가
+  const { addCart } = useAddCart();
+
+  const cart = () => {
+    handleModal();
+    addCart.mutate({ product_id: Number(_id), quantity: count });
+  };
   return (
     <div className="w-full">
       {isLoading && <Spinner />}
@@ -142,7 +140,7 @@ export default function Detail() {
                 </button>
                 <button
                   className="grow basis-[198px] border border-[#ddd] rounded hover:border-[#999] flex justify-center items-center"
-                  onClick={() => handleModal()}
+                  onClick={() => cart()}
                 >
                   장바구니
                 </button>
