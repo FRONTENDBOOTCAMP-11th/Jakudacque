@@ -6,6 +6,7 @@ import useWishState from "@zustand/wishState";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import CartModal from "@components/CartModal";
 
 export default function MyPage() {
   const axios = useAxiosInstance();
@@ -198,6 +199,7 @@ export default function MyPage() {
           </div>
         </div>
       </div>
+      <CartModal />
     </div>
   );
 }

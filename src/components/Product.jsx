@@ -1,3 +1,4 @@
+import { useAddCart } from "@hooks/useAddCart";
 import { useHandleWish } from "@hooks/useHandleWish";
 import useWishState from "@zustand/wishState";
 import PropTypes from "prop-types";
@@ -9,6 +10,9 @@ export default function Product({ product }) {
 
   // 찜 상태 조회하는 함수
   const isWished = useWishState(state => state.isWished);
+
+  // 장바구니 추가
+  const { addCart } = useAddCart();
 
   return (
     <div className="px-1">
@@ -27,7 +31,13 @@ export default function Product({ product }) {
         </div>
       </Link>
       <div className="flex gap-2 px-1 mb-3">
-        <IoCartOutline size={20} />
+        <button
+          onClick={() =>
+            addCart.mutate({ product_id: Number(product.id), quantity: 1 })
+          }
+        >
+          <IoCartOutline size={20} />
+        </button>
         <button onClick={refetchWish}>
           {isWished(product.id) ? (
             <IoHeartSharp size={20} />
