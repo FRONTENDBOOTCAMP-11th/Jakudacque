@@ -1,6 +1,6 @@
 import Spinner from "@components/Spinner";
 import useAxiosInstance from "@hooks/useAxiosInstance";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import CartModal from "@components/CartModal";
 import useCounterState from "@zustand/counter";
 import useModalState from "@zustand/modalState";
