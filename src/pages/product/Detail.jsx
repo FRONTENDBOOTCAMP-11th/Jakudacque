@@ -3,7 +3,6 @@ import useAxiosInstance from "@hooks/useAxiosInstance";
 import { useQuery } from "@tanstack/react-query";
 import CartModal from "@components/CartModal";
 import useCounterState from "@zustand/counter";
-import useModalState from "@zustand/modalState";
 import { IoAdd } from "react-icons/io5";
 import { IoRemove } from "react-icons/io5";
 import { IoHeartOutline } from "react-icons/io5";
@@ -48,16 +47,9 @@ export default function Detail() {
   // 찜 상태 조회하는 함수
   const isWished = useWishState(state => state.isWished);
 
-  // 장바구니 모달 상태 변경
-  const handleModal = useModalState(state => state.handleModal);
-
   // 장바구니 추가
   const { addCart } = useAddCart();
 
-  const cart = () => {
-    handleModal();
-    addCart.mutate({ product_id: Number(_id), quantity: count });
-  };
   return (
     <div className="w-full">
       {isLoading && <Spinner />}
@@ -140,7 +132,9 @@ export default function Detail() {
                 </button>
                 <button
                   className="grow basis-[198px] border border-[#ddd] rounded hover:border-[#999] flex justify-center items-center"
-                  onClick={() => cart()}
+                  onClick={() =>
+                    addCart.mutate({ product_id: Number(_id), quantity: count })
+                  }
                 >
                   장바구니
                 </button>
