@@ -102,7 +102,7 @@ export default function Edit() {
         </Button>
       </div>
 
-      <div className="flex flex-col w-1/2 gap-8 mt-8">
+      <div className="flex flex-col w-full gap-8 mt-8">
         {/* 신규 카테고리 */}
         <div>
           <h3 className="mb-2 text-lg font-bold">신규 카테고리</h3>
@@ -125,21 +125,26 @@ export default function Edit() {
         {/* 카테고리 목록 */}
         <div>
           <h3 className="mb-2 text-lg font-bold">카테고리 목록</h3>
-          {categoryList.map(category => (
-            <div key={category.code} className="flex items-center gap-2">
-              <InputGroup
-                id={category.code}
-                value={category.value}
-                onChange={e => handleChange(e, category.code)}
-              />
-              <button
-                className="p-2 btn"
-                onClick={() => handleDelete(category.code)}
+          <div className="flex flex-wrap w-full gap-2">
+            {categoryList.map(category => (
+              <div
+                key={category.code}
+                className="flex items-center gap-2 p-2 bg-gray-300 rounded-lg"
               >
-                <IoTrashOutline size={24} color="red" />
-              </button>
-            </div>
-          ))}
+                <InputGroup
+                  id={category.code}
+                  value={category.value}
+                  onChange={e => handleChange(e, category.code)}
+                />
+                <button
+                  className="p-2 btn"
+                  onClick={() => handleDelete(category.code)}
+                >
+                  <IoTrashOutline size={24} color="red" />
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </>
