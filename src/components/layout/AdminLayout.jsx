@@ -48,9 +48,11 @@ export default function AdminLayout() {
       <div className="grid grid-cols-12">
         <AdminSideMenu
           menuList={[
-            { title: "대시보드", path: "/admin" },
+            { title: "대시보드", path: "/admin/dashboard" },
             { title: "상품관리", path: "/admin/product" },
             { title: "주문관리", path: "/admin/order" },
+            { title: "회원목록", path: "/admin/user" },
+            { title: "카테고리관리", path: "/admin/category" },
           ]}
         />
 

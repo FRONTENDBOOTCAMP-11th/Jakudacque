@@ -4,6 +4,7 @@ import Footer from "@components/layout/Footer";
 import { useLocation } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import TopButton from "@components/layout/TopButton";
+import RestoreWishList from "@components/RestoreWishList";
 
 export default function Layout() {
   const location = useLocation();
@@ -20,6 +21,7 @@ export default function Layout() {
       )}
 
       <Outlet />
+      <RestoreWishList />
 
       {!IS_ADMIN && <Footer />}
 

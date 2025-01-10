@@ -171,7 +171,7 @@ export default function Edit() {
           />
         </div>
         {/* left */}
-        <div className="col-span-6">
+        <div className="flex flex-col col-span-6 gap-4">
           {/* category */}
           {codes?.productCategory && (
             <InputSelect

@@ -15,7 +15,7 @@ InputSelect.propTypes = {
 
 export default function InputSelect({ id, label, options, value, onChange }) {
   return (
-    <div className="mb-4">
+    <div className="min-w-40">
       <label htmlFor={id} className="mb-2 text-sm">
         {label}
       </label>

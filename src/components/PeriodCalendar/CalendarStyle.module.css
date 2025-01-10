@@ -1,0 +1,70 @@
+/* CalendarContainer */
+.scrollable_calendar {
+  overflow-y: scroll;
+  width: 100%;
+  height: 268px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.calendar {
+  font-family: Arial, sans-serif;
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+.calendar_header {
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+/* CalendarBody */
+.calendar_body {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 10px;
+}
+/* Calendar Month */
+.month:not(:last-child) {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  padding-bottom: 10px;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+}
+.days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+.calendar_cell {
+  width: 100%;
+  height: 36px;
+  text-align: center;
+  border: 1px solid transparent;
+  cursor: pointer;
+  &:not(.disabled):hover {
+    @apply bg-info;
+    color: white;
+  }
+  &.selected {
+    @apply bg-gray-100;
+    color: #0d0d0d;
+
+    &.endpoints {
+      @apply bg-info;
+      color: white;
+    }
+  }
+  &.disabled {
+    color: #ccc;
+  }
+}

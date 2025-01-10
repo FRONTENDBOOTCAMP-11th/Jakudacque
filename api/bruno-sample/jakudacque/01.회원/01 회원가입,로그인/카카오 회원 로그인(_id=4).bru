@@ -1,0 +1,18 @@
+meta {
+  name: 카카오 회원 로그인(_id=4)
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{url}}/users/login/kakao
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "code": "",
+    "redirect_uri": "http://localhost:5173/user/signin/kakao"
+  }
+}
