@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function Product({ product }) {
   return (
-    <Link to={product.link} className="relative px-1 mx-auto">
+    <Link to={`/list/${product.id}`} className="relative px-1 mx-auto">
       <img
         src={product.image}
         alt={product.name}
@@ -27,9 +27,9 @@ export default function Product({ product }) {
 
 Product.propTypes = {
   product: PropTypes.shape({
+    id: PropTypes.number.isRequired,
     image: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
-    link: PropTypes.string.isRequired,
   }).isRequired,
 };
