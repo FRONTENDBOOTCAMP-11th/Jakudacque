@@ -1,5 +1,6 @@
 import { useAddCart } from "@hooks/useAddCart";
 import { useHandleWish } from "@hooks/useHandleWish";
+import { formatPrice } from "@utils/formatPrice";
 import useWishState from "@zustand/wishState";
 import PropTypes from "prop-types";
 import { IoCartOutline, IoHeartOutline, IoHeartSharp } from "react-icons/io5";
@@ -23,10 +24,9 @@ export default function Product({ product }) {
           className="min-w-40 min-h-40 object-cover rounded-lg my-2 lg:w-72 lg:h-72 hover:scale-105 transition-transform duration-300"
         />
         <div className="flex flex-col pb-3 px-1">
-          <p className="text-sm font-medium">{product.name}</p>
-          <div className="flex items-center">
-            <p className="text-sm font-medium">{product.price}</p>
-            <span className="ml-1">원</span>
+          <p className="text-[15px]">{product.name}</p>
+          <div className="flex items-center text-[15px]">
+            <p className="font-medium">{formatPrice(product.price)}원</p>
           </div>
         </div>
       </Link>

@@ -12,6 +12,7 @@ import { useHandleWish } from "@hooks/useHandleWish";
 import useWishState from "@zustand/wishState";
 import { useAddCart } from "@hooks/useAddCart";
 import { useOrder } from "@hooks/useOrder";
+import { formatPrice } from "@utils/formatPrice";
 
 export default function Detail() {
   const { _id } = useParams();
@@ -32,12 +33,8 @@ export default function Detail() {
   const countUp = useCounterState(state => state.countUp);
   const countDown = useCounterState(state => state.countDown);
 
-  // 화폐 단위 표시된 가격으로 변경
-  const changeNotation = price => {
-    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  };
   // 상품 가격(수량 변경시 함께 변경)
-  const productPrice = data && changeNotation(data.price * count);
+  const productPrice = data && formatPrice(data.price * count);
 
   // 상품 구매
   const { orderProduct } = useOrder();
@@ -70,7 +67,7 @@ export default function Detail() {
                   {data.name}
                 </h1>
                 <h2 className="text-[20px] max-[900px]:text-[16px] max-[425px]:text-[1rem]">
-                  {changeNotation(data.price)}원
+                  {formatPrice(data.price)}원
                 </h2>
               </div>
               <ul className="text-[14px] max-[900px]:text-[12px] max-[425px]:text-[12px]">
@@ -81,8 +78,7 @@ export default function Detail() {
                 <li className="flex gap-x-1.5">
                   <span className="font-semibold">배송비</span>
                   <span>
-                    {changeNotation(data.shippingFees)}원(30,000원 이상
-                    무료배송)
+                    {formatPrice(data.shippingFees)}원(30,000원 이상 무료배송)
                   </span>
                 </li>
               </ul>
