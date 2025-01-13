@@ -29,11 +29,11 @@ export default function TopButton() {
     <>
       {showButton && (
         <button
-          className="border-2 border-[#ccc] rounded-full w-12 h-12 flex flex-col items-center fixed right-[4%] bottom-[5.5%] bg-white/90"
+          className="border-2 border-[#ccc] box-border rounded-[24px] w-[56px] h-[56px] flex flex-col gap-y-0.5 items-center fixed right-[24px] bottom-[88px] bg-[#fff]/90 shadow-md shadow-[#eee]"
           onClick={scrollToTop}
         >
-          <IoChevronUp color="#444" size="14px" className="mt-1.5" />
-          <span className="text-sm leading-4 text-[#444]">TOP</span>
+          <IoChevronUp color="#444" size="14px" className="mt-2" />
+          <span className="text-[16px] leading-4 text-[#444]">TOP</span>
         </button>
       )}
     </>
