@@ -13,6 +13,7 @@ import useWishState from "@zustand/wishState";
 import { useAddCart } from "@hooks/useAddCart";
 import { useOrder } from "@hooks/useOrder";
 import { formatPrice } from "@utils/formatPrice";
+import { useState } from "react";
 
 export default function Detail() {
   const { _id } = useParams();
@@ -41,8 +42,21 @@ export default function Detail() {
 
   const { refetchWish } = useHandleWish(_id);
 
-  // 찜 상태 조회하는 함수
+  // 전역 찜 상태 조회
   const isWished = useWishState(state => state.isWished);
+
+  // 로컬 찜 상태
+  const [localWish, setLocalWish] = useState(isWished(_id));
+
+  const wishHandle = async () => {
+    setLocalWish(localWish => !localWish); // 로컬 찜 상태 변경
+    try {
+      await refetchWish(); // 전역 상태 변경 및 서버 동기화 처리(비동기)
+    } catch (err) {
+      console.log("찜 등록/취소 실패", err);
+      setLocalWish(localWish => !localWish); // 로컬 찜 상태 원복
+    }
+  };
 
   // 장바구니 추가
   const { addCart } = useAddCart();
@@ -136,9 +150,9 @@ export default function Detail() {
                 </button>
                 <button
                   className="grow basis-[100px] border border-[#ddd] rounded hover:border-[#999] flex justify-center items-center"
-                  onClick={refetchWish}
+                  onClick={wishHandle}
                 >
-                  {isWished(_id) ? <IoHeartSharp /> : <IoHeartOutline />}찜
+                  {localWish ? <IoHeartSharp /> : <IoHeartOutline />}찜
                 </button>
               </div>
             </div>
