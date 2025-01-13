@@ -109,7 +109,7 @@ export default function Cart() {
 
   // 선택된 상품의 총 금액 계산
   const selectedTotalPrice = data.item
-    .filter(item => checkedIdsSet.has(item.product_id))
+    .filter(item => checkedIdsSet.has(item._id))
     .reduce((total, item) => total + item.product.price * item.quantity, 0);
 
   // 배송비 계산
@@ -121,7 +121,7 @@ export default function Cart() {
 
   return (
     <div className="max-w-7xl container mx-auto px-5 py-6">
-      <div className=" mx-auto px-10mb-6">
+      <div className=" mx-auto px-10 mb-6">
         <div className="flex mb-12 justify-between items-center">
           <h1 className="text-4xl font-bold">장바구니</h1>
           <p className="text-sm text-[#999] pl-2 mt-auto">
@@ -156,18 +156,24 @@ export default function Cart() {
                     checked={checkedIdsSet.has(items._id)}
                     onChange={() => handleOnChange(items._id)}
                   />
-                  <img
-                    src={`https://11.fesp.shop/${items.product.image.path}`}
-                    alt={items.product.name}
-                    className="w-36 h-36 object-cover rounded-md"
-                  />
+                  <Link to={`/list/${items._id}`}>
+                    <img
+                      src={`https://11.fesp.shop/${items.product.image.path}`}
+                      alt={items.product.name}
+                      className="w-36 h-36 object-cover rounded-md"
+                    />
+                  </Link>
+
                   <div className="ml-4">
                     <h2 className="text-2xl font-medium">
-                      <Link to={`/product/${items.product_id}`}>
+                      <Link to={`/list/${items._id}`}>
                         {items.product.name}
                       </Link>
                     </h2>
-                    <div className="flex items-center mt-2 max-[360px]:flex-row max-[360px]:items-center">
+                    <div
+                      className="flex items-center mt-2"
+                      style={{ whiteSpace: "nowrap" }}
+                    >
                       <span className="text-xl text-[#555] mr-2">수량 :</span>
                       <div className="flex">
                         <button
@@ -191,7 +197,7 @@ export default function Cart() {
                     </div>
                   </div>
                 </div>
-                <div className="flex flex-col items-end mt-4 md:mt-0">
+                <div className="flex flex-col items-end mt-4">
                   <p className="text-2xl font-medium">
                     {(items.product.price * items.quantity).toLocaleString()} 원
                   </p>
@@ -204,7 +210,7 @@ export default function Cart() {
                 </div>
               </div>
             ))}
-            <div className="mt-8 border-t border-[#999] px-10 pt-6">
+            <div className="mt-8 border-t border-[#999] px-8 pt-6">
               <div className="flex flex-col items-center text-2xl font-medium space-y-5 mb-8">
                 <p className="flex justify-between w-full">
                   <span>상품 금액</span>
