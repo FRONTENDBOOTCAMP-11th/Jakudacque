@@ -1,11 +1,11 @@
 import { IoAdd, IoCartOutline, IoRemove } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import useAxiosInstance from "@hooks/useAxiosInstance";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import Spinner from "@components/Spinner";
 import { useState } from "react";
 import useCounterState from "@zustand/counter";
+import { useOrder } from "@hooks/useOrder";
 
 export default function Cart() {
   const axios = useAxiosInstance();
@@ -15,9 +15,19 @@ export default function Cart() {
   const { countUp, countDown } = useCounterState();
   const queryClient = useQueryClient();
 
-  // 주문완료 Toast 메시지 호출
-  const handlePurchase = () => {
-    toast("주문이 완료되었습니다!");
+  // 상품 구매
+  const { orderProduct } = useOrder();
+
+  // 상품을 배열로 만들어 구매api로 넘기기
+  const handleOrder = data => {
+    const products = data.item.map(item => ({
+      _id: Number(item._id),
+      quantity: item.quantity,
+    }));
+
+    orderProduct.mutate({
+      products,
+    });
   };
 
   // 장바구니 목록 조회(로그인시) api
@@ -157,7 +167,7 @@ export default function Cart() {
                         {items.product.name}
                       </Link>
                     </h2>
-                    <div className="flex items-center mt-2">
+                    <div className="flex items-center mt-2 max-[360px]:flex-row max-[360px]:items-center">
                       <span className="text-xl text-[#555] mr-2">수량 :</span>
                       <div className="flex">
                         <button
@@ -181,7 +191,7 @@ export default function Cart() {
                     </div>
                   </div>
                 </div>
-                <div className="text-right">
+                <div className="flex flex-col items-end mt-4 md:mt-0">
                   <p className="text-2xl font-medium">
                     {(items.product.price * items.quantity).toLocaleString()} 원
                   </p>
@@ -212,10 +222,10 @@ export default function Cart() {
               <div className="flex justify-center mx-auto mt-6 mb-8">
                 <div className=" flex gap-8 w-full text-xl">
                   <button
-                    onClick={handlePurchase}
+                    onClick={() => handleOrder(data)}
                     className="flex-1 text-center rounded-md border px-6 py-3 font-semibold shadow hover:bg-secondary-base"
                   >
-                    주문하기
+                    구매하기
                   </button>
                   <button
                     onClick={() => navigate(-1)}
