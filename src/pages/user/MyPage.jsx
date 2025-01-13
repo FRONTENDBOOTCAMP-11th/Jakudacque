@@ -1,3 +1,4 @@
+import Spinner from "@components/Spinner";
 import Product from "@components/Product";
 import useAxiosInstance from "@hooks/useAxiosInstance";
 import { useQuery } from "@tanstack/react-query";
@@ -31,7 +32,7 @@ export default function MyPage() {
   const user_id = user._id;
 
   // 회원 찜 내역 조회
-  const { data } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["user", user_id],
     queryFn: () => axios.get(`users/${user_id}/bookmarks`),
     select: res => res.data.item.product,
@@ -49,7 +50,7 @@ export default function MyPage() {
   }
 
   // 주문 내역 조회
-  const { data: orderData } = useQuery({
+  const { data: orderData, isLoading: isLoadingOrderData } = useQuery({
     queryKey: ["order"],
     queryFn: () => axios.get(`/orders`),
     select: res => res.data.item,
@@ -67,84 +68,87 @@ export default function MyPage() {
 
   return (
     <div className="w-full">
-      <div className="max-w-screen-xl mx-auto">
-        {/* 프로필 영역 */}
-        <div className=" bg-[#f1f1f1] py-12 max-[500px]:py-8 flex items-center gap-x-40 max-[1000px]:gap-x-20 max-[700px]:gap-x-10 justify-center relative max-[500px]:flex-col max-[500px]:gap-y-7">
-          <p className="text-[20px] max-[1000px]:text-[18px] max-[700px]:text-[16px] max-[500px]:text-[18px] ml-[-30px] max-[700px]:ml-0 shrink-0 tracking-wide">
-            <span>{user.name}</span>님, 반갑습니다.
-          </p>
-          <div className="flex items-center pb-4">
-            <div className="text-[16px] max-[700px]:text-[14px] border-x border-[#ccc] px-20 max-[900px]:px-14 max-[700px]:px-10 py-3 shrink-0 max-[500px]:border-x-0 max-[500px]:border-r">
-              주문
-              <span className="text-[22px] max-[700px]:text-[20px] pl-3 pr-1">
-                {orderData?.length}
-              </span>
-              건
+      {isLoading && isLoadingOrderData && <Spinner />}
+      {orderData && data && (
+        <div className="max-w-screen-xl mx-auto">
+          {/* 프로필 영역 */}
+          <div className=" bg-[#f1f1f1] py-12 max-[500px]:py-8 flex items-center gap-x-40 max-[1000px]:gap-x-20 max-[700px]:gap-x-10 justify-center relative max-[500px]:flex-col max-[500px]:gap-y-7">
+            <p className="text-[20px] max-[1000px]:text-[18px] max-[700px]:text-[16px] max-[500px]:text-[18px] ml-[-30px] max-[700px]:ml-0 shrink-0 tracking-wide">
+              <span>{user.name}</span>님, 반갑습니다.
+            </p>
+            <div className="flex items-center pb-4">
+              <div className="text-[16px] max-[700px]:text-[14px] border-x border-[#ccc] px-20 max-[900px]:px-14 max-[700px]:px-10 py-3 shrink-0 max-[500px]:border-x-0 max-[500px]:border-r">
+                주문
+                <span className="text-[22px] max-[700px]:text-[20px] pl-3 pr-1">
+                  {orderData?.length}
+                </span>
+                건
+              </div>
+              <div className="text-[16px] max-[700px]:text-[14px] border-r border-[#ccc] px-20 max-[900px]:px-14 max-[700px]:px-10 py-3 shrink-0 max-[500px]:border-x-0">
+                찜
+                <span className="text-[22px] max-[700px]:text-[20px] pl-3 pr-1">
+                  {data?.length}
+                </span>
+                건
+              </div>
             </div>
-            <div className="text-[16px] max-[700px]:text-[14px] border-r border-[#ccc] px-20 max-[900px]:px-14 max-[700px]:px-10 py-3 shrink-0 max-[500px]:border-x-0">
-              찜
-              <span className="text-[22px] max-[700px]:text-[20px] pl-3 pr-1">
-                {data?.length}
-              </span>
-              건
-            </div>
-          </div>
-          <Link
-            to="/user/signin"
-            onClick={handleLogout}
-            className="leading-none border-b border-[#444] absolute bottom-3 right-4 text-[16px] max-[700px]:text-[14px]"
-          >
-            로그아웃
-          </Link>
-        </div>
-        {/* 주문내역, 찜 리스트 카테고리 */}
-        <div className="flex justify-around gap-x-8 max-[700px]:flex-col">
-          <ul className="sticky top-0 ml-5 max-[700px]:ml-0 text-[18px] py-8 max-[700px]:my-6 flex flex-col max-[700px]:flex-row max-[700px]:justify-around gap-y-2 shrink-0 max-[700px]:text-[14px] h-11 max-[700px]:py-0 max-[700px]:gap-y-0 max-[700px]:h-6 bg-[#fff]">
-            <button
-              className={`${wishIsShow ? "" : "border-b-2 border-[#333]"}`}
-              onClick={() => setwishIsShow(false)}
+            <Link
+              to="/user/signin"
+              onClick={handleLogout}
+              className="leading-none border-b border-[#444] absolute bottom-3 right-4 text-[16px] max-[700px]:text-[14px]"
             >
-              주문 내역
-            </button>
-            <button
-              className={`${wishIsShow ? "border-b-2 border-[#333]" : ""}`}
-              onClick={() => setwishIsShow(true)}
-            >
-              찜 리스트
-            </button>
-          </ul>
-
-          {/* 주문 내역 */}
-          <div
-            className={`last:border-b-0 basis-[1120px] max-[700px]:basis-0 pt-4 max-[500px]:pt-0 ${wishIsShow ? "hidden" : ""}`}
-          >
-            {orderProducts ? (
-              <>
-                {orderProducts.map(e => (
-                  <OrderProduct key={e.id} orderProducts={e} />
-                ))}
-              </>
-            ) : (
-              <></>
-            )}
+              로그아웃
+            </Link>
           </div>
+          {/* 주문내역, 찜 리스트 카테고리 */}
+          <div className="flex justify-around gap-x-8 max-[700px]:flex-col">
+            <ul className="sticky top-0 ml-5 max-[700px]:ml-0 text-[18px] py-8 max-[700px]:my-6 flex flex-col max-[700px]:flex-row max-[700px]:justify-around gap-y-2 shrink-0 max-[700px]:text-[14px] h-11 max-[700px]:py-0 max-[700px]:gap-y-0 max-[700px]:h-6 bg-[#fff]">
+              <button
+                className={`${wishIsShow ? "" : "border-b-2 border-[#333]"}`}
+                onClick={() => setwishIsShow(false)}
+              >
+                주문 내역
+              </button>
+              <button
+                className={`${wishIsShow ? "border-b-2 border-[#333]" : ""}`}
+                onClick={() => setwishIsShow(true)}
+              >
+                찜 리스트
+              </button>
+            </ul>
 
-          {/* 찜 리스트 */}
-          <div className={`max-[600px]:px-2 ${wishIsShow ? "" : "hidden"}`}>
-            <div className="max-w-[1120px] grid gap-5 pt-10 grid-cols-4 max-[1000px]:grid-cols-3 max-[600px]:grid-cols-2 max-[700px]:pt-0">
-              {Array.isArray(product) ? (
+            {/* 주문 내역 */}
+            <div
+              className={`last:border-b-0 basis-[1120px] max-[700px]:basis-0 pt-4 max-[500px]:pt-0 ${wishIsShow ? "hidden" : ""}`}
+            >
+              {orderProducts ? (
                 <>
-                  {product.map(e => (
-                    <Product key={e.id} product={e} />
+                  {orderProducts.map(e => (
+                    <OrderProduct key={e.id} orderProducts={e} />
                   ))}
                 </>
               ) : (
                 <></>
               )}
             </div>
+
+            {/* 찜 리스트 */}
+            <div className={`max-[600px]:px-2 ${wishIsShow ? "" : "hidden"}`}>
+              <div className="max-w-[1120px] grid gap-5 pt-10 grid-cols-4 max-[1000px]:grid-cols-3 max-[600px]:grid-cols-2 max-[700px]:pt-0">
+                {Array.isArray(product) ? (
+                  <>
+                    {product.map(e => (
+                      <Product key={e.id} product={e} />
+                    ))}
+                  </>
+                ) : (
+                  <></>
+                )}
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      )}
       <CartModal />
     </div>
   );
