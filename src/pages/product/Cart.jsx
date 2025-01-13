@@ -153,8 +153,8 @@ export default function Cart() {
                   <input
                     type="checkbox"
                     className="w-4 h-4 mr-4"
-                    checked={checkedIdsSet.has(items.product_id)}
-                    onChange={() => handleOnChange(items.product_id)}
+                    checked={checkedIdsSet.has(items._id)}
+                    onChange={() => handleOnChange(items._id)}
                   />
                   <img
                     src={`https://11.fesp.shop/${items.product.image.path}`}
