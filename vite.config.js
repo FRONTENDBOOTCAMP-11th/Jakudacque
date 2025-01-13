@@ -12,6 +12,7 @@ export default defineConfig({
       { find: "@hooks", replacement: "/src/hooks" },
       { find: "@constants", replacement: "/src/constants" },
       { find: "@zustand", replacement: "/src/zustand" },
+      { find: "@utils", replacement: "/src/utils" },
     ],
   },
 });
