@@ -23,7 +23,7 @@ const useWishState = create(
         return !!get().wish[productId]; // 찜 상태 반환 (undefined일 경우 false)
       },
 
-      // 상태 불러오기 (로그인 시 사용)
+      // 회원의 찜 목록을 상태로 불러오기 (로그인 시 사용)
       restoreWishState: products => {
         let newWish = {};
         products.forEach(e => {
@@ -37,6 +37,7 @@ const useWishState = create(
         localStorage.removeItem("wish-storage");
       },
     }),
+    // 찜 리스트 로컬 스토리지에 저장
     {
       name: "wish-storage",
       storage: createJSONStorage(() => localStorage),
