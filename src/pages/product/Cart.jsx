@@ -21,7 +21,7 @@ export default function Cart() {
   // 상품을 배열로 만들어 구매api로 넘기기
   const handleOrder = data => {
     const products = data.item.map(item => ({
-      _id: Number(item._id),
+      _id: Number(item.product_id),
       quantity: item.quantity,
     }));
 
@@ -159,7 +159,7 @@ export default function Cart() {
                     checked={checkedIdsSet.has(items._id)}
                     onChange={() => handleOnChange(items._id)}
                   />
-                  <Link to={`/list/${items._id}`}>
+                  <Link to={`/list/${items.product_id}`}>
                     <img
                       src={`https://11.fesp.shop/${items.product.image.path}`}
                       alt={items.product.name}
@@ -172,7 +172,7 @@ export default function Cart() {
                       className="text-lg sm:text-2xl font-medium"
                       style={{ whiteSpace: "wrap" }}
                     >
-                      <Link to={`/list/${items._id}`}>
+                      <Link to={`/list/${items.product_id}`}>
                         {items.product.name}
                       </Link>
                     </h2>
