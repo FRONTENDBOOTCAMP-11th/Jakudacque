@@ -1,15 +1,30 @@
 import { useAddCart } from "@hooks/useAddCart";
 import { useHandleWish } from "@hooks/useHandleWish";
+import { formatPrice } from "@utils/formatPrice";
 import useWishState from "@zustand/wishState";
 import PropTypes from "prop-types";
+import { useState } from "react";
 import { IoCartOutline, IoHeartOutline, IoHeartSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
 export default function Product({ product }) {
   const { refetchWish } = useHandleWish(product.id);
 
-  // 찜 상태 조회하는 함수
+  // 전역 찜 상태 조회
   const isWished = useWishState(state => state.isWished);
+
+  // 로컬 찜 상태
+  const [localWish, setLocalWish] = useState(isWished(product.id));
+
+  const wishHandle = async () => {
+    setLocalWish(localWish => !localWish); // 로컬 찜 상태 변경
+    try {
+      await refetchWish(); // 전역 상태 변경 및 서버 동기화 처리(비동기)
+    } catch (err) {
+      console.log("찜 등록/취소 실패", err);
+      setLocalWish(localWish => !localWish); // 로컬 찜 상태 원복
+    }
+  };
 
   // 장바구니 추가
   const { addCart } = useAddCart();
@@ -23,10 +38,9 @@ export default function Product({ product }) {
           className="min-w-40 min-h-40 object-cover rounded-lg my-2 lg:w-72 lg:h-72 hover:scale-105 transition-transform duration-300"
         />
         <div className="flex flex-col pb-3 px-1">
-          <p className="text-sm font-medium">{product.name}</p>
-          <div className="flex items-center">
-            <p className="text-sm font-medium">{product.price}</p>
-            <span className="ml-1">원</span>
+          <p className="text-[15px]">{product.name}</p>
+          <div className="flex items-center text-[15px]">
+            <p className="font-medium">{formatPrice(product.price)}원</p>
           </div>
         </div>
       </Link>
@@ -38,8 +52,8 @@ export default function Product({ product }) {
         >
           <IoCartOutline size={20} />
         </button>
-        <button onClick={refetchWish}>
-          {isWished(product.id) ? (
+        <button onClick={wishHandle}>
+          {localWish ? (
             <IoHeartSharp size={20} />
           ) : (
             <IoHeartOutline size={20} />

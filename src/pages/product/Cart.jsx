@@ -1,11 +1,11 @@
 import { IoAdd, IoCartOutline, IoRemove } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import useAxiosInstance from "@hooks/useAxiosInstance";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import Spinner from "@components/Spinner";
 import { useState } from "react";
 import useCounterState from "@zustand/counter";
+import { useOrder } from "@hooks/useOrder";
 
 export default function Cart() {
   const axios = useAxiosInstance();
@@ -15,9 +15,21 @@ export default function Cart() {
   const { countUp, countDown } = useCounterState();
   const queryClient = useQueryClient();
 
-  // 주문완료 Toast 메시지 호출
-  const handlePurchase = () => {
-    toast("주문이 완료되었습니다!");
+  // 상품 구매
+  const { orderProduct } = useOrder();
+
+  // 상품을 배열로 만들어 구매api로 넘기기
+  const handleOrder = data => {
+    const products = data.item
+      .filter(item => checkedIdsSet.has(item._id)) // 선택된 상품만 주문
+      .map(item => ({
+        _id: Number(item.product_id),
+        quantity: item.quantity,
+      }));
+
+    orderProduct.mutate({
+      products,
+    });
   };
 
   // 장바구니 목록 조회(로그인시) api
@@ -99,7 +111,7 @@ export default function Cart() {
 
   // 선택된 상품의 총 금액 계산
   const selectedTotalPrice = data.item
-    .filter(item => checkedIdsSet.has(item.product_id))
+    .filter(item => checkedIdsSet.has(item._id))
     .reduce((total, item) => total + item.product.price * item.quantity, 0);
 
   // 배송비 계산
@@ -110,11 +122,14 @@ export default function Cart() {
     selectedTotalPrice === 0 ? 0 : selectedTotalPrice + shippingFee;
 
   return (
-    <div className="max-w-7xl container mx-auto px-5 py-6">
-      <div className=" mx-auto px-10mb-6">
+    <div
+      className="max-w-7xl container mx-auto px-5 py-6"
+      style={{ whiteSpace: "nowrap" }}
+    >
+      <div className=" mx-auto px-10 mb-6">
         <div className="flex mb-12 justify-between items-center">
-          <h1 className="text-4xl font-bold">장바구니</h1>
-          <p className="text-sm text-[#999] pl-2 mt-auto">
+          <h1 className="text-2xl sm:text-4xl font-bold">장바구니</h1>
+          <p className="text-xs sm:text-sm text-[#999] pl-2 mt-auto">
             30,000원 이상 구매시 배송비 무료
           </p>
         </div>
@@ -143,22 +158,30 @@ export default function Cart() {
                   <input
                     type="checkbox"
                     className="w-4 h-4 mr-4"
-                    checked={checkedIdsSet.has(items.product_id)}
-                    onChange={() => handleOnChange(items.product_id)}
+                    checked={checkedIdsSet.has(items._id)}
+                    onChange={() => handleOnChange(items._id)}
                   />
-                  <img
-                    src={`https://11.fesp.shop/${items.product.image.path}`}
-                    alt={items.product.name}
-                    className="w-36 h-36 object-cover rounded-md"
-                  />
-                  <div className="ml-4">
-                    <h2 className="text-2xl font-medium">
-                      <Link to={`/product/${items.product_id}`}>
+                  <Link to={`/list/${items.product_id}`}>
+                    <img
+                      src={`https://11.fesp.shop/${items.product.image.path}`}
+                      alt={items.product.name}
+                      className="w-24 h-24 sm:w-36 sm:h-36 object-cover rounded-md"
+                    />
+                  </Link>
+
+                  <div className="mx-4">
+                    <h2
+                      className="text-lg sm:text-2xl font-medium"
+                      style={{ whiteSpace: "wrap" }}
+                    >
+                      <Link to={`/list/${items.product_id}`}>
                         {items.product.name}
                       </Link>
                     </h2>
                     <div className="flex items-center mt-2">
-                      <span className="text-xl text-[#555] mr-2">수량 :</span>
+                      <span className="sm:text-xl text-[#555] mr-2">
+                        수량 :
+                      </span>
                       <div className="flex">
                         <button
                           className="border-[#aaa] border-y border-l px-2 max-[768px]:px-1.5"
@@ -181,8 +204,8 @@ export default function Cart() {
                     </div>
                   </div>
                 </div>
-                <div className="text-right">
-                  <p className="text-2xl font-medium">
+                <div className="flex flex-col items-end mt-4 sm:text-xl">
+                  <p className="font-medium pb-1 text-lg sm:text-2xl">
                     {(items.product.price * items.quantity).toLocaleString()} 원
                   </p>
                   <button
@@ -194,8 +217,8 @@ export default function Cart() {
                 </div>
               </div>
             ))}
-            <div className="mt-8 border-t border-[#999] px-10 pt-6">
-              <div className="flex flex-col items-center text-2xl font-medium space-y-5 mb-8">
+            <div className="mt-8 border-t border-[#999] px-8 pt-6">
+              <div className="flex flex-col items-center text-lg sm:text-2xl font-medium space-y-5 mb-8">
                 <p className="flex justify-between w-full">
                   <span>상품 금액</span>
                   <span>+ {selectedTotalPrice.toLocaleString()} 원</span>
@@ -204,18 +227,18 @@ export default function Cart() {
                   <span>배송비</span>
                   <span>+ {shippingFee.toLocaleString()} 원</span>
                 </p>
-                <p className="flex justify-between w-full text-3xl font-semibold">
+                <p className="flex justify-between w-full text-xl sm:text-3xl font-semibold">
                   <span>총 주문 금액</span>
                   <span>{finalTotalPrice.toLocaleString()} 원</span>
                 </p>
               </div>
               <div className="flex justify-center mx-auto mt-6 mb-8">
-                <div className=" flex gap-8 w-full text-xl">
+                <div className=" flex gap-8 w-full sm:text-xl">
                   <button
-                    onClick={handlePurchase}
+                    onClick={() => handleOrder(data)}
                     className="flex-1 text-center rounded-md border px-6 py-3 font-semibold shadow hover:bg-secondary-base"
                   >
-                    주문하기
+                    구매하기
                   </button>
                   <button
                     onClick={() => navigate(-1)}

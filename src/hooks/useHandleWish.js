@@ -68,6 +68,7 @@ export const useHandleWish = _id => {
     },
   });
 
+  // 전역 찜 상태 조회 결과에 따라 찜 등록/취소 함수 실행
   const refetchCallbacks = async () => {
     if (isWished(_id)) {
       const result = await refetch();
@@ -77,6 +78,7 @@ export const useHandleWish = _id => {
     }
   };
 
+  // (로그인 시 회원의) 상품 찜 목록 조회하여 상태로 불러옴
   const refetchAllCallbacks = async () => {
     const result = await refetchAll();
     const arr = result.data.map(e => e.product._id);
