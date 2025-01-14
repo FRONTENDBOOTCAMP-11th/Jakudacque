@@ -21,6 +21,8 @@ export default function List() {
   // 카테고리 정보 가져오기
   const CATEGORY_MAP = {
     ALL: "전체상품",
+    NEW: "신상",        
+    BEST: "BEST",      
     PC01: "다이어리",
     PC02: "스티커",
     PC03: "메모지",
@@ -52,17 +54,32 @@ export default function List() {
         }),
       };
 
-      // custom 파라미터를 사용하여 카테고리 필터링
-      if (category !== "ALL") {
+      // 카테고리별 필터링 조건 설정
+      if (category === "NEW") {
+        params.custom = JSON.stringify({
+          "extra.isNew": true,
+          show: true
+        });
+      } else if (category === "BEST") {
+        params.custom = JSON.stringify({
+          "extra.isBest": true,
+          show: true
+        });
+      } else if (category !== "ALL") {
         params.custom = JSON.stringify({
           "extra.category": category,
+          show: true
+        });
+      } else {
+        params.custom = JSON.stringify({
+          show: true
         });
       }
 
       const response = await axios.get("/products", { params });
       return response.data;
     },
-  });
+});
 
   if (isLoading) return <Spinner />;
   if (!data?.item?.length) {
