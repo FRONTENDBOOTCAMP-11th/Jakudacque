@@ -25,8 +25,7 @@ export default function MyPage() {
     toast("로그아웃 되었습니다!");
   };
 
-  const [wishIsShow, setwishIsShow] = useState("orderList");
-  console.log(wishIsShow);
+  const [category, setCategory] = useState("orderList");
 
   // 로그인한 회원 데이터
   const user = JSON.parse(sessionStorage.getItem("user")).state.user;
@@ -105,20 +104,20 @@ export default function MyPage() {
           <div className="flex justify-around gap-x-8 max-[700px]:flex-col">
             <ul className="sticky top-0 ml-5 max-[700px]:ml-0 text-[18px] py-8 max-[700px]:my-6 flex flex-col items-start max-[700px]:flex-row max-[700px]:justify-around gap-y-2 shrink-0 max-[700px]:text-[14px] h-11 max-[700px]:py-0 max-[700px]:gap-y-0 max-[700px]:h-6 bg-[#fff]">
               <button
-                className={`${wishIsShow === "orderList" ? "border-b-2 border-[#333]" : ""}`}
-                onClick={() => setwishIsShow("orderList")}
+                className={`${category === "orderList" ? "border-b-2 border-[#333]" : ""}`}
+                onClick={() => setCategory("orderList")}
               >
                 주문 내역
               </button>
               <button
-                className={`${wishIsShow === "wishList" ? "border-b-2 border-[#333]" : ""}`}
-                onClick={() => setwishIsShow("wishList")}
+                className={`${category === "wishList" ? "border-b-2 border-[#333]" : ""}`}
+                onClick={() => setCategory("wishList")}
               >
                 찜 리스트
               </button>
               <button
-                className={`${wishIsShow === "editProfile" ? "border-b-2 border-[#333]" : ""}`}
-                onClick={() => setwishIsShow("editProfile")}
+                className={`${category === "editProfile" ? "border-b-2 border-[#333]" : ""}`}
+                onClick={() => setCategory("editProfile")}
               >
                 회원 정보 수정
               </button>
@@ -126,7 +125,7 @@ export default function MyPage() {
 
             {/* 주문 내역 */}
             <div
-              className={`last:border-b-0 basis-[1120px] max-[700px]:basis-0 pt-5 max-[500px]:pt-0 pb-6 ${wishIsShow === "orderList" ? "" : "hidden"}`}
+              className={`last:border-b-0 basis-[1120px] max-[700px]:basis-0 pt-5 max-[500px]:pt-0 pb-6 ${category === "orderList" ? "" : "hidden"}`}
             >
               {orderProducts ? (
                 <>
@@ -141,7 +140,7 @@ export default function MyPage() {
 
             {/* 찜 리스트 */}
             <div
-              className={`max-[600px]:px-2 pb-6 ${wishIsShow === "wishList" ? "" : "hidden"}`}
+              className={`max-[600px]:px-2 pb-6 ${category === "wishList" ? "" : "hidden"}`}
             >
               <div className="max-w-[1120px] grid gap-5 pt-10 grid-cols-4 max-[1000px]:grid-cols-3 max-[600px]:grid-cols-2 max-[700px]:pt-0">
                 {Array.isArray(product) ? (
@@ -158,7 +157,7 @@ export default function MyPage() {
 
             {/* 회원 정보 수정 */}
             <div
-              className={`w-full pt-10 max-[700px]:pt-2 px-4 pb-6 flex flex-col gap-y-10 text-[16px] max-[700px]:text-[14px] ${wishIsShow === "editProfile" ? "" : "hidden"}`}
+              className={`w-full pt-10 max-[700px]:pt-2 px-4 pb-6 flex flex-col gap-y-10 text-[16px] max-[700px]:text-[14px] ${category === "editProfile" ? "" : "hidden"}`}
             >
               <form>
                 {/* 기본 정보 */}
