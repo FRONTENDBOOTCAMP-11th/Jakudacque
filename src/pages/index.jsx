@@ -6,127 +6,75 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { Link } from "react-router-dom";
 import Product from "@components/Product";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosInstance from "@hooks/useAxiosInstance";
 
-export default function index() {
+export default function Index() {
   // 메인 베너 슬라이드 데이터
-  const slides = [
+  const mainSlides = [
     {
       image: "images/banner1.png",
-      link: "https://example.com/page1",
+      link: "/list",
     },
     {
       image: "images/banner2.png",
-      link: "https://example.com/page2",
+      link: "/list?category=BEST",
     },
     {
       image: "images/banner3.png",
-      link: "https://example.com/page3",
+      link: "/list?category=NEW",
     },
   ];
 
-  // BEST 아이템 리스트 슬라이드 데이터
-  const bestProduct = [
-    {
-      image: "images/diary1.png",
-      name: "Product 1",
-      price: 1500,
-      link: "https://example.com/page1",
-    },
-    {
-      image: "images/keyring1.png",
-      name: "Product 2",
-      price: 1500,
-      link: "https://example.com/page2",
-    },
-    {
-      image: "images/maskingtape1.png",
-      name: "Product 3",
-      price: 1500,
-      link: "https://example.com/page3",
-    },
-    {
-      image: "images/memo1.png",
-      name: "Product 4",
-      price: 1500,
-      link: "https://example.com/page4",
-    },
-    {
-      image: "images/sticker1.png",
-      name: "Product 5",
-      price: 1500,
-      link: "https://example.com/page5",
-    },
-    {
-      image: "images/diary1.png",
-      name: "Product 6",
-      price: 1500,
-      link: "https://example.com/page6",
-    },
-    {
-      image: "images/keyring1.png",
-      name: "Product 7",
-      price: 1500,
-      link: "https://example.com/page7",
-    },
-    {
-      image: "images/maskingtape1.png",
-      name: "Product 8",
-      price: 1500,
-      link: "https://example.com/page8",
-    },
-  ];
+  const axios = useAxiosInstance();
 
-  // NEW 아이템 리스트 슬라이드 데이터
-  const newProduct = [
-    {
-      image: "images/diary1.png",
-      name: "Product 1",
-      price: 1500,
-      link: "https://example.com/page1",
+  const { data: bestData } = useQuery({
+    queryKey: ["bestProductList"],
+    queryFn: async () => {
+      const params = {};
+      params.custom = JSON.stringify({
+        "extra.isBest": true,
+        show: true,
+      });
+      const response = await axios.get("/products", { params });
+      return response.data;
     },
-    {
-      image: "images/keyring1.png",
-      name: "Product 2",
-      price: 1500,
-      link: "https://example.com/page2",
+  });
+
+  const { data: newData } = useQuery({
+    queryKey: ["newProductList"],
+    queryFn: async () => {
+      const params = {};
+      params.custom = JSON.stringify({
+        "extra.isNew": true,
+        show: true,
+      });
+      const response = await axios.get("/products", { params });
+      return response.data;
     },
-    {
-      image: "images/maskingtape1.png",
-      name: "Product 3",
-      price: 1500,
-      link: "https://example.com/page3",
-    },
-    {
-      image: "images/memo1.png",
-      name: "Product 4",
-      price: 1500,
-      link: "https://example.com/page4",
-    },
-    {
-      image: "images/sticker1.png",
-      name: "Product 5",
-      price: 1500,
-      link: "https://example.com/page5",
-    },
-    {
-      image: "images/diary1.png",
-      name: "Product 6",
-      price: 1500,
-      link: "https://example.com/page6",
-    },
-    {
-      image: "images/keyring1.png",
-      name: "Product 7",
-      price: 1500,
-      link: "https://example.com/page7",
-    },
-    {
-      image: "images/maskingtape1.png",
-      name: "Product 8",
-      price: 1500,
-      link: "https://example.com/page8",
-    },
-  ];
+  });
+
+  const bestProducts =
+    bestData?.item?.map(item => ({
+      id: item._id,
+      name: item.name,
+      price: item.price,
+      image: item.mainImages?.[0]?.path
+        ? "https://11.fesp.shop" + item.mainImages[0].path
+        : "",
+      link: `/product/${item._id}`,
+    })) || [];
+
+  const newProducts =
+    newData?.item?.map(item => ({
+      id: item._id,
+      name: item.name,
+      price: item.price,
+      image: item.mainImages?.[0]?.path
+        ? "https://11.fesp.shop" + item.mainImages[0].path
+        : "",
+      link: `/product/${item._id}`,
+    })) || [];
 
   return (
     <div className="h-full mb-20">
@@ -140,7 +88,7 @@ export default function index() {
           modules={[Pagination, Autoplay]}
           className="w-full h-[200px] xl:h-[500px] lg:h-[400px] md:h-[400px] sm:h-[300px] mx-auto max-w-[1240px]"
         >
-          {slides.map((slide, index) => (
+          {mainSlides.map((slide, index) => (
             <SwiperSlide
               key={index}
               className="flex justify-center items-center text-center"
@@ -173,7 +121,7 @@ export default function index() {
             modules={[Navigation, Autoplay]}
             className="w-full h-auto mt-8"
           >
-            {bestProduct.map((product, index) => (
+            {bestProducts.map((product, index) => (
               <SwiperSlide
                 key={index}
                 className="flex flex-col items-center justify-center"
@@ -201,7 +149,7 @@ export default function index() {
             modules={[Navigation, Autoplay]}
             className="w-full h-auto mt-8"
           >
-            {newProduct.map((product, index) => (
+            {newProducts.map((product, index) => (
               <SwiperSlide
                 key={index}
                 className="flex flex-col items-center justify-center"
