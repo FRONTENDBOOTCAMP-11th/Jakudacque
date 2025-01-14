@@ -21,13 +21,23 @@ export default function SignUp() {
   const addUser = useMutation({
     mutationFn: async userInfo => {
       userInfo.type = "user";
+      // 주소지 배열로 들어감
+      userInfo.extra.addressBook = [
+        {
+          name: userInfo.extra?.addressBook?.name,
+          value: userInfo.extra?.addressBook?.value,
+        },
+      ];
+      if (!userInfo.phone) {
+        delete userInfo.phone;
+      }
       delete userInfo.passwordConfirm;
-      return axios.post(`/users`, userInfo);
+      return axios.post(`/users/`, userInfo);
     },
     onSuccess: res => {
       const user = res.data.item;
       toast(user.name + "님, 환영합니다!");
-      navigate("/signin");
+      navigate("/user/signin");
     },
     onError: err => {
       console.error(err);
@@ -115,6 +125,38 @@ export default function SignUp() {
             <InputError target={errors.passwordConfirm} />
           </div>
           <div className="mb-4">
+            <label className="block mb-2" htmlFor="addressBookName">
+              <span className="text-red-500 before:content-['*'] before:mr-1"></span>
+              배송지
+            </label>
+            <input
+              type="text"
+              id="addressBookName"
+              placeholder="배송지를 입력하세요"
+              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-secondary-base"
+              {...register("extra.addressBook.name", {
+                required: "배송지는 필수입니다.",
+              })}
+            />
+            <InputError target={errors.extra?.addressBook?.name} />
+          </div>
+          <div className="mb-4">
+            <label className="block mb-2" htmlFor="addressBookValue">
+              <span className="text-red-500 before:content-['*'] before:mr-1"></span>
+              주소
+            </label>
+            <input
+              type="text"
+              id="addressBookValue"
+              placeholder="주소를 입력하세요"
+              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-secondary-base"
+              {...register("extra.addressBook.value", {
+                required: "주소는 필수입니다.",
+              })}
+            />
+            <InputError target={errors.extra?.addressBook?.value} />
+          </div>
+          <div className="mb-4">
             <label className="block mb-2" htmlFor="phone">
               핸드폰
             </label>
@@ -124,18 +166,6 @@ export default function SignUp() {
               placeholder="핸드폰 번호를 입력하세요"
               className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-secondary-base"
               {...register("phone")}
-            />
-          </div>
-          <div className="mb-4">
-            <label className="block mb-2" htmlFor="address">
-              주소
-            </label>
-            <input
-              type="text"
-              id="address"
-              placeholder="주소를 입력하세요"
-              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-secondary-base"
-              {...register("address")}
             />
           </div>
 
