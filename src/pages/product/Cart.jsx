@@ -20,10 +20,12 @@ export default function Cart() {
 
   // 상품을 배열로 만들어 구매api로 넘기기
   const handleOrder = data => {
-    const products = data.item.map(item => ({
-      _id: Number(item.product_id),
-      quantity: item.quantity,
-    }));
+    const products = data.item
+      .filter(item => checkedIdsSet.has(item._id)) // 선택된 상품만 주문
+      .map(item => ({
+        _id: Number(item.product_id),
+        quantity: item.quantity,
+      }));
 
     orderProduct.mutate({
       products,
