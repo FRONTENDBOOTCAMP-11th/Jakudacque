@@ -125,7 +125,7 @@ export default function SignIn() {
               </button>
             </div>
             <Link
-              to="/signup"
+              to="/user/signup"
               className="mt-4 text-sm font-semibold hover:underline"
             >
               회원가입
