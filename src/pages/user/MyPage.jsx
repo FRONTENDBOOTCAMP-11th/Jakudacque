@@ -25,7 +25,7 @@ export default function MyPage() {
     toast("로그아웃 되었습니다!");
   };
 
-  const [wishIsShow, setwishIsShow] = useState(false);
+  const [category, setCategory] = useState("orderList");
 
   // 로그인한 회원 데이터
   const user = JSON.parse(sessionStorage.getItem("user")).state.user;
@@ -100,26 +100,32 @@ export default function MyPage() {
               로그아웃
             </Link>
           </div>
-          {/* 주문내역, 찜 리스트 카테고리 */}
+          {/* 주문내역, 찜 리스트, 회원정보수정 카테고리 */}
           <div className="flex justify-around gap-x-8 max-[700px]:flex-col">
-            <ul className="sticky top-0 ml-5 max-[700px]:ml-0 text-[18px] py-8 max-[700px]:my-6 flex flex-col max-[700px]:flex-row max-[700px]:justify-around gap-y-2 shrink-0 max-[700px]:text-[14px] h-11 max-[700px]:py-0 max-[700px]:gap-y-0 max-[700px]:h-6 bg-[#fff]">
+            <ul className="sticky top-0 ml-5 max-[700px]:ml-0 text-[18px] py-8 max-[700px]:my-6 flex flex-col items-start max-[700px]:flex-row max-[700px]:justify-around gap-y-2 shrink-0 max-[700px]:text-[14px] h-11 max-[700px]:py-0 max-[700px]:gap-y-0 max-[700px]:h-6 bg-[#fff]">
               <button
-                className={`${wishIsShow ? "" : "border-b-2 border-[#333]"}`}
-                onClick={() => setwishIsShow(false)}
+                className={`${category === "orderList" ? "border-b-2 border-[#333]" : ""}`}
+                onClick={() => setCategory("orderList")}
               >
                 주문 내역
               </button>
               <button
-                className={`${wishIsShow ? "border-b-2 border-[#333]" : ""}`}
-                onClick={() => setwishIsShow(true)}
+                className={`${category === "wishList" ? "border-b-2 border-[#333]" : ""}`}
+                onClick={() => setCategory("wishList")}
               >
                 찜 리스트
+              </button>
+              <button
+                className={`${category === "editProfile" ? "border-b-2 border-[#333]" : ""}`}
+                onClick={() => setCategory("editProfile")}
+              >
+                회원 정보 수정
               </button>
             </ul>
 
             {/* 주문 내역 */}
             <div
-              className={`last:border-b-0 basis-[1120px] max-[700px]:basis-0 pt-4 max-[500px]:pt-0 ${wishIsShow ? "hidden" : ""}`}
+              className={`last:border-b-0 basis-[1120px] max-[700px]:basis-0 pt-5 max-[500px]:pt-0 pb-6 ${category === "orderList" ? "" : "hidden"}`}
             >
               {orderProducts ? (
                 <>
@@ -133,7 +139,9 @@ export default function MyPage() {
             </div>
 
             {/* 찜 리스트 */}
-            <div className={`max-[600px]:px-2 ${wishIsShow ? "" : "hidden"}`}>
+            <div
+              className={`max-[600px]:px-2 pb-6 ${category === "wishList" ? "" : "hidden"}`}
+            >
               <div className="max-w-[1120px] grid gap-5 pt-10 grid-cols-4 max-[1000px]:grid-cols-3 max-[600px]:grid-cols-2 max-[700px]:pt-0">
                 {Array.isArray(product) ? (
                   <>
@@ -145,6 +153,95 @@ export default function MyPage() {
                   <></>
                 )}
               </div>
+            </div>
+
+            {/* 회원 정보 수정 */}
+            <div
+              className={`w-full pt-10 max-[700px]:pt-2 px-4 pb-6 flex flex-col gap-y-10 text-[16px] max-[700px]:text-[14px] ${category === "editProfile" ? "" : "hidden"}`}
+            >
+              <form>
+                {/* 기본 정보 */}
+                <div className="flex flex-col gap-y-7">
+                  <p className="text-[18px] max-[700px]:text-[16px] font-semibold border-b border-[#ccc] pb-4">
+                    기본 정보
+                  </p>
+                  <div className="grid grid-cols-[88px_minmax(200px,300px)] gap-y-2">
+                    <label htmlFor="name">이름</label>
+                    <input
+                      type="text"
+                      id="name"
+                      className="focus:outline-none border border-[#aaa] rounded-md px-1"
+                    />
+
+                    <label htmlFor="name">휴대폰 번호</label>
+                    <input
+                      type="text"
+                      id="phone"
+                      className="focus:outline-none border border-[#aaa] rounded-md px-1"
+                    />
+                  </div>
+                </div>
+              </form>
+              {/* 배송지 추가 */}
+              <form>
+                <div className="flex flex-col gap-y-7">
+                  <p className="text-[18px] max-[700px]:text-[16px] font-semibold border-b border-[#ccc] pb-4">
+                    배송지 추가
+                  </p>
+                  <div className="grid grid-cols-[88px_minmax(200px,300px)] gap-y-2">
+                    <label htmlFor="addressName">배송지명</label>
+                    <input
+                      type="text"
+                      id="phone"
+                      className="focus:outline-none border border-[#aaa] rounded-md px-1"
+                    />
+                    <label htmlFor="addressName">주소</label>
+                    <input
+                      type="text"
+                      id="phone"
+                      className="focus:outline-none border border-[#aaa] rounded-md px-1"
+                    />
+                  </div>
+                </div>
+                <button
+                  type="submit"
+                  className="mt-5 border border-[#aaa] rounded-md px-4 py-1 w-[388px] max-[388px]:w-full hover:border-[#555]"
+                >
+                  추가
+                </button>
+              </form>
+
+              {/* 배송지 정보 */}
+              <div className="flex flex-col gap-y-2">
+                <p className="text-[18px] font-semibold border-b border-[#ccc] pb-4 max-[700px]:text-[16px]">
+                  배송지 정보
+                </p>
+                <div className="flex flex-col gap-y-3">
+                  <div className="bg-[#f8f8f8] flex justify-between gap-x-3 p-4 items-center">
+                    <div className="flex flex-col gap-y-1">
+                      <p className="text-[14px] max-[700px]:text-[12px]">집</p>
+                      <p>경기도 남양주시 별내3로 63 (별내동, 쌍용예가아파트)</p>
+                    </div>
+                    <button className="text-[14px] border border-[#aaa] px-3 py-1 rounded-[4px] bg-white flex-shrink-0 hover:border-[#555]">
+                      삭제
+                    </button>
+                  </div>
+                  <div className="bg-[#f8f8f8] flex justify-between gap-x-3 p-4 items-center">
+                    <div className="flex flex-col gap-y-1">
+                      <p className="text-[14px] max-[700px]:text-[12px]">
+                        회사
+                      </p>
+                      <p>서울특별시 강남구 강남대로62길 21</p>
+                    </div>
+                    <button className="text-[14px] border border-[#aaa] px-3 py-1 rounded-[4px] bg-white flex-shrink-0 hover:border-[#555]">
+                      삭제
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <button className="border border-[#aaa] px-3 py-2 rounded-[4px] hover:bg-secondary-base">
+                수정 완료
+              </button>
             </div>
           </div>
         </div>
