@@ -25,6 +25,7 @@
     "react-router-dom": "^7.1.0",
     "react-spinners": "^0.15.0",
     "react-toastify": "^11.0.2",
+    "recharts": "^2.15.0",
     "styled-components": "^6.1.13",
     "swiper": "^11.1.15",
     "tailwind-styled-components": "^2.2.0",
