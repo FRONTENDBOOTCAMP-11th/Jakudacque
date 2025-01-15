@@ -108,10 +108,10 @@ export default function SignIn() {
             <InputError target={errors.password} />
           </div>
           <div className="mt-10 flex flex-col justify-center items-center gap-6">
-            <div className="flex justify-center items-center gap-10">
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-10">
               <button
                 type="submit"
-                className="bg-secondary-light py-2 px-6 rounded font-semibold hover:bg-secondary-dark "
+                className="bg-secondary-light py-2 px-6 rounded font-semibold hover:bg-secondary-dark"
                 style={{ width: "200px", height: "auto" }}
               >
                 로그인
