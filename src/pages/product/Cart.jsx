@@ -236,13 +236,13 @@ export default function Cart() {
                 <div className=" flex gap-8 w-full sm:text-xl">
                   <button
                     onClick={() => handleOrder(data)}
-                    className="flex-1 text-center rounded-md border px-6 py-3 font-semibold shadow hover:bg-secondary-base"
+                    className="flex-1 text-centerpx-6 py-3 font-semibold border border-[#ddd] rounded hover:border-[#999] hover:bg-secondary-base"
                   >
                     구매하기
                   </button>
                   <button
                     onClick={() => navigate(-1)}
-                    className="flex-1 text-center rounded-md border px-6 py-3 font-semibold shadow hover:bg-secondary-base"
+                    className="flex-1 text-center px-6 py-3 font-semibold border border-[#ddd] rounded hover:border-[#999] hover:bg-secondary-base"
                   >
                     계속 쇼핑하기
                   </button>

@@ -111,7 +111,7 @@ export default function SignIn() {
             <div className="flex flex-col sm:flex-row justify-center items-center gap-10">
               <button
                 type="submit"
-                className="bg-secondary-light py-2 px-6 rounded font-semibold hover:bg-secondary-dark"
+                className="py-2 border border-[#ddd] rounded hover:border-[#999] hover:bg-secondary-base flex justify-center items-center"
                 style={{ width: "200px", height: "auto" }}
               >
                 로그인
