@@ -63,32 +63,45 @@ export default function Index() {
   const newProducts = mapProducts(newData);
 
   // Best/New 상품 리스트 스와이퍼 공통으로 묶기
-  const renderSlides = (title, products) => (
-    <StyledSwiper>
-      <div className="relative mt-20 mx-auto max-w-[1240px]">
-        <h1 className="text-xl font-semibold">{title}</h1>
-        <Swiper
-          navigation={true}
-          loop={true}
-          autoplay={{ delay: 4000, disableOnInteraction: false }}
-          spaceBetween={20}
-          slidesPerView={Math.min(products.length, 4)}
-          slidesPerGroup={Math.min(products.length, 2)}
-          modules={[Navigation, Autoplay]}
-          className="w-full h-auto mt-8"
-        >
-          {products.map((product, index) => (
-            <SwiperSlide
-              key={index}
-              className="flex flex-col items-center justify-center"
-            >
-              <Product product={product} />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
-    </StyledSwiper>
-  );
+  const renderSlides = (title, products) => {
+    const isLoopEnabled = products.length > 4; // 조건적으로 loop 설정
+    return (
+      <StyledSwiper>
+        <div className="relative mt-20 mx-auto max-w-[1240px]">
+          <h1 className="text-xl font-semibold">{title}</h1>
+          <Swiper
+            navigation={true}
+            loop={isLoopEnabled}
+            autoplay={{ delay: 4000, disableOnInteraction: false }}
+            spaceBetween={20}
+            slidesPerGroup={2}
+            breakpoints={{
+              360: {
+                slidesPerView: 2,
+              },
+              720: {
+                slidesPerView: 3,
+              },
+              1080: {
+                slidesPerView: 4,
+              },
+            }}
+            modules={[Navigation, Autoplay]}
+            className="w-full h-auto mt-8"
+          >
+            {products.map((product, index) => (
+              <SwiperSlide
+                key={index}
+                className="flex flex-col items-center justify-center"
+              >
+                <Product product={product} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      </StyledSwiper>
+    );
+  };
 
   return (
     <div className="h-full mb-20">
