@@ -24,7 +24,7 @@ export default function SignUp() {
       // 주소지 배열로 들어감
       userInfo.extra.addressBook = [
         {
-          name: userInfo.extra?.addressBook?.name,
+          name: "기본 배송지",
           value: userInfo.extra?.addressBook?.value,
         },
       ];
@@ -123,22 +123,6 @@ export default function SignUp() {
               })}
             />
             <InputError target={errors.passwordConfirm} />
-          </div>
-          <div className="mb-4">
-            <label className="block mb-2" htmlFor="addressBookName">
-              <span className="text-red-500 before:content-['*'] before:mr-1"></span>
-              배송지
-            </label>
-            <input
-              type="text"
-              id="addressBookName"
-              placeholder="배송지를 입력하세요"
-              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-secondary-base"
-              {...register("extra.addressBook.name", {
-                required: "배송지는 필수입니다.",
-              })}
-            />
-            <InputError target={errors.extra?.addressBook?.name} />
           </div>
           <div className="mb-4">
             <label className="block mb-2" htmlFor="addressBookValue">
