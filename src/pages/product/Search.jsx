@@ -7,6 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import Spinner from "@components/Spinner";
 import useQueryStr from "@hooks/useQueryStr";
 import Pagination from "@components/Pagenation";
+import useSearchStore from "@zustand/searchStore";
 
 export default function Search() {
   const navigate = useNavigate();
@@ -16,28 +17,34 @@ export default function Search() {
 
   const [isOpen, setIsOpen] = useState(false);
 
-   // 현재 입력 중인 키워드와 실제 검색된 키워드를 분리
-   const [inputKeyword, setInputKeyword] = useState(queryStr.get("keyword") || "");
-   const [searchedKeyword, setSearchedKeyword] = useState(queryStr.get("keyword") || "");
+  // 현재 입력 중인 키워드와 실제 검색된 키워드를 분리
+  const { setKeyword } = useSearchStore();
+  const [inputKeyword, setInputKeyword] = useState(queryStr.get("keyword") || "");
+  const [searchedKeyword, setSearchedKeyword] = useState(queryStr.get("keyword") || "");
  
 
   // URL이 변경될 때마다 inputKeyword와 searchedKeyword 모두 업데이트
   useEffect(() => {
-    const keyword = queryStr.get("keyword") || "";
-    setInputKeyword(keyword);
-    setSearchedKeyword(keyword);
-  }, [location.search]);
+    const urlKeyword = queryStr.get("keyword") || "";
+    setKeyword(urlKeyword);
+    setInputKeyword(urlKeyword);
+    setSearchedKeyword(urlKeyword);
+  }, [location.search, setKeyword]);
 
+  
   const handleInputChange = (e) => {
     setInputKeyword(e.target.value);
-  };
+  }; 
 
-   // 검색 실행 함수
+  // 검색 실행 함수
   const handleSearch = (event) => {
     event.preventDefault();
     if (!inputKeyword.trim()) return;
+    setKeyword(inputKeyword);
     navigate(`/search?keyword=${inputKeyword}`, { replace: true });
+    navigate(0); // 페이지 리로드를 항상 실행
   };
+
   
   // URL에서 page 파라미터 가져오기
   let page = queryStr.get("page") || 1;
@@ -88,8 +95,8 @@ export default function Search() {
                 type="text"
                 placeholder="찾으시는 상품을 검색해보세요"
                 className="flex-1 px-4 py-2 text-base focus:outline-none"
-                value={inputKeyword} 
-                onChange={handleInputChange}
+                value={inputKeyword}
+                onChange={(e) => setInputKeyword(e.target.value)}
                 onKeyDown={e => e.key === "Enter" && handleSearch(e)}
               />
               <button 
@@ -113,7 +120,7 @@ export default function Search() {
                 <button
                   key={term}
                   onClick={() => {
-                    setInputKeyword(term);
+                    setKeyword(term);
                     navigate(`/search?keyword=${term}`, { replace: true });
                   }}
                   className="px-4 py-2 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors"
@@ -139,7 +146,7 @@ export default function Search() {
               placeholder="찾으시는 상품을 검색해보세요"
               className="flex-1 px-4 py-2 text-base focus:outline-none"
               value={inputKeyword}
-              onChange={handleInputChange}
+              onChange={handleInputChange} 
               onKeyDown={e => e.key === "Enter" && handleSearch(e)}
             />
             <button 
