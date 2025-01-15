@@ -6,25 +6,31 @@ import { Link } from "react-router-dom";
 import { IoSearch } from "react-icons/io5";
 import { IoCartOutline } from "react-icons/io5";
 import { IoPersonOutline } from "react-icons/io5";
+import useSearchStore from "@zustand/searchStore";
 
 function SearchBar() {
-  const [keyword, setKeyword] = useState("");
+  const { setKeyword } = useSearchStore();  // useState 대신 useSearchStore 사용
+  const [inputKeyword, setInputKeyword] = useState("");
 
   const navigate = useNavigate();
   const location = useLocation();
 
-  const handleSearch = event => {
-    event.preventDefault();
-    if (!keyword.trim()) return;
-
-    // 현재 URL이 /search인 경우
+  useEffect(() => {
     if (location.pathname === "/search") {
-      // URL을 변경하고 페이지 리로드
-      navigate(`/search?keyword=${keyword}`, { replace: true });
+      const urlKeyword = new URLSearchParams(location.search).get("keyword") || "";
+      setInputKeyword(urlKeyword);
+    }
+  }, [location]);
+
+const handleSearch = event => {
+    event.preventDefault();
+    if (!inputKeyword.trim()) return;
+  
+    setKeyword(inputKeyword); // 검색 시점에 전역 상태 업데이트
+    
+    navigate(`/search?keyword=${inputKeyword}`);
+    if (location.pathname === "/search") {
       navigate(0);
-    } else {
-      // 다른 페이지에서 검색하는 경우
-      navigate(`/search?keyword=${keyword}`);
     }
   };
 
@@ -34,8 +40,8 @@ function SearchBar() {
         type="text"
         placeholder="검색어를 입력하세요"
         className="flex-1 focus:outline-none"
-        value={keyword}
-        onChange={event => setKeyword(event.target.value)}
+        value={inputKeyword}
+        onChange={event => setInputKeyword(event.target.value)}
         onKeyDown={event => event.key === "Enter" && handleSearch(event)}
       />
       <button className="p-1" onClick={handleSearch}>
