@@ -7,7 +7,7 @@ import ChannelTalk from "@components/ChannelTalk";
 function App() {
   return (
     <>
-      <ChannelTalk /> 
+      <ChannelTalk />
       <ToastProvider />
       <RouterProvider router={router} future={{ v7_startTransition: true }} />
     </>
