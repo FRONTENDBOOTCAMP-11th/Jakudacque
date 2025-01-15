@@ -1,14 +1,16 @@
 import Spinner from "@components/Spinner";
 import Product from "@components/Product";
 import useAxiosInstance from "@hooks/useAxiosInstance";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import useUserStore from "@zustand/userStore";
 import useWishState from "@zustand/wishState";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import CartModal from "@components/CartModal";
 import OrderProduct from "@components/OrderProduct";
+import Address from "@components/Address";
+import { useForm } from "react-hook-form";
 
 export default function MyPage() {
   const axios = useAxiosInstance();
@@ -33,7 +35,7 @@ export default function MyPage() {
 
   // 회원 찜 내역 조회
   const { data, isLoading } = useQuery({
-    queryKey: ["user", user_id],
+    queryKey: ["wish", user_id],
     queryFn: () => axios.get(`users/${user_id}/bookmarks`),
     select: res => res.data.item.product,
   });
@@ -66,10 +68,91 @@ export default function MyPage() {
     }));
   }
 
+  // 회원 정보 조회
+  const { data: userData, isLoading: isLoadingUserData } = useQuery({
+    queryKey: ["user", user_id],
+    queryFn: () => axios.get(`users/${user_id}`),
+    select: res => res.data.item,
+  });
+
+  // 기본 정보 폼
+  const {
+    register: registerBasic,
+    handleSubmit: handleBasicSubmit,
+    formState: { errors: basicErrors },
+  } = useForm({ mode: "onBlur" });
+
+  // 전체 폼 제출
+  const addBasic = newProfile => {
+    if (!newProfile.extra) {
+      newProfile.extra = {};
+    }
+    if (addressData.length) {
+      newProfile.extra.addressBook = addressData;
+      console.log("userProfile:", newProfile);
+      updateProfile.mutate(newProfile);
+    } else {
+      setaddAddressMsg("주소를 하나 이상 추가해주세요.");
+    }
+  };
+
+  // 회원 정보 수정
+  const updateProfile = useMutation({
+    mutationFn: newProfile => axios.patch(`users/${user_id}`, newProfile),
+    onSuccess: () => {
+      toast("회원 정보 수정이 완료되었습니다!");
+    },
+    onError: err => {
+      console.log(err);
+    },
+  });
+
+  // 배송지 추가 폼
+  const {
+    register: registerAddress,
+    handleSubmit: handleAddressSubmit,
+    formState: { errors: addressErrors },
+    reset: resetAddress,
+  } = useForm();
+
+  // 주소 데이터 상태로 관리
+  const [addressData, setAddressData] = useState([]);
+
+  useEffect(() => {
+    if (userData?.extra.addressBook) {
+      setAddressData(userData.extra.addressBook);
+    }
+  }, [userData]);
+
+  // 주소 추가 함수
+  const addAddress = newAddress => {
+    setAddressData(prev => [...prev, newAddress]);
+  };
+
+  // 배송지 추가 폼 제출
+  const onAddressSubmit = data => {
+    console.log(addressData);
+    if (addressData.length) {
+      data.id = addressData[addressData.length - 1].id + 1;
+    } else {
+      data.id = 1;
+    }
+    addAddress(data);
+    resetAddress();
+    setaddAddressMsg("");
+  };
+
+  // 주소 삭제 핸들러
+  const handleDeleteAddress = selectedIndex => {
+    setAddressData(prev => prev.filter((_, index) => index !== selectedIndex));
+  };
+
+  const [addAddressMsg, setaddAddressMsg] = useState("");
+
   return (
     <div className="w-full">
-      {isLoading && isLoadingOrderData && <Spinner />}
-      {orderData && data && (
+      {isLoading && isLoadingOrderData && isLoadingUserData && <Spinner />}
+      {orderData && userData && data && (
         <div className="max-w-screen-xl mx-auto">
           {/* 프로필 영역 */}
           <div className=" bg-[#f1f1f1] py-12 max-[500px]:py-8 flex items-center gap-x-40 max-[1000px]:gap-x-20 max-[700px]:gap-x-10 justify-center relative max-[500px]:flex-col max-[500px]:gap-y-7">
@@ -100,8 +183,9 @@ export default function MyPage() {
               로그아웃
             </Link>
           </div>
-          {/* 주문내역, 찜 리스트, 회원정보수정 카테고리 */}
+          {/* 주문내역, 찜 리스트, 회원정보수정 영역 */}
           <div className="flex justify-around gap-x-8 max-[700px]:flex-col">
+            {/* 주문내역, 찜 리스트, 회원정보수정 카테고리 */}
             <ul className="sticky top-0 ml-5 max-[700px]:ml-0 text-[18px] py-8 max-[700px]:my-6 flex flex-col items-start max-[700px]:flex-row max-[700px]:justify-around gap-y-2 shrink-0 max-[700px]:text-[14px] h-11 max-[700px]:py-0 max-[700px]:gap-y-0 max-[700px]:h-6 bg-[#fff]">
               <button
                 className={`${category === "orderList" ? "border-b-2 border-[#333]" : ""}`}
@@ -165,42 +249,83 @@ export default function MyPage() {
                   <p className="text-[18px] max-[700px]:text-[16px] font-semibold border-b border-[#ccc] pb-4">
                     기본 정보
                   </p>
-                  <div className="grid grid-cols-[88px_minmax(200px,300px)] gap-y-2">
+                  <div className="grid grid-cols-[88px_minmax(200px,300px)]">
                     <label htmlFor="name">이름</label>
                     <input
                       type="text"
                       id="name"
                       className="focus:outline-none border border-[#aaa] rounded-md px-1"
+                      defaultValue={userData.name}
+                      {...registerBasic("name", {
+                        required: "이름은 비워둘 수 없습니다.",
+                      })}
                     />
+                    {basicErrors.name && (
+                      <p className="text-red-500 text-sm mt-1 col-start-2">
+                        {basicErrors.name.message}
+                      </p>
+                    )}
 
-                    <label htmlFor="name">휴대폰 번호</label>
+                    <label htmlFor="name" className="mt-2">
+                      휴대폰 번호
+                    </label>
                     <input
                       type="text"
                       id="phone"
-                      className="focus:outline-none border border-[#aaa] rounded-md px-1"
+                      className="focus:outline-none border border-[#aaa] rounded-md px-1 mt-2"
+                      defaultValue={userData.phone}
+                      {...registerBasic("phone", {
+                        pattern: {
+                          value: /^[0-9]*$/,
+                          message: "숫자만 입력해주세요.",
+                        },
+                      })}
                     />
+                    {basicErrors.phone && (
+                      <p className="text-red-500 text-sm mt-1 col-start-2">
+                        {basicErrors.phone.message}
+                      </p>
+                    )}
                   </div>
                 </div>
               </form>
               {/* 배송지 추가 */}
-              <form>
+              <form onSubmit={handleAddressSubmit(onAddressSubmit)}>
                 <div className="flex flex-col gap-y-7">
                   <p className="text-[18px] max-[700px]:text-[16px] font-semibold border-b border-[#ccc] pb-4">
                     배송지 추가
                   </p>
-                  <div className="grid grid-cols-[88px_minmax(200px,300px)] gap-y-2">
+                  <div className="grid grid-cols-[88px_minmax(200px,300px)]">
                     <label htmlFor="addressName">배송지명</label>
                     <input
                       type="text"
-                      id="phone"
+                      id="addressName"
                       className="focus:outline-none border border-[#aaa] rounded-md px-1"
+                      {...registerAddress("name", {
+                        required: "배송지명을 입력해주세요.",
+                      })}
                     />
-                    <label htmlFor="addressName">주소</label>
+                    {addressErrors.name && (
+                      <p className="text-red-500 text-sm mt-1 col-start-2">
+                        {addressErrors.name.message}
+                      </p>
+                    )}
+                    <label htmlFor="address" className="mt-2">
+                      주소
+                    </label>
                     <input
                       type="text"
-                      id="phone"
-                      className="focus:outline-none border border-[#aaa] rounded-md px-1"
+                      id="address"
+                      className="focus:outline-none border border-[#aaa] rounded-md px-1 mt-2"
+                      {...registerAddress("value", {
+                        required: "주소를 입력해주세요.",
+                      })}
                     />
+                    {addressErrors.value && (
+                      <p className="text-red-500 text-sm mt-1 col-start-2">
+                        {addressErrors.value.message}
+                      </p>
+                    )}
                   </div>
                 </div>
                 <button
@@ -217,29 +342,22 @@ export default function MyPage() {
                   배송지 정보
                 </p>
                 <div className="flex flex-col gap-y-3">
-                  <div className="bg-[#f8f8f8] flex justify-between gap-x-3 p-4 items-center">
-                    <div className="flex flex-col gap-y-1">
-                      <p className="text-[14px] max-[700px]:text-[12px]">집</p>
-                      <p>경기도 남양주시 별내3로 63 (별내동, 쌍용예가아파트)</p>
-                    </div>
-                    <button className="text-[14px] border border-[#aaa] px-3 py-1 rounded-[4px] bg-white flex-shrink-0 hover:border-[#555]">
-                      삭제
-                    </button>
-                  </div>
-                  <div className="bg-[#f8f8f8] flex justify-between gap-x-3 p-4 items-center">
-                    <div className="flex flex-col gap-y-1">
-                      <p className="text-[14px] max-[700px]:text-[12px]">
-                        회사
-                      </p>
-                      <p>서울특별시 강남구 강남대로62길 21</p>
-                    </div>
-                    <button className="text-[14px] border border-[#aaa] px-3 py-1 rounded-[4px] bg-white flex-shrink-0 hover:border-[#555]">
-                      삭제
-                    </button>
-                  </div>
+                  <>
+                    <p className="text-red-500 text-sm">{addAddressMsg}</p>
+                    {addressData?.map((e, index) => (
+                      <Address
+                        key={index}
+                        address={e}
+                        onDelete={() => handleDeleteAddress(index)}
+                      />
+                    ))}
+                  </>
                 </div>
               </div>
-              <button className="border border-[#aaa] px-3 py-2 rounded-[4px] hover:bg-secondary-base">
+              <button
+                className="border border-[#aaa] px-3 py-2 rounded-[4px] hover:bg-secondary-base"
+                onClick={handleBasicSubmit(addBasic)}
+              >
                 수정 완료
               </button>
             </div>
