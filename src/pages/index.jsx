@@ -20,6 +20,7 @@ const mainBanner = [
 export default function Index() {
   const axios = useAxiosInstance();
 
+  // 상품목록 조회 api
   const useProducts = (key, filter) =>
     useQuery({
       queryKey: [key],
@@ -32,15 +33,18 @@ export default function Index() {
       },
     });
 
+  // Best Item 리스트 호출
   const { data: bestData } = useProducts("bestProductList", {
     "extra.isBest": true,
     show: true,
   });
+  // New Item 리스트 호출
   const { data: newData } = useProducts("newProductList", {
     "extra.isNew": true,
     show: true,
   });
 
+  // 호출된 리스트의 상품들 map으로 반환
   const mapProducts = useMemo(
     () => data =>
       data?.item?.map(item => ({
@@ -58,6 +62,7 @@ export default function Index() {
   const bestProducts = mapProducts(bestData);
   const newProducts = mapProducts(newData);
 
+  // Best/New 상품 리스트 스와이퍼 공통으로 묶기
   const renderSlides = (title, products) => (
     <StyledSwiper>
       <div className="relative mt-20 mx-auto max-w-[1240px]">
@@ -87,8 +92,9 @@ export default function Index() {
 
   return (
     <div className="h-full mb-20">
+      {/* 메인베너 */}
       <StyledSwiper>
-        <Swiper // 메인베너
+        <Swiper
           pagination={{ clickable: true }}
           loop={true}
           autoplay={{
