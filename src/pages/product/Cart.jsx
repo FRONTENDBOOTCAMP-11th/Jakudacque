@@ -181,17 +181,17 @@ export default function Cart() {
                     <div className="flex items-center mt-2">
                       <div className="flex">
                         <button
-                          className="border-neutral-400 border-y border-l px-2 max-[768px]:px-1.5"
+                          className="border-neutral-400 border-y border-l md:px-2 px-1.5"
                           onClick={() => handleQuantityChange(items, -1)}
                           disabled={items.quantity === 1}
                         >
                           <IoRemove />
                         </button>
-                        <span className="border-neutral-400 border px-4 max-[768px]:px-3 ">
+                        <span className="px-3 py-1 border border-neutral-400 md:px-4">
                           {items.quantity}
                         </span>
                         <button
-                          className="border-neutral-400  border-y border-r px-2 max-[768px]:px-1.5"
+                          className="border-neutral-400  border-y border-r md:px-2 px-1.5"
                           onClick={() => handleQuantityChange(items, 1)}
                           disabled={items.quantity === 9999}
                         >

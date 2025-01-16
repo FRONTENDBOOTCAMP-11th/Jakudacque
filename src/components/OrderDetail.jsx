@@ -5,7 +5,7 @@ export default function OrderDetail({ product }) {
     <>
       <div className="flex items-center gap-x-5">
         <img
-          className="w-[100px] rounded-md"
+          className="w-24 rounded-md "
           src={`https://11.fesp.shop/${product.image.path}`}
           alt={product.name}
         />

@@ -67,7 +67,7 @@ export default function Index() {
     const isLoopEnabled = products.length > 4; // 조건적으로 loop 설정
     return (
       <StyledSwiper>
-        <div className="relative mt-20 mx-auto max-w-[1240px]">
+        <div className="relative mx-auto mt-20 max-w-7xl">
           <h1 className="text-xl font-semibold">{title}</h1>
           <Swiper
             navigation={true}
@@ -104,7 +104,7 @@ export default function Index() {
   };
 
   return (
-    <div className="h-full mb-20">
+    <div className="h-full px-4 mb-20 sm:px-0">
       {/* 메인베너 */}
       <StyledSwiper>
         <Swiper
@@ -115,18 +115,18 @@ export default function Index() {
             disableOnInteraction: false,
           }}
           modules={[Pagination, Autoplay]}
-          className="w-full h-[200px] xl:h-[500px] lg:h-[400px] md:h-[400px] sm:h-[300px] mx-auto max-w-[1240px]"
+          className="w-full h-[200px] xl:h-[500px] lg:h-[400px] md:h-[400px] sm:h-[300px] mx-auto max-w-7xl"
         >
           {mainBanner.map((banner, index) => (
             <SwiperSlide
               key={index}
-              className="flex justify-center items-center text-center"
+              className="flex items-center justify-center text-center"
             >
               <Link to={banner.link}>
                 <img
                   src={banner.image}
                   alt={`Slide ${index + 1}`}
-                  className="block w-full h-full object-cover"
+                  className="block object-cover w-full h-full"
                 />
               </Link>
             </SwiperSlide>

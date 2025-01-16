@@ -64,7 +64,7 @@ export default function Detail() {
     <div className="w-full">
       {isLoading && <Spinner />}
       {data && (
-        <div className="max-w-[1240px] mx-auto max-[700px]:mx-0 max-[425px]:mt-0">
+        <div className="max-w-7xl mx-auto max-[700px]:mx-0 max-[425px]:mt-0">
           <div className="flex max-[700px]:flex-col items-center max-[700px]:items-stretch gap-x-5 px-5 max-[700px]:px-0">
             {/* 상품 이미지 */}
             <div className="basis-[640px] max-[700px]:basis-0  max-[700px]:w-screen">

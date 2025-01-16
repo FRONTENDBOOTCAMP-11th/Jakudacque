@@ -212,7 +212,7 @@ export default function MyPage() {
 
             {/* 주문 내역 */}
             <div
-              className={`last:border-b-0 basis-[1120px] max-[700px]:basis-0 pt-5 max-[500px]:pt-0 pb-6 ${category === "orderList" ? "" : "hidden"}`}
+              className={`flex-1 max-[700px]:basis-0 pt-5 max-[500px]:pt-0 pb-6 ${category === "orderList" ? "" : "hidden"}`}
             >
               {orderProducts.length ? (
                 <>

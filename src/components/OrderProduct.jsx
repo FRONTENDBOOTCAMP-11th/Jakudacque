@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 export default function OrderProduct({ orderProducts }) {
   return (
-    <div className="flex flex-col gap-y-4 max-w-[1120px] py-5 border-b border-neutral-300 max-[700px]:px-2">
+    <div className="flex flex-col px-2 py-5 border-b last:border-none gap-y-4 border-neutral-300 md:px-0">
       <p>{orderProducts.date}</p>
       {orderProducts.products ? (
         <>
