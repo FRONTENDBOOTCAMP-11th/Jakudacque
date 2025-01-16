@@ -12,6 +12,7 @@ import OrderProduct from "@components/OrderProduct";
 import Address from "@components/Address";
 import { useForm } from "react-hook-form";
 import { FaRegClipboard, FaRegHeart } from "react-icons/fa";
+import tw from "tailwind-styled-components";
 
 export default function MyPage() {
   const axios = useAxiosInstance();
@@ -158,34 +159,37 @@ export default function MyPage() {
       {orderData && userData && data && (
         <div className="max-w-screen-xl mx-auto">
           {/* 프로필 영역 */}
-          <div className=" bg-neutral-100 py-12 mt-4 mx-4 sm:mx-0 sm:mt-8 max-[500px]:py-8 flex items-center gap-x-40 max-[1000px]:gap-x-20 max-[700px]:gap-x-10 justify-center relative max-[500px]:flex-col max-[500px]:gap-y-7">
-            <p className="text-xl max-[1000px]:text-lg max-[700px]:text-base max-[500px]:text-lg ml-[-30px] max-[700px]:ml-0 shrink-0 tracking-wide">
-              <span>{user.name}</span>님, 반갑습니다.
-            </p>
-            <div className="flex items-center pb-4">
-              <div className=" max-[700px]:text-sm border-x border-neutral-300 px-20 max-[900px]:px-14 max-[700px]:px-10 py-3 shrink-0 max-[500px]:border-x-0 max-[500px]:border-r">
-                주문
-                <span className="text-2xl max-[700px]:text-xl pl-3 pr-1">
-                  {orderData?.length}
-                </span>
-                건
+          <div className="flex flex-col">
+            <div className="relative flex flex-col items-center justify-around py-8 bg-neutral-100 md:py-12 md:mt-4 sm:mt-8 md:flex-row gap-y-7">
+              <div className="text-xl tracking-wide text-center basis-2/5">
+                <span>{user.name}</span>님, 반갑습니다.
               </div>
-              <div className=" max-[700px]:text-sm border-r border-neutral-300 px-20 max-[900px]:px-14 max-[700px]:px-10 py-3 shrink-0 max-[500px]:border-x-0">
-                찜
-                <span className="text-2xl max-[700px]:text-xl pl-3 pr-1">
-                  {data?.length}
-                </span>
-                건
+              <div className="flex items-center justify-between basis-2/5 border-x border-neutral-300">
+                <ProfileInfo className="border-r border-neutral-300">
+                  주문
+                  <span className="text-2xl max-[700px]:text-xl pl-3 pr-1">
+                    {orderData?.length}
+                  </span>
+                  건
+                </ProfileInfo>
+                <ProfileInfo>
+                  찜
+                  <span className="text-2xl max-[700px]:text-xl pl-3 pr-1">
+                    {data?.length}
+                  </span>
+                  건
+                </ProfileInfo>
               </div>
+              <Link
+                to="/user/signin"
+                onClick={handleLogout}
+                className="absolute text-base leading-none border-b border-neutral-700 bottom-3 right-4 "
+              >
+                로그아웃
+              </Link>
             </div>
-            <Link
-              to="/user/signin"
-              onClick={handleLogout}
-              className="leading-none border-b border-neutral-700 absolute bottom-3 right-4 text-base max-[700px]:text-sm"
-            >
-              로그아웃
-            </Link>
           </div>
+
           {/* 주문내역, 찜 리스트, 회원정보수정 영역 */}
           <div className="flex flex-col gap-x-8 md:flex-row">
             {/* 주문내역, 찜 리스트, 회원정보수정 카테고리 */}
@@ -381,3 +385,7 @@ export default function MyPage() {
     </div>
   );
 }
+
+const ProfileInfo = tw.div`
+flex-1 py-3 text-center
+`;
