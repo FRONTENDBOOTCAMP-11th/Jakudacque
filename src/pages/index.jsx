@@ -152,23 +152,35 @@ const StyledSwiper = styled.div`
   .swiper-button-next,
   .swiper-button-prev {
     background-color: #fff;
-    border: 3px solid #fde047;
+    border: 3px solid #e5e5e5;
     width: 45px;
     height: 45px;
     padding: 15px;
     border-radius: 50%;
-    color: #fde047;
+    color: #737373;
     transition: transform 0.3s ease;
+    position: absolute;
+    top: 48%;
+    transform: translateY(-50%);
   }
 
   .swiper-button-prev:after,
   .swiper-button-next:after {
-    font-size: 1.3rem !important;
+    font-size: 1.1rem !important;
     font-weight: 600 !important;
   }
 
-  .swiper-button-next:hover,
-  .swiper-button-prev:hover {
-    transform: scale(1.2);
+  .swiper-button-prev:after {
+    transform: translate(-15%, 5%);
+  }
+
+  .swiper-button-next:after {
+    transform: translate(30%, 10%);
+  }
+
+  .swiper-button-prev:hover,
+  .swiper-button-next:hover {
+    transform: translateY(-50%) scale(1.2);
+    top: 48%;
   }
 `;
