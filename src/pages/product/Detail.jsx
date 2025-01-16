@@ -64,26 +64,25 @@ export default function Detail() {
     <div className="w-full">
       {isLoading && <Spinner />}
       {data && (
-        <div className="max-w-7xl mx-auto max-[700px]:mx-0 max-[425px]:mt-0">
-          <div className="flex max-[700px]:flex-col items-center max-[700px]:items-stretch gap-x-5 px-5 max-[700px]:px-0">
+        <div className="mx-auto max-w-7xl">
+          <div className="flex flex-col items-stretch gap-4 px-0 md:flex-row md:items-center sm:px-4">
             {/* 상품 이미지 */}
-            <div className="basis-[640px] max-[700px]:basis-0  max-[700px]:w-screen">
+            <div className="md:max-w-xl">
               <img
                 src={`https://11.fesp.shop/${data.mainImages[0].path}`} // 데이터 형식 변경 후 수정 예정
                 alt="상품 이미지"
+                className="object-cover"
               />
             </div>
+
             {/* 상품 정보 파트 */}
-            <div className="basis-[580px] max-[700px]:basis-0 max-[700px]:w-auto max-[700px]:px-4 max-[700px]:mt-0 flex flex-col gap-y-11 max-[1100px]:gap-y-4 max-[900px]:gap-y-4">
-              <div className="border-b border-neutral-200 pb-5 max-[900px]:pb-2 max-[900px]:pt-2">
-                <h1 className="text-2xl max-[900px]: pt-2 pb-1 max-[900px]:py-0 max-[700px]:text-lg ">
-                  {data.name}
-                </h1>
-                <h2 className="text-xl max-[900px]:text-base max-[425px]:text-base">
-                  {data.price.toLocaleString()}원
-                </h2>
+            <div className="flex-1 md:basis-[580px] px-4 md:px-0 flex flex-col self-stretch justify-around gap-y-4">
+              {/* 상품명 */}
+              <div className="py-2 border-b md:pb-5 border-neutral-200">
+                <h1 className="text-lg md:text-2xl ">{data.name}</h1>
               </div>
-              <ul className="text-sm max-[900px]:text-xs max-[425px]:text-xs">
+              {/* 배송방법 */}
+              <ul className="text-xs md:text-sm">
                 <li className="flex gap-x-1.5">
                   <span className="font-semibold">배송 방법</span>
                   <span>택배</span>
@@ -96,23 +95,24 @@ export default function Detail() {
                   </span>
                 </li>
               </ul>
-              <div className="text-sm max-[900px]:text-sm max-[425px]:text-sm bg-neutral-100 py-[14px] max-[900px]:py-[10px] px-4">
-                <p className="border-b border-neutral-200 border-dashed pb-2.5 max-[900px]:pb-1.5 mb-4 max-[900px]:mb-3">
+              {/* 수량 */}
+              <div className="px-4 py-2 text-sm bg-neutral-100 md:py-3">
+                <p className="pb-2 mb-4 border-b border-dashed border-neutral-200">
                   수량
                 </p>
                 <div className="flex items-center justify-between">
                   <div className="flex">
                     <button
-                      className="border-neutral-400 border-y border-l px-2 max-[768px]:px-1.5"
+                      className="px-2 border-l border-neutral-400 border-y"
                       onClick={() => countDown(1)}
                     >
                       <IoRemove />
                     </button>
-                    <span className="border-neutral-400 border px-4 py-1.5 max-[768px]:px-3 max-[768px]:py-1">
+                    <span className="px-4 py-2 border border-neutral-400">
                       {count}
                     </span>
                     <button
-                      className="border-neutral-400 border-y border-r px-2 max-[768px]:px-1.5"
+                      className="px-2 border-r border-neutral-400 border-y"
                       onClick={() => countUp(1)}
                     >
                       <IoAdd />
@@ -121,7 +121,7 @@ export default function Detail() {
                   <span>{productPrice}원</span>
                 </div>
               </div>
-              <div className="flex justify-between items-center my-2 max-[900px]:my-1">
+              <div className="flex items-center justify-between my-2">
                 <span className="text-sm sm:text-base">총 상품금액(1개)</span>
                 <span className="text-xl md:text-2xl">{productPrice}원</span>
               </div>
@@ -159,7 +159,7 @@ export default function Detail() {
             </div>
           </div>
           {/* 상품 디테일 컷 파트 시작 */}
-          <div className="border-y border-neutral-200 bg-neutral-50 text-center py-1.5 mt-[40px]">
+          <div className="border-y border-neutral-200 bg-neutral-50 text-center py-1.5 mt-10">
             <p>상세 정보</p>
           </div>
           {/* 상품 디테일 컷 */}
