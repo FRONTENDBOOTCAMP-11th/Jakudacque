@@ -262,9 +262,9 @@ export default function MyPage() {
             >
               <form>
                 {/* 기본 정보 */}
-                <div className="flex flex-col gap-y-7">
+                <StyledFormContainer>
                   <InfoTitle>기본 정보</InfoTitle>
-                  <div className="grid grid-cols-[88px_minmax(200px,300px)] gap-y-2">
+                  <StyledGridContainer>
                     <label htmlFor="name">이름</label>
                     <input
                       type="text"
@@ -276,14 +276,10 @@ export default function MyPage() {
                       })}
                     />
                     {basicErrors.name && (
-                      <p className="col-start-2 text-sm text-red-500">
-                        {basicErrors.name.message}
-                      </p>
+                      <ErrorText>{basicErrors.name.message}</ErrorText>
                     )}
 
-                    <label htmlFor="name" className="">
-                      휴대폰 번호
-                    </label>
+                    <label htmlFor="name">휴대폰 번호</label>
                     <input
                       type="text"
                       id="phone"
@@ -297,62 +293,52 @@ export default function MyPage() {
                       })}
                     />
                     {basicErrors.phone && (
-                      <p className="col-start-2 text-sm text-red-500">
-                        {basicErrors.phone.message}
-                      </p>
+                      <ErrorText>{basicErrors.phone.message}</ErrorText>
                     )}
-                  </div>
-                </div>
+                  </StyledGridContainer>
+                </StyledFormContainer>
               </form>
               {/* 배송지 추가 */}
               <form onSubmit={handleAddressSubmit(onAddressSubmit)}>
-                <div className="flex flex-col gap-y-7">
+                <StyledFormContainer>
                   <InfoTitle>배송지 추가</InfoTitle>
-                  <div className="flex flex-col gap-y-5">
-                    <div className="grid grid-cols-[88px_minmax(200px,300px)] gap-y-2">
-                      <label htmlFor="addressName">배송지명</label>
-                      <input
-                        type="text"
-                        id="addressName"
-                        className="px-1 border rounded-md focus:outline-none border-neutral-400"
-                        {...registerAddress("name", {
-                          required: "배송지명을 입력해주세요.",
-                        })}
-                      />
-                      {addressErrors.name && (
-                        <p className="col-start-2 text-sm text-red-500">
-                          {addressErrors.name.message}
-                        </p>
-                      )}
-                      <label htmlFor="address" className="">
-                        주소
-                      </label>
-                      <input
-                        type="text"
-                        id="address"
-                        className="px-1 border rounded-md focus:outline-none border-neutral-400"
-                        {...registerAddress("value", {
-                          required: "주소를 입력해주세요.",
-                        })}
-                      />
-                      {addressErrors.value && (
-                        <p className="col-start-2 text-sm text-red-500">
-                          {addressErrors.value.message}
-                        </p>
-                      )}
-                    </div>
+                  <StyledGridContainer>
+                    <label htmlFor="addressName">배송지명</label>
+                    <input
+                      type="text"
+                      id="addressName"
+                      className="px-1 border rounded-md focus:outline-none border-neutral-400"
+                      {...registerAddress("name", {
+                        required: "배송지명을 입력해주세요.",
+                      })}
+                    />
+                    {addressErrors.name && (
+                      <ErrorText>{addressErrors.name.message}</ErrorText>
+                    )}
+                    <label htmlFor="address">주소</label>
+                    <input
+                      type="text"
+                      id="address"
+                      className="px-1 border rounded-md focus:outline-none border-neutral-400"
+                      {...registerAddress("value", {
+                        required: "주소를 입력해주세요.",
+                      })}
+                    />
+                    {addressErrors.value && (
+                      <ErrorText>{addressErrors.value.message}</ErrorText>
+                    )}
                     <button
                       type="submit"
-                      className="border border-neutral-400 rounded-md px-3 py-2  max-[388px]:w-full hover:border-neutral-600"
+                      className="border border-neutral-400 rounded-md px-3 py-2 mt-3 max-[388px]:w-full hover:border-neutral-600 col-span-2"
                     >
                       추가
                     </button>
-                  </div>
-                </div>
+                  </StyledGridContainer>
+                </StyledFormContainer>
               </form>
 
               {/* 배송지 정보 */}
-              <div className="flex flex-col gap-y-2">
+              <StyledFormContainer>
                 <InfoTitle>배송지 정보</InfoTitle>
                 <div className="flex flex-col gap-y-3">
                   <>
@@ -366,9 +352,9 @@ export default function MyPage() {
                     ))}
                   </>
                 </div>
-              </div>
+              </StyledFormContainer>
               <button
-                className="px-3 py-2 border rounded-md border-neutral-400 hover:bg-secondary-base"
+                className="px-3 py-2 rounded-md bg-secondary-base hover:bg-secondary-dark"
                 onClick={handleBasicSubmit(addBasic)}
               >
                 수정 완료
@@ -383,14 +369,25 @@ export default function MyPage() {
 }
 
 const ProfileInfo = tw.div`
-flex-1 flex items-center justify-center
-py-3 text-center
+  flex-1 flex items-center justify-center
+  py-3 text-center
 `;
 
 const EmptyList = tw.div`
-flex flex-col items-center px-2 py-32 gap-y-4
+  flex flex-col items-center px-2 py-32 gap-y-4
 `;
 
 const InfoTitle = tw.p`
   pb-2 text-lg font-semibold border-b border-neutral-300
+`;
+
+const StyledFormContainer = tw.div`
+flex flex-col gap-y-7
+`;
+
+const StyledGridContainer = tw.div`
+  grid grid-cols-[88px_minmax(200px,300px)] gap-y-3
+`;
+const ErrorText = tw.p`
+  col-start-2 text-sm text-red-500
 `;
