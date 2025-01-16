@@ -89,7 +89,7 @@ const Category = () => {
         ? "/list?page=1"
         : `/list?category=${item.code}&page=1`;
 
-    navigate(newPath, { replace: true });
+    navigate(newPath);
   };
 
   return (
