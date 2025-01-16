@@ -9,14 +9,14 @@ export default function Footer() {
   `;
 
   const ListTitle = tw.span`
-    text-[#999]
+    text-neutral-400
     flex-shrink-0
     w-28
   `;
   return (
-    <footer className="w-full border-t border-neutral-200 mb-6">
-      <div className="text-[#333] max-w-screen-xl mx-auto flex flex-col gap-y-5 px-5">
-        <ul className="flex flex-wrap gap-x-5 gap-y-4 text-sm py-4 border-b border-neutral-200">
+    <footer className="w-full mb-6 border-t border-neutral-200">
+      <div className="flex flex-col max-w-screen-xl px-5 mx-auto  text-neutral-800 gap-y-5">
+        <ul className="flex flex-wrap py-4 text-sm border-b gap-x-5 gap-y-4 border-neutral-200">
           <li>
             <Link to="/">회사소개</Link>
           </li>
@@ -34,7 +34,7 @@ export default function Footer() {
           </li>
         </ul>
         <div className="flex flex-col gap-y-2">
-          <h4 className=" font-semibold">회사정보</h4>
+          <h4 className="font-semibold ">회사정보</h4>
 
           <IoRemoveOutline color="#333" />
 

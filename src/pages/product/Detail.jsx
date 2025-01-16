@@ -123,9 +123,7 @@ export default function Detail() {
               </div>
               <div className="flex justify-between items-center my-2 max-[900px]:my-1">
                 <span className="text-sm sm:text-base">총 상품금액(1개)</span>
-                <span className="text-2xl max-[900px]:text-[22px] max-[425px]:text-xl">
-                  {productPrice}원
-                </span>
+                <span className="text-xl md:text-2xl">{productPrice}원</span>
               </div>
               <div className="flex gap-x-2">
                 <button
