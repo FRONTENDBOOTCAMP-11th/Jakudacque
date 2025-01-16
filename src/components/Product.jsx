@@ -1,6 +1,5 @@
 import { useAddCart } from "@hooks/useAddCart";
 import { useHandleWish } from "@hooks/useHandleWish";
-import { formatPrice } from "@utils/formatPrice";
 import useWishState from "@zustand/wishState";
 import PropTypes from "prop-types";
 import { useState } from "react";
@@ -35,12 +34,12 @@ export default function Product({ product }) {
         <img
           src={product.image}
           alt={product.name}
-          className="min-w-40 min-h-40 object-cover rounded-lg my-2 lg:w-72 lg:h-72 hover:scale-105 transition-transform duration-300"
+          className="object-cover my-2 transition-transform duration-300 rounded-lg min-w-40 min-h-40 lg:w-72 lg:h-72 hover:scale-105"
         />
-        <div className="flex flex-col pb-3 px-1">
-          <p className="text-[15px]">{product.name}</p>
-          <div className="flex items-center text-[15px]">
-            <p className="font-medium">{formatPrice(product.price)}원</p>
+        <div className="flex flex-col px-1 pb-3">
+          <p className="text-sm">{product.name}</p>
+          <div className="flex items-center text-sm">
+            <p className="font-medium">{product.price.toLocaleString()}원</p>
           </div>
         </div>
       </Link>

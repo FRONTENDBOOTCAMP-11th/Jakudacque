@@ -11,6 +11,8 @@ import CartModal from "@components/CartModal";
 import OrderProduct from "@components/OrderProduct";
 import Address from "@components/Address";
 import { useForm } from "react-hook-form";
+import { FaRegClipboard, FaRegHeart } from "react-icons/fa";
+import tw from "tailwind-styled-components";
 
 export default function MyPage() {
   const axios = useAxiosInstance();
@@ -149,58 +151,63 @@ export default function MyPage() {
 
   const [addAddressMsg, setaddAddressMsg] = useState("");
 
+  console.log(orderProducts);
+
   return (
     <div className="w-full">
       {isLoading && isLoadingOrderData && isLoadingUserData && <Spinner />}
       {orderData && userData && data && (
         <div className="max-w-screen-xl mx-auto">
           {/* 프로필 영역 */}
-          <div className=" bg-[#f1f1f1] py-12 max-[500px]:py-8 flex items-center gap-x-40 max-[1000px]:gap-x-20 max-[700px]:gap-x-10 justify-center relative max-[500px]:flex-col max-[500px]:gap-y-7">
-            <p className="text-[20px] max-[1000px]:text-[18px] max-[700px]:text-[16px] max-[500px]:text-[18px] ml-[-30px] max-[700px]:ml-0 shrink-0 tracking-wide">
-              <span>{user.name}</span>님, 반갑습니다.
-            </p>
-            <div className="flex items-center pb-4">
-              <div className="text-[16px] max-[700px]:text-[14px] border-x border-[#ccc] px-20 max-[900px]:px-14 max-[700px]:px-10 py-3 shrink-0 max-[500px]:border-x-0 max-[500px]:border-r">
-                주문
-                <span className="text-[22px] max-[700px]:text-[20px] pl-3 pr-1">
-                  {orderData?.length}
-                </span>
-                건
+          <div className="flex flex-col">
+            <div className="relative flex flex-col items-center justify-around py-8 bg-neutral-100 md:py-12 md:mt-4 sm:mt-8 md:flex-row gap-y-7">
+              <div className="text-xl tracking-wide text-center basis-2/5">
+                <span>{user.name}</span>님, 반갑습니다.
               </div>
-              <div className="text-[16px] max-[700px]:text-[14px] border-r border-[#ccc] px-20 max-[900px]:px-14 max-[700px]:px-10 py-3 shrink-0 max-[500px]:border-x-0">
-                찜
-                <span className="text-[22px] max-[700px]:text-[20px] pl-3 pr-1">
-                  {data?.length}
-                </span>
-                건
+              <div className="flex items-center justify-between basis-2/5 min-w-80 md:border-x border-neutral-300">
+                <ProfileInfo className="border-r border-neutral-300">
+                  주문
+                  <span className="pl-3 pr-1 text-xl md:text-2xl">
+                    {orderData?.length}
+                  </span>
+                  건
+                </ProfileInfo>
+                <ProfileInfo>
+                  찜
+                  <span className="pl-3 pr-1 text-xl md:text-2xl">
+                    {data?.length}
+                  </span>
+                  건
+                </ProfileInfo>
               </div>
+              <Link
+                to="/user/signin"
+                onClick={handleLogout}
+                className="absolute text-base leading-none border-b border-neutral-700 bottom-3 right-4 "
+              >
+                로그아웃
+              </Link>
             </div>
-            <Link
-              to="/user/signin"
-              onClick={handleLogout}
-              className="leading-none border-b border-[#444] absolute bottom-3 right-4 text-[16px] max-[700px]:text-[14px]"
-            >
-              로그아웃
-            </Link>
           </div>
+
           {/* 주문내역, 찜 리스트, 회원정보수정 영역 */}
-          <div className="flex justify-around gap-x-8 max-[700px]:flex-col">
+          <div className="flex flex-col gap-x-8 md:flex-row">
             {/* 주문내역, 찜 리스트, 회원정보수정 카테고리 */}
-            <ul className="sticky top-0 ml-5 max-[700px]:ml-0 text-[18px] py-8 max-[700px]:my-6 flex flex-col items-start max-[700px]:flex-row max-[700px]:justify-around gap-y-2 shrink-0 max-[700px]:text-[14px] h-11 max-[700px]:py-0 max-[700px]:gap-y-0 max-[700px]:h-6 bg-[#fff]">
+            <ul className="sticky top-[68px] sm:top-16 md:ml-4 md:text-lg md:py-8 py-4 flex md:flex-col items-start justify-around gap-2 shrink-0 text-sm h-max bg-white">
               <button
-                className={`${category === "orderList" ? "border-b-2 border-[#333]" : ""}`}
+                className={`${category === "orderList" ? "border-b-2 border-neutral-800" : ""}`}
                 onClick={() => setCategory("orderList")}
               >
                 주문 내역
               </button>
               <button
-                className={`${category === "wishList" ? "border-b-2 border-[#333]" : ""}`}
+                className={`${category === "wishList" ? "border-b-2 border-neutral-800" : ""}`}
                 onClick={() => setCategory("wishList")}
               >
                 찜 리스트
               </button>
               <button
-                className={`${category === "editProfile" ? "border-b-2 border-[#333]" : ""}`}
+                className={`${category === "editProfile" ? "border-b-2 border-neutral-800" : ""}`}
                 onClick={() => setCategory("editProfile")}
               >
                 회원 정보 수정
@@ -209,70 +216,74 @@ export default function MyPage() {
 
             {/* 주문 내역 */}
             <div
-              className={`last:border-b-0 basis-[1120px] max-[700px]:basis-0 pt-5 max-[500px]:pt-0 pb-6 ${category === "orderList" ? "" : "hidden"}`}
+              className={`flex-1 md:pt-5 pt-0 pb-6 ${category === "orderList" ? "" : "hidden"}`}
             >
-              {orderProducts ? (
+              {orderProducts.length ? (
                 <>
                   {orderProducts.map(e => (
                     <OrderProduct key={e.id} orderProducts={e} />
                   ))}
                 </>
               ) : (
-                <></>
+                <>
+                  <EmptyList>
+                    <FaRegClipboard size={56} />
+                    <p>주문 내역이 없습니다.</p>
+                  </EmptyList>
+                </>
               )}
             </div>
 
             {/* 찜 리스트 */}
             <div
-              className={`max-[600px]:px-2 pb-6 ${category === "wishList" ? "" : "hidden"}`}
+              className={`flex-1 md:pt-5 pt-0 pb-6 ${category === "wishList" ? "" : "hidden"}`}
             >
-              <div className="max-w-[1120px] grid gap-5 pt-10 grid-cols-4 max-[1000px]:grid-cols-3 max-[600px]:grid-cols-2 max-[700px]:pt-0">
-                {Array.isArray(product) ? (
-                  <>
+              {product.length ? (
+                <>
+                  <div className="grid grid-cols-2 gap-5 lg:grid-cols-4 sm:grid-cols-3">
                     {product.map(e => (
                       <Product key={e.id} product={e} />
                     ))}
-                  </>
-                ) : (
-                  <></>
-                )}
-              </div>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <EmptyList>
+                    <FaRegHeart size={56} />
+                    <p>찜 리스트가 없습니다.</p>
+                  </EmptyList>
+                </>
+              )}
             </div>
 
             {/* 회원 정보 수정 */}
             <div
-              className={`w-full pt-10 max-[700px]:pt-2 px-4 pb-6 flex flex-col gap-y-10 text-[16px] max-[700px]:text-[14px] ${category === "editProfile" ? "" : "hidden"}`}
+              className={`w-full md:pt-5 pt-0 px-4 pb-6 flex flex-col gap-y-10 md:text-base text-sm ${category === "editProfile" ? "" : "hidden"}`}
             >
               <form>
                 {/* 기본 정보 */}
-                <div className="flex flex-col gap-y-7">
-                  <p className="text-[18px] max-[700px]:text-[16px] font-semibold border-b border-[#ccc] pb-4">
-                    기본 정보
-                  </p>
-                  <div className="grid grid-cols-[88px_minmax(200px,300px)]">
+                <StyledFormContainer>
+                  <InfoTitle>기본 정보</InfoTitle>
+                  <StyledGridContainer>
                     <label htmlFor="name">이름</label>
                     <input
                       type="text"
                       id="name"
-                      className="focus:outline-none border border-[#aaa] rounded-md px-1"
+                      className="px-1 border rounded-md focus:outline-none border-neutral-400"
                       defaultValue={userData.name}
                       {...registerBasic("name", {
                         required: "이름은 비워둘 수 없습니다.",
                       })}
                     />
                     {basicErrors.name && (
-                      <p className="text-red-500 text-sm mt-1 col-start-2">
-                        {basicErrors.name.message}
-                      </p>
+                      <ErrorText>{basicErrors.name.message}</ErrorText>
                     )}
 
-                    <label htmlFor="name" className="mt-2">
-                      휴대폰 번호
-                    </label>
+                    <label htmlFor="name">휴대폰 번호</label>
                     <input
                       type="text"
                       id="phone"
-                      className="focus:outline-none border border-[#aaa] rounded-md px-1 mt-2"
+                      className="px-1 border rounded-md focus:outline-none border-neutral-400"
                       defaultValue={userData.phone}
                       {...registerBasic("phone", {
                         pattern: {
@@ -282,68 +293,56 @@ export default function MyPage() {
                       })}
                     />
                     {basicErrors.phone && (
-                      <p className="text-red-500 text-sm mt-1 col-start-2">
-                        {basicErrors.phone.message}
-                      </p>
+                      <ErrorText>{basicErrors.phone.message}</ErrorText>
                     )}
-                  </div>
-                </div>
+                  </StyledGridContainer>
+                </StyledFormContainer>
               </form>
               {/* 배송지 추가 */}
               <form onSubmit={handleAddressSubmit(onAddressSubmit)}>
-                <div className="flex flex-col gap-y-7">
-                  <p className="text-[18px] max-[700px]:text-[16px] font-semibold border-b border-[#ccc] pb-4">
-                    배송지 추가
-                  </p>
-                  <div className="grid grid-cols-[88px_minmax(200px,300px)]">
+                <StyledFormContainer>
+                  <InfoTitle>배송지 추가</InfoTitle>
+                  <StyledGridContainer>
                     <label htmlFor="addressName">배송지명</label>
                     <input
                       type="text"
                       id="addressName"
-                      className="focus:outline-none border border-[#aaa] rounded-md px-1"
+                      className="px-1 border rounded-md focus:outline-none border-neutral-400"
                       {...registerAddress("name", {
                         required: "배송지명을 입력해주세요.",
                       })}
                     />
                     {addressErrors.name && (
-                      <p className="text-red-500 text-sm mt-1 col-start-2">
-                        {addressErrors.name.message}
-                      </p>
+                      <ErrorText>{addressErrors.name.message}</ErrorText>
                     )}
-                    <label htmlFor="address" className="mt-2">
-                      주소
-                    </label>
+                    <label htmlFor="address">주소</label>
                     <input
                       type="text"
                       id="address"
-                      className="focus:outline-none border border-[#aaa] rounded-md px-1 mt-2"
+                      className="px-1 border rounded-md focus:outline-none border-neutral-400"
                       {...registerAddress("value", {
                         required: "주소를 입력해주세요.",
                       })}
                     />
                     {addressErrors.value && (
-                      <p className="text-red-500 text-sm mt-1 col-start-2">
-                        {addressErrors.value.message}
-                      </p>
+                      <ErrorText>{addressErrors.value.message}</ErrorText>
                     )}
-                  </div>
-                </div>
-                <button
-                  type="submit"
-                  className="mt-5 border border-[#aaa] rounded-md px-4 py-1 w-[388px] max-[388px]:w-full hover:border-[#555]"
-                >
-                  추가
-                </button>
+                    <button
+                      type="submit"
+                      className="col-span-2 px-3 py-2 mt-3 rounded-md bg-secondary-base hover:bg-secondary-dark"
+                    >
+                      추가
+                    </button>
+                  </StyledGridContainer>
+                </StyledFormContainer>
               </form>
 
               {/* 배송지 정보 */}
-              <div className="flex flex-col gap-y-2">
-                <p className="text-[18px] font-semibold border-b border-[#ccc] pb-4 max-[700px]:text-[16px]">
-                  배송지 정보
-                </p>
+              <StyledFormContainer>
+                <InfoTitle>배송지 정보</InfoTitle>
                 <div className="flex flex-col gap-y-3">
                   <>
-                    <p className="text-red-500 text-sm">{addAddressMsg}</p>
+                    <p className="text-sm text-red-500">{addAddressMsg}</p>
                     {addressData?.map((e, index) => (
                       <Address
                         key={index}
@@ -353,9 +352,9 @@ export default function MyPage() {
                     ))}
                   </>
                 </div>
-              </div>
+              </StyledFormContainer>
               <button
-                className="border border-[#aaa] px-3 py-2 rounded-[4px] hover:bg-secondary-base"
+                className="px-3 py-2 rounded-md bg-secondary-base hover:bg-secondary-dark"
                 onClick={handleBasicSubmit(addBasic)}
               >
                 수정 완료
@@ -368,3 +367,27 @@ export default function MyPage() {
     </div>
   );
 }
+
+const ProfileInfo = tw.div`
+  flex-1 flex items-center justify-center
+  py-3 text-center
+`;
+
+const EmptyList = tw.div`
+  flex flex-col items-center px-2 py-32 gap-y-4
+`;
+
+const InfoTitle = tw.p`
+  pb-2 text-lg font-semibold border-b border-neutral-300
+`;
+
+const StyledFormContainer = tw.div`
+flex flex-col gap-y-7
+`;
+
+const StyledGridContainer = tw.div`
+  grid grid-cols-[88px_minmax(200px,300px)] gap-y-3
+`;
+const ErrorText = tw.p`
+  col-start-2 text-sm text-red-500
+`;

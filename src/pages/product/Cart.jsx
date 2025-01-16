@@ -123,19 +123,19 @@ export default function Cart() {
 
   return (
     <div
-      className="max-w-7xl container mx-auto px-5 py-6"
+      className="container px-5 py-6 mx-auto max-w-7xl"
       style={{ whiteSpace: "nowrap" }}
     >
-      <div className=" mx-auto px-10 mb-6">
-        <div className="flex mb-12 justify-between items-center">
-          <h1 className="text-2xl sm:text-4xl font-bold">장바구니</h1>
-          <p className="text-xs sm:text-sm text-[#999] pl-2 mt-auto">
+      <div className="px-10 mx-auto mb-6 ">
+        <div className="flex items-center justify-between mb-12">
+          <h1 className="text-2xl font-bold sm:text-4xl">장바구니</h1>
+          <p className="pl-2 mt-auto text-xs sm:text-sm text-neutral-400">
             30,000원 이상 구매시 배송비 무료
           </p>
         </div>
       </div>
       {data.item && data.item.length > 0 ? (
-        <div className=" mx-auto">
+        <div className="mx-auto ">
           <div className="mb-4 text-xl">
             <label className="flex items-center">
               <input
@@ -148,11 +148,11 @@ export default function Cart() {
             </label>
           </div>
 
-          <div className="grid grid-cols-1 gap-6 mb-28 w-full">
+          <div className="grid w-full grid-cols-1 gap-6 mb-28">
             {data.item.map(items => (
               <div
                 key={items.product_id}
-                className="flex items-center justify-between border rounded-lg p-5"
+                className="flex items-center justify-between p-5 border rounded-lg"
               >
                 <div className="flex items-center">
                   <input
@@ -165,13 +165,13 @@ export default function Cart() {
                     <img
                       src={`https://11.fesp.shop/${items.product.image.path}`}
                       alt={items.product.name}
-                      className="w-24 h-24 sm:w-36 sm:h-36 object-cover rounded-md"
+                      className="object-cover w-24 h-24 rounded-md sm:w-36 sm:h-36"
                     />
                   </Link>
 
                   <div className="mx-4">
                     <h2
-                      className="text-lg sm:text-2xl font-medium"
+                      className="text-lg font-medium sm:text-2xl"
                       style={{ whiteSpace: "wrap" }}
                     >
                       <Link to={`/list/${items.product_id}`}>
@@ -179,22 +179,19 @@ export default function Cart() {
                       </Link>
                     </h2>
                     <div className="flex items-center mt-2">
-                      <span className="sm:text-xl text-[#555] mr-2">
-                        수량 :
-                      </span>
                       <div className="flex">
                         <button
-                          className="border-[#aaa] border-y border-l px-2 max-[768px]:px-1.5"
+                          className="border-neutral-400 border-y border-l md:px-2 px-1.5"
                           onClick={() => handleQuantityChange(items, -1)}
                           disabled={items.quantity === 1}
                         >
                           <IoRemove />
                         </button>
-                        <span className="border-[#aaa] border px-4 py-1.5 max-[768px]:px-3 max-[768px]:py-1">
+                        <span className="px-3 py-1 border border-neutral-400 md:px-4">
                           {items.quantity}
                         </span>
                         <button
-                          className="border-[#aaa] border-y border-r px-2 max-[768px]:px-1.5"
+                          className="border-neutral-400  border-y border-r md:px-2 px-1.5"
                           onClick={() => handleQuantityChange(items, 1)}
                           disabled={items.quantity === 9999}
                         >
@@ -205,11 +202,11 @@ export default function Cart() {
                   </div>
                 </div>
                 <div className="flex flex-col items-end mt-4 sm:text-xl">
-                  <p className="font-medium pb-1 text-lg sm:text-2xl">
+                  <p className="pb-1 text-lg font-medium sm:text-2xl">
                     {(items.product.price * items.quantity).toLocaleString()} 원
                   </p>
                   <button
-                    className="font-medium border rounded-md shadow px-4 py-1 hover:bg-secondary-base mt-2"
+                    className="px-4 py-1 mt-2 font-medium border rounded-md shadow hover:bg-secondary-base"
                     onClick={() => deleteItem.mutate(items._id)}
                   >
                     삭제
@@ -217,8 +214,8 @@ export default function Cart() {
                 </div>
               </div>
             ))}
-            <div className="mt-8 border-t border-[#999] px-8 pt-6">
-              <div className="flex flex-col items-center text-lg sm:text-2xl font-medium space-y-5 mb-8">
+            <div className="px-8 pt-6 mt-8 border-t border-neutral-400">
+              <div className="flex flex-col items-center mb-8 space-y-5 text-lg font-medium sm:text-2xl">
                 <p className="flex justify-between w-full">
                   <span>상품 금액</span>
                   <span>+ {selectedTotalPrice.toLocaleString()} 원</span>
@@ -227,22 +224,22 @@ export default function Cart() {
                   <span>배송비</span>
                   <span>+ {shippingFee.toLocaleString()} 원</span>
                 </p>
-                <p className="flex justify-between w-full text-xl sm:text-3xl font-semibold">
+                <p className="flex justify-between w-full text-xl font-semibold sm:text-3xl">
                   <span>총 주문 금액</span>
                   <span>{finalTotalPrice.toLocaleString()} 원</span>
                 </p>
               </div>
               <div className="flex justify-center mx-auto mt-6 mb-8">
-                <div className=" flex gap-8 w-full sm:text-xl">
+                <div className="flex w-full gap-8 sm:text-xl">
                   <button
                     onClick={() => handleOrder(data)}
-                    className="flex-1 text-center rounded-md border px-6 py-3 font-semibold shadow hover:bg-secondary-base"
+                    className="flex-1 px-6 py-3 font-semibold text-center border rounded border-neutral-300 hover:border-neutral-400 hover:bg-secondary-base"
                   >
                     구매하기
                   </button>
                   <button
                     onClick={() => navigate(-1)}
-                    className="flex-1 text-center rounded-md border px-6 py-3 font-semibold shadow hover:bg-secondary-base"
+                    className="flex-1 px-6 py-3 font-semibold text-center border rounded border-neutral-300 hover:border-neutral-400 hover:bg-secondary-base"
                   >
                     계속 쇼핑하기
                   </button>
@@ -252,7 +249,7 @@ export default function Cart() {
           </div>
         </div>
       ) : (
-        <div className="flex flex-col items-center text-[#999] my-52">
+        <div className="flex flex-col items-center text-neutral-400 my-52">
           <IoCartOutline size={56} />
           <p className="mt-4 text-lg">장바구니가 비었습니다</p>
         </div>
