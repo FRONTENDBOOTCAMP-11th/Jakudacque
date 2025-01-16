@@ -216,7 +216,7 @@ export default function MyPage() {
 
             {/* 주문 내역 */}
             <div
-              className={`flex-1 max-[700px]:basis-0 pt-5 max-[500px]:pt-0 pb-6 ${category === "orderList" ? "" : "hidden"}`}
+              className={`flex-1 md:pt-5 pt-0 pb-6 ${category === "orderList" ? "" : "hidden"}`}
             >
               {orderProducts.length ? (
                 <>
@@ -226,21 +226,21 @@ export default function MyPage() {
                 </>
               ) : (
                 <>
-                  <div className="flex flex-col items-center gap-y-4 max-w-[1120px] py-32 max-[700px]:px-2">
+                  <EmptyList>
                     <FaRegClipboard size={56} />
                     <p>주문 내역이 없습니다.</p>
-                  </div>
+                  </EmptyList>
                 </>
               )}
             </div>
 
             {/* 찜 리스트 */}
             <div
-              className={`basis-[1120px] max-[600px]:px-2 pb-6 ${category === "wishList" ? "" : "hidden"}`}
+              className={`flex-1 md:pt-5 pt-0 pb-6 ${category === "wishList" ? "" : "hidden"}`}
             >
               {product.length ? (
                 <>
-                  <div className="max-w-[1120px] grid gap-5 pt-10 grid-cols-4 max-[1000px]:grid-cols-3 max-[600px]:grid-cols-2 max-[700px]:pt-0">
+                  <div className="grid grid-cols-2 gap-5 lg:grid-cols-4 sm:grid-cols-3">
                     {product.map(e => (
                       <Product key={e.id} product={e} />
                     ))}
@@ -248,25 +248,23 @@ export default function MyPage() {
                 </>
               ) : (
                 <>
-                  <div className="flex flex-col items-center gap-y-4 max-w-[1120px] py-[148px] max-[700px]:px-2">
+                  <EmptyList>
                     <FaRegHeart size={56} />
                     <p>찜 리스트가 없습니다.</p>
-                  </div>
+                  </EmptyList>
                 </>
               )}
             </div>
 
             {/* 회원 정보 수정 */}
             <div
-              className={`w-full pt-10 max-[700px]:pt-2 px-4 pb-6 flex flex-col gap-y-10 text-base max-[700px]:text-sm ${category === "editProfile" ? "" : "hidden"}`}
+              className={`w-full md:pt-5 pt-0 px-4 pb-6 flex flex-col gap-y-10 md:text-base text-sm ${category === "editProfile" ? "" : "hidden"}`}
             >
               <form>
                 {/* 기본 정보 */}
                 <div className="flex flex-col gap-y-7">
-                  <p className="text-lg max-[700px]: font-semibold border-b border-neutral-300 pb-4">
-                    기본 정보
-                  </p>
-                  <div className="grid grid-cols-[88px_minmax(200px,300px)]">
+                  <InfoTitle>기본 정보</InfoTitle>
+                  <div className="grid grid-cols-[88px_minmax(200px,300px)] gap-y-2">
                     <label htmlFor="name">이름</label>
                     <input
                       type="text"
@@ -278,18 +276,18 @@ export default function MyPage() {
                       })}
                     />
                     {basicErrors.name && (
-                      <p className="col-start-2 mt-1 text-sm text-red-500">
+                      <p className="col-start-2 text-sm text-red-500">
                         {basicErrors.name.message}
                       </p>
                     )}
 
-                    <label htmlFor="name" className="mt-2">
+                    <label htmlFor="name" className="">
                       휴대폰 번호
                     </label>
                     <input
                       type="text"
                       id="phone"
-                      className="px-1 mt-2 border rounded-md focus:outline-none border-neutral-400"
+                      className="px-1 border rounded-md focus:outline-none border-neutral-400"
                       defaultValue={userData.phone}
                       {...registerBasic("phone", {
                         pattern: {
@@ -299,7 +297,7 @@ export default function MyPage() {
                       })}
                     />
                     {basicErrors.phone && (
-                      <p className="col-start-2 mt-1 text-sm text-red-500">
+                      <p className="col-start-2 text-sm text-red-500">
                         {basicErrors.phone.message}
                       </p>
                     )}
@@ -309,55 +307,53 @@ export default function MyPage() {
               {/* 배송지 추가 */}
               <form onSubmit={handleAddressSubmit(onAddressSubmit)}>
                 <div className="flex flex-col gap-y-7">
-                  <p className="text-lg max-[700px]: font-semibold border-b border-neutral-300 pb-4">
-                    배송지 추가
-                  </p>
-                  <div className="grid grid-cols-[88px_minmax(200px,300px)]">
-                    <label htmlFor="addressName">배송지명</label>
-                    <input
-                      type="text"
-                      id="addressName"
-                      className="px-1 border rounded-md focus:outline-none border-neutral-400"
-                      {...registerAddress("name", {
-                        required: "배송지명을 입력해주세요.",
-                      })}
-                    />
-                    {addressErrors.name && (
-                      <p className="col-start-2 mt-1 text-sm text-red-500">
-                        {addressErrors.name.message}
-                      </p>
-                    )}
-                    <label htmlFor="address" className="mt-2">
-                      주소
-                    </label>
-                    <input
-                      type="text"
-                      id="address"
-                      className="px-1 mt-2 border rounded-md focus:outline-none border-neutral-400"
-                      {...registerAddress("value", {
-                        required: "주소를 입력해주세요.",
-                      })}
-                    />
-                    {addressErrors.value && (
-                      <p className="col-start-2 mt-1 text-sm text-red-500">
-                        {addressErrors.value.message}
-                      </p>
-                    )}
+                  <InfoTitle>배송지 추가</InfoTitle>
+                  <div className="flex flex-col gap-y-5">
+                    <div className="grid grid-cols-[88px_minmax(200px,300px)] gap-y-2">
+                      <label htmlFor="addressName">배송지명</label>
+                      <input
+                        type="text"
+                        id="addressName"
+                        className="px-1 border rounded-md focus:outline-none border-neutral-400"
+                        {...registerAddress("name", {
+                          required: "배송지명을 입력해주세요.",
+                        })}
+                      />
+                      {addressErrors.name && (
+                        <p className="col-start-2 text-sm text-red-500">
+                          {addressErrors.name.message}
+                        </p>
+                      )}
+                      <label htmlFor="address" className="">
+                        주소
+                      </label>
+                      <input
+                        type="text"
+                        id="address"
+                        className="px-1 border rounded-md focus:outline-none border-neutral-400"
+                        {...registerAddress("value", {
+                          required: "주소를 입력해주세요.",
+                        })}
+                      />
+                      {addressErrors.value && (
+                        <p className="col-start-2 text-sm text-red-500">
+                          {addressErrors.value.message}
+                        </p>
+                      )}
+                    </div>
+                    <button
+                      type="submit"
+                      className="border border-neutral-400 rounded-md px-3 py-2  max-[388px]:w-full hover:border-neutral-600"
+                    >
+                      추가
+                    </button>
                   </div>
                 </div>
-                <button
-                  type="submit"
-                  className="mt-5 border border-neutral-400 rounded-md px-4 py-1 w-[388px] max-[388px]:w-full hover:border-neutral-600"
-                >
-                  추가
-                </button>
               </form>
 
               {/* 배송지 정보 */}
               <div className="flex flex-col gap-y-2">
-                <p className="text-lg font-semibold border-b border-neutral-300 pb-4 max-[700px]:">
-                  배송지 정보
-                </p>
+                <InfoTitle>배송지 정보</InfoTitle>
                 <div className="flex flex-col gap-y-3">
                   <>
                     <p className="text-sm text-red-500">{addAddressMsg}</p>
@@ -372,7 +368,7 @@ export default function MyPage() {
                 </div>
               </div>
               <button
-                className="border border-neutral-400 px-3 py-2 rounded-[4px] hover:bg-secondary-base"
+                className="px-3 py-2 border rounded-md border-neutral-400 hover:bg-secondary-base"
                 onClick={handleBasicSubmit(addBasic)}
               >
                 수정 완료
@@ -389,4 +385,12 @@ export default function MyPage() {
 const ProfileInfo = tw.div`
 flex-1 flex items-center justify-center
 py-3 text-center
+`;
+
+const EmptyList = tw.div`
+flex flex-col items-center px-2 py-32 gap-y-4
+`;
+
+const InfoTitle = tw.p`
+  pb-2 text-lg font-semibold border-b border-neutral-300
 `;
