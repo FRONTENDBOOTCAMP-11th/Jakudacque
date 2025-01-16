@@ -9,7 +9,7 @@ import { IoPersonOutline } from "react-icons/io5";
 import useSearchStore from "@zustand/searchStore";
 
 function SearchBar() {
-  const { setKeyword } = useSearchStore();  // useState 대신 useSearchStore 사용
+  const { setKeyword } = useSearchStore(); // useState 대신 useSearchStore 사용
   const [inputKeyword, setInputKeyword] = useState("");
 
   const navigate = useNavigate();
@@ -17,17 +17,18 @@ function SearchBar() {
 
   useEffect(() => {
     if (location.pathname === "/search") {
-      const urlKeyword = new URLSearchParams(location.search).get("keyword") || "";
+      const urlKeyword =
+        new URLSearchParams(location.search).get("keyword") || "";
       setInputKeyword(urlKeyword);
     }
   }, [location]);
 
-const handleSearch = event => {
+  const handleSearch = event => {
     event.preventDefault();
     if (!inputKeyword.trim()) return;
-  
+
     setKeyword(inputKeyword); // 검색 시점에 전역 상태 업데이트
-    
+
     navigate(`/search?keyword=${inputKeyword}`);
     if (location.pathname === "/search") {
       navigate(0);
@@ -121,5 +122,5 @@ ${({ $showBoard }) => ($showBoard ? "border-b" : "")}
 `;
 
 const LinkButton = tw(Link)`
-  p-1 rounded hover:bg-gray-200 flex-shrink-0
+  p-1 rounded hover:bg-neutral-200 flex-shrink-0
 `;

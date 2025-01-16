@@ -10,7 +10,7 @@ export default function ToastProvider() {
       newestOnTop
       closeButton={true}
       toastClassName={() =>
-        "bg-[white] text-[#333] p-5 border-2 rounded-lg border-warning shadow-lg text-center"
+        "bg-white text-neutral-800 p-5 border-2 rounded-lg border-warning shadow-lg text-center"
       }
       bodyClassName={() => "text-sm whitespace-normal"}
       style={{

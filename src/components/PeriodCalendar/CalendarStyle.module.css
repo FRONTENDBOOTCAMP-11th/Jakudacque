@@ -56,7 +56,7 @@
     color: white;
   }
   &.selected {
-    @apply bg-gray-100;
+    @apply bg-neutral-100;
     color: #0d0d0d;
 
     &.endpoints {

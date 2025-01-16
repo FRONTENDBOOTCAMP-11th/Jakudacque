@@ -10,11 +10,12 @@ const Category = () => {
   const axios = useAxiosInstance();
 
   // URL에서 현재 카테고리 코드 추출
-  const currentCategory = new URLSearchParams(location.search).get("category") || "ALL";
+  const currentCategory =
+    new URLSearchParams(location.search).get("category") || "ALL";
 
   // 초기 활성 아이템 설정
   const [activeItem, setActiveItem] = useState(
-    currentCategory === "ALL" ? "전체상품" : currentCategory
+    currentCategory === "ALL" ? "전체상품" : currentCategory,
   );
 
   // 기본 메뉴 아이템
@@ -47,17 +48,17 @@ const Category = () => {
   // location 변화를 감지하여 activeItem 업데이트
   useEffect(() => {
     // 홈페이지인 경우
-    if (location.pathname === '/') {
+    if (location.pathname === "/") {
       setActiveItem("");
       return;
     }
 
     // 카테고리 페이지인 경우
-    if (currentCategory === 'ALL') {
+    if (currentCategory === "ALL") {
       setActiveItem("전체상품");
-    } else if (currentCategory === 'NEW') {
+    } else if (currentCategory === "NEW") {
       setActiveItem("신상");
-    } else if (currentCategory === 'BEST') {
+    } else if (currentCategory === "BEST") {
       setActiveItem("BEST");
     } else {
       // 일반 카테고리의 경우
@@ -72,14 +73,14 @@ const Category = () => {
   const menuItems = [
     ...defaultItems,
     ...(Array.isArray(codes)
-      ? codes.map((category) => ({
+      ? codes.map(category => ({
           name: category.value,
           code: category.code,
         }))
       : []),
   ];
 
-  const handleCategoryClick = (item) => {
+  const handleCategoryClick = item => {
     if (!item?.code) return;
 
     setActiveItem(item.name);
@@ -92,20 +93,20 @@ const Category = () => {
   };
 
   return (
-    <nav className="w-full bg-white border-b border-gray-200 overflow-x-auto">
-      <div className="max-w-7xl mx-auto px-4 md:px-6">
-        <div className="flex justify-start items-center h-16 md:h-14">
+    <nav className="w-full overflow-x-auto bg-white border-b border-neutral-200">
+      <div className="px-4 mx-auto max-w-7xl md:px-6">
+        <div className="flex items-center justify-start h-16 md:h-14">
           <div className="flex gap-12 md:gap-8 sm:gap-2 whitespace-nowrap">
-            {menuItems.map((item) => (
+            {menuItems.map(item => (
               <button
                 key={item.name}
-                className={`relative px-3 py-2 md:py-1.5 text-sm md:text-[15px] sm:text-xs font-medium
-                          transition-colors duration-200 border-0 bg-transparent cursor-pointer shrink-0
-                          ${
-                            activeItem === item.name
-                              ? 'text-yellow-300 after:content-[""] after:absolute after:bottom-[-1px] after:left-0 after:w-full after:h-0.5 after:bg-yellow-300'
-                              : "hover:text-yellow-300"
-                          }`}
+                className={`relative px-3 py-2 md:py-1.5 text-xs md:text-sm font-medium
+                         transition-colors duration-200 border-0 bg-transparent cursor-pointer shrink-0
+                         ${
+                           activeItem === item.name
+                             ? 'text-yellow-300 after:content-[""] after:absolute after:bottom-[-1px] after:left-0 after:w-full after:h-0.5 after:bg-yellow-300'
+                             : "hover:text-yellow-300"
+                         }`}
                 onClick={() => handleCategoryClick(item)}
               >
                 {item.name}

@@ -130,7 +130,7 @@ export default function List() {
         <div className="relative">
           <span className="text-sm">기간</span>
           <button
-            className="bg-gray-50 top- border flex items-center gap-4 border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5"
+            className="bg-neutral-50 top- border flex items-center gap-4 border-neutral-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5"
             onClick={() => setCalendarOpen(prev => !prev)}
           >
             <div>

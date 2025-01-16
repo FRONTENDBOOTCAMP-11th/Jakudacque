@@ -31,7 +31,7 @@ export default function Button({ children, ...rest }) {
       classNames = "bg-info ";
       break;
     default:
-      classNames = "bg-gray-500 ";
+      classNames = "bg-neutral-500 ";
   }
 
   return (
