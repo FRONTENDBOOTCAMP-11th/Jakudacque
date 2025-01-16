@@ -94,9 +94,9 @@ const Category = () => {
 
   return (
     <nav className="w-full overflow-x-auto bg-white border-b border-neutral-200">
-      <div className="px-4 mx-auto max-w-7xl ">
-        <div className="flex items-center justify-start h-16 ">
-          <div className="flex gap-12  whitespace-nowrap">
+      <div className="px-4 mx-auto max-w-7xl">
+        <div className="flex items-center justify-start h-16">
+          <div className="flex gap-12 whitespace-nowrap">
             {menuItems.map(item => (
               <button
                 key={item.name}
