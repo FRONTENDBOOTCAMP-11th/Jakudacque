@@ -66,7 +66,7 @@ image-container
 relative 
 flex-1 flex justify-center
 max-h-96
-rounded-t-md bg-gray-100
+rounded-t-md bg-neutral-100
 `;
 const BtnRemove = tw.button`
   remove-btn

@@ -127,9 +127,9 @@ const BtnSquare = tw(Link)`
 `;
 const PageBtn = tw(BtnSquare)`
   ${({ $isActive = false }) =>
-    $isActive ? `bg-gray-500 text-white	` : `hover:bg-gray-100`}
+    $isActive ? `bg-neutral-500 text-white	` : `hover:bg-neutral-100`}
 `;
 const ArrowBtn = tw(BtnSquare)`
-  bg-gray-200
-  hover:bg-gray-300
+  bg-neutral-200
+  hover:bg-neutral-300
 `;

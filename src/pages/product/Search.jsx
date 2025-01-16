@@ -112,7 +112,7 @@ export default function Search() {
 
         <div className="text-center py-20">
           <p className="text-lg font-medium mb-2">검색 결과가 없습니다.</p>
-          <p className="text-gray-500 mb-8">다른 검색어를 입력해 보세요.</p>
+          <p className="text-neutral-500 mb-8">다른 검색어를 입력해 보세요.</p>
 
           <div className="max-w-md mx-auto">
             <p className="font-medium mb-2">추천 검색어</p>
@@ -124,7 +124,7 @@ export default function Search() {
                     setKeyword(term);
                     navigate(`/search?keyword=${term}`, { replace: true });
                   }}
-                  className="px-4 py-2 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors"
+                  className="px-4 py-2 bg-neutral-100 rounded-full hover:bg-neutral-200 transition-colors"
                 >
                   {term}
                 </button>
@@ -171,18 +171,18 @@ export default function Search() {
         <div className="relative">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="px-4 py-2 border border-gray-200 rounded-full text-sm hover:border-gray-400 flex items-center gap-2"
+            className="px-4 py-2 border border-neutral-200 rounded-full text-sm hover:border-neutral-400 flex items-center gap-2"
           >
             정렬방식 <IoCaretDown />
           </button>
           {isOpen && (
-            <div className="absolute right-0 mt-2 w-32 bg-white border border-gray-200 rounded-lg shadow-lg z-10">
+            <div className="absolute right-0 mt-2 w-32 bg-white border border-neutral-200 rounded-lg shadow-lg z-10">
               <ul className="py-1">
                 {["등록순", "인기순", "낮은가격순", "높은가격순", "이름순"].map(
                   option => (
                     <li
                       key={option}
-                      className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-sm"
+                      className="px-4 py-2 hover:bg-neutral-100 cursor-pointer text-sm"
                     >
                       {option}
                     </li>

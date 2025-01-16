@@ -122,5 +122,5 @@ ${({ $showBoard }) => ($showBoard ? "border-b" : "")}
 `;
 
 const LinkButton = tw(Link)`
-  p-1 rounded hover:bg-gray-200 flex-shrink-0
+  p-1 rounded hover:bg-neutral-200 flex-shrink-0
 `;

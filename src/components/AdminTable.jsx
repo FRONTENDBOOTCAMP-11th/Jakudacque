@@ -44,7 +44,7 @@ const StyledTable = tw.table`
   table-auto
 `;
 const StyledThead = tw.thead`
-  text-xs text-gray-700 bg-gray-50
+  text-xs text-neutral-700 bg-neutral-50
 `;
 const StyledTh = tw.th`
   p-4 pl-2

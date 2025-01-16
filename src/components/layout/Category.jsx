@@ -93,7 +93,7 @@ const Category = () => {
   };
 
   return (
-    <nav className="w-full overflow-x-auto bg-white border-b border-gray-200">
+    <nav className="w-full overflow-x-auto bg-white border-b border-neutral-200">
       <div className="px-4 mx-auto max-w-7xl md:px-6">
         <div className="flex items-center justify-start h-16 md:h-14">
           <div className="flex gap-12 md:gap-8 sm:gap-2 whitespace-nowrap">
