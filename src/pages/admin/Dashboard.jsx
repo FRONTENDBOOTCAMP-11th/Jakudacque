@@ -12,33 +12,6 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-const data = [
-  { name: "2025.01.04", order: 1000 },
-  { name: "2025.01.05", order: 300 },
-  { name: "2025.01.06", order: 200 },
-  { name: "2025.01.07", order: 278 },
-  { name: "2025.01.08", order: 189 },
-  { name: "2025.01.09", order: 239 },
-  { name: "2025.01.10", order: 349 },
-];
-
-const renderLineChart = () => {
-  return (
-    <ResponsiveContainer width="100%" height={500}>
-      <LineChart
-        data={data}
-        margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
-        style={{ width: "100%" }}
-      >
-        <Line type="monotone" dataKey="order" stroke="#8884d8" />
-        <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip />
-      </LineChart>
-    </ResponsiveContainer>
-  );
-};
 
 export default function AdminHome() {
   const [period, setPeriod] = useState({
@@ -79,6 +52,7 @@ export default function AdminHome() {
           // yyyy.mm.dd 형식으로 변환
           start: period.startDate.replace(/-/g, "."),
           finish: period.endDate.replace(/-/g, "."),
+          by: "day",
         },
       }),
     select: res => res.data,
@@ -95,6 +69,25 @@ export default function AdminHome() {
   if (!data) {
     return <div>데이터가 없습니다.</div>;
   }
+
+  const renderLineChart = () => {
+    return (
+      <ResponsiveContainer width="100%" height={500}>
+        <LineChart
+          data={data.item}
+          label="일일 주문량"
+          margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
+          style={{ width: "100%" }}
+        >
+          <Line type="monotone" dataKey="totalQuantity" stroke="#8884d8" />
+          <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+          <XAxis dataKey="date" />
+          <YAxis />
+          <Tooltip />
+        </LineChart>
+      </ResponsiveContainer>
+    );
+  };
 
   return (
     <>
@@ -119,7 +112,13 @@ export default function AdminHome() {
           onChange={e => setPeriod({ ...period, endDate: e.target.value })}
         />
       </div>
-      <div className="w-full mt-8 chart">{renderLineChart()}</div>
+
+      {data && (
+        <div className="w-full mt-8 chart">
+          <h3 className="mb-2 text-lg font-bold">일일 주문량</h3>
+          {renderLineChart()}
+        </div>
+      )}
     </>
   );
 }
