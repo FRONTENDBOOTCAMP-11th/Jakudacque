@@ -164,17 +164,17 @@ export default function MyPage() {
               <div className="text-xl tracking-wide text-center basis-2/5">
                 <span>{user.name}</span>님, 반갑습니다.
               </div>
-              <div className="flex items-center justify-between basis-2/5 border-x border-neutral-300">
+              <div className="flex items-center justify-between basis-2/5 min-w-80 md:border-x border-neutral-300">
                 <ProfileInfo className="border-r border-neutral-300">
                   주문
-                  <span className="text-2xl max-[700px]:text-xl pl-3 pr-1">
+                  <span className="pl-3 pr-1 text-xl md:text-2xl">
                     {orderData?.length}
                   </span>
                   건
                 </ProfileInfo>
                 <ProfileInfo>
                   찜
-                  <span className="text-2xl max-[700px]:text-xl pl-3 pr-1">
+                  <span className="pl-3 pr-1 text-xl md:text-2xl">
                     {data?.length}
                   </span>
                   건
@@ -387,5 +387,6 @@ export default function MyPage() {
 }
 
 const ProfileInfo = tw.div`
-flex-1 py-3 text-center
+flex-1 flex items-center justify-center
+py-3 text-center
 `;
