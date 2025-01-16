@@ -1,4 +1,3 @@
-import { formatPrice } from "@utils/formatPrice";
 import PropTypes from "prop-types";
 
 export default function OrderDetail({ product }) {
@@ -13,7 +12,9 @@ export default function OrderDetail({ product }) {
         <ul className="text-[16px]">
           <li>{product.name}</li>
           <li>{product.quantity}개</li>
-          <li className="pt-5 font-medium">{formatPrice(product.price)}원</li>
+          <li className="pt-5 font-medium">
+            {product.price.toLocaleString()}원
+          </li>
         </ul>
       </div>
     </>

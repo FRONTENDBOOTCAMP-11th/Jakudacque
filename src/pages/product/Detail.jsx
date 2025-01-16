@@ -12,7 +12,6 @@ import { useHandleWish } from "@hooks/useHandleWish";
 import useWishState from "@zustand/wishState";
 import { useAddCart } from "@hooks/useAddCart";
 import { useOrder } from "@hooks/useOrder";
-import { formatPrice } from "@utils/formatPrice";
 import { useState } from "react";
 
 export default function Detail() {
@@ -35,7 +34,7 @@ export default function Detail() {
   const countDown = useCounterState(state => state.countDown);
 
   // 상품 가격(수량 변경시 함께 변경)
-  const productPrice = data && formatPrice(data.price * count);
+  const productPrice = data && (data.price * count).toLocaleString();
 
   // 상품 구매
   const { orderProduct } = useOrder();
@@ -77,14 +76,14 @@ export default function Detail() {
             {/* 상품 정보 파트 */}
             <div className="basis-[580px] max-[700px]:basis-0 max-[700px]:w-auto max-[700px]:px-4 max-[700px]:mt-0 flex flex-col gap-y-11 max-[1100px]:gap-y-4 max-[900px]:gap-y-4">
               <div className="border-b border-[#e9e9e9] pb-5 max-[900px]:pb-2 max-[900px]:pt-2">
-                <h1 className="text-[22px] max-[900px]:text-[16px] pt-2 pb-1 max-[900px]:py-0 max-[700px]:text-[18px] ">
+                <h1 className="text-[22px] max-[900px]:text-base pt-2 pb-1 max-[900px]:py-0 max-[700px]:text-lg ">
                   {data.name}
                 </h1>
-                <h2 className="text-[20px] max-[900px]:text-[16px] max-[425px]:text-[1rem]">
-                  {formatPrice(data.price)}원
+                <h2 className="text-xl max-[900px]:text-base max-[425px]:text-base">
+                  {data.price.toLocaleString()}원
                 </h2>
               </div>
-              <ul className="text-[14px] max-[900px]:text-[12px] max-[425px]:text-[12px]">
+              <ul className="text-sm max-[900px]:text-xs max-[425px]:text-xs">
                 <li className="flex gap-x-1.5">
                   <span className="font-semibold">배송 방법</span>
                   <span>택배</span>
@@ -92,11 +91,12 @@ export default function Detail() {
                 <li className="flex gap-x-1.5">
                   <span className="font-semibold">배송비</span>
                   <span>
-                    {formatPrice(data.shippingFees)}원(30,000원 이상 무료배송)
+                    {data.shippingFees.toLocaleString()}원(30,000원 이상
+                    무료배송)
                   </span>
                 </li>
               </ul>
-              <div className="text-[15px] max-[900px]:text-[14px] max-[425px]:text-[14px] bg-[#f7f7f7] py-[14px] max-[900px]:py-[10px] px-4">
+              <div className="text-[15px] max-[900px]:text-sm max-[425px]:text-sm bg-[#f7f7f7] py-3.5 max-[900px]:py-2.5 px-4">
                 <p className="border-b border-[#e9e9e9] border-dashed pb-2.5 max-[900px]:pb-1.5 mb-4 max-[900px]:mb-3">
                   수량
                 </p>
@@ -122,16 +122,16 @@ export default function Detail() {
                 </div>
               </div>
               <div className="flex justify-between items-center my-2 max-[900px]:my-1">
-                <span className="text-[16px] max-[900px]:text-[15px] max-[425px]:text-[14px]">
+                <span className="text-base max-[900px]:text-[15px] max-[425px]:text-sm">
                   총 상품금액(1개)
                 </span>
-                <span className="text-[24px] max-[900px]:text-[22px] max-[425px]:text-[20px]">
+                <span className="text-2xl max-[900px]:text-[22px] max-[425px]:text-xl">
                   {productPrice}원
                 </span>
               </div>
               <div className="flex gap-x-2 max-[900px]:text-[15px]">
                 <button
-                  className="grow basis-[198px] py-3 max-[900px]:py-2 border border-[#ddd] rounded hover:border-[#999] hover:bg-secondary-base flex justify-center items-center"
+                  className="grow basis-[198px] py-3 max-[900px]:py-2 bg-secondary-base rounded  hover:bg-secondary-dark flex justify-center items-center"
                   onClick={() =>
                     orderProduct.mutate({
                       products: [{ _id: Number(_id), quantity: count }],
@@ -141,7 +141,7 @@ export default function Detail() {
                   구매하기
                 </button>
                 <button
-                  className="grow basis-[198px] border border-[#ddd] rounded hover:border-[#999] flex justify-center items-center"
+                  className="grow basis-[198px] border border-[#ddd] rounded hover:border-[#bbb] flex justify-center items-center"
                   onClick={() =>
                     addCart.mutate({ product_id: Number(_id), quantity: count })
                   }
@@ -149,7 +149,7 @@ export default function Detail() {
                   장바구니
                 </button>
                 <button
-                  className="grow basis-[100px] border border-[#ddd] rounded hover:border-[#999] flex justify-center items-center"
+                  className="grow basis-[100px] border border-[#ddd] rounded hover:border-[#bbb] flex justify-center items-center"
                   onClick={wishHandle}
                 >
                   {localWish ? <IoHeartSharp /> : <IoHeartOutline />}찜
@@ -158,7 +158,7 @@ export default function Detail() {
             </div>
           </div>
           {/* 상품 디테일 컷 파트 시작 */}
-          <div className="border-y border-[#eee] bg-[#fcfcfc] text-center py-1.5 mt-[40px]">
+          <div className="border-y border-[#eee] bg-[#fcfcfc] text-center py-1.5 mt-10">
             <p>상세 정보</p>
           </div>
           {/* 상품 디테일 컷 */}
