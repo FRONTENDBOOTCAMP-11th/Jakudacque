@@ -114,7 +114,7 @@ export default function Edit() {
               onChange={e => setNewCategory(e.target.value)}
             />
             <button
-              className="p-1 border-2 border-gray-500 rounded-lg btn"
+              className="p-1 border-2 border-neutral-500 rounded-lg btn"
               onClick={handleAdd}
             >
               <IoAddOutline size={24} />
@@ -129,7 +129,7 @@ export default function Edit() {
             {categoryList.map(category => (
               <div
                 key={category.code}
-                className="flex items-center gap-2 p-2 bg-gray-300 rounded-lg"
+                className="flex items-center gap-2 p-2 bg-neutral-300 rounded-lg"
               >
                 <InputGroup
                   id={category.code}

@@ -2,14 +2,14 @@ import PropTypes from "prop-types";
 
 export default function Address({ address, onDelete }) {
   return (
-    <div className="bg-[#f8f8f8] flex justify-between gap-x-3 p-4 items-center">
+    <div className="flex items-center justify-between p-4 text-xs bg-neutral-100 gap-x-2 sm:text-sm">
       <div className="flex flex-col gap-y-1">
-        <p className="text-[14px] max-[700px]:text-[12px]">{address.name}</p>
+        <p>{address.name}</p>
         <p>{address.value}</p>
       </div>
       {onDelete ? (
         <button
-          className="text-[14px] border border-[#aaa] px-3 py-1 rounded-[4px] bg-white flex-shrink-0 hover:border-[#555]"
+          className="px-3 py-1 bg-white border rounded border-neutral-400 hover:border-neutral-600"
           onClick={onDelete}
         >
           삭제

@@ -16,14 +16,14 @@ export default function CartModal() {
           </ModalMsgArea>
           <ModalBtnArea>
             <button
-              className="w-[139.5px] py-[12px] border-r border-[#ddd] rounded-b hover:bg-secondary-base"
+              className="flex-1 py-3 border-r rounded-b border-neutral-300 hover:bg-secondary-base"
               onClick={handleModal}
             >
               계속 쇼핑
             </button>
             <Link
               to="/cart"
-              className="w-[139.5px] py-[12px] rounded-b hover:bg-secondary-base flex justify-center"
+              className="flex justify-center flex-1 py-3 rounded-b hover:bg-secondary-base"
               onClick={handleModal}
             >
               장바구니 가기
@@ -38,9 +38,9 @@ export default function CartModal() {
 // 전체 컨테이너
 const Container = tw.div`
     fixed
-    z-[60]
+    z-50
     inset-0
-    bg-[#333]/80
+    bg-neutral-800/80
     flex
     justify-center
     items-center
@@ -48,25 +48,24 @@ const Container = tw.div`
 
 // 모달창
 const ModalWindow = tw.div`
-    w-[280px]
+    w-72 min-h-44
     bg-white
     flex
     flex-col
     rounded
-    text-[14.5px]
+    text-sm
   `;
 
 // 모달 메시지 영역
 const ModalMsgArea = tw.div`
-    py-[52px]
-    pb-[46px]
-    px-[26px]
+    flex-1 flex items-center justify-center
+    px-6
     border-b
-    border-[#ddd]
+    border-neutral-300
   `;
 
 // 모달 버튼 영역
 const ModalBtnArea = tw.div`
     flex
-    text-[14px]
+    text-sm
   `;

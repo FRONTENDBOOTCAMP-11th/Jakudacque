@@ -215,7 +215,7 @@ export default function Edit() {
               <textarea
                 id="memo"
                 rows="6"
-                className="block p-2.5 w-full text-sm rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 "
+                className="block p-2.5 w-full text-sm rounded-lg border border-neutral-300 focus:ring-blue-500 focus:border-blue-500 "
                 placeholder="메모를 입력하세요."
                 value={orderState.memo}
                 onChange={e => {
