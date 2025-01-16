@@ -76,7 +76,7 @@ export default function Detail() {
             </div>
             {/* 상품 정보 파트 */}
             <div className="basis-[580px] max-[700px]:basis-0 max-[700px]:w-auto max-[700px]:px-4 max-[700px]:mt-0 flex flex-col gap-y-11 max-[1100px]:gap-y-4 max-[900px]:gap-y-4">
-              <div className="border-b border-[#e9e9e9] pb-5 max-[900px]:pb-2 max-[900px]:pt-2">
+              <div className="border-b border-neutral-200 pb-5 max-[900px]:pb-2 max-[900px]:pt-2">
                 <h1 className="text-[22px] max-[900px]:text-[16px] pt-2 pb-1 max-[900px]:py-0 max-[700px]:text-[18px] ">
                   {data.name}
                 </h1>
@@ -97,22 +97,22 @@ export default function Detail() {
                 </li>
               </ul>
               <div className="text-[15px] max-[900px]:text-[14px] max-[425px]:text-[14px] bg-[#f7f7f7] py-[14px] max-[900px]:py-[10px] px-4">
-                <p className="border-b border-[#e9e9e9] border-dashed pb-2.5 max-[900px]:pb-1.5 mb-4 max-[900px]:mb-3">
+                <p className="border-b border-neutral-200 border-dashed pb-2.5 max-[900px]:pb-1.5 mb-4 max-[900px]:mb-3">
                   수량
                 </p>
-                <div className="flex justify-between items-center">
+                <div className="flex items-center justify-between">
                   <div className="flex">
                     <button
-                      className="border-[#aaa] border-y border-l px-2 max-[768px]:px-1.5"
+                      className="border-neutral-400 border-y border-l px-2 max-[768px]:px-1.5"
                       onClick={() => countDown(1)}
                     >
                       <IoRemove />
                     </button>
-                    <span className="border-[#aaa] border px-4 py-1.5 max-[768px]:px-3 max-[768px]:py-1">
+                    <span className="border-neutral-400 border px-4 py-1.5 max-[768px]:px-3 max-[768px]:py-1">
                       {count}
                     </span>
                     <button
-                      className="border-[#aaa] border-y border-r px-2 max-[768px]:px-1.5"
+                      className="border-neutral-400 border-y border-r px-2 max-[768px]:px-1.5"
                       onClick={() => countUp(1)}
                     >
                       <IoAdd />
@@ -131,7 +131,7 @@ export default function Detail() {
               </div>
               <div className="flex gap-x-2 max-[900px]:text-[15px]">
                 <button
-                  className="grow basis-[198px] py-3 max-[900px]:py-2 border border-[#ddd] rounded hover:border-[#999] hover:bg-secondary-base flex justify-center items-center"
+                  className="grow basis-[198px] py-3 max-[900px]:py-2 border border-neutral-300 rounded hover:border-[#999] hover:bg-secondary-base flex justify-center items-center"
                   onClick={() =>
                     orderProduct.mutate({
                       products: [{ _id: Number(_id), quantity: count }],
@@ -141,7 +141,7 @@ export default function Detail() {
                   구매하기
                 </button>
                 <button
-                  className="grow basis-[198px] border border-[#ddd] rounded hover:border-[#999] flex justify-center items-center"
+                  className="grow basis-[198px] border border-neutral-300 rounded hover:border-[#999] flex justify-center items-center"
                   onClick={() =>
                     addCart.mutate({ product_id: Number(_id), quantity: count })
                   }
@@ -149,7 +149,7 @@ export default function Detail() {
                   장바구니
                 </button>
                 <button
-                  className="grow basis-[100px] border border-[#ddd] rounded hover:border-[#999] flex justify-center items-center"
+                  className="grow basis-[100px] border border-neutral-300 rounded hover:border-[#999] flex justify-center items-center"
                   onClick={wishHandle}
                 >
                   {localWish ? <IoHeartSharp /> : <IoHeartOutline />}찜
@@ -158,7 +158,7 @@ export default function Detail() {
             </div>
           </div>
           {/* 상품 디테일 컷 파트 시작 */}
-          <div className="border-y border-[#eee] bg-[#fcfcfc] text-center py-1.5 mt-[40px]">
+          <div className="border-y border-neutral-200 bg-[#fcfcfc] text-center py-1.5 mt-[40px]">
             <p>상세 정보</p>
           </div>
           {/* 상품 디테일 컷 */}

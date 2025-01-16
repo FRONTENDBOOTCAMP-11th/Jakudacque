@@ -8,7 +8,7 @@ export default function Address({ address, onDelete }) {
         <p>{address.value}</p>
       </div>
       <button
-        className="text-[14px] border border-[#aaa] px-3 py-1 rounded-[4px] bg-white flex-shrink-0 hover:border-[#555]"
+        className="text-[14px] border border-neutral-400 px-3 py-1 rounded-[4px] bg-white flex-shrink-0 hover:border-[#555]"
         onClick={onDelete}
       >
         삭제

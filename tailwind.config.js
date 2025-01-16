@@ -16,7 +16,7 @@ export default {
         secondary: {
           base: "#FFF48B",
           light: "#FFF8BA",
-          dark: "#FDF391",
+          dark: "#F9EA58",
         },
         tertiary: {
           base: "#EC297B",

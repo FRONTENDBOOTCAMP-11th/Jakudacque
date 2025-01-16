@@ -16,7 +16,7 @@ export default function Modal() {
           </ModalMsgArea>
           <ModalBtnArea>
             <button
-              className="w-[139.5px] py-[12px] border-r border-[#ddd] rounded-b hover:bg-secondary-base"
+              className="w-[139.5px] py-[12px] border-r border-neutral-300 rounded-b hover:bg-secondary-base"
               onClick={handleModal}
             >
               계속 쇼핑
@@ -62,7 +62,7 @@ const ModalMsgArea = tw.div`
     pb-[46px]
     px-[26px]
     border-b
-    border-[#ddd]
+    border-neutral-300
   `;
 
 // 모달 버튼 영역

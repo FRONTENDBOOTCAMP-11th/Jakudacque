@@ -160,14 +160,14 @@ export default function MyPage() {
               <span>{user.name}</span>님, 반갑습니다.
             </p>
             <div className="flex items-center pb-4">
-              <div className="text-[16px] max-[700px]:text-[14px] border-x border-[#ccc] px-20 max-[900px]:px-14 max-[700px]:px-10 py-3 shrink-0 max-[500px]:border-x-0 max-[500px]:border-r">
+              <div className="text-[16px] max-[700px]:text-[14px] border-x border-neutral-300 px-20 max-[900px]:px-14 max-[700px]:px-10 py-3 shrink-0 max-[500px]:border-x-0 max-[500px]:border-r">
                 주문
                 <span className="text-[22px] max-[700px]:text-[20px] pl-3 pr-1">
                   {orderData?.length}
                 </span>
                 건
               </div>
-              <div className="text-[16px] max-[700px]:text-[14px] border-r border-[#ccc] px-20 max-[900px]:px-14 max-[700px]:px-10 py-3 shrink-0 max-[500px]:border-x-0">
+              <div className="text-[16px] max-[700px]:text-[14px] border-r border-neutral-300 px-20 max-[900px]:px-14 max-[700px]:px-10 py-3 shrink-0 max-[500px]:border-x-0">
                 찜
                 <span className="text-[22px] max-[700px]:text-[20px] pl-3 pr-1">
                   {data?.length}
@@ -246,7 +246,7 @@ export default function MyPage() {
               <form>
                 {/* 기본 정보 */}
                 <div className="flex flex-col gap-y-7">
-                  <p className="text-[18px] max-[700px]:text-[16px] font-semibold border-b border-[#ccc] pb-4">
+                  <p className="text-[18px] max-[700px]:text-[16px] font-semibold border-b border-neutral-300 pb-4">
                     기본 정보
                   </p>
                   <div className="grid grid-cols-[88px_minmax(200px,300px)]">
@@ -254,14 +254,14 @@ export default function MyPage() {
                     <input
                       type="text"
                       id="name"
-                      className="focus:outline-none border border-[#aaa] rounded-md px-1"
+                      className="px-1 border rounded-md focus:outline-none border-neutral-400"
                       defaultValue={userData.name}
                       {...registerBasic("name", {
                         required: "이름은 비워둘 수 없습니다.",
                       })}
                     />
                     {basicErrors.name && (
-                      <p className="text-red-500 text-sm mt-1 col-start-2">
+                      <p className="col-start-2 mt-1 text-sm text-red-500">
                         {basicErrors.name.message}
                       </p>
                     )}
@@ -272,7 +272,7 @@ export default function MyPage() {
                     <input
                       type="text"
                       id="phone"
-                      className="focus:outline-none border border-[#aaa] rounded-md px-1 mt-2"
+                      className="px-1 mt-2 border rounded-md focus:outline-none border-neutral-400"
                       defaultValue={userData.phone}
                       {...registerBasic("phone", {
                         pattern: {
@@ -282,7 +282,7 @@ export default function MyPage() {
                       })}
                     />
                     {basicErrors.phone && (
-                      <p className="text-red-500 text-sm mt-1 col-start-2">
+                      <p className="col-start-2 mt-1 text-sm text-red-500">
                         {basicErrors.phone.message}
                       </p>
                     )}
@@ -292,7 +292,7 @@ export default function MyPage() {
               {/* 배송지 추가 */}
               <form onSubmit={handleAddressSubmit(onAddressSubmit)}>
                 <div className="flex flex-col gap-y-7">
-                  <p className="text-[18px] max-[700px]:text-[16px] font-semibold border-b border-[#ccc] pb-4">
+                  <p className="text-[18px] max-[700px]:text-[16px] font-semibold border-b border-neutral-300 pb-4">
                     배송지 추가
                   </p>
                   <div className="grid grid-cols-[88px_minmax(200px,300px)]">
@@ -300,13 +300,13 @@ export default function MyPage() {
                     <input
                       type="text"
                       id="addressName"
-                      className="focus:outline-none border border-[#aaa] rounded-md px-1"
+                      className="px-1 border rounded-md focus:outline-none border-neutral-400"
                       {...registerAddress("name", {
                         required: "배송지명을 입력해주세요.",
                       })}
                     />
                     {addressErrors.name && (
-                      <p className="text-red-500 text-sm mt-1 col-start-2">
+                      <p className="col-start-2 mt-1 text-sm text-red-500">
                         {addressErrors.name.message}
                       </p>
                     )}
@@ -316,13 +316,13 @@ export default function MyPage() {
                     <input
                       type="text"
                       id="address"
-                      className="focus:outline-none border border-[#aaa] rounded-md px-1 mt-2"
+                      className="px-1 mt-2 border rounded-md focus:outline-none border-neutral-400"
                       {...registerAddress("value", {
                         required: "주소를 입력해주세요.",
                       })}
                     />
                     {addressErrors.value && (
-                      <p className="text-red-500 text-sm mt-1 col-start-2">
+                      <p className="col-start-2 mt-1 text-sm text-red-500">
                         {addressErrors.value.message}
                       </p>
                     )}
@@ -330,7 +330,7 @@ export default function MyPage() {
                 </div>
                 <button
                   type="submit"
-                  className="mt-5 border border-[#aaa] rounded-md px-4 py-1 w-[388px] max-[388px]:w-full hover:border-[#555]"
+                  className="mt-5 border border-neutral-400 rounded-md px-4 py-1 w-[388px] max-[388px]:w-full hover:border-[#555]"
                 >
                   추가
                 </button>
@@ -338,12 +338,12 @@ export default function MyPage() {
 
               {/* 배송지 정보 */}
               <div className="flex flex-col gap-y-2">
-                <p className="text-[18px] font-semibold border-b border-[#ccc] pb-4 max-[700px]:text-[16px]">
+                <p className="text-[18px] font-semibold border-b border-neutral-300 pb-4 max-[700px]:text-[16px]">
                   배송지 정보
                 </p>
                 <div className="flex flex-col gap-y-3">
                   <>
-                    <p className="text-red-500 text-sm">{addAddressMsg}</p>
+                    <p className="text-sm text-red-500">{addAddressMsg}</p>
                     {addressData?.map((e, index) => (
                       <Address
                         key={index}
@@ -355,7 +355,7 @@ export default function MyPage() {
                 </div>
               </div>
               <button
-                className="border border-[#aaa] px-3 py-2 rounded-[4px] hover:bg-secondary-base"
+                className="border border-neutral-400 px-3 py-2 rounded-[4px] hover:bg-secondary-base"
                 onClick={handleBasicSubmit(addBasic)}
               >
                 수정 완료

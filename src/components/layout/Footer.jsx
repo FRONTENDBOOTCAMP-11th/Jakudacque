@@ -14,9 +14,9 @@ export default function Footer() {
     w-28
   `;
   return (
-    <footer className="w-full border-t border-[#eee] mb-6">
+    <footer className="w-full border-t border-neutral-200 mb-6">
       <div className="text-[#333] max-w-screen-xl mx-auto flex flex-col gap-y-5 px-5">
-        <ul className="flex flex-wrap gap-x-5 gap-y-4 text-[14px] py-4 border-b border-[#eee]">
+        <ul className="flex flex-wrap gap-x-5 gap-y-4 text-[14px] py-4 border-b border-neutral-200">
           <li>
             <Link to="/">회사소개</Link>
           </li>
