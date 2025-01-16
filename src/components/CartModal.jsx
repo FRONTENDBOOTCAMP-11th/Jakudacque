@@ -53,7 +53,7 @@ const ModalWindow = tw.div`
     flex
     flex-col
     rounded
-    text-[14.5px]
+    text-sm
   `;
 
 // 모달 메시지 영역
@@ -68,5 +68,5 @@ const ModalMsgArea = tw.div`
 // 모달 버튼 영역
 const ModalBtnArea = tw.div`
     flex
-    text-[14px]
+    text-sm
   `;

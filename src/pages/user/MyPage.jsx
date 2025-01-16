@@ -163,16 +163,16 @@ export default function MyPage() {
               <span>{user.name}</span>님, 반갑습니다.
             </p>
             <div className="flex items-center pb-4">
-              <div className="text-[16px] max-[700px]:text-[14px] border-x border-neutral-300 px-20 max-[900px]:px-14 max-[700px]:px-10 py-3 shrink-0 max-[500px]:border-x-0 max-[500px]:border-r">
+              <div className=" max-[700px]:text-sm border-x border-neutral-300 px-20 max-[900px]:px-14 max-[700px]:px-10 py-3 shrink-0 max-[500px]:border-x-0 max-[500px]:border-r">
                 주문
-                <span className="text-[22px] max-[700px]:text-xl pl-3 pr-1">
+                <span className="text-2xl max-[700px]:text-xl pl-3 pr-1">
                   {orderData?.length}
                 </span>
                 건
               </div>
-              <div className="text-[16px] max-[700px]:text-[14px] border-r border-neutral-300 px-20 max-[900px]:px-14 max-[700px]:px-10 py-3 shrink-0 max-[500px]:border-x-0">
+              <div className=" max-[700px]:text-sm border-r border-neutral-300 px-20 max-[900px]:px-14 max-[700px]:px-10 py-3 shrink-0 max-[500px]:border-x-0">
                 찜
-                <span className="text-[22px] max-[700px]:text-xl pl-3 pr-1">
+                <span className="text-2xl max-[700px]:text-xl pl-3 pr-1">
                   {data?.length}
                 </span>
                 건
@@ -181,7 +181,7 @@ export default function MyPage() {
             <Link
               to="/user/signin"
               onClick={handleLogout}
-              className="leading-none border-b border-[#444] absolute bottom-3 right-4 text-base max-[700px]:text-sm"
+              className="leading-none border-b border-neutral-700 absolute bottom-3 right-4 text-base max-[700px]:text-sm"
             >
               로그아웃
             </Link>
@@ -191,19 +191,19 @@ export default function MyPage() {
             {/* 주문내역, 찜 리스트, 회원정보수정 카테고리 */}
             <ul className="sticky top-0 ml-5 max-[700px]:ml-0 text-lg py-8 max-[700px]:my-6 flex flex-col items-start max-[700px]:flex-row max-[700px]:justify-around gap-y-2 shrink-0 max-[700px]:text-sm h-11 max-[700px]:py-0 max-[700px]:gap-y-0 max-[700px]:h-6 bg-[#fff]">
               <button
-                className={`${category === "orderList" ? "border-b-2 border-[#333]" : ""}`}
+                className={`${category === "orderList" ? "border-b-2 border-neutral-800" : ""}`}
                 onClick={() => setCategory("orderList")}
               >
                 주문 내역
               </button>
               <button
-                className={`${category === "wishList" ? "border-b-2 border-[#333]" : ""}`}
+                className={`${category === "wishList" ? "border-b-2 border-neutral-800" : ""}`}
                 onClick={() => setCategory("wishList")}
               >
                 찜 리스트
               </button>
               <button
-                className={`${category === "editProfile" ? "border-b-2 border-[#333]" : ""}`}
+                className={`${category === "editProfile" ? "border-b-2 border-neutral-800" : ""}`}
                 onClick={() => setCategory("editProfile")}
               >
                 회원 정보 수정
@@ -259,7 +259,7 @@ export default function MyPage() {
               <form>
                 {/* 기본 정보 */}
                 <div className="flex flex-col gap-y-7">
-                  <p className="text-[18px] max-[700px]:text-[16px] font-semibold border-b border-neutral-300 pb-4">
+                  <p className="text-lg max-[700px]: font-semibold border-b border-neutral-300 pb-4">
                     기본 정보
                   </p>
                   <div className="grid grid-cols-[88px_minmax(200px,300px)]">
@@ -305,7 +305,7 @@ export default function MyPage() {
               {/* 배송지 추가 */}
               <form onSubmit={handleAddressSubmit(onAddressSubmit)}>
                 <div className="flex flex-col gap-y-7">
-                  <p className="text-[18px] max-[700px]:text-[16px] font-semibold border-b border-neutral-300 pb-4">
+                  <p className="text-lg max-[700px]: font-semibold border-b border-neutral-300 pb-4">
                     배송지 추가
                   </p>
                   <div className="grid grid-cols-[88px_minmax(200px,300px)]">
@@ -343,7 +343,7 @@ export default function MyPage() {
                 </div>
                 <button
                   type="submit"
-                  className="mt-5 border border-neutral-400 rounded-md px-4 py-1 w-[388px] max-[388px]:w-full hover:border-[#555]"
+                  className="mt-5 border border-neutral-400 rounded-md px-4 py-1 w-[388px] max-[388px]:w-full hover:border-neutral-600"
                 >
                   추가
                 </button>
@@ -351,7 +351,7 @@ export default function MyPage() {
 
               {/* 배송지 정보 */}
               <div className="flex flex-col gap-y-2">
-                <p className="text-[18px] font-semibold border-b border-neutral-300 pb-4 max-[700px]:text-[16px]">
+                <p className="text-lg font-semibold border-b border-neutral-300 pb-4 max-[700px]:">
                   배송지 정보
                 </p>
                 <div className="flex flex-col gap-y-3">

@@ -93,14 +93,14 @@ const Category = () => {
   };
 
   return (
-    <nav className="w-full bg-white border-b border-gray-200 overflow-x-auto">
-      <div className="max-w-7xl mx-auto px-4 md:px-6">
-        <div className="flex justify-start items-center h-16 md:h-14">
+    <nav className="w-full overflow-x-auto bg-white border-b border-gray-200">
+      <div className="px-4 mx-auto max-w-7xl md:px-6">
+        <div className="flex items-center justify-start h-16 md:h-14">
           <div className="flex gap-12 md:gap-8 sm:gap-2 whitespace-nowrap">
             {menuItems.map(item => (
               <button
                 key={item.name}
-                className={`relative px-3 py-2 md:py-1.5 text-sm md:text-[15px] sm:text-xs font-medium
+                className={`relative px-3 py-2 md:py-1.5 text-xs md:text-sm font-medium
                          transition-colors duration-200 border-0 bg-transparent cursor-pointer shrink-0
                          ${
                            activeItem === item.name

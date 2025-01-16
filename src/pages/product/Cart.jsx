@@ -217,7 +217,7 @@ export default function Cart() {
                 </div>
               </div>
             ))}
-            <div className="mt-8 border-t border-[#999] px-8 pt-6">
+            <div className="mt-8 border-t border-neutral-400 px-8 pt-6">
               <div className="flex flex-col items-center mb-8 space-y-5 text-lg font-medium sm:text-2xl">
                 <p className="flex justify-between w-full">
                   <span>상품 금액</span>
@@ -236,13 +236,13 @@ export default function Cart() {
                 <div className="flex w-full gap-8 sm:text-xl">
                   <button
                     onClick={() => handleOrder(data)}
-                    className="flex-1 text-center px-6 py-3 font-semibold border border-neutral-300 rounded hover:border-[#999] hover:bg-secondary-base"
+                    className="flex-1 text-center px-6 py-3 font-semibold border border-neutral-300 rounded hover:border-neutral-400 hover:bg-secondary-base"
                   >
                     구매하기
                   </button>
                   <button
                     onClick={() => navigate(-1)}
-                    className="flex-1 text-center px-6 py-3 font-semibold border border-neutral-300 rounded hover:border-[#999] hover:bg-secondary-base"
+                    className="flex-1 text-center px-6 py-3 font-semibold border border-neutral-300 rounded hover:border-neutral-400 hover:bg-secondary-base"
                   >
                     계속 쇼핑하기
                   </button>

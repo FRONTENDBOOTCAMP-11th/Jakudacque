@@ -4,11 +4,11 @@ export default function Address({ address, onDelete }) {
   return (
     <div className="bg-[#f8f8f8] flex justify-between gap-x-3 p-4 items-center">
       <div className="flex flex-col gap-y-1">
-        <p className="text-[14px] max-[700px]:text-[12px]">{address.name}</p>
+        <p className="text-sm max-[700px]:text-xs">{address.name}</p>
         <p>{address.value}</p>
       </div>
       <button
-        className="text-[14px] border border-neutral-400 px-3 py-1 rounded-[4px] bg-white flex-shrink-0 hover:border-[#555]"
+        className="text-sm border border-neutral-400 px-3 py-1 rounded-[4px] bg-white flex-shrink-0 hover:border-neutral-600"
         onClick={onDelete}
       >
         삭제

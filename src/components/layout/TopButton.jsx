@@ -33,7 +33,7 @@ export default function TopButton() {
           onClick={scrollToTop}
         >
           <IoChevronUp color="#444" size="14px" className="mt-2" />
-          <span className="text-[16px] leading-4 text-[#444]">TOP</span>
+          <span className=" leading-4 text-[#444]">TOP</span>
         </button>
       )}
     </>

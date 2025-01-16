@@ -16,7 +16,7 @@ export default function Footer() {
   return (
     <footer className="w-full border-t border-neutral-200 mb-6">
       <div className="text-[#333] max-w-screen-xl mx-auto flex flex-col gap-y-5 px-5">
-        <ul className="flex flex-wrap gap-x-5 gap-y-4 text-[14px] py-4 border-b border-neutral-200">
+        <ul className="flex flex-wrap gap-x-5 gap-y-4 text-sm py-4 border-b border-neutral-200">
           <li>
             <Link to="/">회사소개</Link>
           </li>
@@ -34,11 +34,11 @@ export default function Footer() {
           </li>
         </ul>
         <div className="flex flex-col gap-y-2">
-          <h4 className="text-[16px] font-semibold">회사정보</h4>
+          <h4 className=" font-semibold">회사정보</h4>
 
           <IoRemoveOutline color="#333" />
 
-          <ul className="text-[14px]">
+          <ul className="text-sm">
             <List>
               <ListTitle>회사명</ListTitle>
               <span>자꾸다꾸</span>

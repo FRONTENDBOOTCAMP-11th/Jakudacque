@@ -76,7 +76,7 @@ export default function Detail() {
             {/* 상품 정보 파트 */}
             <div className="basis-[580px] max-[700px]:basis-0 max-[700px]:w-auto max-[700px]:px-4 max-[700px]:mt-0 flex flex-col gap-y-11 max-[1100px]:gap-y-4 max-[900px]:gap-y-4">
               <div className="border-b border-neutral-200 pb-5 max-[900px]:pb-2 max-[900px]:pt-2">
-                <h1 className="text-[22px] max-[900px]:text-[16px] pt-2 pb-1 max-[900px]:py-0 max-[700px]:text-[18px] ">
+                <h1 className="text-2xl max-[900px]: pt-2 pb-1 max-[900px]:py-0 max-[700px]:text-lg ">
                   {data.name}
                 </h1>
                 <h2 className="text-xl max-[900px]:text-base max-[425px]:text-base">
@@ -96,7 +96,7 @@ export default function Detail() {
                   </span>
                 </li>
               </ul>
-              <div className="text-[15px] max-[900px]:text-[14px] max-[425px]:text-[14px] bg-[#f7f7f7] py-[14px] max-[900px]:py-[10px] px-4">
+              <div className="text-sm max-[900px]:text-sm max-[425px]:text-sm bg-[#f7f7f7] py-[14px] max-[900px]:py-[10px] px-4">
                 <p className="border-b border-neutral-200 border-dashed pb-2.5 max-[900px]:pb-1.5 mb-4 max-[900px]:mb-3">
                   수량
                 </p>
@@ -122,16 +122,14 @@ export default function Detail() {
                 </div>
               </div>
               <div className="flex justify-between items-center my-2 max-[900px]:my-1">
-                <span className="text-base max-[900px]:text-[15px] max-[425px]:text-sm">
-                  총 상품금액(1개)
-                </span>
+                <span className="text-sm sm:text-base">총 상품금액(1개)</span>
                 <span className="text-2xl max-[900px]:text-[22px] max-[425px]:text-xl">
                   {productPrice}원
                 </span>
               </div>
-              <div className="flex gap-x-2 max-[900px]:text-[15px]">
+              <div className="flex gap-x-2">
                 <button
-                  className="grow basis-[198px] py-3 max-[900px]:py-2 border border-neutral-300 rounded hover:border-[#999] hover:bg-secondary-base flex justify-center items-center"
+                  className="flex items-center justify-center py-2 rounded grow basis-48 lg:py-3 bg-secondary-base hover:bg-secondary-dark"
                   onClick={() =>
                     orderProduct.mutate({
                       products: [{ _id: Number(_id), quantity: count }],
@@ -141,7 +139,7 @@ export default function Detail() {
                   구매하기
                 </button>
                 <button
-                  className="grow basis-[198px] border border-neutral-300 rounded hover:border-[#999] flex justify-center items-center"
+                  className="flex items-center justify-center border rounded grow basis-48 border-neutral-300 hover:border-neutral-400"
                   onClick={() =>
                     addCart.mutate({ product_id: Number(_id), quantity: count })
                   }
@@ -149,10 +147,15 @@ export default function Detail() {
                   장바구니
                 </button>
                 <button
-                  className="grow basis-[100px] border border-neutral-300 rounded hover:border-[#999] flex justify-center items-center"
+                  className="flex items-center justify-center gap-1 border rounded grow basis-24 border-neutral-300 hover:border-neutral-400"
                   onClick={wishHandle}
                 >
-                  {localWish ? <IoHeartSharp /> : <IoHeartOutline />}찜
+                  {localWish ? (
+                    <IoHeartSharp color="red" />
+                  ) : (
+                    <IoHeartOutline color="red" />
+                  )}
+                  찜
                 </button>
               </div>
             </div>
