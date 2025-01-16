@@ -329,7 +329,7 @@ export default function MyPage() {
                     )}
                     <button
                       type="submit"
-                      className="border border-neutral-400 rounded-md px-3 py-2 mt-3 max-[388px]:w-full hover:border-neutral-600 col-span-2"
+                      className="col-span-2 px-3 py-2 mt-3 rounded-md bg-secondary-base hover:bg-secondary-dark"
                     >
                       추가
                     </button>
