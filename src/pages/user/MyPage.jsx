@@ -150,8 +150,6 @@ export default function MyPage() {
 
   const [addAddressMsg, setaddAddressMsg] = useState("");
 
-  console.log(orderProducts);
-
   return (
     <div className="w-full">
       {isLoading && isLoadingOrderData && isLoadingUserData && <Spinner />}

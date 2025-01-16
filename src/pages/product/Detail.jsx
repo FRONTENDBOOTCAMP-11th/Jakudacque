@@ -11,8 +11,9 @@ import { useParams } from "react-router-dom";
 import { useHandleWish } from "@hooks/useHandleWish";
 import useWishState from "@zustand/wishState";
 import { useAddCart } from "@hooks/useAddCart";
-import { useOrder } from "@hooks/useOrder";
 import { useState } from "react";
+import Modal from "@components/Modal";
+import { useUserProfile } from "@hooks/useUserProfile";
 
 export default function Detail() {
   const { _id } = useParams();
@@ -36,9 +37,6 @@ export default function Detail() {
   // 상품 가격(수량 변경시 함께 변경)
   const productPrice = data && (data.price * count).toLocaleString();
 
-  // 상품 구매
-  const { orderProduct } = useOrder();
-
   const { refetchWish } = useHandleWish(_id);
 
   // 전역 찜 상태 조회
@@ -60,6 +58,15 @@ export default function Detail() {
   // 장바구니 추가
   const { addCart } = useAddCart();
 
+  const { handleModal, deliveryProducts } = useUserProfile();
+
+  const sendInfo = () => {
+    handleModal();
+    deliveryProducts({
+      products: [{ _id: Number(_id), quantity: count }],
+    });
+    console.log("sendInfo");
+  };
   return (
     <div className="w-full">
       {isLoading && <Spinner />}
@@ -132,11 +139,7 @@ export default function Detail() {
               <div className="flex gap-x-2 max-[900px]:text-[15px]">
                 <button
                   className="grow basis-[198px] py-3 max-[900px]:py-2 bg-secondary-base rounded  hover:bg-secondary-dark flex justify-center items-center"
-                  onClick={() =>
-                    orderProduct.mutate({
-                      products: [{ _id: Number(_id), quantity: count }],
-                    })
-                  }
+                  onClick={sendInfo}
                 >
                   구매하기
                 </button>
@@ -170,6 +173,7 @@ export default function Detail() {
         </div>
       )}
       <CartModal />
+      <Modal />
     </div>
   );
 }
