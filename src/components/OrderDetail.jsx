@@ -5,11 +5,11 @@ export default function OrderDetail({ product }) {
     <>
       <div className="flex items-center gap-x-5">
         <img
-          className="w-[100px] rounded-md"
+          className="w-24 rounded-md "
           src={`https://11.fesp.shop/${product.image.path}`}
           alt={product.name}
         />
-        <ul className="text-[16px]">
+        <ul className="">
           <li>{product.name}</li>
           <li>{product.quantity}개</li>
           <li className="pt-5 font-medium">

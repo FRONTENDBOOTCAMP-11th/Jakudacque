@@ -8,5 +8,5 @@
 }
 
 body {
-  @apply text-[#333333];
+  @apply text-neutral-800;
 }

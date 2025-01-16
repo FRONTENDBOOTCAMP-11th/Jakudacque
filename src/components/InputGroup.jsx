@@ -25,8 +25,8 @@ export default function InputGroup({
         {label}
       </label>
       <input
-        className={`${disabled && "bg-gray-100"} 
-          p-2 border border-gray-300 rounded-lg 
+        className={`${disabled && "bg-neutral-100"} 
+          p-2 border border-neutral-300 rounded-lg 
           active:outline-none focus:ring-blue-500 focus:border-blue-500
         `}
         id={id}

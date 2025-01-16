@@ -29,8 +29,8 @@ export default function CalendarContainer({ period, setPeriod, onClose }) {
 
   return (
     <>
-      <div className="absolute bg-white border border-gray-400 rounded w-80 h-max">
-        <div className="flex items-center justify-between w-full h-10 p-2 border-b border-gray-400 ">
+      <div className="absolute bg-white border border-neutral-400 rounded w-80 h-max">
+        <div className="flex items-center justify-between w-full h-10 p-2 border-b border-neutral-400 ">
           <span>기간 선택</span>
           <button onClick={onClose}>
             <IoClose size={20} />
