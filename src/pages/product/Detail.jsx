@@ -12,7 +12,6 @@ import { useHandleWish } from "@hooks/useHandleWish";
 import useWishState from "@zustand/wishState";
 import { useAddCart } from "@hooks/useAddCart";
 import { useOrder } from "@hooks/useOrder";
-import { formatPrice } from "@utils/formatPrice";
 import { useState } from "react";
 
 export default function Detail() {
@@ -35,7 +34,7 @@ export default function Detail() {
   const countDown = useCounterState(state => state.countDown);
 
   // 상품 가격(수량 변경시 함께 변경)
-  const productPrice = data && formatPrice(data.price * count);
+  const productPrice = data && (data.price * count).toLocaleString();
 
   // 상품 구매
   const { orderProduct } = useOrder();
@@ -80,11 +79,11 @@ export default function Detail() {
                 <h1 className="text-[22px] max-[900px]:text-[16px] pt-2 pb-1 max-[900px]:py-0 max-[700px]:text-[18px] ">
                   {data.name}
                 </h1>
-                <h2 className="text-[20px] max-[900px]:text-[16px] max-[425px]:text-[1rem]">
-                  {formatPrice(data.price)}원
+                <h2 className="text-xl max-[900px]:text-base max-[425px]:text-base">
+                  {data.price.toLocaleString()}원
                 </h2>
               </div>
-              <ul className="text-[14px] max-[900px]:text-[12px] max-[425px]:text-[12px]">
+              <ul className="text-sm max-[900px]:text-xs max-[425px]:text-xs">
                 <li className="flex gap-x-1.5">
                   <span className="font-semibold">배송 방법</span>
                   <span>택배</span>
@@ -92,7 +91,8 @@ export default function Detail() {
                 <li className="flex gap-x-1.5">
                   <span className="font-semibold">배송비</span>
                   <span>
-                    {formatPrice(data.shippingFees)}원(30,000원 이상 무료배송)
+                    {data.shippingFees.toLocaleString()}원(30,000원 이상
+                    무료배송)
                   </span>
                 </li>
               </ul>
@@ -122,10 +122,10 @@ export default function Detail() {
                 </div>
               </div>
               <div className="flex justify-between items-center my-2 max-[900px]:my-1">
-                <span className="text-[16px] max-[900px]:text-[15px] max-[425px]:text-[14px]">
+                <span className="text-base max-[900px]:text-[15px] max-[425px]:text-sm">
                   총 상품금액(1개)
                 </span>
-                <span className="text-[24px] max-[900px]:text-[22px] max-[425px]:text-[20px]">
+                <span className="text-2xl max-[900px]:text-[22px] max-[425px]:text-xl">
                   {productPrice}원
                 </span>
               </div>

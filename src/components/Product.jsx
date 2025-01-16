@@ -1,6 +1,5 @@
 import { useAddCart } from "@hooks/useAddCart";
 import { useHandleWish } from "@hooks/useHandleWish";
-import { formatPrice } from "@utils/formatPrice";
 import useWishState from "@zustand/wishState";
 import PropTypes from "prop-types";
 import { useState } from "react";
@@ -40,7 +39,7 @@ export default function Product({ product }) {
         <div className="flex flex-col pb-3 px-1">
           <p className="text-[15px]">{product.name}</p>
           <div className="flex items-center text-[15px]">
-            <p className="font-medium">{formatPrice(product.price)}원</p>
+            <p className="font-medium">{product.price.toLocaleString()}원</p>
           </div>
         </div>
       </Link>
