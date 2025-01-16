@@ -74,7 +74,7 @@ export default function Index() {
             loop={isLoopEnabled}
             autoplay={{ delay: 4000, disableOnInteraction: false }}
             spaceBetween={20}
-            slidesPerGroup={2}
+            slidesPerGroup={1}
             breakpoints={{
               360: {
                 slidesPerView: 2,
@@ -151,6 +151,24 @@ const StyledSwiper = styled.div`
 
   .swiper-button-next,
   .swiper-button-prev {
+    background-color: #fff;
+    border: 3px solid #fde047;
+    width: 45px;
+    height: 45px;
+    padding: 15px;
+    border-radius: 50%;
     color: #fde047;
+    transition: transform 0.3s ease;
+  }
+
+  .swiper-button-prev:after,
+  .swiper-button-next:after {
+    font-size: 1.3rem !important;
+    font-weight: 600 !important;
+  }
+
+  .swiper-button-next:hover,
+  .swiper-button-prev:hover {
+    transform: scale(1.2);
   }
 `;
