@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 export default function Address({ address, onDelete }) {
   return (
-    <div className="bg-[#f8f8f8] flex justify-between gap-x-3 p-4 items-center">
+    <div className="flex items-center justify-between p-4 bg-neutral-100 gap-x-3">
       <div className="flex flex-col gap-y-1">
         <p className="text-sm max-[700px]:text-xs">{address.name}</p>
         <p>{address.value}</p>

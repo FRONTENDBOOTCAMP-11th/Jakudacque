@@ -16,14 +16,14 @@ export default function Modal() {
           </ModalMsgArea>
           <ModalBtnArea>
             <button
-              className="w-[139.5px] py-[12px] border-r border-neutral-300 rounded-b hover:bg-secondary-base"
+              className="w-[140px] py-[12px] border-r border-neutral-300 rounded-b hover:bg-secondary-base"
               onClick={handleModal}
             >
               계속 쇼핑
             </button>
             <Link
               to="/cart"
-              className="w-[139.5px] py-[12px] rounded-b hover:bg-secondary-base flex justify-center"
+              className="w-[140px] py-[12px] rounded-b hover:bg-secondary-base flex justify-center"
               onClick={handleModal}
             >
               장바구니 가기
@@ -40,7 +40,7 @@ const Container = tw.div`
     fixed
     z-[60]
     inset-0
-    bg-[#333]/80
+    bg-neutral-800/80
     flex
     justify-center
     items-center

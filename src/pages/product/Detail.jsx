@@ -96,7 +96,7 @@ export default function Detail() {
                   </span>
                 </li>
               </ul>
-              <div className="text-sm max-[900px]:text-sm max-[425px]:text-sm bg-[#f7f7f7] py-[14px] max-[900px]:py-[10px] px-4">
+              <div className="text-sm max-[900px]:text-sm max-[425px]:text-sm bg-neutral-100 py-[14px] max-[900px]:py-[10px] px-4">
                 <p className="border-b border-neutral-200 border-dashed pb-2.5 max-[900px]:pb-1.5 mb-4 max-[900px]:mb-3">
                   수량
                 </p>
@@ -161,7 +161,7 @@ export default function Detail() {
             </div>
           </div>
           {/* 상품 디테일 컷 파트 시작 */}
-          <div className="border-y border-neutral-200 bg-[#fcfcfc] text-center py-1.5 mt-[40px]">
+          <div className="border-y border-neutral-200 bg-neutral-50 text-center py-1.5 mt-[40px]">
             <p>상세 정보</p>
           </div>
           {/* 상품 디테일 컷 */}

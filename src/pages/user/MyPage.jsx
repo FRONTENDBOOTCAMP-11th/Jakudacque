@@ -158,7 +158,7 @@ export default function MyPage() {
       {orderData && userData && data && (
         <div className="max-w-screen-xl mx-auto">
           {/* 프로필 영역 */}
-          <div className=" bg-[#f1f1f1] py-12 max-[500px]:py-8 flex items-center gap-x-40 max-[1000px]:gap-x-20 max-[700px]:gap-x-10 justify-center relative max-[500px]:flex-col max-[500px]:gap-y-7">
+          <div className=" bg-neutral-100 py-12 mt-4 mx-4 sm:mx-0 sm:mt-8 max-[500px]:py-8 flex items-center gap-x-40 max-[1000px]:gap-x-20 max-[700px]:gap-x-10 justify-center relative max-[500px]:flex-col max-[500px]:gap-y-7">
             <p className="text-xl max-[1000px]:text-lg max-[700px]:text-base max-[500px]:text-lg ml-[-30px] max-[700px]:ml-0 shrink-0 tracking-wide">
               <span>{user.name}</span>님, 반갑습니다.
             </p>
@@ -187,9 +187,9 @@ export default function MyPage() {
             </Link>
           </div>
           {/* 주문내역, 찜 리스트, 회원정보수정 영역 */}
-          <div className="flex gap-x-8 max-[700px]:flex-col">
+          <div className="flex flex-col gap-x-8 md:flex-row">
             {/* 주문내역, 찜 리스트, 회원정보수정 카테고리 */}
-            <ul className="sticky top-0 ml-5 max-[700px]:ml-0 text-lg py-8 max-[700px]:my-6 flex flex-col items-start max-[700px]:flex-row max-[700px]:justify-around gap-y-2 shrink-0 max-[700px]:text-sm h-11 max-[700px]:py-0 max-[700px]:gap-y-0 max-[700px]:h-6 bg-[#fff]">
+            <ul className="sticky top-[68px] sm:top-16 md:ml-4 md:text-lg md:py-8 py-4 flex md:flex-col items-start justify-around gap-2 shrink-0 text-sm h-max bg-white">
               <button
                 className={`${category === "orderList" ? "border-b-2 border-neutral-800" : ""}`}
                 onClick={() => setCategory("orderList")}
