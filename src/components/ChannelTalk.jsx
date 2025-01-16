@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react';
-import useUserStore from '@zustand/userStore';
+import { useEffect, useRef } from "react";
+import useUserStore from "@zustand/userStore";
 
 export default function ChannelTalk() {
   const channelTalkRef = useRef(null);
@@ -7,14 +7,16 @@ export default function ChannelTalk() {
 
   const isAuthPage = () => {
     const path = window.location.pathname;
-    return path.startsWith('/admin') ||
-           path.startsWith('/user/signin') ||
-           path.startsWith('/user/signup');
+    return (
+      path.startsWith("/admin") ||
+      path.startsWith("/user/signin") ||
+      path.startsWith("/user/signup")
+    );
   };
 
   const cleanupChannelTalk = () => {
     if (window.ChannelIO) {
-      window.ChannelIO('shutdown');
+      window.ChannelIO("shutdown");
     }
     const existingScript = document.querySelector('script[src*="channel.io"]');
     if (existingScript) {
@@ -30,29 +32,29 @@ export default function ChannelTalk() {
       return;
     }
 
-    const ch = function() {
+    const ch = function () {
       ch.c(arguments);
     };
     ch.q = [];
-    ch.c = function(args) {
+    ch.c = function (args) {
       ch.q.push(args);
     };
     window.ChannelIO = ch;
 
-    const script = document.createElement('script');
+    const script = document.createElement("script");
     script.async = true;
-    script.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+    script.src = "https://cdn.channel.io/plugin/ch-plugin-web.js";
     channelTalkRef.current = script;
 
     script.onload = () => {
       if (!window.ChannelIO) return;
-      window.ChannelIO('boot', {
-        "pluginKey": "81010319-9027-4bd0-8c9d-2f19caa0f5d1",
-        "memberId": user?.id || '',
-        "profile": {
-          "name": user?.name || '게스트',
-          "email": user?.email || ''
-        }
+      window.ChannelIO("boot", {
+        pluginKey: "81010319-9027-4bd0-8c9d-2f19caa0f5d1",
+        memberId: user?.id || "",
+        profile: {
+          name: user?.name || "게스트",
+          email: user?.email || "",
+        },
       });
     };
 
@@ -70,17 +72,17 @@ export default function ChannelTalk() {
       }, 100);
     };
 
-    window.addEventListener('popstate', handleRouteChange);
+    window.addEventListener("popstate", handleRouteChange);
 
     // React Router의 history.push() 감지
     const originalPushState = window.history.pushState;
-    window.history.pushState = function() {
+    window.history.pushState = function () {
       originalPushState.apply(this, arguments);
       handleRouteChange();
     };
 
     return () => {
-      window.removeEventListener('popstate', handleRouteChange);
+      window.removeEventListener("popstate", handleRouteChange);
       window.history.pushState = originalPushState;
       cleanupChannelTalk();
     };
