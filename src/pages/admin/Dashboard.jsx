@@ -82,7 +82,7 @@ export default function AdminHome() {
   const axios = useAxiosInstance();
 
   const { data, isLoading } = useQuery({
-    queryKey: ["orderList", period.startDate, period.endDate],
+    queryKey: ["orderStatistics", period.startDate, period.endDate],
     // 로그인 기능 완성 후 /seller/orders 로 변경
     queryFn: () =>
       axios.get("/admin/statistics/orders", {

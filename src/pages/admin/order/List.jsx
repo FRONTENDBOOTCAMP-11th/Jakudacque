@@ -67,7 +67,7 @@ export default function List() {
   // 카테고리 코드 데이터 가져오기
   const { codes } = useCodeStore();
   const orderStateOptions = useMemo(() => {
-    if (!codes) return [];
+    if (!codes || !codes.orderState) return [];
     const options = Object.keys(codes.orderState).map(key => ({
       value: key,
       label: codes.orderState[key],
