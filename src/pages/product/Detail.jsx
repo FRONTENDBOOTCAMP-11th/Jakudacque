@@ -7,18 +7,29 @@ import { IoAdd } from "react-icons/io5";
 import { IoRemove } from "react-icons/io5";
 import { IoHeartOutline } from "react-icons/io5";
 import { IoHeartSharp } from "react-icons/io5";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useHandleWish } from "@hooks/useHandleWish";
 import useWishState from "@zustand/wishState";
 import { useAddCart } from "@hooks/useAddCart";
 import { useState } from "react";
 import AddressModal from "@components/AddressModal";
 import { useAddress } from "@hooks/useAddress";
+import useUserStore from "@zustand/userStore";
 
 export default function Detail() {
   const { _id } = useParams();
 
   const axios = useAxiosInstance();
+
+  const navigate = useNavigate();
+
+  function navigateLogin() {
+    const gotoLogin = confirm(
+      "로그인 후 이용 가능합니다.\n로그인 페이지로 이동하시겠습니까?",
+    );
+    gotoLogin &&
+      navigate("/user/signin", { state: { from: location.pathname } });
+  }
 
   // 상품 상세 조회
   const { data, isLoading } = useQuery({
@@ -61,8 +72,15 @@ export default function Detail() {
   const { handleModal } = useAddress();
 
   const sendInfo = () => {
-    handleModal();
+    if (user) {
+      handleModal();
+    } else {
+      navigateLogin();
+    }
   };
+
+  // 로그인한 회원 데이터
+  const user = useUserStore(state => state.user);
 
   return (
     <div className="w-full">

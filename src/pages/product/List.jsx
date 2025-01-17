@@ -99,7 +99,7 @@ export default function List() {
     image: item.mainImages?.[0]?.path
       ? "https://11.fesp.shop" + item.mainImages[0].path
       : "",
-    link: `/product/${item._id}`,
+    link: `/list/${item._id}`,
   }));
 
   return (
@@ -117,7 +117,10 @@ export default function List() {
       {/* 페이지네이션 */}
       <div className="flex justify-center mt-8">
         <Pagination
-          maxPage={data.pagination.totalPages || Math.ceil(data.pagination.totalCount / 20)}
+          maxPage={
+            data.pagination.totalPages ||
+            Math.ceil(data.pagination.totalCount / 20)
+          }
           currentPage={page}
         />
       </div>
