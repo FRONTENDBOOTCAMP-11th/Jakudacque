@@ -15,4 +15,7 @@ export default defineConfig({
       { find: "@utils", replacement: "/src/utils" },
     ],
   },
+  preview: {
+    port: 5173,
+  },
 });
