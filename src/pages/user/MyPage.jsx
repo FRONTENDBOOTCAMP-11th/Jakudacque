@@ -32,7 +32,7 @@ export default function MyPage() {
   const [category, setCategory] = useState("orderList");
 
   // 로그인한 회원 데이터
-  const user = JSON.parse(sessionStorage.getItem("user")).state.user;
+  const user = useUserStore(state => state.user);
   const user_id = user?._id;
 
   // 회원 찜 내역 조회
@@ -40,6 +40,7 @@ export default function MyPage() {
     queryKey: ["wish", user_id],
     queryFn: () => axios.get(`users/${user_id}/bookmarks`),
     select: res => res.data.item.product,
+    enabled: !!user_id,
   });
 
   // 찜 상품 데이터 커스텀
