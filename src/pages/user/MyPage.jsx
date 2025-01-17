@@ -33,7 +33,7 @@ export default function MyPage() {
 
   // 로그인한 회원 데이터
   const user = JSON.parse(sessionStorage.getItem("user")).state.user;
-  const user_id = user._id;
+  const user_id = user?._id;
 
   // 회원 찜 내역 조회
   const { data, isLoading } = useQuery({
@@ -121,7 +121,7 @@ export default function MyPage() {
   const [addressData, setAddressData] = useState([]);
 
   useEffect(() => {
-    if (userData?.extra.addressBook) {
+    if (userData?.extra?.addressBook) {
       setAddressData(userData.extra.addressBook);
     }
   }, [userData]);

@@ -1,27 +1,28 @@
 import Address from "@components/Address";
-import { useUserProfile } from "@hooks/useUserProfile";
+import { useAddress } from "@hooks/useAddress";
 import useAddressModalState from "@zustand/AddressModalState";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import tw from "tailwind-styled-components";
 
-export default function Modal() {
+export default function AddressModal() {
   const { modalIsOpen } = useAddressModalState();
 
-  const { addressBook, handleModal, mutateCallback } = useUserProfile();
+  const { addressBook, handleModal, mutateCallback } = useAddress();
 
   // 주소 선택 폼
   const { register, handleSubmit } = useForm();
 
   // 배송 주소 확정
   const selectedAddress = data => {
-    console.log("확정 주소: ", data);
-    mutateCallback(data);
+    const address = { address: JSON.parse(data) };
+    console.log("확정 주소: ", address);
+    mutateCallback(address);
   };
 
-  // 구매
+  // 배송 주소 처리
   const handleOrder = handleSubmit(data => {
-    selectedAddress(data);
+    selectedAddress(data.address);
     handleModal();
   });
   return (
@@ -35,11 +36,11 @@ export default function Modal() {
               </p>
               <form action="" className="flex flex-col gap-y-3">
                 {addressBook?.map((e, index) => (
-                  <div key={index} className="flex gap-y-2 bg-[#f8f8f8] px-4">
+                  <div key={index} className="flex gap-y-2 bg-gray-100 px-4">
                     <input
                       type="radio"
                       name="address"
-                      value={e.value}
+                      value={JSON.stringify({ name: e.name, value: e.value })}
                       {...register("address")}
                     />
                     <Address address={e} />
@@ -51,13 +52,13 @@ export default function Modal() {
           <ModalBtnArea>
             <Link
               to="/user/mypage"
-              className="w-[139.5px] py-[12px] border-r border-[#ddd] rounded-b hover:bg-secondary-base flex justify-center"
+              className="px-16 py-3 border-r border-neutral-300 rounded-b hover:bg-secondary-base flex justify-center"
               onClick={handleModal}
             >
               주소 변경
             </Link>
             <button
-              className="w-[139.5px] py-[12px] rounded-b hover:bg-secondary-base flex justify-end"
+              className="grow px-16 py-3 rounded-b hover:bg-secondary-base flex justify-center text-align"
               onClick={handleOrder}
             >
               구매하기
@@ -87,19 +88,19 @@ const ModalWindow = tw.div`
     flex
     flex-col
     rounded
-    text-[14.5px]
+    text-sm
   `;
 
 // 모달 메시지 영역
 const ModalMsgArea = tw.div`
-    py-[26px]
-    px-[26px]
+    p-6
     border-b
-    border-[#ddd]
+    border-neutral-300
   `;
 
 // 모달 버튼 영역
 const ModalBtnArea = tw.div`
     flex
-    text-[14px]
+    text-sm
+    text-align
   `;

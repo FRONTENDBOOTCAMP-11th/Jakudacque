@@ -12,8 +12,8 @@ import { useHandleWish } from "@hooks/useHandleWish";
 import useWishState from "@zustand/wishState";
 import { useAddCart } from "@hooks/useAddCart";
 import { useState } from "react";
-import Modal from "@components/Modal";
-import { useUserProfile } from "@hooks/useUserProfile";
+import AddressModal from "@components/AddressModal";
+import { useAddress } from "@hooks/useAddress";
 
 export default function Detail() {
   const { _id } = useParams();
@@ -58,15 +58,12 @@ export default function Detail() {
   // 장바구니 추가
   const { addCart } = useAddCart();
 
-  const { handleModal, deliveryProducts } = useUserProfile();
+  const { handleModal } = useAddress();
 
   const sendInfo = () => {
     handleModal();
-    deliveryProducts({
-      products: [{ _id: Number(_id), quantity: count }],
-    });
-    console.log("sendInfo");
   };
+
   return (
     <div className="w-full">
       {isLoading && <Spinner />}
@@ -174,7 +171,7 @@ export default function Detail() {
         </div>
       )}
       <CartModal />
-      <Modal />
+      <AddressModal />
     </div>
   );
 }
