@@ -29,16 +29,15 @@ export default function AdminSideMenu({ menuList }) {
       <SideMenuContainer>
         <MenuList>
           {/* logo */}
-          <Link to="/">
-            <MenuItem className="py-2">
-              <img
-                className="h-9 sm:h-12"
-                src="/images/logo.png"
-                alt="로고 이미지"
-              />{" "}
-            </MenuItem>
-            <RowDashBar />
-          </Link>
+
+          <MenuItem className="py-2">
+            <img
+              className="h-9 sm:h-12"
+              src="/images/logo.png"
+              alt="로고 이미지"
+            />{" "}
+          </MenuItem>
+          <RowDashBar />
 
           {/* admin-menus */}
           {menuList.length > 0 &&

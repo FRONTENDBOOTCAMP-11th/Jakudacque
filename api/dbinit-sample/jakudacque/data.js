@@ -57,7 +57,7 @@ export const initData = async (clientId, nextSeq) => {
         extra: {
           birthday: "11-30",
           membershipClass: "MC02",
-          address: [
+          addressBook: [
             {
               id: 1,
               name: "회사",
@@ -90,20 +90,21 @@ export const initData = async (clientId, nextSeq) => {
             name: "diary1.png",
             originalname: "diary1.png",
           },
-          {
-            path: `/files/${clientId}/diary1-detail_1.png`,
-            name: "diary1-detail_1.png",
-            originalname: "diary1-detail_1.png",
-          },
-          {
-            path: `/files/${clientId}/diary1-detail_2.png`,
-            name: "diary1-detail_2.png",
-            originalname: "diary1-detail_2.png",
-          },
+          // {
+          //   path: `/files/${clientId}/diary1-detail_1.png`,
+          //   name: "diary1-detail_1.png",
+          //   originalname: "diary1-detail_1.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/diary1-detail_2.png`,
+          //   name: "diary1-detail_2.png",
+          //   originalname: "diary1-detail_2.png",
+          // },
         ],
         content: `
           <div class="product-detail">
-            <p>2025 두들링 다이어리</p>          
+            <p><img src="https://11.fesp.shop/files/final03/diary1-detail_1.png"></p>
+            <p><img src="https://11.fesp.shop/files/final03/diary1-detail_2.png"></p>
           </div>`,
         createdAt: getTime(-41, -60 * 60 * 2),
         updatedAt: getTime(-40, -60 * 15),
@@ -130,25 +131,27 @@ export const initData = async (clientId, nextSeq) => {
             name: "diary2.png",
             originalname: "diary2.png",
           },
-          {
-            path: `/files/${clientId}/diary2-detail_1.png`,
-            name: "diary2-detail_1.png",
-            originalname: "diary2-detail_1.png",
-          },
-          {
-            path: `/files/${clientId}/diary2-detail_2.png`,
-            name: "diary2-detail_2.png",
-            originalname: "diary2-detail_2.png",
-          },
-          {
-            path: `/files/${clientId}/diary2-detail_3.png`,
-            name: "diary2-detail_3.png",
-            originalname: "diary2-detail_3.png",
-          },
+          // {
+          //   path: `/files/${clientId}/diary2-detail_1.png`,
+          //   name: "diary2-detail_1.png",
+          //   originalname: "diary2-detail_1.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/diary2-detail_2.png`,
+          //   name: "diary2-detail_2.png",
+          //   originalname: "diary2-detail_2.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/diary2-detail_3.png`,
+          //   name: "diary2-detail_3.png",
+          //   originalname: "diary2-detail_3.png",
+          // },
         ],
         content: `
           <div class="product-detail">
-            <p>[B6] 블랭크북 ver.2</p>         
+            <p><img src="https://11.fesp.shop/files/final03/diary2-detail_1.png"></p>
+            <p><img src="https://11.fesp.shop/files/final03/diary2-detail_2.png"></p>
+            <p><img src="https://11.fesp.shop/files/final03/diary2-detail_3.png"></p>
           </div>`,
         createdAt: getTime(-38, -60 * 60 * 6),
         updatedAt: getTime(-33, -60 * 55),
@@ -175,20 +178,21 @@ export const initData = async (clientId, nextSeq) => {
             name: "diary3.png",
             originalname: "diary3.png",
           },
-          {
-            path: `/files/${clientId}/diary3-detail_1.png`,
-            name: "diary3-detail_1.png",
-            originalname: "diary3-detail_1.png",
-          },
-          {
-            path: `/files/${clientId}/diary3-detail_2.png`,
-            name: "diary3-detail_2.png",
-            originalname: "diary3-detail_2.png",
-          },
+          // {
+          //   path: `/files/${clientId}/diary3-detail_1.png`,
+          //   name: "diary3-detail_1.png",
+          //   originalname: "diary3-detail_1.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/diary3-detail_2.png`,
+          //   name: "diary3-detail_2.png",
+          //   originalname: "diary3-detail_2.png",
+          // },
         ],
         content: `
           <div class="product-detail">
-            <p>[wawa109] 중철노트 핑크</p>           
+            <p><img src="https://11.fesp.shop/files/final03/diary3-detail_1.png"></p>   
+            <p><img src="https://11.fesp.shop/files/final03/diary3-detail_2.png"></p>   
           </div>`,
         createdAt: getTime(-35, -60 * 60 * 6),
         updatedAt: getTime(-10, -60 * 19),
@@ -215,25 +219,27 @@ export const initData = async (clientId, nextSeq) => {
             name: "diary4.png",
             originalname: "diary4.png",
           },
-          {
-            path: `/files/${clientId}/diary4-detail_1.png`,
-            name: "diary4-detail_1.png",
-            originalname: "diary4-detail_1.png",
-          },
-          {
-            path: `/files/${clientId}/diary4-detail_2.png`,
-            name: "diary4-detail_2.png",
-            originalname: "diary4-detail_2.png",
-          },
-          {
-            path: `/files/${clientId}/diary4-detail_3.png`,
-            name: "diary4-detail_3.png",
-            originalname: "diary4-detail_3.png",
-          },
+          // {
+          //   path: `/files/${clientId}/diary4-detail_1.png`,
+          //   name: "diary4-detail_1.png",
+          //   originalname: "diary4-detail_1.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/diary4-detail_2.png`,
+          //   name: "diary4-detail_2.png",
+          //   originalname: "diary4-detail_2.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/diary4-detail_3.png`,
+          //   name: "diary4-detail_3.png",
+          //   originalname: "diary4-detail_3.png",
+          // },
         ],
         content: `
           <div class="product-detail">
-            <p>아이코닉 2025 이겨낸다 다이어리</p>          
+            <p><img src="https://11.fesp.shop/files/final03/diary4-detail_1.png"></p>
+            <p><img src="https://11.fesp.shop/files/final03/diary4-detail_2.png"></p>
+            <p><img src="https://11.fesp.shop/files/final03/diary4-detail_3.png"></p>
           </div>`,
         createdAt: getTime(-33, -60 * 60 * 7),
         updatedAt: getTime(-22, -60 * 60 * 3),
@@ -260,25 +266,27 @@ export const initData = async (clientId, nextSeq) => {
             name: "diary5.png",
             originalname: "diary5.png",
           },
-          {
-            path: `/files/${clientId}/diary5-detail_1.png`,
-            name: "diary5-detail_1.png",
-            originalname: "diary5-detail_1.png",
-          },
-          {
-            path: `/files/${clientId}/diary5-detail_2.png`,
-            name: "diary5-detail_2.png",
-            originalname: "diary5-detail_2.png",
-          },
-          {
-            path: `/files/${clientId}/diary5-detail_3.png`,
-            name: "diary5-detail_3.png",
-            originalname: "diary5-detail_3.png",
-          },
+          // {
+          //   path: `/files/${clientId}/diary5-detail_1.png`,
+          //   name: "diary5-detail_1.png",
+          //   originalname: "diary5-detail_1.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/diary5-detail_2.png`,
+          //   name: "diary5-detail_2.png",
+          //   originalname: "diary5-detail_2.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/diary5-detail_3.png`,
+          //   name: "diary5-detail_3.png",
+          //   originalname: "diary5-detail_3.png",
+          // },
         ],
         content: `
           <div class="product-detail">
-            <p>[날짜형] 나의색 나의하루 vol.7 2025 다이어리</p>          
+            <p><img src="https://11.fesp.shop/files/final03/diary5-detail_1.png"></p>
+            <p><img src="https://11.fesp.shop/files/final03/diary5-detail_2.png"></p>
+            <p><img src="https://11.fesp.shop/files/final03/diary5-detail_3.png"></p>
           </div>`,
         createdAt: getTime(-30, -60 * 60 * 10),
         updatedAt: getTime(-10, -60 * 56),
@@ -306,25 +314,27 @@ export const initData = async (clientId, nextSeq) => {
             name: "diary6.png",
             originalname: "diary6.png",
           },
-          {
-            path: `/files/${clientId}/diary6-detail_1.png`,
-            name: "diary6-detail_1.png",
-            originalname: "diary6-detail_1.png",
-          },
-          {
-            path: `/files/${clientId}/diary6-detail_2.png`,
-            name: "diary6-detail_2.png",
-            originalname: "diary6-detail_2.png",
-          },
-          {
-            path: `/files/${clientId}/diary6-detail_3.png`,
-            name: "diary6-detail_3.png",
-            originalname: "diary6-detail_3.png",
-          },
+          // {
+          //   path: `/files/${clientId}/diary6-detail_1.png`,
+          //   name: "diary6-detail_1.png",
+          //   originalname: "diary6-detail_1.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/diary6-detail_2.png`,
+          //   name: "diary6-detail_2.png",
+          //   originalname: "diary6-detail_2.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/diary6-detail_3.png`,
+          //   name: "diary6-detail_3.png",
+          //   originalname: "diary6-detail_3.png",
+          // },
         ],
         content: `
           <div class="product-detail">
-            <p>[만년형] 컴포지션스튜디오 컴포지션 북 스택 먼슬리 다이어리</p>          
+            <p><img src="https://11.fesp.shop/files/final03/diary6-detail_1.png"></p>   
+            <p><img src="https://11.fesp.shop/files/final03/diary6-detail_2.png"></p>   
+            <p><img src="https://11.fesp.shop/files/final03/diary6-detail_3.png"></p>   
           </div>`,
         createdAt: getTime(-30, -60 * 60 * 21),
         updatedAt: getTime(-20, -60 * 10),
@@ -351,30 +361,33 @@ export const initData = async (clientId, nextSeq) => {
             name: "diary7.png",
             originalname: "diary7.png",
           },
-          {
-            path: `/files/${clientId}/diary7-detail_1.png`,
-            name: "diary7-detail_1.png",
-            originalname: "diary7-detail_1.png",
-          },
-          {
-            path: `/files/${clientId}/diary7-detail_2.png`,
-            name: "diary7-detail_2.png",
-            originalname: "diary7-detail_2.png",
-          },
-          {
-            path: `/files/${clientId}/diary7-detail_3.png`,
-            name: "diary7-detail_3.png",
-            originalname: "diary7-detail_3.png",
-          },
-          {
-            path: `/files/${clientId}/diary7-detail_4.png`,
-            name: "diary7-detail_4.png",
-            originalname: "diary7-detail_4.png",
-          },
+          // {
+          //   path: `/files/${clientId}/diary7-detail_1.png`,
+          //   name: "diary7-detail_1.png",
+          //   originalname: "diary7-detail_1.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/diary7-detail_2.png`,
+          //   name: "diary7-detail_2.png",
+          //   originalname: "diary7-detail_2.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/diary7-detail_3.png`,
+          //   name: "diary7-detail_3.png",
+          //   originalname: "diary7-detail_3.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/diary7-detail_4.png`,
+          //   name: "diary7-detail_4.png",
+          //   originalname: "diary7-detail_4.png",
+          // },
         ],
         content: `
           <div class="product-detail">
-            <p>[만년형] 러빗띵스 라벨 다이어리 세트</p>         
+            <p><img src="https://11.fesp.shop/files/final03/diary7-detail_1.png"></p>
+            <p><img src="https://11.fesp.shop/files/final03/diary7-detail_2.png"></p>
+            <p><img src="https://11.fesp.shop/files/final03/diary7-detail_3.png"></p>
+            <p><img src="https://11.fesp.shop/files/final03/diary7-detail_4.png"></p>
           </div>`,
         createdAt: getTime(-25, -60 * 60 * 12),
         updatedAt: getTime(-24, -60 * 23),
@@ -401,20 +414,21 @@ export const initData = async (clientId, nextSeq) => {
             name: "diary8.png",
             originalname: "diary8.png",
           },
-          {
-            path: `/files/${clientId}/diary8-detail_1.png`,
-            name: "diary8-detail_1.png",
-            originalname: "diary8-detail_1.png",
-          },
-          {
-            path: `/files/${clientId}/diary8-detail_2.png`,
-            name: "diary8-detail_2.png",
-            originalname: "diary8-detail_2.png",
-          },
+          // {
+          //   path: `/files/${clientId}/diary8-detail_1.png`,
+          //   name: "diary8-detail_1.png",
+          //   originalname: "diary8-detail_1.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/diary8-detail_2.png`,
+          //   name: "diary8-detail_2.png",
+          //   originalname: "diary8-detail_2.png",
+          // },
         ],
         content: `
           <div class="product-detail">
-            <p>Thence Scrap Book Set</p>        
+            <p><img src="https://11.fesp.shop/files/final03/diary8-detail_1.png"></p>  
+            <p><img src="https://11.fesp.shop/files/final03/diary8-detail_2.png"></p>  
           </div>`,
         createdAt: getTime(-22, -60 * 60 * 22),
         updatedAt: getTime(-20, -60 * 33),
@@ -441,15 +455,15 @@ export const initData = async (clientId, nextSeq) => {
             name: "diary9.png",
             originalname: "daiary9.png",
           },
-          {
-            path: `/files/${clientId}/diary9-detail.png`,
-            name: "diary9-detail.png",
-            originalname: "daiary9-detail.png",
-          },
+          // {
+          //   path: `/files/${clientId}/diary9-detail.png`,
+          //   name: "diary9-detail.png",
+          //   originalname: "daiary9-detail.png",
+          // },
         ],
         content: `
           <div class="product-detail">
-            <p>2025 레인보우 다이어리 L</p>          
+            <p><img src="https://11.fesp.shop/files/final03/diary9-detail_1.png"></p> 
           </div>`,
         createdAt: getTime(-21, -60 * 60 * 4),
         updatedAt: getTime(-16, -60 * 15),
@@ -477,25 +491,27 @@ export const initData = async (clientId, nextSeq) => {
             name: "diary10.png",
             originalname: "diary10.png",
           },
-          {
-            path: `/files/${clientId}/diary10-detail_1.png`,
-            name: "diary10-detail_1.png",
-            originalname: "diary10-detail_1.png",
-          },
-          {
-            path: `/files/${clientId}/diary10-detail_2.png`,
-            name: "diary10-detail_2.png",
-            originalname: "diary10-detail_2.png",
-          },
-          {
-            path: `/files/${clientId}/diary10-detail_3.png`,
-            name: "diary10-detail_3.png",
-            originalname: "diary10-detail_3.png",
-          },
+          // {
+          //   path: `/files/${clientId}/diary10-detail_1.png`,
+          //   name: "diary10-detail_1.png",
+          //   originalname: "diary10-detail_1.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/diary10-detail_2.png`,
+          //   name: "diary10-detail_2.png",
+          //   originalname: "diary10-detail_2.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/diary10-detail_3.png`,
+          //   name: "diary10-detail_3.png",
+          //   originalname: "diary10-detail_3.png",
+          // },
         ],
         content: `
           <div class="product-detail">
-            <p>Shabby Rose book cover</p>         
+            <p><img src="https://11.fesp.shop/files/final03/diary10-detail_1.png"></p>
+            <p><img src="https://11.fesp.shop/files/final03/diary10-detail_2.png"></p>
+            <p><img src="https://11.fesp.shop/files/final03/diary10-detail_3.png"></p>
           </div>`,
         createdAt: getTime(-18, -60 * 60 * 7),
         updatedAt: getTime(-12, -60 * 33),
@@ -523,25 +539,27 @@ export const initData = async (clientId, nextSeq) => {
             name: "diary11.png",
             originalname: "diary11.png",
           },
-          {
-            path: `/files/${clientId}/diary11-detail_1.png`,
-            name: "diary11-detail_1.png",
-            originalname: "diary11-detail_1.png",
-          },
-          {
-            path: `/files/${clientId}/diary11-detail_2.png`,
-            name: "diary11-detail_2.png",
-            originalname: "diary11-detail_2.png",
-          },
-          {
-            path: `/files/${clientId}/diary11-detail_3.png`,
-            name: "diary11-detail_3.png",
-            originalname: "diary11-detail_3.png",
-          },
+          // {
+          //   path: `/files/${clientId}/diary11-detail_1.png`,
+          //   name: "diary11-detail_1.png",
+          //   originalname: "diary11-detail_1.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/diary11-detail_2.png`,
+          //   name: "diary11-detail_2.png",
+          //   originalname: "diary11-detail_2.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/diary11-detail_3.png`,
+          //   name: "diary11-detail_3.png",
+          //   originalname: "diary11-detail_3.png",
+          // },
         ],
         content: `
           <div class="product-detail">
-            <p>2025 동동 다이어리</p>        
+            <p><img src="https://11.fesp.shop/files/final03/diary11-detail_1.png"></p>    
+            <p><img src="https://11.fesp.shop/files/final03/diary11-detail_2.png"></p>    
+            <p><img src="https://11.fesp.shop/files/final03/diary11-detail_3.png"></p>    
           </div>`,
         createdAt: getTime(-16, -60 * 60 * 3),
         updatedAt: getTime(-15, -60 * 45),
@@ -569,25 +587,27 @@ export const initData = async (clientId, nextSeq) => {
             name: "diary12.png",
             originalname: "diagy12.png",
           },
-          {
-            path: `/files/${clientId}/diary12-detail_1.png`,
-            name: "diary12-detail_1.png",
-            originalname: "diary12-detail_1.png",
-          },
-          {
-            path: `/files/${clientId}/diary12-detail_2.png`,
-            name: "diary12-detail_2.png",
-            originalname: "diary12-detail_2.png",
-          },
-          {
-            path: `/files/${clientId}/diary12-detail_3.png`,
-            name: "diary12-detail_3.png",
-            originalname: "diary12-detail_3.png",
-          },
+          // {
+          //   path: `/files/${clientId}/diary12-detail_1.png`,
+          //   name: "diary12-detail_1.png",
+          //   originalname: "diary12-detail_1.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/diary12-detail_2.png`,
+          //   name: "diary12-detail_2.png",
+          //   originalname: "diary12-detail_2.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/diary12-detail_3.png`,
+          //   name: "diary12-detail_3.png",
+          //   originalname: "diary12-detail_3.png",
+          // },
         ],
         content: `
           <div class="product-detail">
-            <p>큐피드곰 그림 일기장</p>        
+            <p><img src="https://11.fesp.shop/files/final03/diary12-detail_1.png"></p> 
+            <p><img src="https://11.fesp.shop/files/final03/diary12-detail_2.png"></p> 
+            <p><img src="https://11.fesp.shop/files/final03/diary12-detail_3.png"></p> 
           </div>`,
         createdAt: getTime(-11, -60 * 60 * 12),
         updatedAt: getTime(-5, -60 * 60 * 6),
@@ -615,35 +635,39 @@ export const initData = async (clientId, nextSeq) => {
             name: "keyring1.png",
             originalname: "keyring1.png",
           },
-          {
-            path: `/files/${clientId}/keyring1-2-detail_1.png`,
-            name: "keyring1-2-detail_1.png",
-            originalname: "keyring1-2-detail_1.png",
-          },
-          {
-            path: `/files/${clientId}/keyring1-2-detail_2.png`,
-            name: "keyring1-2-detail_2.png",
-            originalname: "keyring1-2-detail_2.png",
-          },
-          {
-            path: `/files/${clientId}/keyring1-2-detail_3.png`,
-            name: "keyring1-2-detail_3.png",
-            originalname: "keyring1-2-detail_3.png",
-          },
-          {
-            path: `/files/${clientId}/keyring1-2-detail_4.png`,
-            name: "keyring1-2-detail_4.png",
-            originalname: "keyring1-2-detail_4.png",
-          },
-          {
-            path: `/files/${clientId}/keyring1-2-detail_5.png`,
-            name: "keyring1-2-detail_5.png",
-            originalname: "keyring1-2-detail_5.png",
-          },
+          // {
+          //   path: `/files/${clientId}/keyring1-2-detail_1.png`,
+          //   name: "keyring1-2-detail_1.png",
+          //   originalname: "keyring1-2-detail_1.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/keyring1-2-detail_2.png`,
+          //   name: "keyring1-2-detail_2.png",
+          //   originalname: "keyring1-2-detail_2.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/keyring1-2-detail_3.png`,
+          //   name: "keyring1-2-detail_3.png",
+          //   originalname: "keyring1-2-detail_3.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/keyring1-2-detail_4.png`,
+          //   name: "keyring1-2-detail_4.png",
+          //   originalname: "keyring1-2-detail_4.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/keyring1-2-detail_5.png`,
+          //   name: "keyring1-2-detail_5.png",
+          //   originalname: "keyring1-2-detail_5.png",
+          // },
         ],
         content: `
           <div class="product-detail">
-            <p>유유클로버 플라워토끼 키링</p>        
+            <p><img src="https://11.fesp.shop/files/final03/keyring1-2-detail_1.png"></p>   
+            <p><img src="https://11.fesp.shop/files/final03/keyring1-2-detail_2.png"></p>   
+            <p><img src="https://11.fesp.shop/files/final03/keyring1-2-detail_3.png"></p>   
+            <p><img src="https://11.fesp.shop/files/final03/keyring1-2-detail_4.png"></p>   
+            <p><img src="https://11.fesp.shop/files/final03/keyring1-2-detail_5.png"></p>   
           </div>`,
         createdAt: getTime(-10, -60 * 60 * 12),
         updatedAt: getTime(-5, -60 * 60 * 6),
@@ -670,35 +694,39 @@ export const initData = async (clientId, nextSeq) => {
             name: "keyring2.png",
             originalname: "keyring2.png",
           },
-          {
-            path: `/files/${clientId}/keyring1-2-detail_1.png`,
-            name: "keyring1-2-detail_1.png",
-            originalname: "keyring1-2-detail_1.png",
-          },
-          {
-            path: `/files/${clientId}/keyring1-2-detail_2.png`,
-            name: "keyring1-2-detail_2.png",
-            originalname: "keyring1-2-detail_2.png",
-          },
-          {
-            path: `/files/${clientId}/keyring1-2-detail_3.png`,
-            name: "keyring1-2-detail_3.png",
-            originalname: "keyring1-2-detail_3.png",
-          },
-          {
-            path: `/files/${clientId}/keyring1-2-detail_4.png`,
-            name: "keyring1-2-detail_4.png",
-            originalname: "keyring1-2-detail_4.png",
-          },
-          {
-            path: `/files/${clientId}/keyring1-2-detail_5.png`,
-            name: "keyring1-2-detail_5.png",
-            originalname: "keyring1-2-detail_5.png",
-          },
+          // {
+          //   path: `/files/${clientId}/keyring1-2-detail_1.png`,
+          //   name: "keyring1-2-detail_1.png",
+          //   originalname: "keyring1-2-detail_1.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/keyring1-2-detail_2.png`,
+          //   name: "keyring1-2-detail_2.png",
+          //   originalname: "keyring1-2-detail_2.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/keyring1-2-detail_3.png`,
+          //   name: "keyring1-2-detail_3.png",
+          //   originalname: "keyring1-2-detail_3.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/keyring1-2-detail_4.png`,
+          //   name: "keyring1-2-detail_4.png",
+          //   originalname: "keyring1-2-detail_4.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/keyring1-2-detail_5.png`,
+          //   name: "keyring1-2-detail_5.png",
+          //   originalname: "keyring1-2-detail_5.png",
+          // },
         ],
         content: `
           <div class="product-detail">
-            <p>유유클로버 강아지쿠키 키링</p>        
+            <p><img src="https://11.fesp.shop/files/final03/keyring1-2-detail_1.png"></p>   
+            <p><img src="https://11.fesp.shop/files/final03/keyring1-2-detail_2.png"></p>   
+            <p><img src="https://11.fesp.shop/files/final03/keyring1-2-detail_3.png"></p>   
+            <p><img src="https://11.fesp.shop/files/final03/keyring1-2-detail_4.png"></p>   
+            <p><img src="https://11.fesp.shop/files/final03/keyring1-2-detail_5.png"></p>   
           </div>`,
         createdAt: getTime(-10, -60 * 60 * 12),
         updatedAt: getTime(-5, -60 * 60 * 6),
@@ -725,15 +753,15 @@ export const initData = async (clientId, nextSeq) => {
             name: "keyring3.png",
             originalname: "keyring3.png",
           },
-          {
-            path: `/files/${clientId}/keyring3-detail.png`,
-            name: "keyring3-detail.png",
-            originalname: "keyring3-detail.png",
-          },
+          // {
+          //   path: `/files/${clientId}/keyring3-detail.png`,
+          //   name: "keyring3-detail.png",
+          //   originalname: "keyring3-detail.png",
+          // },
         ],
         content: `
           <div class="product-detail">
-            <p>차냐 자동차 햄스터 키링</p>         
+            <p><img src="https://11.fesp.shop/files/final03/keyring3-detail_1.png"></p>         
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -760,15 +788,15 @@ export const initData = async (clientId, nextSeq) => {
             name: "keyring4.png",
             originalname: "keyring4.png",
           },
-          {
-            path: `/files/${clientId}/keyring4-detail.png`,
-            name: "keyring4-detail.png",
-            originalname: "keyring4-detail.png",
-          },
+          // {
+          //   path: `/files/${clientId}/keyring4-detail.png`,
+          //   name: "keyring4-detail.png",
+          //   originalname: "keyring4-detail.png",
+          // },
         ],
         content: `
           <div class="product-detail">
-            <p>엑스디 덕이 키링</p>          
+            <p><img src="https://11.fesp.shop/files/final03/keyring4-detail_1.png"></p>        
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -796,20 +824,21 @@ export const initData = async (clientId, nextSeq) => {
             name: "maskingtape1.png",
             originalname: "maskingtape1.png",
           },
-          {
-            path: `/files/${clientId}/matae1-detail_1.png`,
-            name: "matae1-detail_1.png",
-            originalname: "matae1-detail_1.png",
-          },
-          {
-            path: `/files/${clientId}/matae1-detail_2.png`,
-            name: "matae1-detail_2.png",
-            originalname: "matae1-detail_2.png",
-          },
+          // {
+          //   path: `/files/${clientId}/matae1-detail_1.png`,
+          //   name: "matae1-detail_1.png",
+          //   originalname: "matae1-detail_1.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/matae1-detail_2.png`,
+          //   name: "matae1-detail_2.png",
+          //   originalname: "matae1-detail_2.png",
+          // },
         ],
         content: `
           <div class="product-detail">
-            <p>담담 눈사람 스몰 마스킹테이프</p>         
+            <p><img src="https://11.fesp.shop/files/final03/matae1-detail_1.png"></p>     
+            <p><img src="https://11.fesp.shop/files/final03/matae1-detail_2.png"></p>     
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -834,20 +863,21 @@ export const initData = async (clientId, nextSeq) => {
             name: "maskingtape2.png",
             originalname: "maskingtape2.png",
           },
-          {
-            path: `/files/${clientId}/matae2-detail_1.png`,
-            name: "matae2-detail_1.png",
-            originalname: "matae2-detail_1.png",
-          },
-          {
-            path: `/files/${clientId}/matae2-detail_2.png`,
-            name: "matae2-detail_2.png",
-            originalname: "matae2-detail_2.png",
-          },
+          // {
+          //   path: `/files/${clientId}/matae2-detail_1.png`,
+          //   name: "matae2-detail_1.png",
+          //   originalname: "matae2-detail_1.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/matae2-detail_2.png`,
+          //   name: "matae2-detail_2.png",
+          //   originalname: "matae2-detail_2.png",
+          // },
         ],
         content: `
           <div class="product-detail">
-            <p>츄로네집 별이내린꿀 글리터 다이컷 마스킹테이프</p>            
+            <p><img src="https://11.fesp.shop/files/final03/matae2-detail_1.png"></p>
+            <p><img src="https://11.fesp.shop/files/final03/matae2-detail_2.png"></p>
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -872,15 +902,15 @@ export const initData = async (clientId, nextSeq) => {
             name: "maskingtape3.png",
             originalname: "maskingtape3.png",
           },
-          {
-            path: `/files/${clientId}/matae3-detail.png`,
-            name: "matae3-detail.png",
-            originalname: "matae3-detail.png",
-          },
+          // {
+          //   path: `/files/${clientId}/matae3-detail.png`,
+          //   name: "matae3-detail.png",
+          //   originalname: "matae3-detail.png",
+          // },
         ],
         content: `
           <div class="product-detail">
-            <p>조무래기 오늘의 제목 마스킹테이프</p>
+            <p><img src="https://11.fesp.shop/files/final03/matae3-detail_1.png"></p>     
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -905,15 +935,15 @@ export const initData = async (clientId, nextSeq) => {
             name: "maskingtape4.png",
             originalname: "maskingtape4.png",
           },
-          {
-            path: `/files/${clientId}/matae4-detail.png`,
-            name: "matae4-detail.png",
-            originalname: "matae4-detail.png",
-          },
+          // {
+          //   path: `/files/${clientId}/matae4-detail.png`,
+          //   name: "matae4-detail.png",
+          //   originalname: "matae4-detail.png",
+          // },
         ],
         content: `
           <div class="product-detail">
-            <p>츄로네집 버블 구름 마스킹테이프 5종</p>         
+            <p><img src="https://11.fesp.shop/files/final03/matae4-detail_1.png"></p>          
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -938,25 +968,27 @@ export const initData = async (clientId, nextSeq) => {
             name: "maskingtape5.png",
             originalname: "maskingtape5.png",
           },
-          {
-            path: `/files/${clientId}/matae5-detail_1.png`,
-            name: "matae5-detail_1.png",
-            originalname: "matae5-detail_1.png",
-          },
-          {
-            path: `/files/${clientId}/matae5-detail_2.png`,
-            name: "matae5-detail_2.png",
-            originalname: "matae5-detail_2.png",
-          },
-          {
-            path: `/files/${clientId}/matae5-detail_3.png`,
-            name: "matae5-detail_3.png",
-            originalname: "matae5-detail_3.png",
-          },
+          // {
+          //   path: `/files/${clientId}/matae5-detail_1.png`,
+          //   name: "matae5-detail_1.png",
+          //   originalname: "matae5-detail_1.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/matae5-detail_2.png`,
+          //   name: "matae5-detail_2.png",
+          //   originalname: "matae5-detail_2.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/matae5-detail_3.png`,
+          //   name: "matae5-detail_3.png",
+          //   originalname: "matae5-detail_3.png",
+          // },
         ],
         content: `
           <div class="product-detail">
-            <p>보돔보돔 보송블러 키스컷 마스킹테이프</p>         
+            <p><img src="https://11.fesp.shop/files/final03/matae5-detail_1.png"></p>           
+            <p><img src="https://11.fesp.shop/files/final03/matae5-detail_2.png"></p>           
+            <p><img src="https://11.fesp.shop/files/final03/matae5-detail_3.png"></p>           
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -981,25 +1013,27 @@ export const initData = async (clientId, nextSeq) => {
             name: "maskingtape6.png",
             originalname: "maskingtape6.png",
           },
-          {
-            path: `/files/${clientId}/matae6-detail_1.png`,
-            name: "matae6-detail_1.png",
-            originalname: "matae6-detail_1.png",
-          },
-          {
-            path: `/files/${clientId}/matae6-detail_2.png`,
-            name: "matae6-detail_2.png",
-            originalname: "matae6-detail_2.png",
-          },
-          {
-            path: `/files/${clientId}/matae6-detail_3.png`,
-            name: "matae6-detail_3.png",
-            originalname: "matae6-detail_3.png",
-          },
+          // {
+          //   path: `/files/${clientId}/matae6-detail_1.png`,
+          //   name: "matae6-detail_1.png",
+          //   originalname: "matae6-detail_1.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/matae6-detail_2.png`,
+          //   name: "matae6-detail_2.png",
+          //   originalname: "matae6-detail_2.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/matae6-detail_3.png`,
+          //   name: "matae6-detail_3.png",
+          //   originalname: "matae6-detail_3.png",
+          // },
         ],
         content: `
           <div class="product-detail">
-            <p>보돔보돔 메모이지컷 마스킹테이프</p>          
+            <p><img src="https://11.fesp.shop/files/final03/matae6-detail_1.png"></p>           
+            <p><img src="https://11.fesp.shop/files/final03/matae6-detail_2.png"></p>           
+            <p><img src="https://11.fesp.shop/files/final03/matae6-detail_3.png"></p>           
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -1025,15 +1059,15 @@ export const initData = async (clientId, nextSeq) => {
             name: "maskingtape7.png",
             originalname: "maskingtape7.png",
           },
-          {
-            path: `/files/${clientId}/matae7-detail.png`,
-            name: "matae7-detail.png",
-            originalname: "matae7-detail.png",
-          },
+          // {
+          //   path: `/files/${clientId}/matae7-detail.png`,
+          //   name: "matae7-detail.png",
+          //   originalname: "matae7-detail.png",
+          // },
         ],
         content: `
           <div class="product-detail">
-            <p>보돔보돔 래빗 마스킹테이프</p>          
+            <p><img src="https://11.fesp.shop/files/final03/matae7-detail_1.png"></p>            
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -1059,15 +1093,15 @@ export const initData = async (clientId, nextSeq) => {
             name: "maskingtape8.png",
             originalname: "maskingtape8.png",
           },
-          {
-            path: `/files/${clientId}/matae8-detail.png`,
-            name: "matae8-detail.png",
-            originalname: "matae8-detail.png",
-          },
+          // {
+          //   path: `/files/${clientId}/matae8-detail.png`,
+          //   name: "matae8-detail.png",
+          //   originalname: "matae8-detail.png",
+          // },
         ],
         content: `
           <div class="product-detail">
-            <p>보돔보돔 클로버 마스킹테이프</p>         
+            <p><img src="https://11.fesp.shop/files/final03/matae8-detail_1.png"></p>        
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -1092,15 +1126,15 @@ export const initData = async (clientId, nextSeq) => {
             name: "maskingtape9.png",
             originalname: "maskingtape9.png",
           },
-          {
-            path: `/files/${clientId}/matae9-detail.png`,
-            name: "matae9-detail.png",
-            originalname: "matae9-detail.png",
-          },
+          // {
+          //   path: `/files/${clientId}/matae9-detail.png`,
+          //   name: "matae9-detail.png",
+          //   originalname: "matae9-detail.png",
+          // },
         ],
         content: `
           <div class="product-detail">
-            <p>츄로네집 별구름 유테 마스킹테이프</p>  
+            <p><img src="https://11.fesp.shop/files/final03/matae9-detail_1.png"></p>     
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -1125,20 +1159,21 @@ export const initData = async (clientId, nextSeq) => {
             name: "maskingtape10.png",
             originalname: "maskingtape10.png",
           },
-          {
-            path: `/files/${clientId}/matae10-detail_1.png`,
-            name: "matae10-detail_1.png",
-            originalname: "matae10-detail_1.png",
-          },
-          {
-            path: `/files/${clientId}/matae10-detail_2.png`,
-            name: "matae10-detail_2.png",
-            originalname: "matae10-detail_2.png",
-          },
+          // {
+          //   path: `/files/${clientId}/matae10-detail_1.png`,
+          //   name: "matae10-detail_1.png",
+          //   originalname: "matae10-detail_1.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/matae10-detail_2.png`,
+          //   name: "matae10-detail_2.png",
+          //   originalname: "matae10-detail_2.png",
+          // },
         ],
         content: `
           <div class="product-detail">
-            <p>미찌샵 멍멍 마스킹테이프</p>         
+            <p><img src="https://11.fesp.shop/files/final03/matae10-detail_1.png"></p>         
+            <p><img src="https://11.fesp.shop/files/final03/matae10-detail_2.png"></p>         
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -1164,20 +1199,21 @@ export const initData = async (clientId, nextSeq) => {
             name: "memo1.png",
             originalname: "memo1.png",
           },
-          {
-            path: `/files/${clientId}/memo1-2-3-detail_1.png`,
-            name: "memo1-2-3-detail_1.png",
-            originalname: "memo1-2-3-detail_1.png",
-          },
-          {
-            path: `/files/${clientId}/memo1-detail_2.png`,
-            name: "memo1-detail_2.png",
-            originalname: "memo1-detail_2.png",
-          },
+          // {
+          //   path: `/files/${clientId}/memo1-2-3-detail_1.png`,
+          //   name: "memo1-2-3-detail_1.png",
+          //   originalname: "memo1-2-3-detail_1.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/memo1-detail_2.png`,
+          //   name: "memo1-detail_2.png",
+          //   originalname: "memo1-detail_2.png",
+          // },
         ],
         content: `
           <div class="product-detail">
-            <p>모나니스튜디오 도람이 메모지</p>        
+            <p><img src="https://11.fesp.shop/files/final03/memo1-2-3-detail_1.png"></p>         
+            <p><img src="https://11.fesp.shop/files/final03/memo1-detail_2.png"></p>         
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -1204,30 +1240,33 @@ export const initData = async (clientId, nextSeq) => {
             name: "memo2.png",
             originalname: "memo2.png",
           },
-          {
-            path: `/files/${clientId}/memo1-2-3-detail_1.png`,
-            name: "memo1-2-3-detail_1.png",
-            originalname: "memo1-2-3-detail_1.png",
-          },
-          {
-            path: `/files/${clientId}/memo2-detail_2.png`,
-            name: "memo2-detail_2.png",
-            originalname: "memo2-detail_2.png",
-          },
-          {
-            path: `/files/${clientId}/memo2-detail_3.png`,
-            name: "memo2-detail_3.png",
-            originalname: "memo2-detail_3.png",
-          },
-          {
-            path: `/files/${clientId}/memo2-detail_4.png`,
-            name: "memo2-detail_4.png",
-            originalname: "memo2-detail_4.png",
-          },
+          // {
+          //   path: `/files/${clientId}/memo1-2-3-detail_1.png`,
+          //   name: "memo1-2-3-detail_1.png",
+          //   originalname: "memo1-2-3-detail_1.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/memo2-detail_2.png`,
+          //   name: "memo2-detail_2.png",
+          //   originalname: "memo2-detail_2.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/memo2-detail_3.png`,
+          //   name: "memo2-detail_3.png",
+          //   originalname: "memo2-detail_3.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/memo2-detail_4.png`,
+          //   name: "memo2-detail_4.png",
+          //   originalname: "memo2-detail_4.png",
+          // },
         ],
         content: `
           <div class="product-detail">
-            <p>모나니스튜디오 모아 클로버 메모지</p>  
+            <p><img src="https://11.fesp.shop/files/final03/memo1-2-3-detail_1.png"></p>
+            <p><img src="https://11.fesp.shop/files/final03/memo2-detail_2.png"></p>      
+            <p><img src="https://11.fesp.shop/files/final03/memo2-detail_3.png"></p>                  
+            <p><img src="https://11.fesp.shop/files/final03/memo2-detail_4.png"></p>      
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -1254,30 +1293,33 @@ export const initData = async (clientId, nextSeq) => {
             name: "memo3.png",
             originalname: "memo3.png",
           },
-          {
-            path: `/files/${clientId}/memo1-2-3-detail_1.png`,
-            name: "memo1-2-3-detail_1.png",
-            originalname: "memo1-2-3-detail_1.png",
-          },
-          {
-            path: `/files/${clientId}/memo3-detail_2.png`,
-            name: "memo3-detail_2.png",
-            originalname: "memo3-detail_2.png",
-          },
-          {
-            path: `/files/${clientId}/memo3-detail_3.png`,
-            name: "memo3-detail_3.png",
-            originalname: "memo3-detail_3.png",
-          },
-          {
-            path: `/files/${clientId}/memo3-detail_4.png`,
-            name: "memo3-detail_4.png",
-            originalname: "memo3-detail_4.png",
-          },
+          // {
+          //   path: `/files/${clientId}/memo1-2-3-detail_1.png`,
+          //   name: "memo1-2-3-detail_1.png",
+          //   originalname: "memo1-2-3-detail_1.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/memo3-detail_2.png`,
+          //   name: "memo3-detail_2.png",
+          //   originalname: "memo3-detail_2.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/memo3-detail_3.png`,
+          //   name: "memo3-detail_3.png",
+          //   originalname: "memo3-detail_3.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/memo3-detail_4.png`,
+          //   name: "memo3-detail_4.png",
+          //   originalname: "memo3-detail_4.png",
+          // },
         ],
         content: `
           <div class="product-detail">
-            <p>모나니스튜디오 모아 풀밭 메모지</p>            
+            <p><img src="https://11.fesp.shop/files/final03/memo1-2-3-detail_1.png"></p>
+            <p><img src="https://11.fesp.shop/files/final03/memo3-detail_2.png"></p>
+            <p><img src="https://11.fesp.shop/files/final03/memo3-detail_3.png"></p>
+            <p><img src="https://11.fesp.shop/files/final03/memo3-detail_4.png"></p>
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -1302,15 +1344,15 @@ export const initData = async (clientId, nextSeq) => {
             name: "memo4.png",
             originalname: "memo4.png",
           },
-          {
-            path: `/files/${clientId}/memo4-detail.png`,
-            name: "memo4-detail.png",
-            originalname: "memo4-detail.png",
-          },
+          // {
+          //   path: `/files/${clientId}/memo4-detail.png`,
+          //   name: "memo4-detail.png",
+          //   originalname: "memo4-detail.png",
+          // },
         ],
         content: `
           <div class="product-detail">
-            <p>컬루 노트패드 메모지</p>            
+            <p><img src="https://11.fesp.shop/files/final03/memo4-detail_1.png"></p>               
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -1335,15 +1377,15 @@ export const initData = async (clientId, nextSeq) => {
             name: "memo5.png",
             originalname: "memo5.png",
           },
-          {
-            path: `/files/${clientId}/memo5-detail.png`,
-            name: "memo5-detail.png",
-            originalname: "memo5-detail.png",
-          },
+          // {
+          //   path: `/files/${clientId}/memo5-detail.png`,
+          //   name: "memo5-detail.png",
+          //   originalname: "memo5-detail.png",
+          // },
         ],
         content: `
           <div class="product-detail">
-            <p>엑스디 에그위클리 메모지</p>            
+            <p><img src="https://11.fesp.shop/files/final03/memo5-detail_1.png"></p>                  
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -1368,15 +1410,15 @@ export const initData = async (clientId, nextSeq) => {
             name: "memo6.png",
             originalname: "memo6.png",
           },
-          {
-            path: `/files/${clientId}/memo6-detail.png`,
-            name: "memo6-detail.png",
-            originalname: "memo6-detail.png",
-          },
+          // {
+          //   path: `/files/${clientId}/memo6-detail.png`,
+          //   name: "memo6-detail.png",
+          //   originalname: "memo6-detail.png",
+          // },
         ],
         content: `
           <div class="product-detail">
-            <p>보돔보돔 포근 메모지</p>            
+            <p><img src="https://11.fesp.shop/files/final03/memo6-detail_1.png"></p>                           
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -1401,25 +1443,27 @@ export const initData = async (clientId, nextSeq) => {
             name: "memo7.png",
             originalname: "memo7.png",
           },
-          {
-            path: `/files/${clientId}/memo7-detail_1.png`,
-            name: "memo7-detail_1.png",
-            originalname: "memo7-detail_1.png",
-          },
-          {
-            path: `/files/${clientId}/memo7-detail_2.png`,
-            name: "memo7-detail_2.png",
-            originalname: "memo7-detail_2.png",
-          },
-          {
-            path: `/files/${clientId}/memo7-detail_3.png`,
-            name: "memo7-detail_3.png",
-            originalname: "memo7-detail_3.png",
-          },
+          // {
+          //   path: `/files/${clientId}/memo7-detail_1.png`,
+          //   name: "memo7-detail_1.png",
+          //   originalname: "memo7-detail_1.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/memo7-detail_2.png`,
+          //   name: "memo7-detail_2.png",
+          //   originalname: "memo7-detail_2.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/memo7-detail_3.png`,
+          //   name: "memo7-detail_3.png",
+          //   originalname: "memo7-detail_3.png",
+          // },
         ],
         content: `
           <div class="product-detail">
-            <p>키치키치 체크리스트 메모지</p>            
+            <p><img src="https://11.fesp.shop/files/final03/memo7-detail_1.png"></p>
+            <p><img src="https://11.fesp.shop/files/final03/memo7-detail_2.png"></p>
+            <p><img src="https://11.fesp.shop/files/final03/memo7-detail_3.png"></p>
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -1444,15 +1488,15 @@ export const initData = async (clientId, nextSeq) => {
             name: "memo8.png",
             originalname: "memo8.png",
           },
-          {
-            path: `/files/${clientId}/memo8-detail.png`,
-            name: "memo8-detail.png",
-            originalname: "memo8-detail.png",
-          },
+          // {
+          //   path: `/files/${clientId}/memo8-detail.png`,
+          //   name: "memo8-detail.png",
+          //   originalname: "memo8-detail.png",
+          // },
         ],
         content: `
           <div class="product-detail">
-            <p>게이트17 영수증 메모지</p>            
+            <p><img src="https://11.fesp.shop/files/final03/memo8-detail_1.png"></p>                              
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -1477,15 +1521,15 @@ export const initData = async (clientId, nextSeq) => {
             name: "memo9.png",
             originalname: "memo9.png",
           },
-          {
-            path: `/files/${clientId}/memo9-detail.png`,
-            name: "memo9-detail.png",
-            originalname: "memo9-detail.png",
-          },
+          // {
+          //   path: `/files/${clientId}/memo9-detail.png`,
+          //   name: "memo9-detail.png",
+          //   originalname: "memo9-detail.png",
+          // },
         ],
         content: `
           <div class="product-detail">
-            <p>게이트17 보딩패스 떡메모지</p>
+            <p><img src="https://11.fesp.shop/files/final03/memo9-detail_1.png"></p>                  
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -1511,15 +1555,15 @@ export const initData = async (clientId, nextSeq) => {
             name: "sticker1.png",
             originalname: "sticker1.png",
           },
-          {
-            path: `/files/${clientId}/sticker1-detail.png`,
-            name: "sticker1-detail.png",
-            originalname: "sticker1-detail.png",
-          },
+          // {
+          //   path: `/files/${clientId}/sticker1-detail.png`,
+          //   name: "sticker1-detail.png",
+          //   originalname: "sticker1-detail.png",
+          // },
         ],
         content: `
           <div class="product-detail">
-            <p>모서리스튜디오 햄찌세자매 줄줄이 스티커</p>            
+            <p><img src="https://11.fesp.shop/files/final03/sticker1-detail_1.png"></p>                             
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -1544,15 +1588,15 @@ export const initData = async (clientId, nextSeq) => {
             name: "sticker2.png",
             originalname: "sticker2.png",
           },
-          {
-            path: `/files/${clientId}/sticker2-detail.png`,
-            name: "sticker2-detail.png",
-            originalname: "sticke2-detail.png",
-          },
+          // {
+          //   path: `/files/${clientId}/sticker2-detail.png`,
+          //   name: "sticker2-detail.png",
+          //   originalname: "sticke2-detail.png",
+          // },
         ],
         content: `
           <div class="product-detail">
-            <p>모서리스튜디오 소다냥 스티커</p>            
+            <p><img src="https://11.fesp.shop/files/final03/sticker2-detail_1.png"></p>         
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -1577,15 +1621,15 @@ export const initData = async (clientId, nextSeq) => {
             name: "sticker3.png",
             originalname: "sticker3.png",
           },
-          {
-            path: `/files/${clientId}/sticker3-detail.png`,
-            name: "sticker3-detail.png",
-            originalname: "sticke3-detail.png",
-          },
+          // {
+          //   path: `/files/${clientId}/sticker3-detail.png`,
+          //   name: "sticker3-detail.png",
+          //   originalname: "sticke3-detail.png",
+          // },
         ],
         content: `
           <div class="product-detail">
-            <p>모서리스튜디오 미어독 스티커</p>            
+            <p><img src="https://11.fesp.shop/files/final03/sticker3-detail_1.png"></p>            
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -1610,15 +1654,15 @@ export const initData = async (clientId, nextSeq) => {
             name: "sticker4.png",
             originalname: "sticker4.png",
           },
-          {
-            path: `/files/${clientId}/sticker4-detail.png`,
-            name: "sticker4-detail.png",
-            originalname: "sticke4-detail.png",
-          },
+          // {
+          //   path: `/files/${clientId}/sticker4-detail.png`,
+          //   name: "sticker4-detail.png",
+          //   originalname: "sticke4-detail.png",
+          // },
         ],
         content: `
           <div class="product-detail">
-            <p>메이빈 오늘은 뭐할까 스티커팩</p>            
+            <p><img src="https://11.fesp.shop/files/final03/sticker4-detail_1.png"></p>            
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -1644,15 +1688,15 @@ export const initData = async (clientId, nextSeq) => {
             name: "sticker5.png",
             originalname: "sticker5.png",
           },
-          {
-            path: `/files/${clientId}/sticker5-detail.png`,
-            name: "sticker5-detail.png",
-            originalname: "sticke5-detail.png",
-          },
+          // {
+          //   path: `/files/${clientId}/sticker5-detail.png`,
+          //   name: "sticker5-detail.png",
+          //   originalname: "sticke5-detail.png",
+          // },
         ],
         content: `
           <div class="product-detail">
-            <p>메이빈 달콤한 여름 간식 스티커팩</p>            
+            <p><img src="https://11.fesp.shop/files/final03/sticker5-detail_1.png"></p>            
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -1678,15 +1722,15 @@ export const initData = async (clientId, nextSeq) => {
             name: "sticker6.png",
             originalname: "sticker6.png",
           },
-          {
-            path: `/files/${clientId}/sticker6-detail.png`,
-            name: "sticker6-detail.png",
-            originalname: "sticke6-detail.png",
-          },
+          // {
+          //   path: `/files/${clientId}/sticker6-detail.png`,
+          //   name: "sticker6-detail.png",
+          //   originalname: "sticke6-detail.png",
+          // },
         ],
         content: `
           <div class="product-detail">
-            <p>메이빈 꽃 향기 나는 날 스티커팩</p>            
+            <p><img src="https://11.fesp.shop/files/final03/sticker6-detail_1.png"></p>            
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -1712,22 +1756,24 @@ export const initData = async (clientId, nextSeq) => {
             name: "sticker7.png",
             originalname: "sticker7.png",
           },
-          {
-            path: `/files/${clientId}/sticker7-8-detail_1.png`,
-            name: "sticker7-8-detail_1.png",
-            originalname: "sticker7-8-detail_1.png",
-          },
-          {
-            path: `/files/${clientId}/sticker7-8-detail_2.png`,
-            name: "sticker7-8-detail_2.png",
-            originalname: "sticker7-8-detail_2.png",
-          },
+          // {
+          //   path: `/files/${clientId}/sticker7-8-detail_1.png`,
+          //   name: "sticker7-8-detail_1.png",
+          //   originalname: "sticker7-8-detail_1.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/sticker7-8-detail_2.png`,
+          //   name: "sticker7-8-detail_2.png",
+          //   originalname: "sticker7-8-detail_2.png",
+          // },
         ],
         content: `
           <div class="product-detail">
             <p>조무래기 폼폼컨페티 메론 씰스티커</p>
             <p>사이즈: 80 * 175 mm</p>
             <p>구성: 1 Sheet</p>
+            <p><img src="https://11.fesp.shop/files/final03/sticker7-8-detail_1.png"></p>
+            <p><img src="https://11.fesp.shop/files/final03/sticker7-8-detail_2.png"></p>
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -1752,22 +1798,24 @@ export const initData = async (clientId, nextSeq) => {
             name: "sticker8.png",
             originalname: "sticker8.png",
           },
-          {
-            path: `/files/${clientId}/sticker7-8-detail_1.png`,
-            name: "sticker7-8-detail_1.png",
-            originalname: "sticker7-8-detail_1.png",
-          },
-          {
-            path: `/files/${clientId}/sticker7-8-detail_2.png`,
-            name: "sticker7-8-detail_2.png",
-            originalname: "sticker7-8-detail_2.png",
-          },
+          // {
+          //   path: `/files/${clientId}/sticker7-8-detail_1.png`,
+          //   name: "sticker7-8-detail_1.png",
+          //   originalname: "sticker7-8-detail_1.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/sticker7-8-detail_2.png`,
+          //   name: "sticker7-8-detail_2.png",
+          //   originalname: "sticker7-8-detail_2.png",
+          // },
         ],
         content: `
           <div class="product-detail">
             <p>조무래기 폼폼컨페티 딸기 씰스티커</p>
             <p>사이즈: 80 * 175 mm</p>
             <p>구성: 1 Sheet</p>
+            <p><img src="https://11.fesp.shop/files/final03/sticker7-8-detail_1.png"></p>
+            <p><img src="https://11.fesp.shop/files/final03/sticker7-8-detail_2.png"></p>
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -1792,27 +1840,30 @@ export const initData = async (clientId, nextSeq) => {
             name: "sticker9.png",
             originalname: "sticker9.png",
           },
-          {
-            path: `/files/${clientId}/sticker9-detail_1.png`,
-            name: "sticker9-detail_1.png",
-            originalname: "sticker9-detail_1.png",
-          },
-          {
-            path: `/files/${clientId}/sticker9-detail_2.png`,
-            name: "sticker9-detail_2.png",
-            originalname: "sticker9-detail_2.png",
-          },
-          {
-            path: `/files/${clientId}/sticker9-detail_3.png`,
-            name: "sticker9-detail_3.png",
-            originalname: "sticker9-detail_3.png",
-          },
+          // {
+          //   path: `/files/${clientId}/sticker9-detail_1.png`,
+          //   name: "sticker9-detail_1.png",
+          //   originalname: "sticker9-detail_1.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/sticker9-detail_2.png`,
+          //   name: "sticker9-detail_2.png",
+          //   originalname: "sticker9-detail_2.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/sticker9-detail_3.png`,
+          //   name: "sticker9-detail_3.png",
+          //   originalname: "sticker9-detail_3.png",
+          // },
         ],
         content: `
           <div class="product-detail">
             <p>조무래기 폼폼컨페티 푸딩 씰스티커</p>
             <p>사이즈: 80 * 175 mm</p>
             <p>구성: 1 Sheet</p>
+            <p><img src="https://11.fesp.shop/files/final03/sticker9-detail_1.png"></p>
+            <p><img src="https://11.fesp.shop/files/final03/sticker9-detail_2.png"></p>
+            <p><img src="https://11.fesp.shop/files/final03/sticker9-detail_3.png"></p>
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -1837,27 +1888,30 @@ export const initData = async (clientId, nextSeq) => {
             name: "sticker10.png",
             originalname: "sticker10.png",
           },
-          {
-            path: `/files/${clientId}/sticker10-detail_1.png`,
-            name: "sticker10-detail_1.png",
-            originalname: "sticker10-detail_1.png",
-          },
-          {
-            path: `/files/${clientId}/sticker10-detail_2.png`,
-            name: "sticker10-detail_2.png",
-            originalname: "sticker10-detail_2.png",
-          },
-          {
-            path: `/files/${clientId}/sticker10-detail_3.png`,
-            name: "sticker10-detail_3.png",
-            originalname: "sticker10-detail_3.png",
-          },
+          // {
+          //   path: `/files/${clientId}/sticker10-detail_1.png`,
+          //   name: "sticker10-detail_1.png",
+          //   originalname: "sticker10-detail_1.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/sticker10-detail_2.png`,
+          //   name: "sticker10-detail_2.png",
+          //   originalname: "sticker10-detail_2.png",
+          // },
+          // {
+          //   path: `/files/${clientId}/sticker10-detail_3.png`,
+          //   name: "sticker10-detail_3.png",
+          //   originalname: "sticker10-detail_3.png",
+          // },
         ],
         content: `
           <div class="product-detail">
             <p>조무래기 폼폼컨페티 스노우 씰스티커</p>
             <p>사이즈: 80 * 175 mm</p>
             <p>구성: 1 Sheet</p>
+            <p><img src="https://11.fesp.shop/files/final03/sticker10-detail_1.png"></p>
+            <p><img src="https://11.fesp.shop/files/final03/sticker10-detail_2.png"></p>
+            <p><img src="https://11.fesp.shop/files/final03/sticker10-detail_3.png"></p>
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -1882,15 +1936,15 @@ export const initData = async (clientId, nextSeq) => {
             name: "sticker11.png",
             originalname: "sticker11.png",
           },
-          {
-            path: `/files/${clientId}/sticker11-detail.png`,
-            name: "sticker11-detail.png",
-            originalname: "sticke11-detail.png",
-          },
+          // {
+          //   path: `/files/${clientId}/sticker11-detail.png`,
+          //   name: "sticker11-detail.png",
+          //   originalname: "sticke11-detail.png",
+          // },
         ],
         content: `
           <div class="product-detail">
-            <p>손글씨 알파벳 스티커</p>            
+            <p><img src="https://11.fesp.shop/files/final03/sticker11-detail_1.png"></p>            
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),
@@ -1915,15 +1969,15 @@ export const initData = async (clientId, nextSeq) => {
             name: "sticker12.png",
             originalname: "sticker12.png",
           },
-          {
-            path: `/files/${clientId}/sticker12-detail.png`,
-            name: "sticker12-detail.png",
-            originalname: "sticke12-detail.png",
-          },
+          // {
+          //   path: `/files/${clientId}/sticker12-detail.png`,
+          //   name: "sticker12-detail.png",
+          //   originalname: "sticke12-detail.png",
+          // },
         ],
         content: `
           <div class="product-detail">
-            <p>플러피 알파벳 스티커</p>            
+            <p><img src="https://11.fesp.shop/files/final03/sticker12-detail_1.png"></p>            
           </div>`,
         createdAt: getTime(-3, -60 * 60 * 12),
         updatedAt: getTime(-3, -60 * 60 * 12),

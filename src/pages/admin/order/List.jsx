@@ -56,8 +56,6 @@ export default function List() {
   const [searchParams, setSearchParams] = useSearchParams();
   // 기간과 주문 상태 변경시 쿼리스트링 변경
   useEffect(() => {
-    console.log(searchParams);
-
     setSearchParams({
       startDate: startDate.replace(/\s+/g, ""),
       endDate: endDate.replace(/\s+/g, ""),

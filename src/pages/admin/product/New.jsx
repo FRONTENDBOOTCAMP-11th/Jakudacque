@@ -84,8 +84,6 @@ export default function New() {
 
   // 상품 저장
   const saveProduct = async () => {
-    console.log("saveProduct", product);
-
     try {
       await axios.post(`/seller/products`, product);
       // 상품 목록 캐시 무효화
