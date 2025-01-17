@@ -86,8 +86,12 @@ export default function List() {
                   {user.email}
                 </StyledTd>
                 <StyledTd>
-                  {user.extra.addressBook[0]?.name} <br />
-                  {user.extra.addressBook[0]?.value}
+                  {user.extra?.addressBook && (
+                    <>
+                      {user.extra.addressBook[0]?.name} <br />
+                      {user.extra.addressBook[0]?.value}
+                    </>
+                  )}
                 </StyledTd>
                 <StyledTd>{user.createdAt}</StyledTd>
               </tr>
