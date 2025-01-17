@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-const REDIRECT_URI = "http://localhost:5173/user/signin/kakao";
+const REDIRECT_URI = import.meta.env.VITE_KAKAO_REDIRECT_URI;
 
 export default function SignIn() {
   const setUser = useUserStore(store => store.setUser);
