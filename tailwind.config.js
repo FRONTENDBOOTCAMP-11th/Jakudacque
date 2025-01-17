@@ -3,6 +3,9 @@ export default {
   content: ["index.html", "./src/**/*.{js,jsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["Pretendard", "ui-sans-serif", "system-ui"],
+      },
       colors: {
         primary: {
           base: "#FF93C4",
@@ -13,7 +16,7 @@ export default {
         secondary: {
           base: "#FFF48B",
           light: "#FFF8BA",
-          dark: "#FDF391",
+          dark: "#F9EA58",
         },
         tertiary: {
           base: "#EC297B",
@@ -22,7 +25,7 @@ export default {
         },
         info: "#7DD3FC",
         success: "#86EFAC",
-        warning: "#FCD34",
+        warning: "#FCD34D",
         error: "#DC2626",
       },
     },
