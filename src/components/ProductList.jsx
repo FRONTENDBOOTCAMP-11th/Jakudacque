@@ -1,6 +1,6 @@
+import Product from '@components/Product';
 import PropTypes from 'prop-types';
 import { IoCaretDown } from "react-icons/io5";
-import { Link } from 'react-router-dom';
 
 export default function ProductList({ 
   title, 
@@ -48,20 +48,10 @@ export default function ProductList({
         </div>
       </div>
 
-      {/* 상품 그리드 */}
-      <div className="grid grid-cols-2 gap-4 mb-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 sm:gap-6 lg:gap-8">
+     {/* 상품 그리드 */}
+     <div className="grid grid-cols-2 gap-4 mb-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 sm:gap-6 lg:gap-8">
         {products.map(product => (
-          <Link key={product.id} to={product.link} className="group">
-            <div className="relative mb-2 aspect-square overflow-hidden">
-              <img
-                src={product.image}
-                alt={product.name}
-                className="object-cover w-full h-full"
-              />
-            </div>
-            <h3 className="mb-1 text-sm font-medium">{product.name}</h3>
-            <p className="text-sm">{product.price.toLocaleString()}원</p>
-          </Link>
+          <Product key={product.id} product={product} />
         ))}
       </div>
     </>
