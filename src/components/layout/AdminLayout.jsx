@@ -15,7 +15,7 @@ export default function AdminLayout() {
   const { codes, setCodes } = useCodeStore();
 
   useEffect(() => {
-    if (codes.productCategory && codes.membershipClass && codes.orderState)
+    if (codes?.productCategory && codes?.membershipClass && codes?.orderState)
       return;
 
     axios.get("/codes").then(res => {
