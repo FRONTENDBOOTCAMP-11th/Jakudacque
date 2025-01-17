@@ -79,13 +79,20 @@ export default function List() {
           </StyledThead>
           <tbody>
             {data.item.map(user => (
-              <tr key={user._id}>
+              <tr key={user["_id"]}>
                 <StyledTd>{user.name}</StyledTd>
                 <StyledTd>
                   {user.phone} <br />
                   {user.email}
                 </StyledTd>
-                <StyledTd>{user.address}</StyledTd>
+                <StyledTd>
+                  {user.extra?.addressBook && (
+                    <>
+                      {user.extra.addressBook[0]?.name} <br />
+                      {user.extra.addressBook[0]?.value}
+                    </>
+                  )}
+                </StyledTd>
                 <StyledTd>{user.createdAt}</StyledTd>
               </tr>
             ))}

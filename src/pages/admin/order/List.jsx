@@ -56,8 +56,6 @@ export default function List() {
   const [searchParams, setSearchParams] = useSearchParams();
   // 기간과 주문 상태 변경시 쿼리스트링 변경
   useEffect(() => {
-    console.log(searchParams);
-
     setSearchParams({
       startDate: startDate.replace(/\s+/g, ""),
       endDate: endDate.replace(/\s+/g, ""),
@@ -69,7 +67,7 @@ export default function List() {
   // 카테고리 코드 데이터 가져오기
   const { codes } = useCodeStore();
   const orderStateOptions = useMemo(() => {
-    if (!codes) return [];
+    if (!codes || !codes.orderState) return [];
     const options = Object.keys(codes.orderState).map(key => ({
       value: key,
       label: codes.orderState[key],
