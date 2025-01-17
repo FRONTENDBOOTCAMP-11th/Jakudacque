@@ -43,67 +43,6 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("user"),
-        email: "s1@market.com",
-        password:
-          "$2b$10$S.8GNMDyvUF0xzujPtHBu.j5gtS19.OhRmYbpJBnCHg2S83WLx1T2",
-        name: "네오",
-        phone: "01022223333",
-        address: "서울시 강남구 삼성동 456",
-        type: "seller",
-        loginType: "email",
-        image: `/files/${clientId}/user-neo.webp`,
-        createdAt: getTime(-50),
-        updatedAt: getTime(-30, -60 * 60 * 3),
-        extra: {
-          birthday: "11-23",
-          membershipClass: "MC01",
-          addressBook: [
-            {
-              id: 1,
-              name: "회사",
-              value: "서울시 강남구 삼성동 567",
-            },
-            {
-              id: 2,
-              name: "학교",
-              value: "서울시 강남구 역삼동 234",
-            },
-          ],
-        },
-      },
-      {
-        _id: await nextSeq("user"),
-        email: "s2@market.com",
-        password:
-          "$2b$10$S.8GNMDyvUF0xzujPtHBu.j5gtS19.OhRmYbpJBnCHg2S83WLx1T2",
-        name: "어피치",
-        phone: "01033334444",
-        address: "서울시 강남구 도곡동 789",
-        type: "seller",
-        loginType: "email",
-        image: `/files/${clientId}/user-apeach.webp`,
-        createdAt: getTime(-40, -60 * 30),
-        updatedAt: getTime(-30, -60 * 20),
-        extra: {
-          confirm: false, // 관리자 승인이 안됨
-          birthday: "11-24",
-          membershipClass: "MC02",
-          addressBook: [
-            {
-              id: 1,
-              name: "회사",
-              value: "서울시 마포구 연희동 123",
-            },
-            {
-              id: 2,
-              name: "가게",
-              value: "서울시 강남구 학동 234",
-            },
-          ],
-        },
-      },
-      {
-        _id: await nextSeq("user"),
         email: "u1@market.com",
         password:
           "$2b$10$S.8GNMDyvUF0xzujPtHBu.j5gtS19.OhRmYbpJBnCHg2S83WLx1T2",
@@ -137,7 +76,7 @@ export const initData = async (clientId, nextSeq) => {
     product: [
       {
         _id: await nextSeq("product"),
-        seller_id: 2,
+        seller_id: 1,
         price: 6000,
         shippingFees: 3000,
         show: true,
@@ -177,7 +116,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("product"),
-        seller_id: 2,
+        seller_id: 1,
         price: 18000,
         shippingFees: 3000,
         show: true,
@@ -222,7 +161,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("product"),
-        seller_id: 2,
+        seller_id: 1,
         price: 3150,
         shippingFees: 3000,
         show: true,
@@ -262,7 +201,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("product"),
-        seller_id: 3,
+        seller_id: 1,
         price: 9600,
         shippingFees: 3000,
         show: true,
@@ -307,7 +246,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("product"),
-        seller_id: 2,
+        seller_id: 1,
         price: 6000,
         shippingFees: 3000,
         show: true,
@@ -353,7 +292,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("product"),
-        seller_id: 2,
+        seller_id: 1,
         price: 4860,
         shippingFees: 3000,
         show: false,
@@ -398,7 +337,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("product"),
-        seller_id: 3,
+        seller_id: 1,
         price: 16800,
         shippingFees: 3000,
         show: true,
@@ -448,7 +387,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("product"),
-        seller_id: 2,
+        seller_id: 1,
         price: 28800,
         shippingFees: 3000,
         show: true,
@@ -488,7 +427,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("product"),
-        seller_id: 3,
+        seller_id: 1,
         price: 14560,
         shippingFees: 3000,
         show: true,
@@ -524,7 +463,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("product"),
-        seller_id: 3,
+        seller_id: 1,
         price: 26000,
         shippingFees: 3000,
         show: true,
@@ -570,7 +509,7 @@ export const initData = async (clientId, nextSeq) => {
       // 11번 상품, 여기부터 카테고리도 설정
       {
         _id: await nextSeq("product"),
-        seller_id: 2,
+        seller_id: 1,
         price: 10620,
         shippingFees: 3000,
         show: true,
@@ -616,7 +555,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("product"),
-        seller_id: 2,
+        seller_id: 1,
         price: 9000,
         shippingFees: 3000,
         show: true,
@@ -662,7 +601,7 @@ export const initData = async (clientId, nextSeq) => {
       // 14번 상품, 키링
       {
         _id: await nextSeq("product"),
-        seller_id: 3,
+        seller_id: 1,
         price: 21600,
         shippingFees: 3000,
         show: true,
@@ -717,7 +656,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("product"),
-        seller_id: 3,
+        seller_id: 1,
         price: 6000,
         shippingFees: 3000,
         show: true,
@@ -772,7 +711,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("product"),
-        seller_id: 3,
+        seller_id: 1,
         price: 7000,
         shippingFees: 3000,
         show: true,
@@ -807,7 +746,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("product"),
-        seller_id: 3,
+        seller_id: 1,
         price: 9000,
         shippingFees: 3000,
         show: true,
@@ -843,7 +782,7 @@ export const initData = async (clientId, nextSeq) => {
       // 19번 상품. 마스킹테이프
       {
         _id: await nextSeq("product"),
-        seller_id: 3,
+        seller_id: 1,
         price: 5000,
         shippingFees: 3000,
         show: true,
@@ -881,7 +820,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("product"),
-        seller_id: 3,
+        seller_id: 1,
         price: 4500,
         shippingFees: 3000,
         show: true,
@@ -919,7 +858,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("product"),
-        seller_id: 3,
+        seller_id: 1,
         price: 4200,
         shippingFees: 3000,
         show: true,
@@ -952,7 +891,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("product"),
-        seller_id: 3,
+        seller_id: 1,
         price: 5500,
         shippingFees: 3000,
         show: true,
@@ -985,7 +924,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("product"),
-        seller_id: 3,
+        seller_id: 1,
         price: 5000,
         shippingFees: 3000,
         show: true,
@@ -1028,7 +967,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("product"),
-        seller_id: 3,
+        seller_id: 1,
         price: 7000,
         shippingFees: 3000,
         show: true,
@@ -1072,7 +1011,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("product"),
-        seller_id: 3,
+        seller_id: 1,
         price: 5500,
         shippingFees: 3000,
         show: true,
@@ -1106,7 +1045,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("product"),
-        seller_id: 3,
+        seller_id: 1,
         price: 5500,
         shippingFees: 3000,
         show: true,
@@ -1139,7 +1078,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("product"),
-        seller_id: 3,
+        seller_id: 1,
         price: 4500,
         shippingFees: 3000,
         show: true,
@@ -1172,7 +1111,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("product"),
-        seller_id: 3,
+        seller_id: 1,
         price: 4500,
         shippingFees: 3000,
         show: true,
@@ -1211,7 +1150,7 @@ export const initData = async (clientId, nextSeq) => {
       // 29번 상품 메모지
       {
         _id: await nextSeq("product"),
-        seller_id: 3,
+        seller_id: 1,
         price: 2500,
         shippingFees: 3000,
         show: true,
@@ -1251,7 +1190,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("product"),
-        seller_id: 3,
+        seller_id: 1,
         price: 3000,
         shippingFees: 3000,
         show: true,
@@ -1301,7 +1240,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("product"),
-        seller_id: 3,
+        seller_id: 1,
         price: 3500,
         shippingFees: 3000,
         show: true,
@@ -1349,7 +1288,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("product"),
-        seller_id: 3,
+        seller_id: 1,
         price: 5000,
         shippingFees: 3000,
         show: true,
@@ -1382,7 +1321,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("product"),
-        seller_id: 3,
+        seller_id: 1,
         price: 5000,
         shippingFees: 3000,
         show: true,
@@ -1415,7 +1354,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("product"),
-        seller_id: 3,
+        seller_id: 1,
         price: 2000,
         shippingFees: 3000,
         show: true,
@@ -1448,7 +1387,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("product"),
-        seller_id: 3,
+        seller_id: 1,
         price: 3200,
         shippingFees: 3000,
         show: true,
@@ -1491,7 +1430,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("product"),
-        seller_id: 3,
+        seller_id: 1,
         price: 2500,
         shippingFees: 3000,
         show: true,
@@ -1524,7 +1463,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("product"),
-        seller_id: 3,
+        seller_id: 1,
         price: 2500,
         shippingFees: 3000,
         show: true,
@@ -1558,7 +1497,7 @@ export const initData = async (clientId, nextSeq) => {
       // 27번 상품. 스티커
       {
         _id: await nextSeq("product"),
-        seller_id: 3,
+        seller_id: 1,
         price: 2800,
         shippingFees: 3000,
         show: true,
@@ -1591,7 +1530,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("product"),
-        seller_id: 3,
+        seller_id: 1,
         price: 2800,
         shippingFees: 3000,
         show: true,
@@ -1624,7 +1563,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("product"),
-        seller_id: 3,
+        seller_id: 1,
         price: 2800,
         shippingFees: 3000,
         show: true,
@@ -1657,7 +1596,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("product"),
-        seller_id: 3,
+        seller_id: 1,
         price: 8000,
         shippingFees: 3000,
         show: true,
@@ -1691,7 +1630,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("product"),
-        seller_id: 3,
+        seller_id: 1,
         price: 8000,
         shippingFees: 3000,
         show: true,
@@ -1725,7 +1664,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("product"),
-        seller_id: 3,
+        seller_id: 1,
         price: 8000,
         shippingFees: 3000,
         show: true,
@@ -1759,7 +1698,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("product"),
-        seller_id: 3,
+        seller_id: 1,
         price: 2500,
         shippingFees: 3000,
         show: true,
@@ -1799,7 +1738,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("product"),
-        seller_id: 3,
+        seller_id: 1,
         price: 2500,
         shippingFees: 3000,
         show: true,
@@ -1839,7 +1778,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("product"),
-        seller_id: 3,
+        seller_id: 1,
         price: 2500,
         shippingFees: 3000,
         show: true,
@@ -1884,7 +1823,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("product"),
-        seller_id: 3,
+        seller_id: 1,
         price: 2500,
         shippingFees: 3000,
         show: true,
@@ -1929,7 +1868,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("product"),
-        seller_id: 3,
+        seller_id: 1,
         price: 2500,
         shippingFees: 3000,
         show: true,
@@ -1962,7 +1901,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("product"),
-        seller_id: 3,
+        seller_id: 1,
         price: 3000,
         shippingFees: 3000,
         show: true,
@@ -1998,12 +1937,12 @@ export const initData = async (clientId, nextSeq) => {
     order: [
       {
         _id: await nextSeq("order"),
-        user_id: 4,
+        user_id: 2,
         state: "OS020",
         products: [
           {
             _id: 2,
-            seller_id: 2,
+            seller_id: 1,
             state: "OS020",
             name: "심플 파스텔 다이어리리",
             image: {
@@ -2034,12 +1973,12 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("order"),
-        user_id: 4,
+        user_id: 2,
         state: "OS010",
         products: [
           {
             _id: 3,
-            seller_id: 2,
+            seller_id: 1,
             state: "OS010",
             name: "엑스디 덕이 키링",
             image: {
@@ -2052,7 +1991,7 @@ export const initData = async (clientId, nextSeq) => {
           },
           {
             _id: 4,
-            seller_id: 2,
+            seller_id: 1,
             state: "OS010",
             name: "담담 눈사람 스몰 마스킹테이프",
             image: {
@@ -2083,12 +2022,12 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("order"),
-        user_id: 4,
+        user_id: 2,
         state: "OS040",
         products: [
           {
             _id: 4,
-            seller_id: 2,
+            seller_id: 1,
             state: "OS110",
             name: "람지 봄꽃 메모지",
             image: {
@@ -2156,7 +2095,7 @@ export const initData = async (clientId, nextSeq) => {
         products: [
           {
             _id: 2,
-            seller_id: 2,
+            seller_id: 1,
             state: "OS310",
             name: "소다냥 스티커",
             image: {
@@ -2195,7 +2134,7 @@ export const initData = async (clientId, nextSeq) => {
     review: [
       {
         _id: await nextSeq("review"),
-        user_id: 4,
+        user_id: 2,
         user: {
           _id: 4,
           name: "제이지",
@@ -2223,7 +2162,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("review"),
-        user_id: 4,
+        user_id: 2,
         user: {
           _id: 4,
           name: "제이지",
@@ -2243,7 +2182,7 @@ export const initData = async (clientId, nextSeq) => {
     cart: [
       {
         _id: await nextSeq("cart"),
-        user_id: 4,
+        user_id: 2,
         product_id: 1,
         quantity: 2,
         createdAt: getTime(-7, -60 * 30),
@@ -2251,7 +2190,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("cart"),
-        user_id: 4,
+        user_id: 2,
         product_id: 2,
         quantity: 1,
         createdAt: getTime(-4, -60 * 30),
@@ -2278,7 +2217,7 @@ export const initData = async (clientId, nextSeq) => {
     bookmark: [
       {
         _id: await nextSeq("bookmark"),
-        user_id: 4,
+        user_id: 2,
         user: {
           _id: 4,
           name: "제이지",
@@ -2291,7 +2230,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("bookmark"),
-        user_id: 4,
+        user_id: 2,
         user: {
           _id: 4,
           name: "제이지",
@@ -2304,7 +2243,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("bookmark"),
-        user_id: 4,
+        user_id: 2,
         user: {
           _id: 4,
           name: "제이지",
@@ -2317,7 +2256,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq("bookmark"),
-        user_id: 4,
+        user_id: 2,
         user: {
           _id: 4,
           name: "제이지",
@@ -2348,7 +2287,7 @@ export const initData = async (clientId, nextSeq) => {
         _id: await nextSeq("post"),
         type: "qna",
         product_id: 1,
-        seller_id: 2,
+        seller_id: 1,
         views: 5,
         user: {
           _id: 4,
@@ -2373,7 +2312,7 @@ export const initData = async (clientId, nextSeq) => {
           },
           {
             _id: 2,
-            user_id: 4,
+            user_id: 2,
             user: {
               _id: 4,
               name: "제이지",
@@ -2405,7 +2344,7 @@ export const initData = async (clientId, nextSeq) => {
         _id: await nextSeq("post"),
         type: "qna",
         product_id: 1,
-        seller_id: 2,
+        seller_id: 1,
         views: 50,
         user: {
           _id: 4,
@@ -2421,7 +2360,7 @@ export const initData = async (clientId, nextSeq) => {
         _id: await nextSeq("post"),
         type: "qna",
         product_id: 4,
-        seller_id: 3,
+        seller_id: 1,
         views: 0,
         user: {
           _id: 2,
@@ -2532,7 +2471,7 @@ export const initData = async (clientId, nextSeq) => {
             value: "배송 완료",
           },
           {
-            depth: 1,
+            sort: 6,
             code: "OS110",
             value: "반품 요청",
           },

@@ -6,6 +6,138 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { Link } from "react-router-dom";
 import Product from "@components/Product";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosInstance from "@hooks/useAxiosInstance";
+import { useMemo } from "react";
+
+// 메인베너 이미지
+const mainBanner = [
+  { image: "images/banner1.png", link: "/list" },
+  { image: "images/banner2.png", link: "/list?category=BEST" },
+  { image: "images/banner3.png", link: "/list?category=NEW" },
+];
+
+export default function Index() {
+  const axios = useAxiosInstance();
+
+  // 상품목록 조회 api
+  const useProducts = (key, filter) =>
+    useQuery({
+      queryKey: [key],
+      queryFn: async () => {
+        const params = {
+          custom: JSON.stringify(filter),
+        };
+        const response = await axios.get("/products", { params });
+        return response.data;
+      },
+    });
+
+  // Best Item 리스트 호출
+  const { data: bestData } = useProducts("bestProductList", {
+    "extra.isBest": true,
+    show: true,
+  });
+  // New Item 리스트 호출
+  const { data: newData } = useProducts("newProductList", {
+    "extra.isNew": true,
+    show: true,
+  });
+
+  // 호출된 리스트의 상품들 map으로 반환
+  const mapProducts = useMemo(
+    () => data =>
+      data?.item?.map(item => ({
+        id: item._id,
+        name: item.name,
+        price: item.price,
+        image: item.mainImages?.[0]?.path
+          ? `https://11.fesp.shop${item.mainImages[0].path}`
+          : "",
+        link: `/product/${item._id}`,
+      })) || [],
+    [],
+  );
+
+  const bestProducts = mapProducts(bestData);
+  const newProducts = mapProducts(newData);
+
+  // Best/New 상품 리스트 스와이퍼 공통으로 묶기
+  const renderSlides = (title, products) => {
+    const isLoopEnabled = products.length > 4; // 조건적으로 loop 설정
+    return (
+      <StyledSwiper>
+        <div className="relative mx-auto mt-20 max-w-7xl">
+          <h1 className="text-xl font-semibold">{title}</h1>
+          <Swiper
+            navigation={true}
+            loop={isLoopEnabled}
+            autoplay={{ delay: 4000, disableOnInteraction: false }}
+            spaceBetween={20}
+            slidesPerGroup={1}
+            breakpoints={{
+              360: {
+                slidesPerView: 2,
+              },
+              720: {
+                slidesPerView: 3,
+              },
+              1080: {
+                slidesPerView: 4,
+              },
+            }}
+            modules={[Navigation, Autoplay]}
+            className="w-full h-auto mt-8"
+          >
+            {products.map((product, index) => (
+              <SwiperSlide
+                key={index}
+                className="flex flex-col items-center justify-center"
+              >
+                <Product product={product} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      </StyledSwiper>
+    );
+  };
+
+  return (
+    <div className="h-full px-4 mb-20 sm:px-0">
+      {/* 메인베너 */}
+      <StyledSwiper>
+        <Swiper
+          pagination={{ clickable: true }}
+          loop={true}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+          }}
+          modules={[Pagination, Autoplay]}
+          className="w-full h-[200px] xl:h-[500px] lg:h-[400px] md:h-[400px] sm:h-[300px] mx-auto max-w-7xl"
+        >
+          {mainBanner.map((banner, index) => (
+            <SwiperSlide
+              key={index}
+              className="flex items-center justify-center text-center"
+            >
+              <Link to={banner.link}>
+                <img
+                  src={banner.image}
+                  alt={`Slide ${index + 1}`}
+                  className="block object-cover w-full h-full"
+                />
+              </Link>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </StyledSwiper>
+      {renderSlides("Best Item", bestProducts)} {/* 베스트제품 리스트 */}
+      {renderSlides("New Item", newProducts)} {/* 신제품 리스트 */}
+    </div>
+  );
+}
 
 // Swiper 내부 클래스 재정의
 const StyledSwiper = styled.div`
@@ -19,215 +151,36 @@ const StyledSwiper = styled.div`
 
   .swiper-button-next,
   .swiper-button-prev {
-    color: #fde047;
+    background-color: #fff;
+    border: 3px solid #e5e5e5;
+    width: 45px;
+    height: 45px;
+    padding: 15px;
+    border-radius: 50%;
+    color: #737373;
+    transition: transform 0.3s ease;
+    position: absolute;
+    top: 48%;
+    transform: translateY(-50%);
+  }
+
+  .swiper-button-prev:after,
+  .swiper-button-next:after {
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+  }
+
+  .swiper-button-prev:after {
+    transform: translate(-15%, 5%);
+  }
+
+  .swiper-button-next:after {
+    transform: translate(30%, 10%);
+  }
+
+  .swiper-button-prev:hover,
+  .swiper-button-next:hover {
+    transform: translateY(-50%) scale(1.2);
+    top: 48%;
   }
 `;
-
-export default function index() {
-  // 메인 베너 슬라이드 데이터
-  const slides = [
-    {
-      image: "images/banner1.png",
-      link: "https://example.com/page1",
-    },
-    {
-      image: "images/banner2.png",
-      link: "https://example.com/page2",
-    },
-    {
-      image: "images/banner3.png",
-      link: "https://example.com/page3",
-    },
-  ];
-
-  // BEST 아이템 리스트 슬라이드 데이터
-  const bestProduct = [
-    {
-      image: "images/diary1.png",
-      name: "Product 1",
-      price: 1500,
-      link: "https://example.com/page1",
-    },
-    {
-      image: "images/keyring1.png",
-      name: "Product 2",
-      price: 1500,
-      link: "https://example.com/page2",
-    },
-    {
-      image: "images/maskingtape1.png",
-      name: "Product 3",
-      price: 1500,
-      link: "https://example.com/page3",
-    },
-    {
-      image: "images/memo1.png",
-      name: "Product 4",
-      price: 1500,
-      link: "https://example.com/page4",
-    },
-    {
-      image: "images/sticker1.png",
-      name: "Product 5",
-      price: 1500,
-      link: "https://example.com/page5",
-    },
-    {
-      image: "images/diary1.png",
-      name: "Product 6",
-      price: 1500,
-      link: "https://example.com/page6",
-    },
-    {
-      image: "images/keyring1.png",
-      name: "Product 7",
-      price: 1500,
-      link: "https://example.com/page7",
-    },
-    {
-      image: "images/maskingtape1.png",
-      name: "Product 8",
-      price: 1500,
-      link: "https://example.com/page8",
-    },
-  ];
-
-  // NEW 아이템 리스트 슬라이드 데이터
-  const newProduct = [
-    {
-      image: "images/diary1.png",
-      name: "Product 1",
-      price: 1500,
-      link: "https://example.com/page1",
-    },
-    {
-      image: "images/keyring1.png",
-      name: "Product 2",
-      price: 1500,
-      link: "https://example.com/page2",
-    },
-    {
-      image: "images/maskingtape1.png",
-      name: "Product 3",
-      price: 1500,
-      link: "https://example.com/page3",
-    },
-    {
-      image: "images/memo1.png",
-      name: "Product 4",
-      price: 1500,
-      link: "https://example.com/page4",
-    },
-    {
-      image: "images/sticker1.png",
-      name: "Product 5",
-      price: 1500,
-      link: "https://example.com/page5",
-    },
-    {
-      image: "images/diary1.png",
-      name: "Product 6",
-      price: 1500,
-      link: "https://example.com/page6",
-    },
-    {
-      image: "images/keyring1.png",
-      name: "Product 7",
-      price: 1500,
-      link: "https://example.com/page7",
-    },
-    {
-      image: "images/maskingtape1.png",
-      name: "Product 8",
-      price: 1500,
-      link: "https://example.com/page8",
-    },
-  ];
-
-  return (
-    <div className="h-full mb-20">
-      <StyledSwiper>
-        <Swiper // 메인베너
-          pagination={{ clickable: true }}
-          autoplay={{
-            delay: 5000,
-            disableOnInteraction: false,
-          }}
-          modules={[Pagination, Autoplay]}
-          className="w-full h-[500px] lg:h-[500px] md:h-[400px] mx-auto max-w-[1280px]"
-        >
-          {slides.map((slide, index) => (
-            <SwiperSlide
-              key={index}
-              className="flex justify-center items-center text-center"
-            >
-              <Link to={slide.link}>
-                <img
-                  src={slide.image}
-                  alt={`Slide ${index + 1}`}
-                  className="block w-full h-full object-cover"
-                />
-              </Link>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </StyledSwiper>
-
-      <StyledSwiper>
-        <div className="relative mt-20 px-8 mx-auto max-w-[1280px]">
-          <h1 className="text-xl font-semibold">Best Item</h1>
-          <Swiper // BEST 아이템 리스트
-            navigation={true}
-            loop={true}
-            autoplay={{
-              delay: 4000,
-              disableOnInteraction: false,
-            }}
-            spaceBetween={20}
-            slidesPerView={4}
-            slidesPerGroup={2}
-            modules={[Navigation, Autoplay]}
-            className="w-full h-auto mt-8"
-          >
-            {bestProduct.map((product, index) => (
-              <SwiperSlide
-                key={index}
-                className="flex flex-col items-center justify-center"
-              >
-                <Product product={product} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
-      </StyledSwiper>
-
-      <StyledSwiper>
-        <div className="relative mt-20 px-8 mx-auto max-w-[1280px]">
-          <h1 className="text-xl font-semibold">New Item</h1>
-          <Swiper // NEW 아이템 리스트
-            navigation={true}
-            loop={true}
-            autoplay={{
-              delay: 4000,
-              disableOnInteraction: false,
-            }}
-            spaceBetween={20}
-            slidesPerView={4}
-            slidesPerGroup={2}
-            modules={[Navigation, Autoplay]}
-            className="w-full h-auto mt-8"
-          >
-            {newProduct.map((product, index) => (
-              <SwiperSlide
-                key={index}
-                className="flex flex-col items-center justify-center"
-              >
-                <Product product={product} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
-      </StyledSwiper>
-    </div>
-  );
-}

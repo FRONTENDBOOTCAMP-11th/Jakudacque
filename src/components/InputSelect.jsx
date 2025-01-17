@@ -15,13 +15,13 @@ InputSelect.propTypes = {
 
 export default function InputSelect({ id, label, options, value, onChange }) {
   return (
-    <div className="mb-4">
+    <div className="min-w-40">
       <label htmlFor={id} className="mb-2 text-sm">
         {label}
       </label>
       <select
         id={id}
-        className="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        className="bg-neutral-50 border border-neutral-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
         value={value}
         onChange={onChange}
       >

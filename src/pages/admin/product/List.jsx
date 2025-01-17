@@ -37,10 +37,8 @@ export default function List() {
   });
 
   const handleDelete = id => {
-    const result = confirm("정말 삭제하시겠습니까?");
-    if (result) {
-      console.log("삭제", id);
-
+    const isConfirmed = confirm("정말 삭제하시겠습니까?");
+    if (isConfirmed) {
       axios.delete(`/seller/products/${id}`).then(() => {
         queryClient.invalidateQueries("productList");
       });
@@ -72,6 +70,7 @@ export default function List() {
         <StyledTable>
           <StyledThead>
             <tr>
+              <StyledTh>노출여부</StyledTh>
               <StyledTh>상품명</StyledTh>
               <StyledTh>상품 이미지</StyledTh>
               <StyledTh>가격</StyledTh>
@@ -83,6 +82,7 @@ export default function List() {
           <tbody>
             {data.item.map(item => (
               <tr key={item._id}>
+                <StyledTd>{item.show ? "노출중" : "숨김"}</StyledTd>
                 <StyledTd>{item.name}</StyledTd>
                 <StyledTd>
                   <img

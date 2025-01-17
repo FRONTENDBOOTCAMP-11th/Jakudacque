@@ -12,6 +12,7 @@ import InputToggle from "@components/InputToggle";
 import InputSelect from "@components/InputSelect";
 import ImageUploader from "@components/ImageUploader";
 import QuillEditor from "@components/QuillEditor";
+import { toast } from "react-toastify";
 import { PRODUCT_KEYS, IMAGE_URL_PREFIX } from "@constants/admin";
 
 export default function Edit() {
@@ -105,9 +106,12 @@ export default function Edit() {
 
   // 상품 저장
   const saveProduct = async () => {
+    const isConfirmed = confirm("상품 정보를 저장하시겠습니까?");
+    if (!isConfirmed) return;
     try {
       await axios.patch(`/seller/products/${_id}`, product);
       queryClient.invalidateQueries("productItem");
+      toast("상품 정보를 저장했습니다.");
       navigate("/admin/product");
     } catch (error) {
       console.error(error);
@@ -167,7 +171,7 @@ export default function Edit() {
           />
         </div>
         {/* left */}
-        <div className="col-span-6">
+        <div className="flex flex-col col-span-6 gap-4">
           {/* category */}
           {codes?.productCategory && (
             <InputSelect

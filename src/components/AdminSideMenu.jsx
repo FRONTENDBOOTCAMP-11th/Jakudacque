@@ -1,6 +1,6 @@
 import tw from "tailwind-styled-components";
 import useUserStore from "@zustand/userStore";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IoLogOutOutline } from "react-icons/io5";
 
 import PropTypes from "prop-types";
@@ -16,10 +16,12 @@ AdminSideMenu.propTypes = {
 
 export default function AdminSideMenu({ menuList }) {
   const { resetUser } = useUserStore();
+  const navigate = useNavigate();
 
   const handleLogout = event => {
     event.preventDefault();
-    // resetUser();
+    resetUser();
+    navigate("/");
   };
 
   return (
@@ -39,13 +41,18 @@ export default function AdminSideMenu({ menuList }) {
           </Link>
 
           {/* admin-menus */}
-          {menuList.map((item, _idx) => {
-            return (
-              <Link key={_idx} to={item.path} className="hover:bg-gray-100">
-                <MenuItem className="pl-4">{item.title}</MenuItem>
-              </Link>
-            );
-          })}
+          {menuList.length > 0 &&
+            menuList.map((item, _idx) => {
+              return (
+                <Link
+                  key={_idx}
+                  to={item.path}
+                  className="hover:bg-neutral-100"
+                >
+                  <MenuItem className="pl-4">{item.title}</MenuItem>
+                </Link>
+              );
+            })}
           <RowDashBar />
 
           {/* logout */}
@@ -66,7 +73,7 @@ const SideMenuContainer = tw.div`
   flex flex-col
   fixed top-0 left-0
   bg-white
-  text-black border-r border-b border-gray-200
+  text-black border-r border-b border-neutral-200
   transition-all duration-300
 `;
 const MenuList = tw.nav`
@@ -83,5 +90,5 @@ const RowDashBar = tw.div`
   w-full
   h-[1px]
   my-1
-  bg-gray-200
+  bg-neutral-200
 `;

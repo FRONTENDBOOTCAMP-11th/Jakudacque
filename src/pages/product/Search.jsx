@@ -7,6 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import Spinner from "@components/Spinner";
 import useQueryStr from "@hooks/useQueryStr";
 import Pagination from "@components/Pagenation";
+import useSearchStore from "@zustand/searchStore";
 
 export default function Search() {
   const navigate = useNavigate();
@@ -16,29 +17,36 @@ export default function Search() {
 
   const [isOpen, setIsOpen] = useState(false);
 
-   // 현재 입력 중인 키워드와 실제 검색된 키워드를 분리
-   const [inputKeyword, setInputKeyword] = useState(queryStr.get("keyword") || "");
-   const [searchedKeyword, setSearchedKeyword] = useState(queryStr.get("keyword") || "");
- 
+  // 현재 입력 중인 키워드와 실제 검색된 키워드를 분리
+  const { setKeyword } = useSearchStore();
+  const [inputKeyword, setInputKeyword] = useState(
+    queryStr.get("keyword") || "",
+  );
+  const [searchedKeyword, setSearchedKeyword] = useState(
+    queryStr.get("keyword") || "",
+  );
 
   // URL이 변경될 때마다 inputKeyword와 searchedKeyword 모두 업데이트
   useEffect(() => {
-    const keyword = queryStr.get("keyword") || "";
-    setInputKeyword(keyword);
-    setSearchedKeyword(keyword);
-  }, [location.search]);
+    const urlKeyword = queryStr.get("keyword") || "";
+    setKeyword(urlKeyword);
+    setInputKeyword(urlKeyword);
+    setSearchedKeyword(urlKeyword);
+  }, [location.search, setKeyword]);
 
-  const handleInputChange = (e) => {
+  const handleInputChange = e => {
     setInputKeyword(e.target.value);
   };
 
-   // 검색 실행 함수
-  const handleSearch = (event) => {
+  // 검색 실행 함수
+  const handleSearch = event => {
     event.preventDefault();
     if (!inputKeyword.trim()) return;
+    setKeyword(inputKeyword);
     navigate(`/search?keyword=${inputKeyword}`, { replace: true });
+    navigate(0); // 페이지 리로드를 항상 실행
   };
-  
+
   // URL에서 page 파라미터 가져오기
   let page = queryStr.get("page") || 1;
   page = Number(page);
@@ -54,13 +62,13 @@ export default function Search() {
           limit: 20,
         },
       });
-  
+
       // 데이터가 없고 1페이지보다 큰 경우 첫 페이지로 이동
       if (!response.data.item?.length && page > 1) {
         navigate(`/search?keyword=${queryStr.get("keyword")}&page=1`);
         return null;
       }
-  
+
       return response.data;
     },
     staleTime: 1000 * 10,
@@ -77,8 +85,8 @@ export default function Search() {
     link: `/product/${item._id}`,
   }));
 
-   // 검색 결과가 없는 경우의 UI
-   if (!data?.item?.length) {
+  // 검색 결과가 없는 경우의 UI
+  if (!data?.item?.length) {
     return (
       <div className="w-full max-w-7xl mx-auto px-4 py-8">
         <div className="mb-8">
@@ -88,11 +96,11 @@ export default function Search() {
                 type="text"
                 placeholder="찾으시는 상품을 검색해보세요"
                 className="flex-1 px-4 py-2 text-base focus:outline-none"
-                value={inputKeyword} 
-                onChange={handleInputChange}
+                value={inputKeyword}
+                onChange={e => setInputKeyword(e.target.value)}
                 onKeyDown={e => e.key === "Enter" && handleSearch(e)}
               />
-              <button 
+              <button
                 onClick={handleSearch}
                 className="px-6 py-2 text-white bg-secondary-base rounded-full hover:bg-secondary-dark transition-colors"
               >
@@ -101,11 +109,11 @@ export default function Search() {
             </div>
           </div>
         </div>
-        
+
         <div className="text-center py-20">
           <p className="text-lg font-medium mb-2">검색 결과가 없습니다.</p>
-          <p className="text-gray-500 mb-8">다른 검색어를 입력해 보세요.</p>
-          
+          <p className="text-neutral-500 mb-8">다른 검색어를 입력해 보세요.</p>
+
           <div className="max-w-md mx-auto">
             <p className="font-medium mb-2">추천 검색어</p>
             <div className="flex flex-wrap justify-center gap-2">
@@ -113,10 +121,10 @@ export default function Search() {
                 <button
                   key={term}
                   onClick={() => {
-                    setInputKeyword(term);
+                    setKeyword(term);
                     navigate(`/search?keyword=${term}`, { replace: true });
                   }}
-                  className="px-4 py-2 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors"
+                  className="px-4 py-2 bg-neutral-100 rounded-full hover:bg-neutral-200 transition-colors"
                 >
                   {term}
                 </button>
@@ -128,7 +136,7 @@ export default function Search() {
     );
   }
 
-   return (
+  return (
     <div className="max-w-7xl mx-auto px-4 py-8">
       {/* 검색바 */}
       <div className="mb-8">
@@ -142,7 +150,7 @@ export default function Search() {
               onChange={handleInputChange}
               onKeyDown={e => e.key === "Enter" && handleSearch(e)}
             />
-            <button 
+            <button
               onClick={handleSearch}
               className="px-6 py-2 text-white bg-secondary-base rounded-full hover:bg-secondary-dark transition-colors"
             >
@@ -153,11 +161,8 @@ export default function Search() {
       </div>
 
       {/* 페이지 정보 (검색어 표시) */}
-      <div className="mb-8">
-          {searchedKeyword && `${searchedKeyword}`}
-      </div>
-   
-      
+      <div className="mb-8">{searchedKeyword && `${searchedKeyword}`}</div>
+
       {/* 상품 카운트, 정렬 */}
       <div className="flex justify-between items-center mb-8">
         <div className="text-sm font-medium">
@@ -166,18 +171,18 @@ export default function Search() {
         <div className="relative">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="px-4 py-2 border border-gray-200 rounded-full text-sm hover:border-gray-400 flex items-center gap-2"
+            className="px-4 py-2 border border-neutral-200 rounded-full text-sm hover:border-neutral-400 flex items-center gap-2"
           >
             정렬방식 <IoCaretDown />
           </button>
           {isOpen && (
-            <div className="absolute right-0 mt-2 w-32 bg-white border border-gray-200 rounded-lg shadow-lg z-10">
+            <div className="absolute right-0 mt-2 w-32 bg-white border border-neutral-200 rounded-lg shadow-lg z-10">
               <ul className="py-1">
                 {["등록순", "인기순", "낮은가격순", "높은가격순", "이름순"].map(
                   option => (
                     <li
                       key={option}
-                      className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-sm"
+                      className="px-4 py-2 hover:bg-neutral-100 cursor-pointer text-sm"
                     >
                       {option}
                     </li>
@@ -188,21 +193,25 @@ export default function Search() {
           )}
         </div>
       </div>
-   
+
       {/* 상품리스트 - 반응형 그리드 */}
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mb-8">
         {products.map(product => (
           <Product key={product.id} product={product} />
         ))}
       </div>
-   
+
       {/* 페이지네이션 */}
-     <div className="mt-8 flex justify-center">
+      <div className="mt-8 flex justify-center">
         <Pagination
-          maxPage={data?.pagination?.totalPages || Math.ceil(data?.item?.length / 20) || 1}
+          maxPage={
+            data?.pagination?.totalPages ||
+            Math.ceil(data?.item?.length / 20) ||
+            1
+          }
           currentPage={Number(page)}
         />
       </div>
     </div>
-   );
-  }
+  );
+}

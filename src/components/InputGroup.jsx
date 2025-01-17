@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 
 InputGroup.propTypes = {
-  id: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
+  id: PropTypes.string,
+  label: PropTypes.string,
   type: PropTypes.string,
   placeholder: PropTypes.string,
   disabled: PropTypes.bool,
@@ -20,14 +20,14 @@ export default function InputGroup({
   onChange,
 }) {
   return (
-    <div className="flex flex-col mb-4">
-      <label className="mb-1 text-sm" htmlFor={id}>
+    <div className="flex flex-col">
+      <label className={`${label && "mb-1"} text-sm`} htmlFor={id}>
         {label}
       </label>
       <input
-        className={`${disabled && "bg-gray-100"} 
-          p-2 border border-gray-300 rounded-lg 
-          active:outline-none focus:outline-none focus:border-error
+        className={`${disabled && "bg-neutral-100"} 
+          p-2 border border-neutral-300 rounded-lg 
+          active:outline-none focus:ring-blue-500 focus:border-blue-500
         `}
         id={id}
         type={type}
