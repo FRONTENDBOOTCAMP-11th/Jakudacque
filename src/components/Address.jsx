@@ -7,17 +7,21 @@ export default function Address({ address, onDelete }) {
         <p>{address.name}</p>
         <p>{address.value}</p>
       </div>
-      <button
-        className="px-3 py-1 bg-white border rounded border-neutral-400 hover:border-neutral-600"
-        onClick={onDelete}
-      >
-        삭제
-      </button>
+      {onDelete ? (
+        <button
+          className="px-3 py-1 bg-white border rounded border-neutral-400 hover:border-neutral-600"
+          onClick={onDelete}
+        >
+          삭제
+        </button>
+      ) : (
+        <></>
+      )}
     </div>
   );
 }
 
 Address.propTypes = {
   address: PropTypes.shape().isRequired,
-  onDelete: PropTypes.func.isRequired,
+  onDelete: PropTypes.func,
 };
