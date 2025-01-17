@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 
+const PLUGIN_KEY = import.meta.env.VITE_CHANNEL_TALK_PLUGIN_KEY;
+
 export const useChannelTalk = (user = null) => {
   // user 파라미터 추가
   useEffect(() => {
@@ -17,7 +19,7 @@ export const useChannelTalk = (user = null) => {
         script.onload = () => {
           if (window.ChannelIO) {
             window.ChannelIO("boot", {
-              pluginKey: "81010319-9027-4bd0-8c9d-2f19caa0f5d1",
+              pluginKey: PLUGIN_KEY,
               memberId: user?.id || "", // 사용자 ID
               profile: {
                 name: user?.name || "게스트", // 사용자 이름

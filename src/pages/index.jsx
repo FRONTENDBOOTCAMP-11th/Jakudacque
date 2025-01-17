@@ -175,7 +175,7 @@ const StyledSwiper = styled.div`
   }
 
   .swiper-button-next:after {
-    transform: translate(30%, 10%);
+    transform: translate(20%, 5%);
   }
 
   .swiper-button-prev:hover,
