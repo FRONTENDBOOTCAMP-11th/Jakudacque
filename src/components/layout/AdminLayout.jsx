@@ -15,7 +15,8 @@ export default function AdminLayout() {
   const { codes, setCodes } = useCodeStore();
 
   useEffect(() => {
-    if (codes) return;
+    if (codes?.productCategory && codes?.membershipClass && codes?.orderState)
+      return;
 
     axios.get("/codes").then(res => {
       let codeMap = {};
@@ -30,7 +31,7 @@ export default function AdminLayout() {
 
       setCodes(codeMap);
     });
-  }, [codes]);
+  }, []);
 
   const navigate = useNavigate();
 
