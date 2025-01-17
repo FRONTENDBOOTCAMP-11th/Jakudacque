@@ -181,11 +181,10 @@ export default function Detail() {
             <p>상세 정보</p>
           </div>
           {/* 상품 디테일 컷 */}
-          <img
-            src={`https://11.fesp.shop/${data.mainImages[1].path}`} // 데이터 형식 변경 후 수정 예정(content 필드)
-            alt="상품 디테일 사진"
-            className="w-[1240px] mx-auto"
-          />
+          <div
+            className="flex justify-center"
+            dangerouslySetInnerHTML={{ __html: data.content }}
+          ></div>
         </div>
       )}
       <CartModal />
