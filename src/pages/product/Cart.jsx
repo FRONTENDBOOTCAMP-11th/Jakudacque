@@ -128,15 +128,15 @@ export default function Cart() {
     >
       <div className="px-10 mx-auto mb-6 ">
         <div className="flex items-center justify-between mb-12">
-          <h1 className="text-2xl font-bold sm:text-4xl">장바구니</h1>
-          <p className="pl-2 mt-auto text-xs sm:text-sm text-neutral-400">
+          <h1 className="text-xl font-bold sm:text-3xl">장바구니</h1>
+          <p className="pl-2 mt-auto sm:text-xs text-neutral-400">
             30,000원 이상 구매시 배송비 무료
           </p>
         </div>
       </div>
       {data.item && data.item.length > 0 ? (
         <div className="mx-auto ">
-          <div className="mb-4 text-xl">
+          <div className="mb-4 text-lg">
             <label className="flex items-center">
               <input
                 type="checkbox"
@@ -171,7 +171,7 @@ export default function Cart() {
 
                   <div className="mx-4">
                     <h2
-                      className="text-lg font-medium sm:text-2xl"
+                      className="pb-2 font-medium sm:text-xl"
                       style={{ whiteSpace: "wrap" }}
                     >
                       <Link to={`/list/${items.product_id}`}>
@@ -201,12 +201,12 @@ export default function Cart() {
                     </div>
                   </div>
                 </div>
-                <div className="flex flex-col items-end mt-4 sm:text-xl">
-                  <p className="pb-1 text-lg font-medium sm:text-2xl">
+                <div className="flex flex-col items-end mt-4 sm:text-lg">
+                  <p className="pb-1 font-medium sm:text-xl">
                     {(items.product.price * items.quantity).toLocaleString()} 원
                   </p>
                   <button
-                    className="px-4 py-1 mt-2 font-medium border rounded-md shadow hover:bg-secondary-base"
+                    className="px-4 py-1 mt-2 border rounded-md shadow hover:bg-secondary-dark"
                     onClick={() => deleteItem.mutate(items._id)}
                   >
                     삭제
@@ -215,7 +215,7 @@ export default function Cart() {
               </div>
             ))}
             <div className="px-8 pt-6 mt-8 border-t border-neutral-400">
-              <div className="flex flex-col items-center mb-8 space-y-5 text-lg font-medium sm:text-2xl">
+              <div className="flex flex-col items-center mb-8 space-y-5 font-medium sm:text-xl">
                 <p className="flex justify-between w-full">
                   <span>상품 금액</span>
                   <span>+ {selectedTotalPrice.toLocaleString()} 원</span>
@@ -224,7 +224,7 @@ export default function Cart() {
                   <span>배송비</span>
                   <span>+ {shippingFee.toLocaleString()} 원</span>
                 </p>
-                <p className="flex justify-between w-full text-xl font-semibold sm:text-3xl">
+                <p className="flex justify-between w-full text-lg font-semibold sm:text-2xl">
                   <span>총 주문 금액</span>
                   <span>{finalTotalPrice.toLocaleString()} 원</span>
                 </p>
@@ -233,13 +233,13 @@ export default function Cart() {
                 <div className="flex w-full gap-8 sm:text-xl">
                   <button
                     onClick={() => handleOrder(data)}
-                    className="flex-1 px-6 py-3 font-semibold text-center border rounded border-neutral-300 hover:border-neutral-400 hover:bg-secondary-base"
+                    className="flex-1 px-6 py-3 text-center border rounded bg-secondary-base hover:bg-secondary-dark"
                   >
                     구매하기
                   </button>
                   <button
                     onClick={() => navigate(-1)}
-                    className="flex-1 px-6 py-3 font-semibold text-center border rounded border-neutral-300 hover:border-neutral-400 hover:bg-secondary-base"
+                    className="flex-1 px-6 py-3 text-center border rounded border-neutral-300 hover:border-neutral-400"
                   >
                     계속 쇼핑하기
                   </button>
