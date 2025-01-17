@@ -159,8 +159,8 @@ export default function MyPage() {
         <div className="max-w-screen-xl mx-auto">
           {/* 프로필 영역 */}
           <div className="flex flex-col">
-            <div className="relative flex flex-col items-center justify-around py-8 bg-neutral-100 md:py-12 md:mt-4 sm:mt-8 md:flex-row gap-y-7">
-              <div className="text-xl tracking-wide text-center basis-2/5">
+            <div className="relative flex flex-col items-center justify-evenly py-8 bg-neutral-100 md:py-12 md:mt-4 sm:mt-8 md:flex-row gap-y-7">
+              <div className="text-xl tracking-wide text-center basis-50">
                 <span>{user.name}</span>님, 반갑습니다.
               </div>
               <div className="flex items-center justify-between basis-2/5 min-w-80 md:border-x border-neutral-300">
