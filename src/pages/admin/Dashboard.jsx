@@ -1,5 +1,5 @@
 import { TableTitle } from "@components/AdminTable";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import Spinner from "@components/Spinner";
 import useAxiosInstance from "@hooks/useAxiosInstance";
 import { useQuery } from "@tanstack/react-query";
@@ -12,6 +12,44 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+
+// 숫자 단위 축소 함수
+const formatYAxis = value => {
+  if (value >= 1000000) return `${(value / 1000000).toFixed(1)}M`; // 백만 단위
+  if (value >= 1000) return `${(value / 1000).toFixed(1)}K`; // 천 단위
+  return value;
+};
+
+// 라인 차트 렌더링 함수
+const renderLineChart = (
+  data,
+  dataKey = "totalQuantity",
+  color = "#8884d8",
+) => {
+  return (
+    <ResponsiveContainer width="100%" height={500}>
+      <LineChart
+        data={data}
+        margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
+        style={{ width: "100%" }}
+      >
+        <Line type="monotone" dataKey={dataKey} stroke={color} />
+        <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+        <XAxis dataKey="date" />
+        {/* Y축 포맷터와 너비 조정 */}
+        <YAxis tickFormatter={formatYAxis} />
+        <Tooltip
+          formatter={value => {
+            if (dataKey === "totalSales") {
+              return `${Number(value).toLocaleString()}원`;
+            }
+            return value;
+          }}
+        />
+      </LineChart>
+    </ResponsiveContainer>
+  );
+};
 
 export default function AdminHome() {
   const [period, setPeriod] = useState({
@@ -59,6 +97,20 @@ export default function AdminHome() {
     staleTime: 1000 * 10,
   });
 
+  const total = useMemo(() => {
+    if (!data) return { totalQuantity: 0, totalSales: 0 };
+
+    return data.item.reduce(
+      (acc, cur) => {
+        return {
+          totalQuantity: acc.totalQuantity + cur.totalQuantity,
+          totalSales: acc.totalSales + cur.totalSales,
+        };
+      },
+      { totalQuantity: 0, totalSales: 0 },
+    );
+  }, [data]);
+
   if (isLoading) {
     return (
       <div className="w-full h-screen">
@@ -69,25 +121,6 @@ export default function AdminHome() {
   if (!data) {
     return <div>데이터가 없습니다.</div>;
   }
-
-  const renderLineChart = () => {
-    return (
-      <ResponsiveContainer width="100%" height={500}>
-        <LineChart
-          data={data.item}
-          label="일일 주문량"
-          margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
-          style={{ width: "100%" }}
-        >
-          <Line type="monotone" dataKey="totalQuantity" stroke="#8884d8" />
-          <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-          <XAxis dataKey="date" />
-          <YAxis />
-          <Tooltip />
-        </LineChart>
-      </ResponsiveContainer>
-    );
-  };
 
   return (
     <>
@@ -114,10 +147,23 @@ export default function AdminHome() {
       </div>
 
       {data && (
-        <div className="w-full mt-8 chart">
-          <h3 className="mb-2 text-lg font-bold">일일 주문량</h3>
-          {renderLineChart()}
-        </div>
+        <>
+          {/* totalQuantity */}
+          <div className="w-full mt-8 chart">
+            <h3 className="mb-2 text-lg font-bold">일일 주문량</h3>
+            <p className="mb-2">총 주문량 : {total.totalQuantity}</p>
+            {renderLineChart(data.item, "totalQuantity", "#7DD3FC")}
+          </div>
+
+          {/* totalSales */}
+          <div className="w-full mt-8 chart">
+            <h3 className="mb-2 text-lg font-bold">일일 주문금액</h3>
+            <p className="mb-2">
+              총 주문금액 : {Number(total.totalSales).toLocaleString()}원
+            </p>
+            {renderLineChart(data.item, "totalSales", "#C02365")}
+          </div>
+        </>
       )}
     </>
   );
