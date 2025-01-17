@@ -51,7 +51,7 @@ export default function AddressModal() {
           </ModalMsgArea>
           <ModalBtnArea>
             <Link
-              to="/user/mypage"
+              to="/user/mypage?category=editProfile"
               className="px-16 py-3 border-r border-neutral-300 rounded-b hover:bg-secondary-base flex justify-center"
               onClick={handleModal}
             >
