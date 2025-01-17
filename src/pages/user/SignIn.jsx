@@ -7,8 +7,8 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-const REST_API_KEY = "7b635f7b3d4379252462f78787fc908b";
-const REDIRECT_URI = "http://localhost:5173/user/signin/kakao";
+const REST_API_KEY = import.meta.env.VITE_KAKAO_REST_API_KEY;
+const REDIRECT_URI = import.meta.env.VITE_KAKAO_REDIRECT_URI;
 
 export default function SignIn() {
   const setUser = useUserStore(store => store.setUser);
@@ -74,9 +74,9 @@ export default function SignIn() {
   }, [setUser, navigate]);
 
   return (
-    <main className="min-w-80 flex-grow flex items-center justify-center">
-      <div className="p-10 rounded-lg w-full max-w-md">
-        <div className="text-center py-4">
+    <main className="flex items-center justify-center flex-grow min-w-80">
+      <div className="w-full max-w-md p-10 rounded-lg">
+        <div className="py-4 text-center">
           <h2 className="text-4xl font-bold">로그인</h2>
         </div>
 
@@ -107,11 +107,11 @@ export default function SignIn() {
             />
             <InputError target={errors.password} />
           </div>
-          <div className="mt-10 flex flex-col justify-center items-center gap-6">
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-10">
+          <div className="flex flex-col items-center justify-center gap-6 mt-10">
+            <div className="flex flex-col items-center justify-center gap-10 sm:flex-row">
               <button
                 type="submit"
-                className="py-2 border border-neutral-300 rounded hover:border-neutral-400 hover:bg-secondary-base flex justify-center items-center"
+                className="flex items-center justify-center py-2 border rounded border-neutral-300 hover:border-neutral-400 hover:bg-secondary-base"
                 style={{ width: "200px", height: "auto" }}
               >
                 로그인
