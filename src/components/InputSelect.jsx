@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 InputSelect.propTypes = {
   id: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
+  label: PropTypes.string,
   options: PropTypes.arrayOf(
     PropTypes.shape({
       value: PropTypes.string,
@@ -25,9 +25,9 @@ export default function InputSelect({ id, label, options, value, onChange }) {
         value={value}
         onChange={onChange}
       >
-        {options.map((option, index) => {
+        {options.map(option => {
           return (
-            <option key={index} value={option.value}>
+            <option key={option.value} value={option.value}>
               {option.label}
             </option>
           );

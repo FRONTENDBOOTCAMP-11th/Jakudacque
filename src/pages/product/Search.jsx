@@ -18,8 +18,12 @@ export default function Search() {
   const [isOpen, setIsOpen] = useState(false);
 
   const { setKeyword } = useSearchStore();
-  const [inputKeyword, setInputKeyword] = useState(queryStr.get("keyword") || "");
-  const [searchedKeyword, setSearchedKeyword] = useState(queryStr.get("keyword") || "");
+  const [inputKeyword, setInputKeyword] = useState(
+    queryStr.get("keyword") || "",
+  );
+  const [searchedKeyword, setSearchedKeyword] = useState(
+    queryStr.get("keyword") || "",
+  );
 
   useEffect(() => {
     const urlKeyword = queryStr.get("keyword") || "";
@@ -101,7 +105,10 @@ export default function Search() {
                 onChange={e => setInputKeyword(e.target.value)}
                 onKeyDown={e => e.key === "Enter" && handleSearch(e)}
               />
-              <button onClick={handleSearch} className="px-6 py-2 text-white bg-secondary-base rounded-full hover:bg-secondary-dark transition-colors">
+              <button
+                onClick={handleSearch}
+                className="px-6 py-2 text-white bg-secondary-base rounded-full hover:bg-secondary-dark transition-colors"
+              >
                 <IoSearch className="text-xl" />
               </button>
             </div>
@@ -147,7 +154,10 @@ export default function Search() {
               onChange={e => setInputKeyword(e.target.value)}
               onKeyDown={e => e.key === "Enter" && handleSearch(e)}
             />
-            <button onClick={handleSearch} className="px-6 py-2 text-white bg-secondary-base rounded-full hover:bg-secondary-dark transition-colors">
+            <button
+              onClick={handleSearch}
+              className="px-6 py-2 text-white bg-secondary-base rounded-full hover:bg-secondary-dark transition-colors"
+            >
               <IoSearch className="text-xl" />
             </button>
           </div>
@@ -166,7 +176,11 @@ export default function Search() {
 
       <div className="mt-8 flex justify-center">
         <Pagination
-          maxPage={data?.pagination?.totalPages || Math.ceil(data?.item?.length / 20) || 1}
+          maxPage={
+            data?.pagination?.totalPages ||
+            Math.ceil(data?.item?.length / 20) ||
+            1
+          }
           currentPage={page}
         />
       </div>
