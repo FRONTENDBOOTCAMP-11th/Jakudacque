@@ -9,18 +9,6 @@ const Category = () => {
   const { codes, setCodes } = useCodeStore(); // Zustand에서 codes 상태와 setter 가져오기
   const axios = useAxiosInstance();
 
-<<<<<<< HEAD
-  const menuItems = [
-    "전체상품",
-    "신상",
-    "BEST",
-    "다이어리",
-    "스티커",
-    "메모지",
-    "마스킹 테이프",
-    "키링",
-   // "고객센터",
-=======
   // URL에서 현재 카테고리 코드 추출
   const currentCategory =
     new URLSearchParams(location.search).get("category") || "ALL";
@@ -35,7 +23,6 @@ const Category = () => {
     { name: "전체상품", code: "ALL" },
     { name: "신상", code: "NEW" },
     { name: "BEST", code: "BEST" },
->>>>>>> origin/develop
   ];
 
   // 데이터 가져오기: 컴포넌트가 처음 렌더링될 때 호출

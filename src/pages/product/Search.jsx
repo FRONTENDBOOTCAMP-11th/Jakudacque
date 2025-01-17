@@ -14,6 +14,7 @@ export default function Search() {
   const axios = useAxiosInstance();
   const location = useLocation();
   const queryStr = useQueryStr();
+  const [sortOption, setSortOption] = useState("등록순"); // 정렬 상태
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -47,31 +48,41 @@ export default function Search() {
     navigate(0); // 페이지 리로드를 항상 실행
   };
 
+  // 정렬 옵션 맵핑
+  const SORT_MAP = {
+    등록순: { key: "createdAt", order: -1 }, // -1은 내림차순
+    인기순: { key: "buyQuantity", order: -1 },
+    낮은가격순: { key: "price", order: 1 }, // 1은 오름차순
+    높은가격순: { key: "price", order: -1 },
+    이름순: { key: "name", order: 1 },
+  };
+
   // URL에서 page 파라미터 가져오기
   let page = queryStr.get("page") || 1;
   page = Number(page);
 
   // 검색 결과 데이터 가져오기
   const { data, isLoading } = useQuery({
-    queryKey: ["searchResults", queryStr.get("keyword"), page],
+    queryKey: ["searchResults", queryStr.get("keyword"), page, sortOption],
     queryFn: async () => {
       const response = await axios.get("/products", {
         params: {
           keyword: queryStr.get("keyword"),
           page,
           limit: 20,
+          sort: JSON.stringify({
+            [SORT_MAP[sortOption].key]: SORT_MAP[sortOption].order,
+          }),
         },
       });
-
-      // 데이터가 없고 1페이지보다 큰 경우 첫 페이지로 이동
+  
       if (!response.data.item?.length && page > 1) {
         navigate(`/search?keyword=${queryStr.get("keyword")}&page=1`);
         return null;
       }
-
+  
       return response.data;
     },
-    staleTime: 1000 * 10,
   });
 
   if (isLoading) return <Spinner />;

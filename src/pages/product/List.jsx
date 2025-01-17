@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { IoCaretDown } from "react-icons/io5";
-import Product from "../../components/Product";
 import { useNavigate } from "react-router-dom";
 import useAxiosInstance from "@hooks/useAxiosInstance";
 import { useQuery } from "@tanstack/react-query";
@@ -8,6 +6,7 @@ import Spinner from "@components/Spinner";
 import useQueryStr from "@hooks/useQueryStr";
 import Pagination from "@components/Pagenation";
 import CartModal from "@components/CartModal";
+import ProductList from "@components/ProductList";
 
 export default function List() {
   const [isOpen, setIsOpen] = useState(false);
@@ -93,71 +92,33 @@ export default function List() {
     setIsOpen(false);
   };
 
-  const products =
-    data?.item?.map(item => ({
-      id: item._id,
-      name: item.name,
-      price: item.price,
-      image: item.mainImages?.[0]?.path
-        ? "https://11.fesp.shop" + item.mainImages[0].path
-        : "",
-      link: `/product/${item._id}`,
-    })) || [];
+  const products = data.item.map(item => ({
+    id: String(item._id),
+    name: item.name,
+    price: item.price,
+    image: item.mainImages?.[0]?.path
+      ? "https://11.fesp.shop" + item.mainImages[0].path
+      : "",
+    link: `/product/${item._id}`,
+  }));
 
   return (
     <div className="w-full px-4 py-8 mx-auto max-w-7xl">
-      <div className="mb-8">
-        {/* 현재 페이지 정보 (카테고리명) */}
-        {currentCategory}
-      </div>
-
-      {/* 상품 카운트, 정렬 */}
-      <div className="flex items-center justify-between mb-8">
-        <div className="text-sm font-medium">
-          {data?.pagination?.total || "0"} ITEMS
-        </div>
-        <div className="relative">
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="flex items-center gap-2 px-4 py-2 text-sm border rounded-full border-neutral-200 hover:border-neutral-400"
-          >
-            {sortOption} <IoCaretDown />
-          </button>
-          {isOpen && (
-            <div className="absolute right-0 z-10 w-32 mt-2 bg-white border rounded-lg shadow-lg border-neutral-200">
-              <ul className="py-1">
-                {Object.keys(SORT_MAP).map(option => (
-                  <li
-                    key={option}
-                    className={`px-4 py-2 hover:bg-neutral-100 cursor-pointer text-sm ${
-                      sortOption === option ? "text-yellow-300" : ""
-                    }`}
-                    onClick={() => handleSortClick(option)}
-                  >
-                    {option}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </div>
-      </div>
-
-      {/* 상품리스트 */}
-      <div className="grid grid-cols-2 gap-4 mb-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 sm:gap-6 lg:gap-8">
-        {products.map(product => (
-          <Product key={product.id} product={product} />
-        ))}
-      </div>
+      <ProductList
+        title={currentCategory}
+        products={products}
+        totalItems={data.pagination.total}
+        isOpen={isOpen}
+        sortOption={sortOption}
+        onSortOptionClick={handleSortClick}
+        onToggleOpen={() => setIsOpen(!isOpen)}
+      />
 
       {/* 페이지네이션 */}
       <div className="flex justify-center mt-8">
         <Pagination
-          maxPage={
-            data.pagination.totalPages ||
-            Math.ceil(data.pagination.totalCount / 20)
-          }
-          currentPage={Number(page)}
+          maxPage={data.pagination.totalPages || Math.ceil(data.pagination.totalCount / 20)}
+          currentPage={page}
         />
       </div>
       <CartModal />
