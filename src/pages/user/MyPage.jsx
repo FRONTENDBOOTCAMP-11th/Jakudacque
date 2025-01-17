@@ -5,7 +5,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import useUserStore from "@zustand/userStore";
 import useWishState from "@zustand/wishState";
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import CartModal from "@components/CartModal";
 import OrderProduct from "@components/OrderProduct";
@@ -29,7 +29,22 @@ export default function MyPage() {
     toast("로그아웃 되었습니다!");
   };
 
-  const [category, setCategory] = useState("orderList");
+  // 쿼리 스트링 추가
+  const [searchParams, setSearchParams] = useSearchParams();
+  const initialCategory = searchParams.get("category") || "orderList"; // 기본값: 주문 내역 카테고리
+  const [category, setCategory] = useState(initialCategory);
+  searchParams.get("category");
+
+  useEffect(() => {
+    if (searchParams.get("category") !== category) {
+      setSearchParams({ category });
+    }
+  }, [category]);
+
+  useEffect(() => {
+    const paramsCategory = searchParams.get("category");
+    setCategory(paramsCategory);
+  }, [searchParams]);
 
   // 로그인한 회원 데이터
   const user = useUserStore(state => state.user);
@@ -159,8 +174,8 @@ export default function MyPage() {
         <div className="max-w-screen-xl mx-auto">
           {/* 프로필 영역 */}
           <div className="flex flex-col">
-            <div className="relative flex flex-col items-center justify-around py-8 bg-neutral-100 md:py-12 md:mt-4 sm:mt-8 md:flex-row gap-y-7">
-              <div className="text-xl tracking-wide text-center basis-2/5">
+            <div className="relative flex flex-col items-center justify-evenly py-8 bg-neutral-100 md:py-12 md:mt-4 sm:mt-8 md:flex-row gap-y-7">
+              <div className="text-xl tracking-wide text-center basis-50">
                 <span>{user.name}</span>님, 반갑습니다.
               </div>
               <div className="flex items-center justify-between basis-2/5 min-w-80 md:border-x border-neutral-300">
