@@ -99,7 +99,7 @@ export default function Search() {
   // 검색 결과가 없는 경우의 UI
   if (!data?.item?.length) {
     return (
-      <div className="w-full max-w-7xl mx-auto px-4 py-8">
+      <div className="w-full px-4 py-8 mx-auto max-w-7xl">
         <div className="mb-8">
           <div className="max-w-3xl mx-auto">
             <div className="flex items-center justify-between p-3 bg-white border rounded-lg shadow-sm">
@@ -113,7 +113,7 @@ export default function Search() {
               />
               <button
                 onClick={handleSearch}
-                className="px-6 py-2 text-white bg-secondary-base rounded-full hover:bg-secondary-dark transition-colors"
+                className="px-6 py-2 text-white transition-colors rounded-full bg-secondary-base hover:bg-secondary-dark"
               >
                 <IoSearch className="text-xl" />
               </button>
@@ -121,12 +121,12 @@ export default function Search() {
           </div>
         </div>
 
-        <div className="text-center py-20">
-          <p className="text-lg font-medium mb-2">검색 결과가 없습니다.</p>
-          <p className="text-neutral-500 mb-8">다른 검색어를 입력해 보세요.</p>
+        <div className="py-20 text-center">
+          <p className="mb-2 text-lg font-medium">검색 결과가 없습니다.</p>
+          <p className="mb-8 text-neutral-500">다른 검색어를 입력해 보세요.</p>
 
           <div className="max-w-md mx-auto">
-            <p className="font-medium mb-2">추천 검색어</p>
+            <p className="mb-2 font-medium">추천 검색어</p>
             <div className="flex flex-wrap justify-center gap-2">
               {["다이어리", "스티커", "메모지", "키링"].map(term => (
                 <button
@@ -135,7 +135,7 @@ export default function Search() {
                     setKeyword(term);
                     navigate(`/search?keyword=${term}`, { replace: true });
                   }}
-                  className="px-4 py-2 bg-neutral-100 rounded-full hover:bg-neutral-200 transition-colors"
+                  className="px-4 py-2 transition-colors rounded-full bg-neutral-100 hover:bg-neutral-200"
                 >
                   {term}
                 </button>
@@ -148,7 +148,7 @@ export default function Search() {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8">
+    <div className="px-4 py-8 mx-auto max-w-7xl">
       {/* 검색바 */}
       <div className="mb-8">
         <div className="max-w-3xl mx-auto">
@@ -163,7 +163,7 @@ export default function Search() {
             />
             <button
               onClick={handleSearch}
-              className="px-6 py-2 text-white bg-secondary-base rounded-full hover:bg-secondary-dark transition-colors"
+              className="px-6 py-2 text-white transition-colors rounded-full bg-secondary-base hover:bg-secondary-dark"
             >
               <IoSearch className="text-xl" />
             </button>
@@ -175,25 +175,25 @@ export default function Search() {
       <div className="mb-8">{searchedKeyword && `${searchedKeyword}`}</div>
 
       {/* 상품 카운트, 정렬 */}
-      <div className="flex justify-between items-center mb-8">
+      <div className="flex items-center justify-between mb-8">
         <div className="text-sm font-medium">
           {data?.pagination?.total || "0"} ITEMS
         </div>
         <div className="relative">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="px-4 py-2 border border-neutral-200 rounded-full text-sm hover:border-neutral-400 flex items-center gap-2"
+            className="flex items-center gap-2 px-4 py-2 text-sm border rounded-full border-neutral-200 hover:border-neutral-400"
           >
             정렬방식 <IoCaretDown />
           </button>
           {isOpen && (
-            <div className="absolute right-0 mt-2 w-32 bg-white border border-neutral-200 rounded-lg shadow-lg z-10">
+            <div className="absolute right-0 z-10 w-32 mt-2 bg-white border rounded-lg shadow-lg border-neutral-200">
               <ul className="py-1">
                 {["등록순", "인기순", "낮은가격순", "높은가격순", "이름순"].map(
                   option => (
                     <li
                       key={option}
-                      className="px-4 py-2 hover:bg-neutral-100 cursor-pointer text-sm"
+                      className="px-4 py-2 text-sm cursor-pointer hover:bg-neutral-100"
                     >
                       {option}
                     </li>
@@ -206,14 +206,14 @@ export default function Search() {
       </div>
 
       {/* 상품리스트 - 반응형 그리드 */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mb-8">
+      <div className="grid grid-cols-2 gap-4 mb-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 sm:gap-6 lg:gap-8">
         {products.map(product => (
           <Product key={product.id} product={product} />
         ))}
       </div>
 
       {/* 페이지네이션 */}
-      <div className="mt-8 flex justify-center">
+      <div className="flex justify-center mt-8">
         <Pagination
           maxPage={
             data?.pagination?.totalPages ||
