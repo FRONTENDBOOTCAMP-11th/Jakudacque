@@ -5,7 +5,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import useUserStore from "@zustand/userStore";
 import useWishState from "@zustand/wishState";
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import CartModal from "@components/CartModal";
 import OrderProduct from "@components/OrderProduct";
@@ -29,7 +29,22 @@ export default function MyPage() {
     toast("로그아웃 되었습니다!");
   };
 
-  const [category, setCategory] = useState("orderList");
+  // 쿼리 스트링 추가
+  const [searchParams, setSearchParams] = useSearchParams();
+  const initialCategory = searchParams.get("category") || "orderList"; // 기본값: 주문 내역 카테고리
+  const [category, setCategory] = useState(initialCategory);
+  searchParams.get("category");
+
+  useEffect(() => {
+    if (searchParams.get("category") !== category) {
+      setSearchParams({ category });
+    }
+  }, [category]);
+
+  useEffect(() => {
+    const paramsCategory = searchParams.get("category");
+    setCategory(paramsCategory);
+  }, [searchParams]);
 
   // 로그인한 회원 데이터
   const user = useUserStore(state => state.user);
