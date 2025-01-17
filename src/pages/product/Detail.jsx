@@ -11,8 +11,9 @@ import { useParams } from "react-router-dom";
 import { useHandleWish } from "@hooks/useHandleWish";
 import useWishState from "@zustand/wishState";
 import { useAddCart } from "@hooks/useAddCart";
-import { useOrder } from "@hooks/useOrder";
 import { useState } from "react";
+import AddressModal from "@components/AddressModal";
+import { useAddress } from "@hooks/useAddress";
 
 export default function Detail() {
   const { _id } = useParams();
@@ -36,9 +37,6 @@ export default function Detail() {
   // 상품 가격(수량 변경시 함께 변경)
   const productPrice = data && (data.price * count).toLocaleString();
 
-  // 상품 구매
-  const { orderProduct } = useOrder();
-
   const { refetchWish } = useHandleWish(_id);
 
   // 전역 찜 상태 조회
@@ -59,6 +57,12 @@ export default function Detail() {
 
   // 장바구니 추가
   const { addCart } = useAddCart();
+
+  const { handleModal } = useAddress();
+
+  const sendInfo = () => {
+    handleModal();
+  };
 
   return (
     <div className="w-full">
@@ -128,11 +132,7 @@ export default function Detail() {
               <div className="flex gap-x-2">
                 <button
                   className="flex items-center justify-center py-2 rounded grow basis-48 lg:py-3 bg-secondary-base hover:bg-secondary-dark"
-                  onClick={() =>
-                    orderProduct.mutate({
-                      products: [{ _id: Number(_id), quantity: count }],
-                    })
-                  }
+                  onClick={sendInfo}
                 >
                   구매하기
                 </button>
@@ -171,6 +171,7 @@ export default function Detail() {
         </div>
       )}
       <CartModal />
+      <AddressModal />
     </div>
   );
 }

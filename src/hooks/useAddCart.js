@@ -1,6 +1,6 @@
 import useAxiosInstance from "@hooks/useAxiosInstance";
 import { useMutation } from "@tanstack/react-query";
-import useModalState from "@zustand/modalState";
+import useModalState from "@zustand/cartModalState";
 
 export const useAddCart = () => {
   const axios = useAxiosInstance();
