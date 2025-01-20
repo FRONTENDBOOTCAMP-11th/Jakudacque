@@ -72,7 +72,7 @@ export default function AddAddressModal() {
                 </StyledFormContainer>
                 <ModalBtnArea>
                   <button
-                    className="px-16 py-3 border-r rounded-l border-neutral-300 hover:bg-secondary-base flex justify-center"
+                    className="grow px-16 py-3 border-r rounded-l border-neutral-300 hover:bg-secondary-base flex justify-center"
                     onClick={handleModal}
                   >
                     취소
