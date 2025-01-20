@@ -48,7 +48,7 @@ export default function Index() {
   const mapProducts = useMemo(
     () => data =>
       data?.item?.map(item => ({
-        id: item._id,
+        id: String(item._id), 
         name: item.name,
         price: item.price,
         image: item.mainImages?.[0]?.path
