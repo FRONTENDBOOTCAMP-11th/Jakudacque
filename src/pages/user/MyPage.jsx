@@ -156,6 +156,8 @@ export default function MyPage() {
 
   const [addAddressMsg, setaddAddressMsg] = useState("");
 
+  console.log(addressData);
+
   return (
     <div className="w-full">
       {isLoading && isLoadingOrderData && isLoadingUserData && <Spinner />}
@@ -308,13 +310,16 @@ export default function MyPage() {
                 <div className="flex flex-col gap-y-3">
                   <>
                     <p className="text-sm text-red-500">{addAddressMsg}</p>
-                    {addressData?.reverse().map(e => (
-                      <Address
-                        key={e.id}
-                        address={e}
-                        onDelete={() => deleteAddress(e.id)}
-                      />
-                    ))}
+                    {addressData
+                      ?.slice()
+                      .reverse()
+                      .map(e => (
+                        <Address
+                          key={e.id}
+                          address={e}
+                          onDelete={() => deleteAddress(e.id)}
+                        />
+                      ))}
                   </>
                 </div>
                 <button className="border py-2" onClick={handleModal}>
