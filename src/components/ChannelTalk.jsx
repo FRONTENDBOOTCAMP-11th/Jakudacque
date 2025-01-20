@@ -1,19 +1,20 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import useUserStore from "@zustand/userStore";
 import { useLocation } from "react-router-dom";
 
+const PLUGIN_KEY = import.meta.env.VITE_CHANNEL_TALK_PLUGIN_KEY;
+
 function ChannelTalk() {
-  const channelTalkRef = useRef(null);
-  const user = useUserStore(state => state.user);
+  const user = useUserStore((state) => state.user);
   const location = useLocation();
 
   // 채널톡 초기화 함수
   const initializeChannelTalk = () => {
-    const ch = function () {
+    const ch = function() {
       ch.c(arguments);
     };
     ch.q = [];
-    ch.c = function (args) {
+    ch.c = function(args) {
       ch.q.push(args);
     };
     window.ChannelIO = ch;
@@ -21,43 +22,51 @@ function ChannelTalk() {
     const script = document.createElement("script");
     script.async = true;
     script.src = "https://cdn.channel.io/plugin/ch-plugin-web.js";
-    channelTalkRef.current = script;
-
-    script.onload = () => {
-      window.ChannelIO("boot", {
-        pluginKey: "81010319-9027-4bd0-8c9d-2f19caa0f5d1",
-        memberId: user?.id || "",
-        profile: {
-          name: user?.name || "게스트",
-          email: user?.email || "",
-        },
-        hideChannelButtonOnBoot: true, // 초기 로딩 시 버튼이 잠깐 보였다가 사라지는 것을 방지하기 위한 안전장치로 사용(없어도 됨)
-      });
-    };
-
+    script.onload = bootChannelTalk;
     document.head.appendChild(script);
   };
 
-  // 초기화는 한 번만
+  // 채널톡 부트 함수
+  const bootChannelTalk = () => {
+    if (!PLUGIN_KEY || !window.ChannelIO) return;
+
+    window.ChannelIO("boot", {
+      pluginKey: PLUGIN_KEY,
+      memberId: user?._id || `guest${Date.now()}`,
+      profile: {
+        name: user?.name || "비회원",
+        meta: {
+          userId: user?._id || "",
+          type: user?.type || "guest"
+        },
+      },
+    });
+  };
+
+  // 초기 마운트 시 한 번만 실행
   useEffect(() => {
     if (!window.ChannelIO) {
       initializeChannelTalk();
     }
   }, []);
 
-  // 페이지 변경 감지 및 처리
+  // 유저 정보 변경 시 처리
   useEffect(() => {
-    const isAuthPage =
+    if (window.ChannelIO) {
+      window.ChannelIO("shutdown");
+      bootChannelTalk();
+    }
+  }, [user]); // user 정보가 변경될 때마다 채널톡 재시작
+
+  // 페이지 변경 시 버튼 상태 처리
+  useEffect(() => {
+    const isAuthPage = 
       location.pathname.startsWith("/admin") ||
       location.pathname.startsWith("/user/signin") ||
       location.pathname.startsWith("/user/signup");
 
     if (window.ChannelIO) {
-      if (isAuthPage) {
-        window.ChannelIO("hideChannelButton");
-      } else {
-        window.ChannelIO("showChannelButton");
-      }
+      window.ChannelIO(isAuthPage ? "hideChannelButton" : "showChannelButton");
     }
   }, [location.pathname]);
 

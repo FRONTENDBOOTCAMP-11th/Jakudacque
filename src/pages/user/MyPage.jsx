@@ -308,7 +308,7 @@ export default function MyPage() {
                 <div className="flex flex-col gap-y-3">
                   <>
                     <p className="text-sm text-red-500">{addAddressMsg}</p>
-                    {addressData?.map(e => (
+                    {addressData?.reverse().map(e => (
                       <Address
                         key={e.id}
                         address={e}

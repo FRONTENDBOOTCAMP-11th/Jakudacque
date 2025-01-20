@@ -167,9 +167,9 @@ export default function Detail() {
                   onClick={wishHandle}
                 >
                   {localWish ? (
-                    <IoHeartSharp color="red" />
+                    <IoHeartSharp className="text-primary-dark" />
                   ) : (
-                    <IoHeartOutline color="red" />
+                    <IoHeartOutline className="text-primary-dark" />
                   )}
                   찜
                 </button>
