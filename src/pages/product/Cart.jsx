@@ -5,32 +5,21 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import Spinner from "@components/Spinner";
 import { useState } from "react";
 import useCounterState from "@zustand/counter";
+import AddressModal from "@components/AddressModal";
+import useAddressModalState from "@zustand/AddressModalState";
 import { useOrder } from "@hooks/useOrder";
+import { useCartCleanUp } from "@hooks/useCartCleanUp";
 
 export default function Cart() {
   const axios = useAxiosInstance();
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
+
   const [checkedIdsSet, setCheckedIdsSet] = useState(new Set());
   const numChecked = checkedIdsSet.size;
   const { countUp, countDown } = useCounterState();
-  const queryClient = useQueryClient();
-
-  // 상품 구매
-  const { orderProduct } = useOrder();
-
-  // 상품을 배열로 만들어 구매api로 넘기기
-  const handleOrder = data => {
-    const products = data.item
-      .filter(item => checkedIdsSet.has(item._id)) // 선택된 상품만 주문
-      .map(item => ({
-        _id: Number(item.product_id),
-        quantity: item.quantity,
-      }));
-
-    orderProduct.mutate({
-      products,
-    });
-  };
+  const { modalIsOpen, handleModal, selectedAddress, setSelectedAddress } =
+    useAddressModalState();
 
   // 장바구니 목록 조회(로그인시) api
   const { data, isLoading } = useQuery({
@@ -38,6 +27,44 @@ export default function Cart() {
     queryFn: () => axios.get(`/carts`),
     select: res => res.data,
   });
+
+  // 상품 구매
+  const { orderProduct } = useOrder();
+
+  // 장바구니 비우기
+  const { cleanupProduct } = useCartCleanUp();
+
+  // 상품을 배열로 만들어 구매api로 넘기기
+  const orderCart = data => {
+    const products = data.item
+      .filter(item => checkedIdsSet.has(item._id)) // 선택된 상품만 주문
+      .map(item => ({
+        _id: Number(item.product_id),
+        quantity: item.quantity,
+      }));
+
+    orderProduct.mutate(
+      {
+        products,
+        address: selectedAddress, // 선택된 주소 포함하기
+      },
+      {
+        onSuccess: () => {
+          cleanupProduct.mutate(); // 장바구니 비우기
+        },
+      },
+    );
+  };
+
+  const handleOrder = () => {
+    handleModal();
+  };
+
+  const handleAddressSelect = address => {
+    setSelectedAddress(address);
+    handleModal(); // 모달 닫기
+    orderCart(data); // 주문 처리
+  };
 
   // 장바구니 상품 삭제(한건) api
   const deleteItem = useMutation({
@@ -254,6 +281,7 @@ export default function Cart() {
           <p className="mt-4 text-lg">장바구니가 비었습니다</p>
         </div>
       )}
+      {modalIsOpen && <AddressModal onAddressSelect={handleAddressSelect} />}
     </div>
   );
 }

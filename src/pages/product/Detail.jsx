@@ -69,7 +69,7 @@ export default function Detail() {
   // 장바구니 추가
   const { addCart } = useAddCart();
 
-  const { handleModal } = useAddress();
+  const { handleModal, mutateCallback } = useAddress();
 
   const sendInfo = () => {
     if (user) {
@@ -188,7 +188,7 @@ export default function Detail() {
         </div>
       )}
       <CartModal />
-      <AddressModal />
+      <AddressModal onAddressSelect={mutateCallback} />
     </div>
   );
 }
