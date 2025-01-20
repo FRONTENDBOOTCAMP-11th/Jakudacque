@@ -9,7 +9,7 @@ export default function Address({ address, onDelete }) {
       </div>
       {onDelete ? (
         <button
-          className="px-3 py-1 bg-white border rounded border-neutral-400 hover:border-neutral-600"
+          className="px-3 py-1 bg-white border rounded border-neutral-400 hover:border-neutral-600 shrink-0"
           onClick={onDelete}
         >
           삭제
