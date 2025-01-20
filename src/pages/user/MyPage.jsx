@@ -13,9 +13,24 @@ import Address from "@components/Address";
 import { useForm } from "react-hook-form";
 import { FaRegClipboard, FaRegHeart } from "react-icons/fa";
 import tw from "tailwind-styled-components";
+import AddAddressModal from "@components/AddAddressModal";
+import useAddressStore from "@zustand/AddressStore";
+import useAddAddressModalState from "@zustand/AddAddressModalState";
 
 export default function MyPage() {
   const axios = useAxiosInstance();
+
+  // 주소 추가 모달
+  const handleModal = useAddAddressModalState(state => state.handleModal);
+
+  // 주소 데이터(전역 상태)
+  const { addressData } = useAddressStore();
+
+  // 주소 데이터 추가
+  const addAddress = useAddressStore(state => state.addAddress);
+
+  // 주소 데이터 삭제
+  const deleteAddress = useAddressStore(state => state.deleteAddress);
 
   const { resetUser } = useUserStore();
   const { resetWishState } = useWishState();
@@ -107,7 +122,6 @@ export default function MyPage() {
     }
     if (addressData.length) {
       newProfile.extra.addressBook = addressData;
-      console.log("userProfile:", newProfile);
       updateProfile.mutate(newProfile);
     } else {
       setaddAddressMsg("주소를 하나 이상 추가해주세요.");
@@ -125,47 +139,24 @@ export default function MyPage() {
     },
   });
 
-  // 배송지 추가 폼
-  const {
-    register: registerAddress,
-    handleSubmit: handleAddressSubmit,
-    formState: { errors: addressErrors },
-    reset: resetAddress,
-  } = useForm();
-
-  // 주소 데이터 상태로 관리
-  const [addressData, setAddressData] = useState([]);
-
   useEffect(() => {
     if (userData?.extra?.addressBook) {
-      setAddressData(userData.extra.addressBook);
+      // 중복 추가를 방지하기 위해 기존 addressData와 비교
+      const existingIds = new Set(addressData.map(e => e.id));
+      const newAddresses = userData.extra.addressBook.filter(
+        (_, index) => !existingIds.has(index + 1),
+      );
+
+      newAddresses.forEach((e, index) => {
+        e.id = index + 1;
+        addAddress(e);
+      });
     }
-  }, [userData]);
-
-  // 주소 추가 함수
-  const addAddress = newAddress => {
-    setAddressData(prev => [...prev, newAddress]);
-  };
-
-  // 배송지 추가 폼 제출
-  const onAddressSubmit = data => {
-    console.log(addressData);
-    if (addressData.length) {
-      data.id = addressData[addressData.length - 1].id + 1;
-    } else {
-      data.id = 1;
-    }
-    addAddress(data);
-    resetAddress();
-    setaddAddressMsg("");
-  };
-
-  // 주소 삭제 핸들러
-  const handleDeleteAddress = selectedIndex => {
-    setAddressData(prev => prev.filter((_, index) => index !== selectedIndex));
-  };
+  }, [user, userData]);
 
   const [addAddressMsg, setaddAddressMsg] = useState("");
+
+  console.log(addressData);
 
   return (
     <div className="w-full">
@@ -312,44 +303,6 @@ export default function MyPage() {
                   </StyledGridContainer>
                 </StyledFormContainer>
               </form>
-              {/* 배송지 추가 */}
-              <form onSubmit={handleAddressSubmit(onAddressSubmit)}>
-                <StyledFormContainer>
-                  <InfoTitle>배송지 추가</InfoTitle>
-                  <StyledGridContainer>
-                    <label htmlFor="addressName">배송지명</label>
-                    <input
-                      type="text"
-                      id="addressName"
-                      className="px-1 border rounded-md focus:outline-none border-neutral-400"
-                      {...registerAddress("name", {
-                        required: "배송지명을 입력해주세요.",
-                      })}
-                    />
-                    {addressErrors.name && (
-                      <ErrorText>{addressErrors.name.message}</ErrorText>
-                    )}
-                    <label htmlFor="address">주소</label>
-                    <input
-                      type="text"
-                      id="address"
-                      className="px-1 border rounded-md focus:outline-none border-neutral-400"
-                      {...registerAddress("value", {
-                        required: "주소를 입력해주세요.",
-                      })}
-                    />
-                    {addressErrors.value && (
-                      <ErrorText>{addressErrors.value.message}</ErrorText>
-                    )}
-                    <button
-                      type="submit"
-                      className="col-span-2 px-3 py-2 mt-3 rounded-md bg-secondary-base hover:bg-secondary-dark"
-                    >
-                      추가
-                    </button>
-                  </StyledGridContainer>
-                </StyledFormContainer>
-              </form>
 
               {/* 배송지 정보 */}
               <StyledFormContainer>
@@ -357,15 +310,21 @@ export default function MyPage() {
                 <div className="flex flex-col gap-y-3">
                   <>
                     <p className="text-sm text-red-500">{addAddressMsg}</p>
-                    {addressData?.reverse().map((e, index) => (
-                      <Address
-                        key={index}
-                        address={e}
-                        onDelete={() => handleDeleteAddress(index)}
-                      />
-                    ))}
+                    {addressData
+                      ?.slice()
+                      .reverse()
+                      .map(e => (
+                        <Address
+                          key={e.id}
+                          address={e}
+                          onDelete={() => deleteAddress(e.id)}
+                        />
+                      ))}
                   </>
                 </div>
+                <button className="border py-2" onClick={handleModal}>
+                  배송지 추가
+                </button>
               </StyledFormContainer>
               <button
                 className="px-3 py-2 rounded-md bg-secondary-base hover:bg-secondary-dark"
@@ -378,6 +337,7 @@ export default function MyPage() {
         </div>
       )}
       <CartModal />
+      <AddAddressModal />
     </div>
   );
 }

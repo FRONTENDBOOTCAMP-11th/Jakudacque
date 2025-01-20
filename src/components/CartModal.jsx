@@ -1,11 +1,11 @@
-import useModalState from "@zustand/cartModalState";
+import cartModalState from "@zustand/cartModalState";
 import { Link } from "react-router-dom";
 import tw from "tailwind-styled-components";
 
 export default function CartModal() {
-  const { modalIsOpen } = useModalState();
+  const { modalIsOpen } = cartModalState();
 
-  const handleModal = useModalState(state => state.handleModal);
+  const handleModal = cartModalState(state => state.handleModal);
 
   return (
     modalIsOpen && (
