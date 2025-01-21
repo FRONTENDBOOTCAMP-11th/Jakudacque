@@ -9,6 +9,7 @@ import useAddressModalState from "@zustand/AddressModalState";
 import { useOrder } from "@hooks/useOrder";
 import { useCartCleanUp } from "@hooks/useCartDeleteItem";
 import useCounterCartState from "@zustand/counterCart";
+import { toast } from "react-toastify";
 
 export default function Cart() {
   const axios = useAxiosInstance();
@@ -68,7 +69,11 @@ export default function Cart() {
   };
 
   const handleOrder = () => {
-    handleModal();
+    if (numChecked === 0) {
+      toast("구매할 제품을 선택해 주세요."); // 상품 선택 안했을 시
+    } else {
+      handleModal(); // 상품 선택 했을 시
+    }
   };
 
   // 상품 수량 변경 api
