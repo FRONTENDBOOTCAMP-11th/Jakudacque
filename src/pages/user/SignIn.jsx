@@ -50,7 +50,7 @@ export default function SignIn() {
       if (user?.type !== "user") {
         return navigate("/admin");
       } else {
-        navigate(-1);
+        navigate("/"); 
       }
 
       toast(user.name + "님, 로그인 되었습니다!");

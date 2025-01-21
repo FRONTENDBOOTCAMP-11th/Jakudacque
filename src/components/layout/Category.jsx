@@ -31,16 +31,22 @@ const Category = () => {
       try {
         const response = await axios.get("/codes/productCategory"); // API 호출
         const fetchedCodes = response.data.item.productCategory.codes;
+        
+        // 데이터 형식 변환
+        const formattedCodes = {};
+        fetchedCodes.forEach(item => {
+          formattedCodes[item.code] = item.value;
+        });
 
         // Zustand에 저장
-        setCodes(fetchedCodes);
+        setCodes({ productCategory: formattedCodes });
       } catch (error) {
         console.error("카테고리 데이터를 불러오는 중 오류 발생:", error);
-      }
-    };
+    }
+  };
 
-    // Zustand의 codes가 없을 때만 호출
-    if (!codes) {
+  // Zustand의 codes가 없을 때만 호출
+  if (!codes) {
       fetchCodes();
     }
   }, [axios, setCodes, codes]);
@@ -52,7 +58,7 @@ const Category = () => {
       setActiveItem("");
       return;
     }
-
+  
     // 카테고리 페이지인 경우
     if (currentCategory === "ALL") {
       setActiveItem("전체상품");
@@ -62,9 +68,9 @@ const Category = () => {
       setActiveItem("BEST");
     } else {
       // 일반 카테고리의 경우
-      const categoryItem = codes?.find(cat => cat.code === currentCategory);
-      if (categoryItem) {
-        setActiveItem(categoryItem.value);
+      const categoryValue = codes?.productCategory?.[currentCategory];
+      if (categoryValue) {
+        setActiveItem(categoryValue);
       }
     }
   }, [location, currentCategory, codes]);
@@ -72,10 +78,10 @@ const Category = () => {
   // 전체 메뉴 아이템 준비
   const menuItems = [
     ...defaultItems,
-    ...(Array.isArray(codes)
-      ? codes.map(category => ({
-          name: category.value,
-          code: category.code,
+    ...(codes?.productCategory 
+      ? Object.entries(codes.productCategory).map(([code, value]) => ({
+          name: value,
+          code: code,
         }))
       : []),
   ];
