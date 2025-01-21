@@ -18,8 +18,8 @@ export default function AddressModal({ onAddressSelect }) {
   });
   return (
     modalIsOpen && (
-      <Container>
-        <ModalWindow>
+      <Container onClick={handleModal}>
+        <ModalWindow onClick={e => e.stopPropagation()}>
           <ModalMsgArea>
             <div className="flex flex-col gap-y-2">
               <p className="font-medium text-base mb-2">
@@ -27,7 +27,10 @@ export default function AddressModal({ onAddressSelect }) {
               </p>
               <form action="" className="flex flex-col gap-y-3">
                 {addressBook?.map((e, index) => (
-                  <div key={index} className="flex gap-y-2 bg-gray-100 px-4">
+                  <div
+                    key={index}
+                    className="flex items-center gap-y-2 bg-gray-100 px-4"
+                  >
                     <input
                       type="radio"
                       name="address"
@@ -43,7 +46,7 @@ export default function AddressModal({ onAddressSelect }) {
           <ModalBtnArea>
             <Link
               to="/user/mypage?category=editProfile"
-              className="px-16 py-3 border-r border-neutral-300 rounded-b hover:bg-secondary-base flex justify-center"
+              className="grow px-16 py-3 border-r border-neutral-300 rounded-b hover:bg-secondary-base flex justify-center"
               onClick={handleModal}
             >
               주소 변경

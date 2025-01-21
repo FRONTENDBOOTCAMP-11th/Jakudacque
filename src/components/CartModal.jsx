@@ -9,8 +9,8 @@ export default function CartModal() {
 
   return (
     modalIsOpen && (
-      <Container>
-        <ModalWindow>
+      <Container onClick={handleModal}>
+        <ModalWindow onClick={e => e.stopPropagation()}>
           <ModalMsgArea>
             <p>선택하신 상품을 장바구니에 담았습니다.</p>
           </ModalMsgArea>
