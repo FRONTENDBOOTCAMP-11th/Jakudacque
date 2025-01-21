@@ -1,14 +1,14 @@
 import { IoAdd, IoCartOutline, IoRemove } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
 import useAxiosInstance from "@hooks/useAxiosInstance";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import Spinner from "@components/Spinner";
 import { useState } from "react";
-import useCounterState from "@zustand/counter";
 import AddressModal from "@components/AddressModal";
 import useAddressModalState from "@zustand/AddressModalState";
 import { useOrder } from "@hooks/useOrder";
-import { useCartCleanUp } from "@hooks/useCartCleanUp";
+import { useCartCleanUp } from "@hooks/useCartDeleteItem";
+import useCounterCartState from "@zustand/counterCart";
 
 export default function Cart() {
   const axios = useAxiosInstance();
@@ -17,8 +17,9 @@ export default function Cart() {
 
   const [checkedIdsSet, setCheckedIdsSet] = useState(new Set());
   const numChecked = checkedIdsSet.size;
-  const { countUp, countDown } = useCounterState();
-  const { modalIsOpen, handleModal, selectedAddress, setSelectedAddress } =
+
+  const { countUp, countDown } = useCounterCartState();
+  const { modalIsOpen, handleModal, setSelectedAddress } =
     useAddressModalState();
 
   // 장바구니 목록 조회(로그인시) api
@@ -32,10 +33,16 @@ export default function Cart() {
   const { orderProduct } = useOrder();
 
   // 장바구니 비우기
-  const { cleanupProduct } = useCartCleanUp();
+  const { cleanupProduct, deleteItem, deleteItems } = useCartCleanUp();
+
+  const handleAddressSelect = address => {
+    setSelectedAddress(address);
+    orderCart(data, address); // 주문 처리
+  };
 
   // 상품을 배열로 만들어 구매api로 넘기기
-  const orderCart = data => {
+  const orderCart = (data, address) => {
+    const isAllSelected = data.item.length === checkedIdsSet.size;
     const products = data.item
       .filter(item => checkedIdsSet.has(item._id)) // 선택된 상품만 주문
       .map(item => ({
@@ -46,11 +53,15 @@ export default function Cart() {
     orderProduct.mutate(
       {
         products,
-        address: selectedAddress, // 선택된 주소 포함하기
+        address, // 선택된 주소 포함하기
       },
       {
         onSuccess: () => {
-          cleanupProduct.mutate(); // 장바구니 비우기
+          if (isAllSelected) {
+            cleanupProduct.mutate(); // 장바구니 전체 비우기
+          } else {
+            deleteItems.mutate({ carts: Array.from(checkedIdsSet) }); // 구매완료된 상품만 삭제
+          }
         },
       },
     );
@@ -59,22 +70,6 @@ export default function Cart() {
   const handleOrder = () => {
     handleModal();
   };
-
-  const handleAddressSelect = address => {
-    setSelectedAddress(address);
-    handleModal(); // 모달 닫기
-    orderCart(data); // 주문 처리
-  };
-
-  // 장바구니 상품 삭제(한건) api
-  const deleteItem = useMutation({
-    mutationFn: async _id => {
-      await axios.delete(`/carts/${_id}`);
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["carts"] });
-    },
-  });
 
   // 상품 수량 변경 api
   const updateQuantity = async (_id, quantity) => {
