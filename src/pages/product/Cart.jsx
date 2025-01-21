@@ -260,7 +260,7 @@ export default function Cart() {
                 <div className="flex w-full gap-8 sm:text-xl">
                   <button
                     onClick={() => handleOrder(data)}
-                    className="flex-1 px-6 py-3 text-center border rounded bg-secondary-base hover:bg-secondary-dark"
+                    className="flex-1 px-6 py-3 text-center rounded bg-secondary-base hover:bg-secondary-dark"
                   >
                     구매하기
                   </button>

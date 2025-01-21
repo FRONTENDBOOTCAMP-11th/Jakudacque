@@ -156,7 +156,7 @@ export default function SignUp() {
           <div className="mt-10 flex flex-col sm:flex-row justify-center items-center gap-8">
             <button
               type="submit"
-              className="flex justify-center items-center px-10 py-2 border rounded bg-secondary-base hover:bg-secondary-dark"
+              className="flex justify-center items-center px-10 py-2 rounded bg-secondary-base hover:bg-secondary-dark"
             >
               회원가입
             </button>
