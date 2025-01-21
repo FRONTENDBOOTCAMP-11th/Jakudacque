@@ -81,7 +81,7 @@ export default function MyPage() {
       image: `https://11.fesp.shop/${e.product.mainImages[0].path}`,
       name: e.product.name,
       price: e.product.price,
-      id: e.product._id,
+      id: String(e.product._id),
     }));
   }
 
