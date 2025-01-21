@@ -1,6 +1,5 @@
 import useAddAddressModalState from "@zustand/AddAddressModalState";
 import useAddressStore from "@zustand/AddressStore";
-// import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import tw from "tailwind-styled-components";
 
@@ -78,8 +77,8 @@ export default function AddAddressModal() {
                     취소
                   </button>
                   <button
+                    type="submit"
                     className="grow px-16 py-3 rounded-b hover:bg-secondary-base flex justify-center text-align"
-                    onClick="submit"
                   >
                     추가
                   </button>
