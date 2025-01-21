@@ -24,7 +24,7 @@ export default function MyPage() {
   const handleModal = useAddAddressModalState(state => state.handleModal);
 
   // 주소 데이터(전역 상태)
-  const { addressData } = useAddressStore();
+  const { addressData, resetAddress } = useAddressStore();
 
   // 주소 데이터 추가
   const addAddress = useAddressStore(state => state.addAddress);
@@ -40,6 +40,7 @@ export default function MyPage() {
     event.preventDefault();
     resetUser();
     resetWishState();
+    resetAddress();
     navigate("/");
     toast("로그아웃 되었습니다!");
   };
@@ -141,18 +142,29 @@ export default function MyPage() {
 
   useEffect(() => {
     if (userData?.extra?.addressBook) {
-      // 중복 추가를 방지하기 위해 기존 addressData와 비교
-      const existingIds = new Set(addressData.map(e => e.id));
-      const newAddresses = userData.extra.addressBook.filter(
-        (_, index) => !existingIds.has(index + 1),
-      );
-
-      newAddresses.forEach((e, index) => {
-        e.id = index + 1;
-        addAddress(e);
-      });
+      // 기존 addressData가 있다면
+      if (addressData.length) {
+        // 중복 추가를 방지하기 위해 기존 addressData와 비교
+        const existingIds = new Set(addressData.map(e => e.id));
+        const newAddresses = userData.extra.addressBook.filter(
+          (_, index) => !existingIds.has(index + 1),
+        );
+        newAddresses.forEach((e, index) => {
+          e.id = index + 1;
+          addAddress(e);
+        });
+      } else {
+        // 기존 addressData가 없다면
+        // addressBook을 배송지 정보로 추가
+        const newAddresses = userData.extra.addressBook;
+        resetAddress();
+        newAddresses.forEach((e, index) => {
+          e.id = index + 1;
+          addAddress(e);
+        });
+      }
     }
-  }, [user, userData]);
+  }, [userData]);
 
   const [addAddressMsg, setaddAddressMsg] = useState("");
 
@@ -243,7 +255,7 @@ export default function MyPage() {
                 {product.length ? (
                   <div className="grid grid-cols-2 gap-3 lg:grid-cols-4 sm:grid-cols-3 justify-center">
                     {product.map(e => (
-                      <Product key={e.id} product={e} />
+                      <Product key={String(e.id)} product={e} />
                     ))}
                   </div>
                 ) : (

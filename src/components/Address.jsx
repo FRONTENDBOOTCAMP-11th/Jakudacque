@@ -22,6 +22,7 @@ export default function Address({ address, onDelete }) {
 }
 
 Address.propTypes = {
+  id: PropTypes.number,
   address: PropTypes.shape().isRequired,
   onDelete: PropTypes.func,
 };

@@ -12,6 +12,10 @@ const useAddressStore = create(set => ({
         e => Number(e.id) !== Number(selectedId),
       ),
     })),
+
+  resetAddress: () => {
+    set({ addressData: [] });
+  },
 }));
 
 export default useAddressStore;
