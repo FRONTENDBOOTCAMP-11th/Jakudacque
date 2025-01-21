@@ -156,8 +156,6 @@ export default function MyPage() {
 
   const [addAddressMsg, setaddAddressMsg] = useState("");
 
-  console.log(addressData);
-
   return (
     <div className="w-full">
       {isLoading && isLoadingOrderData && isLoadingUserData && <Spinner />}
@@ -165,8 +163,8 @@ export default function MyPage() {
         <div className="max-w-screen-xl mx-auto">
           {/* 프로필 영역 */}
           <div className="flex flex-col">
-            <div className="relative flex flex-col items-center justify-evenly py-8 bg-neutral-100 md:py-12 md:mt-4 sm:mt-8 md:flex-row gap-y-7">
-              <div className="text-xl tracking-wide text-center basis-50">
+            <div className="relative flex flex-col items-center justify-evenly pt-8 pb-11 bg-neutral-100 md:py-12 md:mt-4 sm:mt-8 md:flex-row gap-y-5">
+              <div className="text-lg md:text-xl tracking-wide text-center basis-50">
                 <span>{user.name}</span>님, 반갑습니다.
               </div>
               <div className="flex items-center justify-between basis-2/5 min-w-80 md:border-x border-neutral-300">
@@ -188,7 +186,7 @@ export default function MyPage() {
               <Link
                 to="/user/signin"
                 onClick={handleLogout}
-                className="absolute text-base leading-none border-b border-neutral-700 bottom-3 right-4 "
+                className="absolute md:text-base text-sm md:leading-none leading-none border-b border-neutral-700 bottom-3 right-4 "
               >
                 로그아웃
               </Link>
@@ -196,23 +194,23 @@ export default function MyPage() {
           </div>
 
           {/* 주문내역, 찜 리스트, 회원정보수정 영역 */}
-          <div className="flex flex-col gap-x-8 md:flex-row">
+          <div className="flex flex-col gap-x-16 md:flex-row">
             {/* 주문내역, 찜 리스트, 회원정보수정 카테고리 */}
-            <ul className="sticky top-[68px] sm:top-16 md:ml-4 md:text-lg md:py-8 py-4 flex md:flex-col items-start justify-around gap-2 shrink-0 text-sm h-max bg-white">
+            <ul className="sticky z-40 top-[68px] sm:top-16 md:ml-4 md:text-lg md:py-8 py-4 flex md:flex-col items-start justify-around gap-2 shrink-0 text-base h-max bg-white">
               <button
-                className={`${category === "orderList" ? "border-b-2 border-neutral-800" : ""}`}
+                className={`${category === "orderList" ? "border-b-2 border-neutral-800 font-semibold" : ""}`}
                 onClick={() => setCategory("orderList")}
               >
                 주문 내역
               </button>
               <button
-                className={`${category === "wishList" ? "border-b-2 border-neutral-800" : ""}`}
+                className={`${category === "wishList" ? "border-b-2 border-neutral-800 font-semibold" : ""}`}
                 onClick={() => setCategory("wishList")}
               >
                 찜 리스트
               </button>
               <button
-                className={`${category === "editProfile" ? "border-b-2 border-neutral-800" : ""}`}
+                className={`${category === "editProfile" ? "border-b-2 border-neutral-800 font-semibold" : ""}`}
                 onClick={() => setCategory("editProfile")}
               >
                 회원 정보 수정
@@ -224,18 +222,16 @@ export default function MyPage() {
               className={`flex-1 md:pt-5 pt-0 pb-6 ${category === "orderList" ? "" : "hidden"}`}
             >
               {orderProducts.length ? (
-                <>
+                <div className="px-4">
                   {orderProducts.map(e => (
                     <OrderProduct key={e.id} orderProducts={e} />
                   ))}
-                </>
+                </div>
               ) : (
-                <>
-                  <EmptyList>
-                    <FaRegClipboard size={56} />
-                    <p>주문 내역이 없습니다.</p>
-                  </EmptyList>
-                </>
+                <EmptyList>
+                  <FaRegClipboard size={56} />
+                  <p>주문 내역이 없습니다.</p>
+                </EmptyList>
               )}
             </div>
 
@@ -243,38 +239,38 @@ export default function MyPage() {
             <div
               className={`flex-1 md:pt-5 pt-0 pb-6 ${category === "wishList" ? "" : "hidden"}`}
             >
-              {product.length ? (
-                <>
-                  <div className="grid grid-cols-2 gap-5 lg:grid-cols-4 sm:grid-cols-3">
+              <div className="pt-5 px-4">
+                {product.length ? (
+                  <div className="grid grid-cols-2 gap-3 lg:grid-cols-4 sm:grid-cols-3 justify-center">
                     {product.map(e => (
                       <Product key={e.id} product={e} />
                     ))}
                   </div>
-                </>
-              ) : (
-                <>
+                ) : (
                   <EmptyList>
                     <FaRegHeart size={56} />
                     <p>찜 리스트가 없습니다.</p>
                   </EmptyList>
-                </>
-              )}
+                )}
+              </div>
             </div>
 
             {/* 회원 정보 수정 */}
             <div
-              className={`w-full md:pt-5 pt-0 px-4 pb-6 flex flex-col gap-y-10 md:text-base text-sm ${category === "editProfile" ? "" : "hidden"}`}
+              className={`w-full md:pt-5 pt-0 px-4 pb-6 flex flex-col md:text-base text-sm ${category === "editProfile" ? "" : "hidden"}`}
             >
-              <form>
+              <form className="pt-5 mb-8">
                 {/* 기본 정보 */}
                 <StyledFormContainer>
                   <InfoTitle>기본 정보</InfoTitle>
                   <StyledGridContainer>
-                    <label htmlFor="name">이름</label>
+                    <label htmlFor="name" className="items-center">
+                      이름
+                    </label>
                     <input
                       type="text"
                       id="name"
-                      className="px-1 border rounded-md focus:outline-none border-neutral-400"
+                      className="px-2 py-1 border rounded-md focus:outline-none border-neutral-400"
                       defaultValue={userData.name}
                       {...registerBasic("name", {
                         required: "이름은 비워둘 수 없습니다.",
@@ -288,7 +284,7 @@ export default function MyPage() {
                     <input
                       type="text"
                       id="phone"
-                      className="px-1 border rounded-md focus:outline-none border-neutral-400"
+                      className="px-2 py-1 border rounded-md focus:outline-none border-neutral-400"
                       defaultValue={userData.phone}
                       {...registerBasic("phone", {
                         pattern: {
@@ -322,12 +318,15 @@ export default function MyPage() {
                       ))}
                   </>
                 </div>
-                <button className="border py-2" onClick={handleModal}>
+                <button
+                  className="border py-2 rounded-md"
+                  onClick={handleModal}
+                >
                   배송지 추가
                 </button>
               </StyledFormContainer>
               <button
-                className="px-3 py-2 rounded-md bg-secondary-base hover:bg-secondary-dark"
+                className="px-3 py-2 rounded-md bg-secondary-base hover:bg-secondary-dark mt-3"
                 onClick={handleBasicSubmit(addBasic)}
               >
                 수정 완료
@@ -352,15 +351,15 @@ const EmptyList = tw.div`
 `;
 
 const InfoTitle = tw.p`
-  pb-2 text-lg font-semibold border-b border-neutral-300
+  pb-2 text-base md:text-lg md:font-semibold border-b border-neutral-300
 `;
 
 const StyledFormContainer = tw.div`
-flex flex-col gap-y-7
+  flex flex-col gap-y-3 pb-3
 `;
 
 const StyledGridContainer = tw.div`
-  grid grid-cols-[88px_minmax(200px,300px)] gap-y-3
+  grid grid-cols-[88px_minmax(200px,300px)] gap-y-3 items-center pt-3
 `;
 const ErrorText = tw.p`
   col-start-2 text-sm text-red-500
