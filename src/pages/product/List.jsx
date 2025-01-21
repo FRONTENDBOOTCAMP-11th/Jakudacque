@@ -93,8 +93,14 @@ export default function List() {
 
   if (isLoading) return <Spinner />;
   if (!data?.item?.length) {
-    navigate(`/list?category=${category}&page=1`);
-    return null;
+    return (
+      <div className="w-full px-4 py-8 mx-auto max-w-7xl">
+        <div className="text-center py-20">
+          <p className="text-lg font-medium mb-2">상품이 없습니다</p>
+          <p className="text-neutral-500">다른 카테고리를 선택해주세요.</p>
+        </div>
+      </div>
+    );
   }
 
   // 정렬 옵션 클릭 핸들러
