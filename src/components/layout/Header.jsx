@@ -94,7 +94,9 @@ export default function Header() {
               <span className="sr-only">장바구니</span>
               <IoCartOutline size={24} />
             </LinkButton>
-            <LinkButton to={user ? "/user/mypage" : "/user/signin"}>
+            <LinkButton
+              to={user ? "/user/mypage?category=orderList" : "/user/signin"}
+            >
               {user ? (
                 <>
                   <span className="sr-only">마이페이지</span>

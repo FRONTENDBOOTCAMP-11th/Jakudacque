@@ -53,9 +53,9 @@ export default function Product({ product }) {
         </button>
         <button onClick={wishHandle}>
           {localWish ? (
-            <IoHeartSharp size={20} />
+            <IoHeartSharp size={20} className="text-primary-dark" />
           ) : (
-            <IoHeartOutline size={20} />
+            <IoHeartOutline size={20} className="text-primary-dark" />
           )}
         </button>
       </div>
@@ -65,7 +65,7 @@ export default function Product({ product }) {
 
 Product.propTypes = {
   product: PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,

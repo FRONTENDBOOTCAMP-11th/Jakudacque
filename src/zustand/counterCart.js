@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-const useCounterState = create((set, get) => ({
+const useCounterCartState = create((set, get) => ({
   count: 1,
 
   countUp: step => {
@@ -14,9 +14,6 @@ const useCounterState = create((set, get) => ({
       set(newState);
     }
   },
-  reset: () => {
-    set({ count: 1 });
-  },
 }));
 
-export default useCounterState;
+export default useCounterCartState;

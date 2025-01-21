@@ -15,7 +15,6 @@ const useWishState = create(
         };
         const newState = { wish: newWish };
         set(newState);
-        console.log(newState);
       },
 
       // 특정 상품의 찜 상태 조회

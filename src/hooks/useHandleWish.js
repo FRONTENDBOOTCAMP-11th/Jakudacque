@@ -71,10 +71,20 @@ export const useHandleWish = _id => {
   // 전역 찜 상태 조회 결과에 따라 찜 등록/취소 함수 실행
   const refetchCallbacks = async () => {
     if (isWished(_id)) {
-      const result = await refetch();
-      removeWish.mutate(result.data._id);
+      try {
+        const result = await refetch();
+        await removeWish.mutateAsync(result.data._id);
+      } catch (err) {
+        console.err(err);
+        throw err;
+      }
     } else if (!isWished(_id)) {
-      registerWish.mutate({ target_id: Number(_id) });
+      try {
+        await registerWish.mutateAsync({ target_id: Number(_id) });
+      } catch (err) {
+        console.error(err);
+        throw err;
+      }
     }
   };
 

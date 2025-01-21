@@ -1,16 +1,16 @@
-import useModalState from "@zustand/cartModalState";
+import cartModalState from "@zustand/cartModalState";
 import { Link } from "react-router-dom";
 import tw from "tailwind-styled-components";
 
 export default function CartModal() {
-  const { modalIsOpen } = useModalState();
+  const { modalIsOpen } = cartModalState();
 
-  const handleModal = useModalState(state => state.handleModal);
+  const handleModal = cartModalState(state => state.handleModal);
 
   return (
     modalIsOpen && (
-      <Container>
-        <ModalWindow>
+      <Container onClick={handleModal}>
+        <ModalWindow onClick={e => e.stopPropagation()}>
           <ModalMsgArea>
             <p>선택하신 상품을 장바구니에 담았습니다.</p>
           </ModalMsgArea>

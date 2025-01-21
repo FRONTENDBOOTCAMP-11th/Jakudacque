@@ -50,7 +50,7 @@ export default function SignIn() {
       if (user?.type !== "user") {
         return navigate("/admin");
       } else {
-        navigate(-1);
+        navigate("/"); 
       }
 
       toast(user.name + "님, 로그인 되었습니다!");
@@ -83,14 +83,14 @@ export default function SignIn() {
         <form className="my-14" onSubmit={handleSubmit(login.mutate)}>
           <div className="mb-5 text-xl">
             <label className="block mb-4" htmlFor="email">
-              아이디
+              이메일
             </label>
             <input
               id="email"
               type="email"
-              placeholder="아이디를 입력하세요"
+              placeholder="이메일을 입력하세요"
               className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-secondary-base"
-              {...register("email", { required: "아이디는 필수입니다." })}
+              {...register("email", { required: "이메일은 필수입니다." })}
             />
             <InputError target={errors.email} />
           </div>
@@ -108,20 +108,25 @@ export default function SignIn() {
             <InputError target={errors.password} />
           </div>
           <div className="flex flex-col items-center justify-center gap-6 mt-10">
-            <div className="flex flex-col items-center justify-center gap-10 sm:flex-row">
+            <div className="flex flex-col sm:flex-row items-center justify-center w-full gap-4">
               <button
                 type="submit"
-                className="py-2 flex justify-center items-center border rounded bg-secondary-base hover:bg-secondary-dark"
-                style={{ width: "200px", height: "auto" }}
+                className="w-full sm:w-1/2 py-2 flex justify-center items-center rounded bg-secondary-base hover:bg-secondary-dark"
               >
                 로그인
               </button>
-              <button type="button" onClick={loginHandler}>
+              <button
+                type="button"
+                onClick={loginHandler}
+                className="w-full sm:w-1/2 py-2 flex justify-center items-center rounded bg-[#FEE500] text-black"
+                style={{ opacity: 0.85 }}
+              >
                 <img
-                  src="/kakao_login.png"
-                  alt="카카오 로그인"
-                  style={{ width: "200px", height: "auto" }}
+                  src="/kakao_symbol.png"
+                  alt="카카오 아이콘"
+                  className="w-4 h-4 mr-2 brightness-0 opacity-85"
                 />
+                <span className="whitespace-nowrap">카카오 로그인</span>
               </button>
             </div>
             <Link

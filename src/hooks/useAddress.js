@@ -13,8 +13,6 @@ export const useAddress = () => {
   const handleModal = useAddressModalState(state => state.handleModal);
 
   // 로그인한 회원 데이터
-  // const user = JSON.parse(sessionStorage.getItem("user")).state.user;
-
   const user = useUserStore(state => state.user);
 
   // 로그인한 회원 아이디
@@ -46,7 +44,7 @@ export const useAddress = () => {
 
   // 주소 추가 후 상품 구매
   const mutateCallback = address => {
-    orderInfo.address = address.address;
+    orderInfo.address = address;
     orderProduct.mutate(orderInfo);
   };
 

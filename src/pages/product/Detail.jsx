@@ -7,11 +7,11 @@ import { IoAdd } from "react-icons/io5";
 import { IoRemove } from "react-icons/io5";
 import { IoHeartOutline } from "react-icons/io5";
 import { IoHeartSharp } from "react-icons/io5";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useHandleWish } from "@hooks/useHandleWish";
 import useWishState from "@zustand/wishState";
 import { useAddCart } from "@hooks/useAddCart";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddressModal from "@components/AddressModal";
 import { useAddress } from "@hooks/useAddress";
 import useUserStore from "@zustand/userStore";
@@ -20,6 +20,8 @@ export default function Detail() {
   const { _id } = useParams();
 
   const axios = useAxiosInstance();
+
+  const location = useLocation();
 
   const navigate = useNavigate();
 
@@ -39,11 +41,14 @@ export default function Detail() {
   });
 
   // 상품 수량
-  const { count } = useCounterState();
+  const { count, countUp, countDown, reset } = useCounterState();
 
-  // 상품 수량 변경
-  const countUp = useCounterState(state => state.countUp);
-  const countDown = useCounterState(state => state.countDown);
+  useEffect(() => {
+    return () => {
+      // 상세 페이지에서 벗어날 때 reset 호출
+      reset();
+    };
+  }, [location]);
 
   // 상품 가격(수량 변경시 함께 변경)
   const productPrice = data && (data.price * count).toLocaleString();
@@ -69,7 +74,7 @@ export default function Detail() {
   // 장바구니 추가
   const { addCart } = useAddCart();
 
-  const { handleModal } = useAddress();
+  const { handleModal, mutateCallback } = useAddress();
 
   const sendInfo = () => {
     if (user) {
@@ -167,9 +172,9 @@ export default function Detail() {
                   onClick={wishHandle}
                 >
                   {localWish ? (
-                    <IoHeartSharp color="red" />
+                    <IoHeartSharp className="text-primary-dark" />
                   ) : (
-                    <IoHeartOutline color="red" />
+                    <IoHeartOutline className="text-primary-dark" />
                   )}
                   찜
                 </button>
@@ -188,7 +193,7 @@ export default function Detail() {
         </div>
       )}
       <CartModal />
-      <AddressModal />
+      <AddressModal onAddressSelect={mutateCallback} />
     </div>
   );
 }

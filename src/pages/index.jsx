@@ -48,7 +48,7 @@ export default function Index() {
   const mapProducts = useMemo(
     () => data =>
       data?.item?.map(item => ({
-        id: item._id,
+        id: String(item._id),
         name: item.name,
         price: item.price,
         image: item.mainImages?.[0]?.path
@@ -67,7 +67,7 @@ export default function Index() {
     const isLoopEnabled = products.length > 4; // 조건적으로 loop 설정
     return (
       <StyledSwiper>
-        <div className="relative mx-auto mt-20 max-w-7xl">
+        <div className="relative px-5 mx-auto mt-20 max-w-7xl">
           <h1 className="text-xl font-semibold">{title}</h1>
           <Swiper
             navigation={true}

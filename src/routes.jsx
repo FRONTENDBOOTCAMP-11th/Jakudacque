@@ -49,13 +49,13 @@ const router = createBrowserRouter([
             path: "signin", // 로그인
             children: [
               { index: true, element: <SignIn /> }, // 로그인
-              { path: "kakao", element: <SignInKakao /> }, // 카카오 로그인
             ],
           },
           { path: "signup", element: <SignUp /> }, // 회원가입
           { path: "mypage", element: <MyPage /> }, // 마이페이지
         ],
       },
+      { path: "/users/login/kakao", element: <SignInKakao /> }, // 카카오 로그인
       // admin
       {
         path: "admin",

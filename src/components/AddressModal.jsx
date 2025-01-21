@@ -1,34 +1,25 @@
 import Address from "@components/Address";
 import { useAddress } from "@hooks/useAddress";
 import useAddressModalState from "@zustand/AddressModalState";
+import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import tw from "tailwind-styled-components";
 
-export default function AddressModal() {
-  const { modalIsOpen } = useAddressModalState();
-
-  const { addressBook, handleModal, mutateCallback } = useAddress();
-
-  // 주소 선택 폼
+export default function AddressModal({ onAddressSelect }) {
+  const { modalIsOpen, handleModal } = useAddressModalState();
+  const { addressBook } = useAddress();
   const { register, handleSubmit } = useForm();
 
-  // 배송 주소 확정
-  const selectedAddress = data => {
-    const address = { address: JSON.parse(data) };
-    console.log("확정 주소: ", address);
-    mutateCallback(address);
-  };
-
-  // 배송 주소 처리
   const handleOrder = handleSubmit(data => {
-    selectedAddress(data.address);
-    handleModal();
+    const address = JSON.parse(data.address);
+    onAddressSelect(address); // 선택된 주소 전달
+    handleModal(); // 모달 닫기
   });
   return (
     modalIsOpen && (
-      <Container>
-        <ModalWindow>
+      <Container onClick={handleModal}>
+        <ModalWindow onClick={e => e.stopPropagation()}>
           <ModalMsgArea>
             <div className="flex flex-col gap-y-2">
               <p className="font-medium text-base mb-2">
@@ -36,7 +27,10 @@ export default function AddressModal() {
               </p>
               <form action="" className="flex flex-col gap-y-3">
                 {addressBook?.map((e, index) => (
-                  <div key={index} className="flex gap-y-2 bg-gray-100 px-4">
+                  <div
+                    key={index}
+                    className="flex items-center gap-y-2 bg-gray-100 px-4"
+                  >
                     <input
                       type="radio"
                       name="address"
@@ -51,8 +45,8 @@ export default function AddressModal() {
           </ModalMsgArea>
           <ModalBtnArea>
             <Link
-              to="/user/mypage"
-              className="px-16 py-3 border-r border-neutral-300 rounded-b hover:bg-secondary-base flex justify-center"
+              to="/user/mypage?category=editProfile"
+              className="grow px-16 py-3 border-r border-neutral-300 rounded-b hover:bg-secondary-base flex justify-center"
               onClick={handleModal}
             >
               주소 변경
@@ -69,6 +63,9 @@ export default function AddressModal() {
     )
   );
 }
+AddressModal.propTypes = {
+  onAddressSelect: PropTypes.func.isRequired, // PropTypes를 사용하여 검증 추가
+};
 
 // 전체 컨테이너
 const Container = tw.div`

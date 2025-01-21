@@ -1,36 +1,27 @@
 import { IoAdd, IoCartOutline, IoRemove } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
 import useAxiosInstance from "@hooks/useAxiosInstance";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import Spinner from "@components/Spinner";
 import { useState } from "react";
-import useCounterState from "@zustand/counter";
+import AddressModal from "@components/AddressModal";
+import useAddressModalState from "@zustand/AddressModalState";
 import { useOrder } from "@hooks/useOrder";
+import { useCartCleanUp } from "@hooks/useCartDeleteItem";
+import useCounterCartState from "@zustand/counterCart";
+import { toast } from "react-toastify";
 
 export default function Cart() {
   const axios = useAxiosInstance();
   const navigate = useNavigate();
-  const [checkedIdsSet, setCheckedIdsSet] = useState(new Set());
-  const numChecked = checkedIdsSet.size;
-  const { countUp, countDown } = useCounterState();
   const queryClient = useQueryClient();
 
-  // 상품 구매
-  const { orderProduct } = useOrder();
+  const [checkedIdsSet, setCheckedIdsSet] = useState(new Set());
+  const numChecked = checkedIdsSet.size;
 
-  // 상품을 배열로 만들어 구매api로 넘기기
-  const handleOrder = data => {
-    const products = data.item
-      .filter(item => checkedIdsSet.has(item._id)) // 선택된 상품만 주문
-      .map(item => ({
-        _id: Number(item.product_id),
-        quantity: item.quantity,
-      }));
-
-    orderProduct.mutate({
-      products,
-    });
-  };
+  const { countUp, countDown } = useCounterCartState();
+  const { modalIsOpen, handleModal, setSelectedAddress } =
+    useAddressModalState();
 
   // 장바구니 목록 조회(로그인시) api
   const { data, isLoading } = useQuery({
@@ -39,15 +30,51 @@ export default function Cart() {
     select: res => res.data,
   });
 
-  // 장바구니 상품 삭제(한건) api
-  const deleteItem = useMutation({
-    mutationFn: async _id => {
-      await axios.delete(`/carts/${_id}`);
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["carts"] });
-    },
-  });
+  // 상품 구매
+  const { orderProduct } = useOrder();
+
+  // 장바구니 비우기
+  const { cleanupProduct, deleteItem, deleteItems } = useCartCleanUp();
+
+  const handleAddressSelect = address => {
+    setSelectedAddress(address);
+    orderCart(data, address); // 주문 처리
+  };
+
+  // 상품을 배열로 만들어 구매api로 넘기기
+  const orderCart = (data, address) => {
+    const isAllSelected = data.item.length === checkedIdsSet.size;
+    const products = data.item
+      .filter(item => checkedIdsSet.has(item._id)) // 선택된 상품만 주문
+      .map(item => ({
+        _id: Number(item.product_id),
+        quantity: item.quantity,
+      }));
+
+    orderProduct.mutate(
+      {
+        products,
+        address, // 선택된 주소 포함하기
+      },
+      {
+        onSuccess: () => {
+          if (isAllSelected) {
+            cleanupProduct.mutate(); // 장바구니 전체 비우기
+          } else {
+            deleteItems.mutate({ carts: Array.from(checkedIdsSet) }); // 구매완료된 상품만 삭제
+          }
+        },
+      },
+    );
+  };
+
+  const handleOrder = () => {
+    if (numChecked === 0) {
+      toast("구매할 제품을 선택해 주세요."); // 상품 선택 안했을 시
+    } else {
+      handleModal(); // 상품 선택 했을 시
+    }
+  };
 
   // 상품 수량 변경 api
   const updateQuantity = async (_id, quantity) => {
@@ -233,7 +260,7 @@ export default function Cart() {
                 <div className="flex w-full gap-8 sm:text-xl">
                   <button
                     onClick={() => handleOrder(data)}
-                    className="flex-1 px-6 py-3 text-center border rounded bg-secondary-base hover:bg-secondary-dark"
+                    className="flex-1 px-6 py-3 text-center rounded bg-secondary-base hover:bg-secondary-dark"
                   >
                     구매하기
                   </button>
@@ -254,6 +281,7 @@ export default function Cart() {
           <p className="mt-4 text-lg">장바구니가 비었습니다</p>
         </div>
       )}
+      {modalIsOpen && <AddressModal onAddressSelect={handleAddressSelect} />}
     </div>
   );
 }

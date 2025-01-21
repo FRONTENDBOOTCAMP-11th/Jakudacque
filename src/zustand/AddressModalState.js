@@ -1,12 +1,10 @@
 import { create } from "zustand";
 
-const useAddressModalState = create((set, get) => ({
+const useAddressModalState = create(set => ({
   modalIsOpen: false,
-
-  handleModal: () => {
-    const newState = { modalIsOpen: !get().modalIsOpen };
-    set(newState);
-  },
+  handleModal: () => set(state => ({ modalIsOpen: !state.modalIsOpen })),
+  selectedAddress: null, // 선택된 주소 저장
+  setSelectedAddress: address => set({ selectedAddress: address }),
 }));
 
 export default useAddressModalState;
