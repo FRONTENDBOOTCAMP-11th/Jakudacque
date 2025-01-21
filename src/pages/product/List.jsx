@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAxiosInstance from "@hooks/useAxiosInstance";
 import { useQuery } from "@tanstack/react-query";
@@ -40,6 +40,17 @@ export default function List() {
 
   // 현재 카테고리명 찾기
   const currentCategory = CATEGORY_MAP[category] || "전체상품";
+
+  // 카테고리가 변경될 때마다 정렬 옵션을 초기화하는 useEffect 추가
+  useEffect(() => {
+    if (queryStr.get("sort")) {
+      setSortOption(queryStr.get("sort"));
+    } else {
+      setSortOption("등록순");
+    }
+    setIsOpen(false);
+  }, [category]);
+
 
   // 상품 데이터 가져오기
   const { data, isLoading } = useQuery({
@@ -88,8 +99,10 @@ export default function List() {
 
   // 정렬 옵션 클릭 핸들러
   const handleSortClick = option => {
-    setSortOption(option); // 선택된 정렬 옵션 업데이트
+    setSortOption(option);
     setIsOpen(false);
+    // 현재 페이지를 1로 리셋하고 정렬 옵션 변경
+    navigate(`/list?category=${category}&page=1&sort=${option}`);
   };
 
   const products = data.item.map(item => ({
