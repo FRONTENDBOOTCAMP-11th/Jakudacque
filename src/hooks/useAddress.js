@@ -44,7 +44,7 @@ export const useAddress = () => {
 
   // 주소 추가 후 상품 구매
   const mutateCallback = address => {
-    orderInfo.address = address.address;
+    orderInfo.address = address;
     orderProduct.mutate(orderInfo);
   };
 

@@ -14,6 +14,7 @@ export default function AddressModal({ onAddressSelect }) {
   const handleOrder = handleSubmit(data => {
     const address = JSON.parse(data.address);
     onAddressSelect(address); // 선택된 주소 전달
+    handleModal(); // 모달 닫기
   });
   return (
     modalIsOpen && (
