@@ -36,8 +36,8 @@ export default function AddAddressModal() {
 
   return (
     modalIsOpen && (
-      <Container>
-        <ModalWindow>
+      <Container onClick={handleModal}>
+        <ModalWindow onClick={e => e.stopPropagation()}>
           <ModalMsgArea>
             <div className="flex flex-col gap-y-2">
               <form onSubmit={handleAddressSubmit(onAddressSubmit)}>
@@ -48,7 +48,7 @@ export default function AddAddressModal() {
                     <input
                       type="text"
                       id="addressName"
-                      className="px-1 border rounded-md focus:outline-none border-neutral-400"
+                      className="px-2 py-1 border rounded-md focus:outline-none border-neutral-400"
                       {...registerAddress("name", {
                         required: "배송지명을 입력해주세요.",
                       })}
@@ -60,7 +60,7 @@ export default function AddAddressModal() {
                     <input
                       type="text"
                       id="address"
-                      className="px-1 border rounded-md focus:outline-none border-neutral-400"
+                      className="px-2 py-1 border rounded-md focus:outline-none border-neutral-400"
                       {...registerAddress("value", {
                         required: "주소를 입력해주세요.",
                       })}
@@ -137,7 +137,7 @@ const StyledFormContainer = tw.div`
 `;
 
 const StyledGridContainer = tw.div`
-  grid grid-cols-[88px_minmax(200px,300px)] gap-y-3
+  grid grid-cols-[88px_minmax(200px,300px)] gap-y-3 items-center
 `;
 
 const ErrorText = tw.p`
