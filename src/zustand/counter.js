@@ -14,6 +14,9 @@ const useCounterState = create((set, get) => ({
       set(newState);
     }
   },
+  reset: () => {
+    set({ count: 1 });
+  },
 }));
 
 export default useCounterState;
