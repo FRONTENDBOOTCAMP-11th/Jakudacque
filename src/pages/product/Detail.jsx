@@ -50,10 +50,6 @@ export default function Detail() {
     };
   }, [location]);
 
-  // 상품 수량 변경
-  // const countUp = useCounterState(state => state.countUp);
-  // const countDown = useCounterState(state => state.countDown);
-
   // 상품 가격(수량 변경시 함께 변경)
   const productPrice = data && (data.price * count).toLocaleString();
 
