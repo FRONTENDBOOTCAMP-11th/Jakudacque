@@ -622,7 +622,7 @@ export const initData = async (clientId, nextSeq) => {
       {
         _id: await nextSeq("product"),
         seller_id: 1,
-        price: 21600,
+        price: 6000,
         shippingFees: 3000,
         show: true,
         active: true,
