@@ -39,7 +39,7 @@ export default function AdminLayout() {
     if (!user) {
       navigate("/user/signin");
     }
-    if (user.type === "user") {
+    if (user?.type === "user") {
       navigate("/");
     }
   }, []);
