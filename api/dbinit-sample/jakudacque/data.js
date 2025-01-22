@@ -353,7 +353,7 @@ export const initData = async (clientId, nextSeq) => {
         show: true,
         active: true,
         name: "[만년형] 러빗띵스 라벨 다이어리 세트",
-        quantity: 100,
+        quantity: 999999,
         buyQuantity: 98,
         mainImages: [
           {
@@ -447,7 +447,7 @@ export const initData = async (clientId, nextSeq) => {
         show: true,
         active: true,
         name: "2025 레인보우 다이어리 L",
-        quantity: 100,
+        quantity: 999999,
         buyQuantity: 96,
         mainImages: [
           {
@@ -622,7 +622,7 @@ export const initData = async (clientId, nextSeq) => {
       {
         _id: await nextSeq("product"),
         seller_id: 1,
-        price: 21600,
+        price: 6000,
         shippingFees: 3000,
         show: true,
         active: true,
@@ -780,7 +780,7 @@ export const initData = async (clientId, nextSeq) => {
         show: true,
         active: true,
         name: "엑스디 덕이 키링",
-        quantity: 300,
+        quantity: 999999,
         buyQuantity: 298,
         mainImages: [
           {
