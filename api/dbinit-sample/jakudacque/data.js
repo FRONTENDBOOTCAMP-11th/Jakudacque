@@ -2024,6 +2024,30 @@ export const initData = async (clientId, nextSeq) => {
         },
         createdAt: getTime(-6, -60 * 60 * 5),
         updatedAt: getTime(-6, -60 * 60 * 5),
+        user: {
+          _id: 2,
+          email: "u1@market.com",
+          name: "제이지",
+          phone: "01044445555",
+          loginType: "email",
+          image: "/files/final03/user-jayg.webp",
+          extra: {
+            birthday: "11-30",
+            membershipClass: "MC02",
+            addressBook: [
+              {
+                id: 1,
+                name: "회사",
+                value: "서울시 강동구 천호동 123",
+              },
+              {
+                id: 2,
+                name: "집",
+                value: "서울시 강동구 성내동 234",
+              },
+            ],
+          },
+        },
       },
       {
         _id: await nextSeq("order"),
@@ -2073,6 +2097,30 @@ export const initData = async (clientId, nextSeq) => {
         },
         createdAt: getTime(-3, -60 * 60 * 52),
         updatedAt: getTime(-2, -60 * 60 * 12),
+        user: {
+          _id: 2,
+          email: "u1@market.com",
+          name: "제이지",
+          phone: "01044445555",
+          loginType: "email",
+          image: "/files/final03/user-jayg.webp",
+          extra: {
+            birthday: "11-30",
+            membershipClass: "MC02",
+            addressBook: [
+              {
+                id: 1,
+                name: "회사",
+                value: "서울시 강동구 천호동 123",
+              },
+              {
+                id: 2,
+                name: "집",
+                value: "서울시 강동구 성내동 234",
+              },
+            ],
+          },
+        },
       },
       {
         _id: await nextSeq("order"),
@@ -2141,6 +2189,30 @@ export const initData = async (clientId, nextSeq) => {
         },
         createdAt: getTime(-3, -60 * 60 * 18),
         updatedAt: getTime(-1, -60 * 60 * 1),
+        user: {
+          _id: 2,
+          email: "u1@market.com",
+          name: "제이지",
+          phone: "01044445555",
+          loginType: "email",
+          image: "/files/final03/user-jayg.webp",
+          extra: {
+            birthday: "11-30",
+            membershipClass: "MC02",
+            addressBook: [
+              {
+                id: 1,
+                name: "회사",
+                value: "서울시 강동구 천호동 123",
+              },
+              {
+                id: 2,
+                name: "집",
+                value: "서울시 강동구 성내동 234",
+              },
+            ],
+          },
+        },
       },
       {
         _id: await nextSeq("order"),
@@ -2182,6 +2254,30 @@ export const initData = async (clientId, nextSeq) => {
         },
         createdAt: getTime(-3, -60 * 60 * 18),
         updatedAt: getTime(-1, -60 * 60 * 1),
+        user: {
+          _id: 2,
+          email: "u1@market.com",
+          name: "제이지",
+          phone: "01044445555",
+          loginType: "email",
+          image: "/files/final03/user-jayg.webp",
+          extra: {
+            birthday: "11-30",
+            membershipClass: "MC02",
+            addressBook: [
+              {
+                id: 1,
+                name: "회사",
+                value: "서울시 강동구 천호동 123",
+              },
+              {
+                id: 2,
+                name: "집",
+                value: "서울시 강동구 성내동 234",
+              },
+            ],
+          },
+        },
       },
     ],
     // 후기
