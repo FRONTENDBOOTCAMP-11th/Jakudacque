@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { IoSearch } from "react-icons/io5";
 import { IoCartOutline } from "react-icons/io5";
 import { IoPersonOutline } from "react-icons/io5";
+import { IoSettingsOutline } from "react-icons/io5";
 import useSearchStore from "@zustand/searchStore";
 
 function SearchBar() {
@@ -106,6 +107,11 @@ export default function Header() {
                 <span>로그인</span>
               )}
             </LinkButton>
+            {user?.type === "admin" && (
+              <LinkButton to={"/admin"}>
+                <IoSettingsOutline size={22} />
+              </LinkButton>
+            )}
           </div>
         </nav>
       </StyledHeader>
