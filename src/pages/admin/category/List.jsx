@@ -1,5 +1,6 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import useAxiosInstance from "@hooks/useAxiosInstance";
+import useCodeStore from "@zustand/codeStore";
 import { useState, useEffect } from "react";
 import { produce } from "immer";
 import { TableTitle } from "@components/AdminTable";
@@ -15,6 +16,7 @@ export default function Edit() {
   const [categoryList, setCategoryList] = useState([]);
 
   const axios = useAxiosInstance();
+  const { codes, setCodes } = useCodeStore();
   const queryClient = useQueryClient();
 
   // 카테고리 코드 데이터 가져오기
@@ -66,16 +68,21 @@ export default function Edit() {
 
   // 카테고리 추가
   const saveChanged = async () => {
-    console.log("categoryList", categoryList);
-
     const isConfirmed = confirm("카테고리 정보를 저장하시겠습니까?");
     if (!isConfirmed) return;
     try {
-      await axios.put(`/admin/codes/productCategory`, {
+      const response = await axios.put(`/admin/codes/productCategory`, {
         title: "상품 카테고리",
         codes: categoryList,
       });
+
+      const updated = response.data.updated.codes;
+      const newCodes = updated.reduce((acc, cur) => {
+        acc[cur.code] = cur.value;
+        return acc;
+      }, {});
       queryClient.invalidateQueries("categoryList");
+      setCodes({ ...codes, productCategory: newCodes });
       toast("카테고리 정보를 저장했습니다.");
     } catch (error) {
       console.error(error);
@@ -114,7 +121,7 @@ export default function Edit() {
               onChange={e => setNewCategory(e.target.value)}
             />
             <button
-              className="p-1 border-2 border-neutral-500 rounded-lg btn"
+              className="p-1 border-2 rounded-lg border-neutral-500 btn"
               onClick={handleAdd}
             >
               <IoAddOutline size={24} />
@@ -129,7 +136,7 @@ export default function Edit() {
             {categoryList.map(category => (
               <div
                 key={category.code}
-                className="flex items-center gap-2 p-2 bg-neutral-300 rounded-lg"
+                className="flex items-center gap-2 p-2 rounded-lg bg-neutral-300"
               >
                 <InputGroup
                   id={category.code}
