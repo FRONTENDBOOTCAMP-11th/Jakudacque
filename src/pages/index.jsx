@@ -9,6 +9,7 @@ import Product from "@components/Product";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosInstance from "@hooks/useAxiosInstance";
 import { useMemo } from "react";
+import CartModal from "@components/CartModal";
 
 // 메인베너 이미지
 const mainBanner = [
@@ -135,6 +136,7 @@ export default function Index() {
       </StyledSwiper>
       {renderSlides("Best Item", bestProducts)} {/* 베스트제품 리스트 */}
       {renderSlides("New Item", newProducts)} {/* 신제품 리스트 */}
+      <CartModal />
     </div>
   );
 }
