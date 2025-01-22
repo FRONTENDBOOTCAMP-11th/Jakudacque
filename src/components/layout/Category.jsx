@@ -25,7 +25,7 @@ const Category = () => {
     { name: "BEST", code: "BEST" },
   ];
 
-  // 데이터 가져오기: 컴포넌트가 처음 렌더링될 때 호출
+  // 데이터 가져오기: 컴포넌트가 처음 렌더링될 때와 주기적으로 호출
   useEffect(() => {
     const fetchCodes = async () => {
       try {
@@ -37,19 +37,25 @@ const Category = () => {
         fetchedCodes.forEach(item => {
           formattedCodes[item.code] = item.value;
         });
-
-        // Zustand에 저장
-        setCodes({ productCategory: formattedCodes });
+  
+        // 기존 데이터와 비교하여 변경사항이 있을 때만 업데이트
+        if (JSON.stringify(formattedCodes) !== JSON.stringify(codes?.productCategory)) {
+          setCodes({ productCategory: formattedCodes });
+        }
       } catch (error) {
         console.error("카테고리 데이터를 불러오는 중 오류 발생:", error);
-    }
-  };
-
-  // Zustand의 codes가 없을 때만 호출
-  if (!codes) {
-      fetchCodes();
-    }
-  }, [axios, setCodes, codes]);
+      }
+    };
+  
+    // 초기 데이터 로드
+    fetchCodes();
+  
+    // 10초마다 데이터 새로 가져오기
+    const intervalId = setInterval(fetchCodes, 10000);
+  
+    // 컴포넌트가 언마운트될 때 인터벌 정리
+    return () => clearInterval(intervalId);
+  }, [axios, setCodes]);
 
   // location 변화를 감지하여 activeItem 업데이트
   useEffect(() => {
