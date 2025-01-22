@@ -6,7 +6,6 @@ import useCodeStore from "@zustand/codeStore";
 import { produce } from "immer";
 import { TableTitle } from "@components/AdminTable";
 import Button from "@components/Button";
-import Spinner from "@components/Spinner";
 import InputGroup from "@components/InputGroup";
 import InputToggle from "@components/InputToggle";
 import InputSelect from "@components/InputSelect";
@@ -18,7 +17,7 @@ export default function New() {
   const [product, setProduct] = useState({
     name: "", // 상품명(필수)
     price: 0, // 상품 가격(필수)
-    quantity: 0, // 상품 수량(필수)
+    quantity: 99999, // 상품 수량(필수)
     content: "", // 상품 설명(필수)
     shippingFees: 3000, // 배송비
     mainImages: [], // 상품 이미지

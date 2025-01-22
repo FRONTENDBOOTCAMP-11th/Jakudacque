@@ -15,7 +15,6 @@ export function SearchBar({ params }) {
   const handleSearch = event => {
     event.preventDefault();
     navigate(`${params}?keyword=${keyword}`);
-    console.log("검색어:", keyword);
   };
 
   return (
