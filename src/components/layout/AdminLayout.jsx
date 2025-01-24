@@ -19,17 +19,8 @@ export default function AdminLayout() {
       return;
 
     axios.get("/codes").then(res => {
-      let codeMap = {};
       const codes = res.data.item.nested;
-
-      for (let code in codes) {
-        codeMap[code] = {};
-        codes[code].codes.forEach(element => {
-          codeMap[code][element.code] = element.value;
-        });
-      }
-
-      setCodes(codeMap);
+      setCodes(codes);
     });
   }, []);
 

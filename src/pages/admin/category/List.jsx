@@ -16,7 +16,7 @@ export default function Edit() {
   const [categoryList, setCategoryList] = useState([]);
 
   const axios = useAxiosInstance();
-  const { codes, setCodes } = useCodeStore();
+  const { codes, updateCode } = useCodeStore();
   const queryClient = useQueryClient();
 
   // 카테고리 코드 데이터 가져오기
@@ -81,8 +81,10 @@ export default function Edit() {
         acc[cur.code] = cur.value;
         return acc;
       }, {});
+
       queryClient.invalidateQueries("categoryList");
-      setCodes({ ...codes, productCategory: newCodes });
+      updateCode("productCategory", newCodes);
+
       toast("카테고리 정보를 저장했습니다.");
     } catch (error) {
       console.error(error);
