@@ -8,7 +8,6 @@ import AddressModal from "@components/AddressModal";
 import useAddressModalState from "@zustand/AddressModalState";
 import { useOrder } from "@hooks/useOrder";
 import { useCartCleanUp } from "@hooks/useCartDeleteItem";
-import useCounterCartState from "@zustand/counterCart";
 import { toast } from "react-toastify";
 
 export default function Cart() {
@@ -19,7 +18,6 @@ export default function Cart() {
   const [checkedIdsSet, setCheckedIdsSet] = useState(new Set());
   const numChecked = checkedIdsSet.size;
 
-  const { countUp, countDown } = useCounterCartState();
   const { modalIsOpen, handleModal, setSelectedAddress } =
     useAddressModalState();
 
@@ -99,11 +97,6 @@ export default function Cart() {
 
     try {
       await updateQuantity(items._id, newQuantity);
-      if (increment > 0) {
-        countUp(increment);
-      } else {
-        countDown(-increment);
-      }
     } catch (error) {
       console.error("수량 변경 중 에러 발생:", error);
     }
