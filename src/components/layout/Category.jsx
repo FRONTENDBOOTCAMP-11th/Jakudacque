@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import useCodeStore from "../../zustand/codeStore";
 import useAxiosInstance from "@/hooks/useAxiosInstance";
@@ -25,31 +25,38 @@ const Category = () => {
     { name: "BEST", code: "BEST" },
   ];
 
+  // 전체 메뉴 아이템 준비
+  const menuItems = useMemo(() => {
+    return [
+      ...defaultItems,
+      ...(codes?.productCategory
+        ? Object.entries(codes.productCategory).map(([code, value]) => ({
+            name: value,
+            code: code,
+          }))
+        : []),
+    ];
+  }, [codes]);
+
   // 데이터 가져오기: 컴포넌트가 처음 렌더링될 때 호출
   useEffect(() => {
     const fetchCodes = async () => {
       try {
-        const response = await axios.get("/codes/productCategory"); // API 호출
-        const fetchedCodes = response.data.item.productCategory.codes;
-        
-        // 데이터 형식 변환
-        const formattedCodes = {};
-        fetchedCodes.forEach(item => {
-          formattedCodes[item.code] = item.value;
-        });
+        const response = await axios.get("/codes"); // API 호출
+        const codes = response.data.item.nested;
 
         // Zustand에 저장
-        setCodes({ productCategory: formattedCodes });
+        setCodes(codes);
       } catch (error) {
         console.error("카테고리 데이터를 불러오는 중 오류 발생:", error);
-    }
-  };
+      }
+    };
 
-  // Zustand의 codes가 없을 때만 호출
-  if (!codes) {
+    // Zustand의 codes가 없을 때만 호출
+    if (!codes) {
       fetchCodes();
     }
-  }, [axios, setCodes, codes]);
+  }, []);
 
   // location 변화를 감지하여 activeItem 업데이트
   useEffect(() => {
@@ -58,7 +65,7 @@ const Category = () => {
       setActiveItem("");
       return;
     }
-  
+
     // 카테고리 페이지인 경우
     if (currentCategory === "ALL") {
       setActiveItem("전체상품");
@@ -73,18 +80,7 @@ const Category = () => {
         setActiveItem(categoryValue);
       }
     }
-  }, [location, currentCategory, codes]);
-
-  // 전체 메뉴 아이템 준비
-  const menuItems = [
-    ...defaultItems,
-    ...(codes?.productCategory 
-      ? Object.entries(codes.productCategory).map(([code, value]) => ({
-          name: value,
-          code: code,
-        }))
-      : []),
-  ];
+  }, [currentCategory]);
 
   const handleCategoryClick = item => {
     if (!item?.code) return;
