@@ -15,13 +15,12 @@ import { FaRegClipboard, FaRegHeart } from "react-icons/fa";
 import tw from "tailwind-styled-components";
 import AddAddressModal from "@components/AddAddressModal";
 import useAddressStore from "@zustand/AddressStore";
-import useAddAddressModalState from "@zustand/AddAddressModalState";
 
 export default function MyPage() {
   const axios = useAxiosInstance();
 
-  // 주소 추가 모달
-  const handleModal = useAddAddressModalState(state => state.handleModal);
+  // 배송지 추가 모달 상태
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // 주소 데이터(전역 상태)
   const { addressData, resetAddress } = useAddressStore();
@@ -332,7 +331,7 @@ export default function MyPage() {
                 </div>
                 <button
                   className="border py-2 rounded-md"
-                  onClick={handleModal}
+                  onClick={() => setIsModalOpen(true)}
                 >
                   배송지 추가
                 </button>
@@ -348,7 +347,9 @@ export default function MyPage() {
         </div>
       )}
       <CartModal />
-      <AddAddressModal />
+      {isModalOpen && (
+        <AddAddressModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
+      )}
     </div>
   );
 }

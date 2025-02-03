@@ -1,13 +1,10 @@
-import useAddAddressModalState from "@zustand/AddAddressModalState";
+// import useAddAddressModalState from "@zustand/AddAddressModalState";
 import useAddressStore from "@zustand/AddressStore";
+import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
 import tw from "tailwind-styled-components";
 
-export default function AddAddressModal() {
-  const { modalIsOpen } = useAddAddressModalState();
-
-  const handleModal = useAddAddressModalState(state => state.handleModal);
-
+export default function AddAddressModal({ isOpen, setIsOpen }) {
   const addAddress = useAddressStore(state => state.addAddress);
 
   // 주소 데이터
@@ -29,13 +26,13 @@ export default function AddAddressModal() {
       data.id = 1;
     }
     addAddress(data);
-    handleModal();
+    setIsOpen(false);
     resetAddress();
   };
 
   return (
-    modalIsOpen && (
-      <Container onClick={handleModal}>
+    isOpen && (
+      <Container onClick={() => setIsOpen(false)}>
         <ModalWindow onClick={e => e.stopPropagation()}>
           <ModalMsgArea>
             <div className="flex flex-col gap-y-2">
@@ -72,7 +69,7 @@ export default function AddAddressModal() {
                 <ModalBtnArea>
                   <button
                     className="grow px-16 py-3 border-r rounded-l border-neutral-300 hover:bg-secondary-base flex justify-center"
-                    onClick={handleModal}
+                    onClick={() => setIsOpen(false)}
                   >
                     취소
                   </button>
@@ -91,6 +88,11 @@ export default function AddAddressModal() {
     )
   );
 }
+
+AddAddressModal.propTypes = {
+  isOpen: PropTypes.bool,
+  setIsOpen: PropTypes.func,
+};
 
 // 전체 컨테이너
 const Container = tw.div`
