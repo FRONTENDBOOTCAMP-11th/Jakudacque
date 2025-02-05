@@ -14,7 +14,6 @@ import { useForm } from "react-hook-form";
 import { FaRegClipboard, FaRegHeart } from "react-icons/fa";
 import tw from "tailwind-styled-components";
 import AddAddressModal from "@components/AddAddressModal";
-import useAddressStore from "@zustand/AddressStore";
 
 export default function MyPage() {
   const axios = useAxiosInstance();
@@ -22,14 +21,13 @@ export default function MyPage() {
   // 배송지 추가 모달 상태
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // 주소 데이터(전역 상태)
-  const { addressData, resetAddress } = useAddressStore();
+  // 배송지 데이터 상태
+  const [addressData, setAddressData] = useState([]);
 
-  // 주소 데이터 추가
-  const addAddress = useAddressStore(state => state.addAddress);
-
-  // 주소 데이터 삭제
-  const deleteAddress = useAddressStore(state => state.deleteAddress);
+  // 배송지 삭제
+  const deleteAddress = id => {
+    setAddressData(addressData.filter(e => Number(e.id) !== Number(id)));
+  };
 
   const { resetUser } = useUserStore();
   const { resetWishState } = useWishState();
@@ -39,7 +37,6 @@ export default function MyPage() {
     event.preventDefault();
     resetUser();
     resetWishState();
-    resetAddress();
     navigate("/");
     toast("로그아웃 되었습니다!");
   };
@@ -121,6 +118,7 @@ export default function MyPage() {
       newProfile.extra = {};
     }
     if (addressData.length) {
+      setaddAddressMsg("");
       newProfile.extra.addressBook = addressData;
       updateProfile.mutate(newProfile);
     } else {
@@ -141,26 +139,17 @@ export default function MyPage() {
 
   useEffect(() => {
     if (userData?.extra?.addressBook) {
-      // 기존 addressData가 있다면
-      if (addressData.length) {
-        // 중복 추가를 방지하기 위해 기존 addressData와 비교
-        const existingIds = new Set(addressData.map(e => e.id));
-        const newAddresses = userData.extra.addressBook.filter(
-          (_, index) => !existingIds.has(index + 1),
-        );
-        newAddresses.forEach((e, index) => {
-          e.id = index + 1;
-          addAddress(e);
-        });
-      } else {
-        // 기존 addressData가 없다면
-        // addressBook을 배송지 정보로 추가
+      if (!addressData.length) {
         const newAddresses = userData.extra.addressBook;
-        resetAddress();
-        newAddresses.forEach((e, index) => {
-          e.id = index + 1;
-          addAddress(e);
-        });
+        if (newAddresses.length === 1) {
+          newAddresses.forEach(e => {
+            if (!e.id) {
+              // 주소를 추가하거나 삭제하지 않은 경우, 기본 주소값에 id 속성 추가
+              e.id = 1;
+            }
+          });
+        }
+        setAddressData(...addressData, newAddresses);
       }
     }
   }, [userData]);
@@ -317,16 +306,17 @@ export default function MyPage() {
                 <div className="flex flex-col gap-y-3">
                   <>
                     <p className="text-sm text-red-500">{addAddressMsg}</p>
-                    {addressData
-                      ?.slice()
-                      .reverse()
-                      .map(e => (
-                        <Address
-                          key={e.id}
-                          address={e}
-                          onDelete={() => deleteAddress(e.id)}
-                        />
-                      ))}
+                    {addressData.length > 0 &&
+                      addressData
+                        ?.slice()
+                        .reverse()
+                        .map(e => (
+                          <Address
+                            key={e.id}
+                            address={e}
+                            onDelete={() => deleteAddress(e.id)}
+                          />
+                        ))}
                   </>
                 </div>
                 <button
@@ -348,7 +338,12 @@ export default function MyPage() {
       )}
       <CartModal />
       {isModalOpen && (
-        <AddAddressModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
+        <AddAddressModal
+          isOpen={isModalOpen}
+          setIsOpen={setIsModalOpen}
+          address={addressData}
+          setAddress={setAddressData}
+        />
       )}
     </div>
   );

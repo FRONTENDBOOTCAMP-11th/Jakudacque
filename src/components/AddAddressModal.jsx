@@ -1,15 +1,13 @@
-// import useAddAddressModalState from "@zustand/AddAddressModalState";
-import useAddressStore from "@zustand/AddressStore";
 import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
 import tw from "tailwind-styled-components";
 
-export default function AddAddressModal({ isOpen, setIsOpen }) {
-  const addAddress = useAddressStore(state => state.addAddress);
-
-  // 주소 데이터
-  const { addressData } = useAddressStore();
-
+export default function AddAddressModal({
+  isOpen,
+  setIsOpen,
+  address,
+  setAddress,
+}) {
   // 배송지 추가 폼
   const {
     register: registerAddress,
@@ -20,78 +18,82 @@ export default function AddAddressModal({ isOpen, setIsOpen }) {
 
   // 배송지 추가 폼 제출
   const onAddressSubmit = data => {
-    if (addressData.length) {
-      data.id = addressData[addressData.length - 1].id + 1;
+    if (address.length) {
+      data.id = address[address.length - 1].id + 1;
     } else {
       data.id = 1;
     }
-    addAddress(data);
+    setAddress(prev => [...prev, data]);
     setIsOpen(false);
     resetAddress();
   };
 
   return (
-    isOpen && (
-      <Container onClick={() => setIsOpen(false)}>
-        <ModalWindow onClick={e => e.stopPropagation()}>
-          <ModalMsgArea>
-            <div className="flex flex-col gap-y-2">
-              <form onSubmit={handleAddressSubmit(onAddressSubmit)}>
-                <StyledFormContainer>
-                  <InfoTitle>배송지 추가</InfoTitle>
-                  <StyledGridContainer>
-                    <label htmlFor="addressName">배송지명</label>
-                    <input
-                      type="text"
-                      id="addressName"
-                      className="px-2 py-1 border rounded-md focus:outline-none border-neutral-400"
-                      {...registerAddress("name", {
-                        required: "배송지명을 입력해주세요.",
-                      })}
-                    />
-                    {addressErrors.name && (
-                      <ErrorText>{addressErrors.name.message}</ErrorText>
-                    )}
-                    <label htmlFor="address">주소</label>
-                    <input
-                      type="text"
-                      id="address"
-                      className="px-2 py-1 border rounded-md focus:outline-none border-neutral-400"
-                      {...registerAddress("value", {
-                        required: "주소를 입력해주세요.",
-                      })}
-                    />
-                    {addressErrors.value && (
-                      <ErrorText>{addressErrors.value.message}</ErrorText>
-                    )}
-                  </StyledGridContainer>
-                </StyledFormContainer>
-                <ModalBtnArea>
-                  <button
-                    className="grow px-16 py-3 border-r rounded-l border-neutral-300 hover:bg-secondary-base flex justify-center"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    취소
-                  </button>
-                  <button
-                    type="submit"
-                    className="grow px-16 py-3 rounded-b hover:bg-secondary-base flex justify-center text-align"
-                  >
-                    추가
-                  </button>
-                </ModalBtnArea>
-              </form>
-            </div>
-          </ModalMsgArea>
-        </ModalWindow>
-      </Container>
-    )
+    <>
+      {isOpen && (
+        <Container onClick={() => setIsOpen(false)}>
+          <ModalWindow onClick={e => e.stopPropagation()}>
+            <ModalMsgArea>
+              <div className="flex flex-col gap-y-2">
+                <form onSubmit={handleAddressSubmit(onAddressSubmit)}>
+                  <StyledFormContainer>
+                    <InfoTitle>배송지 추가</InfoTitle>
+                    <StyledGridContainer>
+                      <label htmlFor="addressName">배송지명</label>
+                      <input
+                        type="text"
+                        id="addressName"
+                        className="px-2 py-1 border rounded-md focus:outline-none border-neutral-400"
+                        {...registerAddress("name", {
+                          required: "배송지명을 입력해주세요.",
+                        })}
+                      />
+                      {addressErrors.name && (
+                        <ErrorText>{addressErrors.name.message}</ErrorText>
+                      )}
+                      <label htmlFor="address">주소</label>
+                      <input
+                        type="text"
+                        id="address"
+                        className="px-2 py-1 border rounded-md focus:outline-none border-neutral-400"
+                        {...registerAddress("value", {
+                          required: "주소를 입력해주세요.",
+                        })}
+                      />
+                      {addressErrors.value && (
+                        <ErrorText>{addressErrors.value.message}</ErrorText>
+                      )}
+                    </StyledGridContainer>
+                  </StyledFormContainer>
+                  <ModalBtnArea>
+                    <button
+                      className="grow px-16 py-3 border-r rounded-l border-neutral-300 hover:bg-secondary-base flex justify-center"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      취소
+                    </button>
+                    <button
+                      type="submit"
+                      className="grow px-16 py-3 rounded-b hover:bg-secondary-base flex justify-center text-align"
+                    >
+                      추가
+                    </button>
+                  </ModalBtnArea>
+                </form>
+              </div>
+            </ModalMsgArea>
+          </ModalWindow>
+        </Container>
+      )}
+    </>
   );
 }
 
 AddAddressModal.propTypes = {
   isOpen: PropTypes.bool,
   setIsOpen: PropTypes.func,
+  address: PropTypes.arrayOf(PropTypes.shape()),
+  setAddress: PropTypes.func,
 };
 
 // 전체 컨테이너
