@@ -74,11 +74,15 @@ export default function Detail() {
   // 장바구니 추가
   const { addCart } = useAddCart();
 
-  const { handleModal, mutateCallback } = useAddress();
+  // 사용자가 선택한 주소를 포함하여 구매 요청 보내는 훅
+  const { mutateCallback } = useAddress();
+
+  // 주소 선택 모달 상태
+  const [isAddressModalOpen, setIsAddressModalOpen] = useState(false);
 
   const sendInfo = () => {
     if (user) {
-      handleModal();
+      setIsAddressModalOpen(true); // 주소 선택 모달 열기
     } else {
       navigateLogin();
     }
@@ -96,7 +100,7 @@ export default function Detail() {
             {/* 상품 이미지 */}
             <div className="md:max-w-xl">
               <img
-                src={`https://11.fesp.shop/${data.mainImages[0].path}`} // 데이터 형식 변경 후 수정 예정
+                src={`https://11.fesp.shop/${data.mainImages[0].path}`}
                 alt="상품 이미지"
                 className="object-cover"
               />
@@ -193,7 +197,11 @@ export default function Detail() {
         </div>
       )}
       <CartModal />
-      <AddressModal onAddressSelect={mutateCallback} />
+      <AddressModal
+        onAddressSelect={mutateCallback}
+        isAddressModalOpen={isAddressModalOpen}
+        setIsAddressModalOpen={setIsAddressModalOpen}
+      />
     </div>
   );
 }
