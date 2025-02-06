@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import Product from "@components/Product";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosInstance from "@hooks/useAxiosInstance";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import CartModal from "@components/CartModal";
 
 // 메인베너 이미지
@@ -63,6 +63,8 @@ export default function Index() {
   const bestProducts = mapProducts(bestData);
   const newProducts = mapProducts(newData);
 
+  const [isCartModalOpen, setIsCartModalOpen] = useState(false);
+
   // Best/New 상품 리스트 스와이퍼 공통으로 묶기
   const renderSlides = (title, products) => {
     const isLoopEnabled = products.length > 4; // 조건적으로 loop 설정
@@ -95,7 +97,10 @@ export default function Index() {
                 key={index}
                 className="flex flex-col items-center justify-center"
               >
-                <Product product={product} />
+                <Product
+                  product={product}
+                  setIsCartModalOpen={setIsCartModalOpen}
+                />
               </SwiperSlide>
             ))}
           </Swiper>
@@ -136,7 +141,10 @@ export default function Index() {
       </StyledSwiper>
       {renderSlides("Best Item", bestProducts)} {/* 베스트제품 리스트 */}
       {renderSlides("New Item", newProducts)} {/* 신제품 리스트 */}
-      <CartModal />
+      <CartModal
+        isCartModalOpen={isCartModalOpen}
+        setIsCartModalOpen={setIsCartModalOpen}
+      />
     </div>
   );
 }

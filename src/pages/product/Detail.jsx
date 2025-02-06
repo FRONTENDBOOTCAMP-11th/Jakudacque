@@ -88,6 +88,15 @@ export default function Detail() {
     }
   };
 
+  // 장바구니 모달 상태
+  const [isCartModalOpen, setIsCartModalOpen] = useState(false);
+
+  // 장바구니에 상품 추가
+  const handleAddCart = () => {
+    addCart.mutate({ product_id: Number(_id), quantity: count });
+    setIsCartModalOpen(true);
+  };
+
   // 로그인한 회원 데이터
   const user = useUserStore(state => state.user);
 
@@ -165,9 +174,7 @@ export default function Detail() {
                 </button>
                 <button
                   className="flex items-center justify-center border rounded grow basis-48 border-neutral-300 hover:border-neutral-400"
-                  onClick={() =>
-                    addCart.mutate({ product_id: Number(_id), quantity: count })
-                  }
+                  onClick={handleAddCart}
                 >
                   장바구니
                 </button>
@@ -196,7 +203,10 @@ export default function Detail() {
           ></div>
         </div>
       )}
-      <CartModal />
+      <CartModal
+        isCartModalOpen={isCartModalOpen}
+        setIsCartModalOpen={setIsCartModalOpen}
+      />
       <AddressModal
         onAddressSelect={mutateCallback}
         isAddressModalOpen={isAddressModalOpen}

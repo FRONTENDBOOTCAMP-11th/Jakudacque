@@ -5,6 +5,7 @@ import { IoCaretDown } from "react-icons/io5";
 export default function ProductList({
   title,
   products,
+  setIsCartModalOpen,
   totalItems,
   isOpen,
   sortOption,
@@ -51,7 +52,11 @@ export default function ProductList({
       {/* 상품 그리드 */}
       <div className="grid grid-cols-2 gap-4 mb-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 sm:gap-6 lg:gap-8">
         {products.map(product => (
-          <Product key={product.id} product={product} />
+          <Product
+            key={product.id}
+            product={product}
+            setIsCartModalOpen={setIsCartModalOpen}
+          />
         ))}
       </div>
     </>
@@ -70,6 +75,7 @@ ProductList.propTypes = {
       link: PropTypes.string.isRequired,
     }),
   ).isRequired,
+  setIsCartModalOpen: PropTypes.func,
   totalItems: PropTypes.number.isRequired,
   isOpen: PropTypes.bool.isRequired,
   sortOption: PropTypes.string.isRequired,
