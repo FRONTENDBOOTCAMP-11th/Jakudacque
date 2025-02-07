@@ -2,7 +2,6 @@ import Spinner from "@components/Spinner";
 import useAxiosInstance from "@hooks/useAxiosInstance";
 import { useQuery } from "@tanstack/react-query";
 import CartModal from "@components/CartModal";
-import useCounterState from "@zustand/counter";
 import { IoAdd } from "react-icons/io5";
 import { IoRemove } from "react-icons/io5";
 import { IoHeartOutline } from "react-icons/io5";
@@ -11,7 +10,7 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useHandleWish } from "@hooks/useHandleWish";
 import useWishState from "@zustand/wishState";
 import { useAddCart } from "@hooks/useAddCart";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import AddressModal from "@components/AddressModal";
 import { useAddress } from "@hooks/useAddress";
 import useUserStore from "@zustand/userStore";
@@ -40,15 +39,8 @@ export default function Detail() {
     select: res => res.data.item,
   });
 
-  // 상품 수량
-  const { count, countUp, countDown, reset } = useCounterState();
-
-  useEffect(() => {
-    return () => {
-      // 상세 페이지에서 벗어날 때 reset 호출
-      reset();
-    };
-  }, [location]);
+  // 상품 수량 상태
+  const [count, setCount] = useState(1);
 
   // 상품 가격(수량 변경시 함께 변경)
   const productPrice = data && (data.price * count).toLocaleString();
@@ -75,7 +67,7 @@ export default function Detail() {
   const { addCart } = useAddCart();
 
   // 사용자가 선택한 주소를 포함하여 구매 요청 보내는 훅
-  const { mutateCallback } = useAddress();
+  const { mutateCallback } = useAddress(count);
 
   // 주소 선택 모달 상태
   const [isAddressModalOpen, setIsAddressModalOpen] = useState(false);
@@ -144,7 +136,9 @@ export default function Detail() {
                   <div className="flex">
                     <button
                       className="px-2 border-l border-neutral-400 border-y"
-                      onClick={() => countDown(1)}
+                      onClick={() =>
+                        count === 1 ? setCount(1) : setCount(count - 1)
+                      }
                     >
                       <IoRemove />
                     </button>
@@ -153,7 +147,7 @@ export default function Detail() {
                     </span>
                     <button
                       className="px-2 border-r border-neutral-400 border-y"
-                      onClick={() => countUp(1)}
+                      onClick={() => setCount(count + 1)}
                     >
                       <IoAdd />
                     </button>
