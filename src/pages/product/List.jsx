@@ -120,6 +120,7 @@ export default function List() {
       ? "https://11.fesp.shop" + item.mainImages[0].path
       : "",
     link: `/list/${item._id}`,
+    myBookmarkId: item.myBookmarkId,
   }));
 
   return (

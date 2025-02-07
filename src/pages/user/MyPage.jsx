@@ -3,7 +3,6 @@ import Product from "@components/Product";
 import useAxiosInstance from "@hooks/useAxiosInstance";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import useUserStore from "@zustand/userStore";
-import useWishState from "@zustand/wishState";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -30,13 +29,11 @@ export default function MyPage() {
   };
 
   const { resetUser } = useUserStore();
-  const { resetWishState } = useWishState();
   const navigate = useNavigate();
 
   const handleLogout = event => {
     event.preventDefault();
     resetUser();
-    resetWishState();
     navigate("/");
     toast("로그아웃 되었습니다!");
   };
@@ -78,6 +75,7 @@ export default function MyPage() {
       name: e.product.name,
       price: e.product.price,
       id: String(e.product._id),
+      myBookmarkId: e._id,
     }));
   }
 

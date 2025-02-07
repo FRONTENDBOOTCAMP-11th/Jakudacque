@@ -1,25 +1,23 @@
 import CartModal from "@components/CartModal";
 import { useAddCart } from "@hooks/useAddCart";
 import { useHandleWish } from "@hooks/useHandleWish";
-import useWishState from "@zustand/wishState";
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { IoCartOutline, IoHeartOutline, IoHeartSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
 export default function Product({ product, setIsCartModalOpen }) {
-  const { refetchWish } = useHandleWish(product.id);
+  const { refetchWish } = useHandleWish();
 
-  // 전역 찜 상태 조회
-  const isWished = useWishState(state => state.isWished);
-
-  // 로컬 찜 상태
-  const [localWish, setLocalWish] = useState(isWished(product.id));
+  // 찜 상태
+  const [localWish, setLocalWish] = useState(
+    product.myBookmarkId ? true : false,
+  );
 
   const wishHandle = async () => {
     setLocalWish(localWish => !localWish); // 로컬 찜 상태 변경
     try {
-      await refetchWish(); // 전역 상태 변경 및 서버 동기화 처리(비동기)
+      await refetchWish(product.id, product.myBookmarkId); // 상품 아이디와 찜(북마크) 아이디 전달 및 서버 동기화 처리
     } catch (err) {
       console.log("찜 등록/취소 실패", err);
       setLocalWish(localWish => !localWish); // 로컬 찜 상태 원복
@@ -75,6 +73,7 @@ Product.propTypes = {
     image: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    myBookmarkId: PropTypes.number,
   }).isRequired,
   setIsCartModalOpen: PropTypes.func,
 };

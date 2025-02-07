@@ -8,9 +8,8 @@ import { IoHeartOutline } from "react-icons/io5";
 import { IoHeartSharp } from "react-icons/io5";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useHandleWish } from "@hooks/useHandleWish";
-import useWishState from "@zustand/wishState";
 import { useAddCart } from "@hooks/useAddCart";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddressModal from "@components/AddressModal";
 import { useAddress } from "@hooks/useAddress";
 import useUserStore from "@zustand/userStore";
@@ -45,18 +44,18 @@ export default function Detail() {
   // 상품 가격(수량 변경시 함께 변경)
   const productPrice = data && (data.price * count).toLocaleString();
 
-  const { refetchWish } = useHandleWish(_id);
+  const { refetchWish } = useHandleWish();
 
-  // 전역 찜 상태 조회
-  const isWished = useWishState(state => state.isWished);
+  const [localWish, setLocalWish] = useState(data?.myBookmarkId ? true : false);
 
-  // 로컬 찜 상태
-  const [localWish, setLocalWish] = useState(isWished(_id));
+  useEffect(() => {
+    setLocalWish(data?.myBookmarkId ? true : false);
+  }, [data]);
 
   const wishHandle = async () => {
     setLocalWish(localWish => !localWish); // 로컬 찜 상태 변경
     try {
-      await refetchWish(); // 전역 상태 변경 및 서버 동기화 처리(비동기)
+      await refetchWish(_id, data?.myBookmarkId); // 상품 아이디와 찜(북마크) 아이디 전달 및 서버 동기화 처리
     } catch (err) {
       console.log("찜 등록/취소 실패", err);
       setLocalWish(localWish => !localWish); // 로컬 찜 상태 원복

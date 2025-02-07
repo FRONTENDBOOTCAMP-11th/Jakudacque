@@ -73,6 +73,7 @@ ProductList.propTypes = {
         .isRequired,
       image: PropTypes.string.isRequired,
       link: PropTypes.string.isRequired,
+      myBookmarkId: PropTypes.number,
     }),
   ).isRequired,
   setIsCartModalOpen: PropTypes.func,
