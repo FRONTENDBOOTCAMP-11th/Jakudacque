@@ -5,10 +5,12 @@ import { useQuery } from "@tanstack/react-query";
 import Spinner from "@components/Spinner";
 import useQueryStr from "@hooks/useQueryStr";
 import Pagination from "@components/Pagenation";
-import CartModal from "@components/CartModal";
 import ProductList from "@components/ProductList";
+import CartModal from "@components/CartModal";
 
 export default function List() {
+  // 장바구니 모달 상태
+  const [isCartModalOpen, setIsCartModalOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [sortOption, setSortOption] = useState("등록순"); // 정렬 상태
   const navigate = useNavigate();
@@ -50,7 +52,6 @@ export default function List() {
     }
     setIsOpen(false);
   }, [category]);
-
 
   // 상품 데이터 가져오기
   const { data, isLoading } = useQuery({
@@ -119,6 +120,7 @@ export default function List() {
       ? "https://11.fesp.shop" + item.mainImages[0].path
       : "",
     link: `/list/${item._id}`,
+    myBookmarkId: item.myBookmarkId,
   }));
 
   return (
@@ -126,13 +128,13 @@ export default function List() {
       <ProductList
         title={currentCategory}
         products={products}
+        setIsCartModalOpen={setIsCartModalOpen}
         totalItems={data.pagination.total}
         isOpen={isOpen}
         sortOption={sortOption}
         onSortOptionClick={handleSortClick}
         onToggleOpen={() => setIsOpen(!isOpen)}
       />
-
       {/* 페이지네이션 */}
       <div className="flex justify-center mt-8">
         <Pagination
@@ -143,7 +145,10 @@ export default function List() {
           currentPage={page}
         />
       </div>
-      <CartModal />
+      <CartModal
+        isCartModalOpen={isCartModalOpen}
+        setIsCartModalOpen={setIsCartModalOpen}
+      />
     </div>
   );
 }

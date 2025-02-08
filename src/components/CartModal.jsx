@@ -1,15 +1,11 @@
-import cartModalState from "@zustand/cartModalState";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import tw from "tailwind-styled-components";
 
-export default function CartModal() {
-  const { modalIsOpen } = cartModalState();
-
-  const handleModal = cartModalState(state => state.handleModal);
-
+export default function CartModal({ isCartModalOpen, setIsCartModalOpen }) {
   return (
-    modalIsOpen && (
-      <Container onClick={handleModal}>
+    isCartModalOpen && (
+      <Container onClick={() => setIsCartModalOpen(false)}>
         <ModalWindow onClick={e => e.stopPropagation()}>
           <ModalMsgArea>
             <p>선택하신 상품을 장바구니에 담았습니다.</p>
@@ -17,14 +13,14 @@ export default function CartModal() {
           <ModalBtnArea>
             <button
               className="flex-1 py-3 border-r rounded-b border-neutral-300 hover:bg-secondary-base"
-              onClick={handleModal}
+              onClick={() => setIsCartModalOpen(false)}
             >
               계속 쇼핑
             </button>
             <Link
               to="/cart"
               className="flex justify-center flex-1 py-3 rounded-b hover:bg-secondary-base"
-              onClick={handleModal}
+              onClick={() => setIsCartModalOpen(false)}
             >
               장바구니 가기
             </Link>
@@ -34,6 +30,11 @@ export default function CartModal() {
     )
   );
 }
+
+CartModal.propTypes = {
+  isCartModalOpen: PropTypes.bool,
+  setIsCartModalOpen: PropTypes.func,
+};
 
 // 전체 컨테이너
 const Container = tw.div`

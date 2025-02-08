@@ -1,16 +1,11 @@
 import useAxiosInstance from "@hooks/useAxiosInstance";
 import { useOrder } from "@hooks/useOrder";
 import { useQuery } from "@tanstack/react-query";
-import useAddressModalState from "@zustand/AddressModalState";
-import useCounterState from "@zustand/counter";
 import useUserStore from "@zustand/userStore";
 import { useParams } from "react-router-dom";
 
-export const useAddress = () => {
+export const useAddress = count => {
   const axios = useAxiosInstance();
-
-  // 주소 선택 모달 상태 변경
-  const handleModal = useAddressModalState(state => state.handleModal);
 
   // 로그인한 회원 데이터
   const user = useUserStore(state => state.user);
@@ -31,9 +26,6 @@ export const useAddress = () => {
   // 상품 구매 훅
   const { orderProduct } = useOrder();
 
-  // 상품 수량
-  const { count } = useCounterState();
-
   // 상품 아이디
   const { _id } = useParams();
 
@@ -51,7 +43,6 @@ export const useAddress = () => {
   return {
     user_id,
     addressBook,
-    handleModal,
     mutateCallback,
   };
 };

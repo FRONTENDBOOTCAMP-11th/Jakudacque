@@ -5,7 +5,6 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import Spinner from "@components/Spinner";
 import { useState } from "react";
 import AddressModal from "@components/AddressModal";
-import useAddressModalState from "@zustand/AddressModalState";
 import { useOrder } from "@hooks/useOrder";
 import { useCartCleanUp } from "@hooks/useCartDeleteItem";
 import useCounterCartState from "@zustand/counterCart";
@@ -20,8 +19,9 @@ export default function Cart() {
   const numChecked = checkedIdsSet.size;
 
   const { countUp, countDown } = useCounterCartState();
-  const { modalIsOpen, handleModal, setSelectedAddress } =
-    useAddressModalState();
+
+  // 주소 선택 모달 상태
+  const [isAddressModalOpen, setIsAddressModalOpen] = useState(false);
 
   // 장바구니 목록 조회(로그인시) api
   const { data, isLoading } = useQuery({
@@ -37,7 +37,6 @@ export default function Cart() {
   const { cleanupProduct, deleteItem, deleteItems } = useCartCleanUp();
 
   const handleAddressSelect = address => {
-    setSelectedAddress(address);
     orderCart(data, address); // 주문 처리
   };
 
@@ -72,7 +71,7 @@ export default function Cart() {
     if (numChecked === 0) {
       toast("구매할 제품을 선택해 주세요."); // 상품 선택 안했을 시
     } else {
-      handleModal(); // 상품 선택 했을 시
+      setIsAddressModalOpen(true); // 상품 선택 했을 시
     }
   };
 
@@ -281,7 +280,13 @@ export default function Cart() {
           <p className="mt-4 text-lg">장바구니가 비었습니다</p>
         </div>
       )}
-      {modalIsOpen && <AddressModal onAddressSelect={handleAddressSelect} />}
+      {isAddressModalOpen && (
+        <AddressModal
+          onAddressSelect={handleAddressSelect}
+          isAddressModalOpen={isAddressModalOpen}
+          setIsAddressModalOpen={setIsAddressModalOpen}
+        />
+      )}
     </div>
   );
 }

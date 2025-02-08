@@ -1,24 +1,27 @@
 import Address from "@components/Address";
 import { useAddress } from "@hooks/useAddress";
-import useAddressModalState from "@zustand/AddressModalState";
 import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import tw from "tailwind-styled-components";
 
-export default function AddressModal({ onAddressSelect }) {
-  const { modalIsOpen, handleModal } = useAddressModalState();
+export default function AddressModal({
+  onAddressSelect,
+  isAddressModalOpen,
+  setIsAddressModalOpen,
+}) {
   const { addressBook } = useAddress();
   const { register, handleSubmit } = useForm();
 
   const handleOrder = handleSubmit(data => {
     const address = JSON.parse(data.address);
     onAddressSelect(address); // 선택된 주소 전달
-    handleModal(); // 모달 닫기
+    setIsAddressModalOpen(false); // 모달 닫기
   });
+
   return (
-    modalIsOpen && (
-      <Container onClick={handleModal}>
+    isAddressModalOpen && (
+      <Container onClick={() => setIsAddressModalOpen(false)}>
         <ModalWindow onClick={e => e.stopPropagation()}>
           <ModalMsgArea>
             <div className="flex flex-col gap-y-2">
@@ -47,7 +50,7 @@ export default function AddressModal({ onAddressSelect }) {
             <Link
               to="/user/mypage?category=editProfile"
               className="grow px-16 py-3 border-r border-neutral-300 rounded-b hover:bg-secondary-base flex justify-center"
-              onClick={handleModal}
+              onClick={() => setIsAddressModalOpen(false)}
             >
               주소 변경
             </Link>
@@ -64,7 +67,9 @@ export default function AddressModal({ onAddressSelect }) {
   );
 }
 AddressModal.propTypes = {
-  onAddressSelect: PropTypes.func.isRequired, // PropTypes를 사용하여 검증 추가
+  onAddressSelect: PropTypes.func,
+  isAddressModalOpen: PropTypes.bool,
+  setIsAddressModalOpen: PropTypes.func,
 };
 
 // 전체 컨테이너

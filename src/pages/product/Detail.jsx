@@ -2,14 +2,12 @@ import Spinner from "@components/Spinner";
 import useAxiosInstance from "@hooks/useAxiosInstance";
 import { useQuery } from "@tanstack/react-query";
 import CartModal from "@components/CartModal";
-import useCounterState from "@zustand/counter";
 import { IoAdd } from "react-icons/io5";
 import { IoRemove } from "react-icons/io5";
 import { IoHeartOutline } from "react-icons/io5";
 import { IoHeartSharp } from "react-icons/io5";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useHandleWish } from "@hooks/useHandleWish";
-import useWishState from "@zustand/wishState";
 import { useAddCart } from "@hooks/useAddCart";
 import { useEffect, useState } from "react";
 import AddressModal from "@components/AddressModal";
@@ -40,31 +38,24 @@ export default function Detail() {
     select: res => res.data.item,
   });
 
-  // 상품 수량
-  const { count, countUp, countDown, reset } = useCounterState();
-
-  useEffect(() => {
-    return () => {
-      // 상세 페이지에서 벗어날 때 reset 호출
-      reset();
-    };
-  }, [location]);
+  // 상품 수량 상태
+  const [count, setCount] = useState(1);
 
   // 상품 가격(수량 변경시 함께 변경)
   const productPrice = data && (data.price * count).toLocaleString();
 
-  const { refetchWish } = useHandleWish(_id);
+  const { refetchWish } = useHandleWish();
 
-  // 전역 찜 상태 조회
-  const isWished = useWishState(state => state.isWished);
+  const [localWish, setLocalWish] = useState(data?.myBookmarkId ? true : false);
 
-  // 로컬 찜 상태
-  const [localWish, setLocalWish] = useState(isWished(_id));
+  useEffect(() => {
+    setLocalWish(data?.myBookmarkId ? true : false);
+  }, [data]);
 
   const wishHandle = async () => {
     setLocalWish(localWish => !localWish); // 로컬 찜 상태 변경
     try {
-      await refetchWish(); // 전역 상태 변경 및 서버 동기화 처리(비동기)
+      await refetchWish(_id, data?.myBookmarkId); // 상품 아이디와 찜(북마크) 아이디 전달 및 서버 동기화 처리
     } catch (err) {
       console.log("찜 등록/취소 실패", err);
       setLocalWish(localWish => !localWish); // 로컬 찜 상태 원복
@@ -74,14 +65,27 @@ export default function Detail() {
   // 장바구니 추가
   const { addCart } = useAddCart();
 
-  const { handleModal, mutateCallback } = useAddress();
+  // 사용자가 선택한 주소를 포함하여 구매 요청 보내는 훅
+  const { mutateCallback } = useAddress(count);
+
+  // 주소 선택 모달 상태
+  const [isAddressModalOpen, setIsAddressModalOpen] = useState(false);
 
   const sendInfo = () => {
     if (user) {
-      handleModal();
+      setIsAddressModalOpen(true); // 주소 선택 모달 열기
     } else {
       navigateLogin();
     }
+  };
+
+  // 장바구니 모달 상태
+  const [isCartModalOpen, setIsCartModalOpen] = useState(false);
+
+  // 장바구니에 상품 추가
+  const handleAddCart = () => {
+    addCart.mutate({ product_id: Number(_id), quantity: count });
+    setIsCartModalOpen(true);
   };
 
   // 로그인한 회원 데이터
@@ -96,7 +100,7 @@ export default function Detail() {
             {/* 상품 이미지 */}
             <div className="md:max-w-xl">
               <img
-                src={`https://11.fesp.shop/${data.mainImages[0].path}`} // 데이터 형식 변경 후 수정 예정
+                src={`https://11.fesp.shop/${data.mainImages[0].path}`}
                 alt="상품 이미지"
                 className="object-cover"
               />
@@ -131,7 +135,9 @@ export default function Detail() {
                   <div className="flex">
                     <button
                       className="px-2 border-l border-neutral-400 border-y"
-                      onClick={() => countDown(1)}
+                      onClick={() =>
+                        count === 1 ? setCount(1) : setCount(count - 1)
+                      }
                     >
                       <IoRemove />
                     </button>
@@ -140,7 +146,7 @@ export default function Detail() {
                     </span>
                     <button
                       className="px-2 border-r border-neutral-400 border-y"
-                      onClick={() => countUp(1)}
+                      onClick={() => setCount(count + 1)}
                     >
                       <IoAdd />
                     </button>
@@ -161,9 +167,7 @@ export default function Detail() {
                 </button>
                 <button
                   className="flex items-center justify-center border rounded grow basis-48 border-neutral-300 hover:border-neutral-400"
-                  onClick={() =>
-                    addCart.mutate({ product_id: Number(_id), quantity: count })
-                  }
+                  onClick={handleAddCart}
                 >
                   장바구니
                 </button>
@@ -192,8 +196,15 @@ export default function Detail() {
           ></div>
         </div>
       )}
-      <CartModal />
-      <AddressModal onAddressSelect={mutateCallback} />
+      <CartModal
+        isCartModalOpen={isCartModalOpen}
+        setIsCartModalOpen={setIsCartModalOpen}
+      />
+      <AddressModal
+        onAddressSelect={mutateCallback}
+        isAddressModalOpen={isAddressModalOpen}
+        setIsAddressModalOpen={setIsAddressModalOpen}
+      />
     </div>
   );
 }
