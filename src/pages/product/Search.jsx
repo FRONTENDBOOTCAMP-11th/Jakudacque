@@ -6,7 +6,6 @@ import { useQuery } from "@tanstack/react-query";
 import Spinner from "@components/Spinner";
 import useQueryStr from "@hooks/useQueryStr";
 import Pagination from "@components/Pagenation";
-import useSearchStore from "@zustand/searchStore";
 import ProductList from "@components/ProductList";
 
 export default function Search() {
@@ -17,9 +16,8 @@ export default function Search() {
   const [sortOption, setSortOption] = useState("등록순");
   const [isOpen, setIsOpen] = useState(false);
 
-  const { setKeyword } = useSearchStore();
   const [inputKeyword, setInputKeyword] = useState(
-    queryStr.get("keyword") || "",
+    queryStr.get("keyword") || "" // URL 쿼리 사용
   );
   const [searchedKeyword, setSearchedKeyword] = useState(
     queryStr.get("keyword") || "",
@@ -27,17 +25,14 @@ export default function Search() {
 
   useEffect(() => {
     const urlKeyword = queryStr.get("keyword") || "";
-    setKeyword(urlKeyword);
     setInputKeyword(urlKeyword);
     setSearchedKeyword(urlKeyword);
-  }, [location.search, setKeyword]);
+  }, [location.search]); 
 
   const handleSearch = event => {
     event.preventDefault();
     if (!inputKeyword.trim()) return;
-    setKeyword(inputKeyword);
     navigate(`/search?keyword=${inputKeyword}`, { replace: true });
-    navigate(0);
   };
 
   // 정렬 옵션 클릭 핸들러 추가
@@ -124,10 +119,7 @@ export default function Search() {
               {["다이어리", "스티커", "메모지", "키링"].map(term => (
                 <button
                   key={term}
-                  onClick={() => {
-                    setKeyword(term);
-                    navigate(`/search?keyword=${term}`, { replace: true });
-                  }}
+                  onClick={() => navigate(`/search?keyword=${term}`)}
                   className="px-4 py-2 bg-neutral-100 rounded-full hover:bg-neutral-200 transition-colors"
                 >
                   {term}

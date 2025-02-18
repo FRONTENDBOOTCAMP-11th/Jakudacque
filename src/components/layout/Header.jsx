@@ -7,33 +7,25 @@ import { IoSearch } from "react-icons/io5";
 import { IoCartOutline } from "react-icons/io5";
 import { IoPersonOutline } from "react-icons/io5";
 import { IoSettingsOutline } from "react-icons/io5";
-import useSearchStore from "@zustand/searchStore";
 
 function SearchBar() {
-  const { setKeyword } = useSearchStore(); // useState 대신 useSearchStore 사용
   const [inputKeyword, setInputKeyword] = useState("");
 
   const navigate = useNavigate();
   const location = useLocation();
 
+  // URL 쿼리 파라미터에서 검색어 가져오기
   useEffect(() => {
-    if (location.pathname === "/search") {
-      const urlKeyword =
-        new URLSearchParams(location.search).get("keyword") || "";
-      setInputKeyword(urlKeyword);
-    }
-  }, [location]);
+    const urlKeyword = new URLSearchParams(location.search).get("keyword") || "";
+    setInputKeyword(urlKeyword);
+  }, [location.search]); // URL 변경 감지
 
-  const handleSearch = event => {
+ // 검색 시 URL 업데이트
+  const handleSearch = (event) => {
     event.preventDefault();
     if (!inputKeyword.trim()) return;
 
-    setKeyword(inputKeyword); // 검색 시점에 전역 상태 업데이트
-
-    navigate(`/search?keyword=${inputKeyword}`);
-    if (location.pathname === "/search") {
-      navigate(0);
-    }
+    navigate(`/search?keyword=${inputKeyword}`); // URL에 쿼리 남기기
   };
 
   return (
