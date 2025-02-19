@@ -1,3 +1,4 @@
+import InputField from "@components/InputField";
 import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
 import tw from "tailwind-styled-components";
@@ -39,42 +40,34 @@ export default function AddAddressModal({
                   <StyledFormContainer>
                     <InfoTitle>배송지 추가</InfoTitle>
                     <StyledGridContainer>
-                      <label htmlFor="addressName">배송지명</label>
-                      <input
-                        type="text"
+                      <InputField
                         id="addressName"
-                        className="px-2 py-1 border rounded-md focus:outline-none border-neutral-400"
-                        {...registerAddress("name", {
+                        label="배송지명"
+                        register={registerAddress("name", {
                           required: "배송지명을 입력해주세요.",
                         })}
+                        errorMsg={addressErrors.name?.message}
                       />
-                      {addressErrors.name && (
-                        <ErrorText>{addressErrors.name.message}</ErrorText>
-                      )}
-                      <label htmlFor="address">주소</label>
-                      <input
-                        type="text"
+                      <InputField
                         id="address"
-                        className="px-2 py-1 border rounded-md focus:outline-none border-neutral-400"
-                        {...registerAddress("value", {
+                        label="주소"
+                        register={registerAddress("value", {
                           required: "주소를 입력해주세요.",
                         })}
+                        errorMsg={addressErrors.value?.message}
                       />
-                      {addressErrors.value && (
-                        <ErrorText>{addressErrors.value.message}</ErrorText>
-                      )}
                     </StyledGridContainer>
                   </StyledFormContainer>
                   <ModalBtnArea>
                     <button
-                      className="grow px-16 py-3 border-r rounded-l border-neutral-300 hover:bg-secondary-base flex justify-center"
+                      className="grow px-16 py-3 border-r rounded-l border-neutral-300 hover:bg-secondary-base flex justify-center text-align"
                       onClick={() => setIsOpen(false)}
                     >
                       취소
                     </button>
                     <button
                       type="submit"
-                      className="grow px-16 py-3 rounded-b hover:bg-secondary-base flex justify-center text-align"
+                      className="grow px-16 py-3 rounded-b border-neutral-300 hover:bg-secondary-base flex justify-center text-align"
                     >
                       추가
                     </button>
@@ -141,8 +134,4 @@ const StyledFormContainer = tw.div`
 
 const StyledGridContainer = tw.div`
   grid grid-cols-[88px_minmax(200px,300px)] gap-y-3 items-center
-`;
-
-const ErrorText = tw.p`
-  col-start-2 text-sm text-red-500
 `;
