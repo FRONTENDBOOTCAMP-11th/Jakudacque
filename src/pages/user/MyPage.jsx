@@ -76,6 +76,7 @@ export default function MyPage() {
       name: e.product.name,
       price: e.product.price,
       id: String(e.product._id),
+      link: `/list/${e.product._id}`,
       myBookmarkId: e._id,
     }));
   }

@@ -10,9 +10,7 @@ export default function Product({ product, setIsCartModalOpen }) {
   const { refetchWish } = useHandleWish();
 
   // 찜 상태
-  const [localWish, setLocalWish] = useState(
-    product.myBookmarkId ? true : false,
-  );
+  const [localWish, setLocalWish] = useState(!!product.myBookmarkId);
 
   const wishHandle = async () => {
     setLocalWish(localWish => !localWish); // 로컬 찜 상태 변경

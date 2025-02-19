@@ -46,10 +46,10 @@ export default function Detail() {
 
   const { refetchWish } = useHandleWish();
 
-  const [localWish, setLocalWish] = useState(data?.myBookmarkId ? true : false);
+  const [localWish, setLocalWish] = useState(false);
 
   useEffect(() => {
-    setLocalWish(data?.myBookmarkId ? true : false);
+    setLocalWish(!!data?.myBookmarkId);
   }, [data]);
 
   const wishHandle = async () => {
