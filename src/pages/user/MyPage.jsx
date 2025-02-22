@@ -13,6 +13,7 @@ import { useForm } from "react-hook-form";
 import { FaRegClipboard, FaRegHeart } from "react-icons/fa";
 import tw from "tailwind-styled-components";
 import AddAddressModal from "@components/AddAddressModal";
+import InputField from "@components/InputField";
 
 export default function MyPage() {
   const axios = useAxiosInstance();
@@ -75,6 +76,7 @@ export default function MyPage() {
       name: e.product.name,
       price: e.product.price,
       id: String(e.product._id),
+      link: `/list/${e.product._id}`,
       myBookmarkId: e._id,
     }));
   }
@@ -262,38 +264,27 @@ export default function MyPage() {
                 <StyledFormContainer>
                   <InfoTitle>기본 정보</InfoTitle>
                   <StyledGridContainer>
-                    <label htmlFor="name" className="items-center">
-                      이름
-                    </label>
-                    <input
-                      type="text"
+                    <InputField
                       id="name"
-                      className="px-2 py-1 border rounded-md focus:outline-none border-neutral-400"
+                      label="이름"
                       defaultValue={userData.name}
-                      {...registerBasic("name", {
+                      register={registerBasic("name", {
                         required: "이름은 비워둘 수 없습니다.",
                       })}
+                      errorMsg={basicErrors.name?.message}
                     />
-                    {basicErrors.name && (
-                      <ErrorText>{basicErrors.name.message}</ErrorText>
-                    )}
-
-                    <label htmlFor="name">휴대폰 번호</label>
-                    <input
-                      type="text"
+                    <InputField
                       id="phone"
-                      className="px-2 py-1 border rounded-md focus:outline-none border-neutral-400"
+                      label="휴대폰 번호"
                       defaultValue={userData.phone}
-                      {...registerBasic("phone", {
+                      register={registerBasic("phone", {
                         pattern: {
                           value: /^[0-9]*$/,
                           message: "숫자만 입력해주세요.",
                         },
                       })}
+                      errorMsg={basicErrors.phone?.message}
                     />
-                    {basicErrors.phone && (
-                      <ErrorText>{basicErrors.phone.message}</ErrorText>
-                    )}
                   </StyledGridContainer>
                 </StyledFormContainer>
               </form>
@@ -366,7 +357,4 @@ const StyledFormContainer = tw.div`
 
 const StyledGridContainer = tw.div`
   grid grid-cols-[88px_minmax(200px,300px)] gap-y-3 items-center pt-3
-`;
-const ErrorText = tw.p`
-  col-start-2 text-sm text-red-500
 `;

@@ -10,9 +10,7 @@ export default function Product({ product, setIsCartModalOpen }) {
   const { refetchWish } = useHandleWish();
 
   // 찜 상태
-  const [localWish, setLocalWish] = useState(
-    product.myBookmarkId ? true : false,
-  );
+  const [localWish, setLocalWish] = useState(!!product.myBookmarkId);
 
   const wishHandle = async () => {
     setLocalWish(localWish => !localWish); // 로컬 찜 상태 변경
@@ -25,18 +23,17 @@ export default function Product({ product, setIsCartModalOpen }) {
   };
 
   // 장바구니 추가
-  const { addCart } = useAddCart();
+  const { addCart } = useAddCart(setIsCartModalOpen);
 
   // 장바구니에 상품 추가
   const handleAddCart = () => {
     addCart.mutate({ product_id: Number(product.id), quantity: 1 });
-    setIsCartModalOpen(true);
   };
 
   return (
     <>
       <div className="px-1">
-        <Link to={`/list/${product.id}`} className="relative block mx-auto">
+        <Link to={product.link} className="relative block mx-auto">
           <img
             src={product.image}
             alt={product.name}
@@ -74,6 +71,7 @@ Product.propTypes = {
     name: PropTypes.string.isRequired,
     price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     myBookmarkId: PropTypes.number,
+    link: PropTypes.string.isRequired,
   }).isRequired,
   setIsCartModalOpen: PropTypes.func,
 };
