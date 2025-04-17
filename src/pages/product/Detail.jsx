@@ -47,8 +47,10 @@ export default function Detail() {
 
   const { refetchWish } = useHandleWish();
 
+  // 로컬 찜 상태
   const [localWish, setLocalWish] = useState(false);
 
+  // 데이터(상품 아이디)가 변경될 때 myBookmarkId 속성(숫자)을 불리언 값으로 변경하여 로컬 찜 상태 반영
   useEffect(() => {
     setLocalWish(!!data?.myBookmarkId);
   }, [data]);
@@ -91,6 +93,16 @@ export default function Detail() {
 
   // 로그인한 회원 데이터
   const user = useUserStore(state => state.user);
+
+  // 상세 정보로 이동
+  const scrollToDetail = () => {
+    document.getElementById("detail")?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  // 상품 리뷰로 이동
+  const scrollToReview = () => {
+    document.getElementById("review")?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <div className="w-full">
@@ -188,16 +200,21 @@ export default function Detail() {
           </div>
           {/* 상품 상세 정보, 상품 리뷰 카테고리 */}
           <div className="border-y border-neutral-200 bg-neutral-50 mt-8 flex sticky top-16 z-50 text-sm md:text-base">
-            <button className="border-r py-1.5 grow">상세 정보</button>
-            <button className="py-1.5 grow">상품 리뷰</button>
+            <button className="border-r py-1.5 grow" onClick={scrollToDetail}>
+              상세 정보
+            </button>
+            <button className="py-1.5 grow" onClick={scrollToReview}>
+              상품 리뷰
+            </button>
           </div>
           {/* 상품 상세 정보 */}
           <div
-            className="flex justify-center mt-10"
+            id="detail"
+            className="flex justify-center mt-10 scroll-mt-24"
             dangerouslySetInnerHTML={{ __html: data.content }}
           ></div>
           {/* 상품 리뷰 */}
-          <div className="mx-5 mt-10">
+          <div className="mx-5 mt-10 scroll-mt-24" id="review">
             <h3 className="border-b-2 border-b-neutral-100 text-lg font-medium pb-2 mb-2 md:text-xl">
               상품 리뷰(2)
             </h3>
