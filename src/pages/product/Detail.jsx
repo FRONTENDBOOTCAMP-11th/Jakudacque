@@ -210,11 +210,11 @@ export default function Detail() {
           {/* 상품 상세 정보 */}
           <div
             id="detail"
-            className="flex justify-center mt-10 scroll-mt-24"
+            className="flex justify-center mt-10 scroll-mt-28"
             dangerouslySetInnerHTML={{ __html: data.content }}
           ></div>
           {/* 상품 리뷰 */}
-          <div className="mx-5 mt-10 scroll-mt-24" id="review">
+          <div className="mx-5 mt-10 scroll-mt-28" id="review">
             <h3 className="border-b-2 border-b-neutral-100 text-lg font-medium pb-2 mb-2 md:text-xl">
               상품 리뷰(2)
             </h3>
