@@ -48,7 +48,7 @@ export default function WriteReviewModal({
 
   const handleAddImages = event => {
     const imgLists = event.target.files;
-    let imgUrlArr = [];
+    let imgUrlArr = [...previewImg];
     for (let i = 0; i < imgLists.length; i++) {
       const relativeUrl = URL.createObjectURL(imgLists[i]); // 상대경로 생성
       imgUrlArr.push(relativeUrl);
@@ -60,11 +60,23 @@ export default function WriteReviewModal({
     let newPreview = [];
     if (previewImg.length > 0) {
       newPreview = previewImg.map((e, i) => {
-        return <img key={i} src={e} alt={`사진 첨부(${i + 1})`} />;
+        return (
+          <div key={i} className="relative flex-shrink-0 w-28 flex">
+            <img
+              src={e}
+              alt={`사진 첨부(${i + 1})`}
+              className="object-contain"
+            />
+            <button className="absolute right-1 top-1 bg-black/20 rounded-full">
+              <IoCloseOutline size={16} />
+            </button>
+          </div>
+        );
       });
     }
     return newPreview;
   };
+
   return (
     isWriteReviewModalOpen && (
       <Container>
@@ -79,7 +91,7 @@ export default function WriteReviewModal({
             <div className="flex items-center gap-x-5 border-gray-300 border-y py-3">
               <img
                 className="w-20 rounded-md"
-                src={`https://11.fesp.shop/${product.image.path}`}
+                src={`https://fesp-api.koyeb.app/market/${product.image.path}`}
                 alt={product.name}
               />
               <p>{product.name}</p>
@@ -103,14 +115,14 @@ export default function WriteReviewModal({
             {/* 사진 등록 */}
             <div className="flex flex-col gap-y-1.5">
               <h2 className="font-semibold">사진 첨부</h2>
-              <div className="flex h-28">
-                <div className="flex overflow-x-auto">{printPreviewImg()}</div>
+              <div className="flex overflow-x-auto gap-x-2 ">
+                <div className="flex">{printPreviewImg()}</div>
                 <label
                   htmlFor="reviewImg"
-                  className="flex"
+                  className="flex z-10 shrink-0"
                   onChange={handleAddImages}
                 >
-                  <div className="flex flex-col items-center gap-y-1 cursor-pointer border w-fit px-8 pt-8 rounded   border-neutral-300 hover:border-neutral-400">
+                  <div className="flex flex-col items-center gap-y-1 cursor-pointer border w-fit px-8 pt-8 rounded   border-neutral-300 hover:border-neutral-400 h-28 bg-white">
                     <IoAddSharp size={20} />
                     <p className="text-xs">0/10</p>
                   </div>
