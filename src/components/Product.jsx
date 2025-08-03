@@ -2,7 +2,7 @@ import CartModal from "@components/CartModal";
 import { useAddCart } from "@hooks/useAddCart";
 import { useHandleWish } from "@hooks/useHandleWish";
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoCartOutline, IoHeartOutline, IoHeartSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
@@ -11,6 +11,11 @@ export default function Product({ product, setIsCartModalOpen }) {
 
   // 찜 상태
   const [localWish, setLocalWish] = useState(!!product.myBookmarkId);
+
+  // 상품이 변경될 때 myBookmarkId 속성(숫자)을 불리언 값으로 변경하여 로컬 찜 상태 반영
+  useEffect(() => {
+    setLocalWish(!!product?.myBookmarkId);
+  }, [product]);
 
   const wishHandle = async () => {
     setLocalWish(localWish => !localWish); // 로컬 찜 상태 변경

@@ -14,6 +14,7 @@ import { FaRegClipboard, FaRegHeart } from "react-icons/fa";
 import tw from "tailwind-styled-components";
 import AddAddressModal from "@components/AddAddressModal";
 import InputField from "@components/InputField";
+import { IoStar } from "react-icons/io5";
 
 export default function MyPage() {
   const axios = useAxiosInstance();
@@ -210,6 +211,12 @@ export default function MyPage() {
                 찜 리스트
               </button>
               <button
+                className={`${category === "review" ? "border-b-2 border-neutral-800 font-semibold" : ""}`}
+                onClick={() => setCategory("review")}
+              >
+                나의 리뷰
+              </button>
+              <button
                 className={`${category === "editProfile" ? "border-b-2 border-neutral-800 font-semibold" : ""}`}
                 onClick={() => setCategory("editProfile")}
               >
@@ -252,6 +259,56 @@ export default function MyPage() {
                     <p>찜 리스트가 없습니다.</p>
                   </EmptyList>
                 )}
+              </div>
+            </div>
+
+            {/* 리뷰 */}
+            <div
+              className={`flex-1 md:pt-5 pt-0 pb-6 ${category === "review" ? "" : "hidden"}`}
+            >
+              <div className="pt-5 px-4">
+                <div className="flex gap-x-2 items-center pb-4 mb-4 border-b last:border-b-0">
+                  <div className="max-w-32 shrink-0">
+                    <img
+                      src="/images/review_img.png"
+                      alt="자동차 햄스터 키링 리뷰 이미지"
+                    />
+                  </div>
+                  <div className="mr-auto">
+                    {/* 상품명 */}
+                    <p className="text-sm font-semibold text-neutral-700 mb-1">
+                      차냐 자동차 햄스터 키링
+                    </p>
+                    {/* 작성 일자 */}
+                    <p className="text-sm font-medium text-neutral-500 mb-0.5">
+                      작성일자 2025.04.22
+                    </p>
+                    {/* 별점 */}
+                    <div className="flex gap-x-1 mb-0.5">
+                      <div className="flex">
+                        <IoStar size="18" className="text-amber-400" />
+                        <IoStar size="18" className="text-amber-400" />
+                        <IoStar size="18" className="text-amber-400" />
+                        <IoStar size="18" className="text-amber-400" />
+                        <IoStar size="18" className="text-neutral-300" />
+                      </div>
+                      <p className="text-sm">4</p>
+                    </div>
+                    {/* 리뷰 내용 */}
+                    <p className="leading-snug text-sm md:text-base">
+                      귀여워요
+                    </p>
+                  </div>
+                  {/* 수정, 삭제 버튼 영역 */}
+                  <div className="flex flex-col justify-center gap-y-1.5 text-sm shrink-0">
+                    <button className="border border-neutral-300 hover:border-neutral-400 px-4 py-1.5 rounded ">
+                      리뷰수정
+                    </button>
+                    <button className="border border-neutral-300 hover:border-neutral-400 px-4 py-1.5 rounded">
+                      리뷰보기
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
 
