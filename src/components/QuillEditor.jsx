@@ -47,11 +47,7 @@ export default function QuillEditor({ content, setContent }) {
         const range = quillInstance.current.getEditorSelection();
         quillInstance.current
           .getEditor()
-          .insertEmbed(
-            range?.index || 0,
-            "image",
-            "https://11.fesp.shop" + data.path,
-          );
+          .insertEmbed(range?.index || 0, "image", data.path);
       };
     } catch (error) {
       console.error("Image handler failed:", error);

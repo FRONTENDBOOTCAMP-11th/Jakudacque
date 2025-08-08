@@ -1,0 +1,1344 @@
+{
+  "user": [
+    {
+      "email": "admin@market.com",
+      "password": "$2b$10$S.8GNMDyvUF0xzujPtHBu.j5gtS19.OhRmYbpJBnCHg2S83WLx1T2",
+      "name": "무지",
+      "phone": "01011112222",
+      "address": "서울시 강남구 역삼동 123",
+      "type": "admin",
+      "loginType": "email",
+      "image": "uploadFiles/user-muzi.png",
+      "extra": {
+        "birthday": "03-23",
+        "membershipClass": "MC03",
+        "addressBook": [
+          {
+            "id": 1,
+            "name": "집",
+            "value": "서울시 강남구 역삼동 123"
+          },
+          {
+            "id": 2,
+            "name": "회사",
+            "value": "서울시 강남구 신사동 234"
+          }
+        ]
+      }
+    },
+    {
+      "email": "u1@market.com",
+      "password": "$2b$10$S.8GNMDyvUF0xzujPtHBu.j5gtS19.OhRmYbpJBnCHg2S83WLx1T2",
+      "name": "제이지",
+      "phone": "01044445555",
+      "address": "서울시 강남구 논현동 222",
+      "type": "user",
+      "loginType": "email",
+      "image": "uploadFiles/user-jayg.webp",
+      "extra": {
+        "birthday": "11-30",
+        "membershipClass": "MC02",
+        "addressBook": [
+          {
+            "id": 1,
+            "name": "회사",
+            "value": "서울시 강동구 천호동 123"
+          },
+          {
+            "id": 2,
+            "name": "집",
+            "value": "서울시 강동구 성내동 234"
+          }
+        ]
+      }
+    }
+  ],
+  "product": [
+    {
+      "seller_id": 1,
+      "price": 6000,
+      "shippingFees": 3000,
+      "show": true,
+      "active": true,
+      "name": "2025 두들링 다이어리",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/diary1.png",
+          "name": "diary1.png",
+          "originalname": "diary1.png"
+        }
+      ],
+      "content": "<div class=\"product-detail\"><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754482469/febc11-final03-regj/KE1N7cBZT.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754482469/febc11-final03-regj/0Z9UqoDoY_.png\"></p></div>",
+      "extra": {
+        "isNew": true,
+        "isBest": true,
+        "category": ["PC01"],
+        "sort": 1
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 18000,
+      "shippingFees": 3000,
+      "show": true,
+      "active": true,
+      "name": "[B6] 블랭크북 ver.2",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/diary2.png",
+          "name": "diary2.png",
+          "originalname": "diary2.png"
+        }
+      ],
+      "content": "<div class=\"product-detail\"><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754632824/febc11-final03-regj/f6LrhzHiRm.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754632824/febc11-final03-regj/yz2oYO5aIu.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754632824/febc11-final03-regj/JA6SNwXA2q.png\"></p></div>",
+      "extra": {
+        "isNew": false,
+        "isBest": true,
+        "category": ["PC01"],
+        "sort": 1
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 3150,
+      "shippingFees": 3000,
+      "show": true,
+      "active": true,
+      "name": "[wawa109] 중철노트 핑크",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/diary3.png",
+          "name": "diary3.png",
+          "originalname": "diary3.png"
+        }
+      ],
+      "content": "<div class=\"product-detail\"><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754633086/febc11-final03-regj/y5_-Y1KhGh.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754633086/febc11-final03-regj/pWAklEKXXI.png\"></p></div>",
+      "extra": {
+        "isNew": true,
+        "isBest": true,
+        "category": ["PC01"],
+        "sort": 1
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 9600,
+      "shippingFees": 3000,
+      "show": true,
+      "active": true,
+      "name": "아이코닉 2025 이겨낸다 다이어리",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/diary4.png",
+          "name": "diary4.png",
+          "originalname": "diary4.png"
+        }
+      ],
+      "content": "<div class=\"product-detail\"><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754633152/febc11-final03-regj/1azl83IuUT.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754633152/febc11-final03-regj/hobZYD5mNx.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754633152/febc11-final03-regj/23SiGpbPLB.png\"></p></div>",
+      "extra": {
+        "isNew": false,
+        "isBest": true,
+        "category": ["PC01"],
+        "sort": 1
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 6000,
+      "shippingFees": 3000,
+      "show": true,
+      "active": true,
+      "name": "[날짜형] 나의색 나의하루 vol.7 2025 다이어리",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/diary5.png",
+          "name": "diary5.png",
+          "originalname": "diary5.png"
+        }
+      ],
+      "content": "<div class=\"product-detail\"><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754633233/febc11-final03-regj/_AA5CvinQj.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754633233/febc11-final03-regj/8xhe2yZl8p.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754633233/febc11-final03-regj/byWzNPoD7s.png\"></p></div>",
+      "extra": {
+        "isNew": true,
+        "isBest": false,
+        "today": true,
+        "category": ["PC01"],
+        "sort": 1
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 4860,
+      "shippingFees": 3000,
+      "show": false,
+      "active": true,
+      "name": "[만년형] 컴포지션스튜디오 컴포지션 북 스택 먼슬리 다이어리",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/diary6.png",
+          "name": "diary6.png",
+          "originalname": "diary6.png"
+        }
+      ],
+      "content": "<div class=\"product-detail\"><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754633317/febc11-final03-regj/sWHj91Andu.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754633317/febc11-final03-regj/orbCVcXQqf.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754633317/febc11-final03-regj/alYVfhBy-k.png\"></p> </div>",
+      "extra": {
+        "isNew": false,
+        "isBest": false,
+        "category": ["PC01"],
+        "sort": 1
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 16800,
+      "shippingFees": 3000,
+      "show": true,
+      "active": true,
+      "name": "[만년형] 러빗띵스 라벨 다이어리 세트",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/diary7.png",
+          "name": "diary7.png",
+          "originalname": "diary7.png"
+        }
+      ],
+      "content": "<div class=\"product-detail\"><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754633448/febc11-final03-regj/Q0LJMFfoPY.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754633448/febc11-final03-regj/ZKAAzXaAk5.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754633448/febc11-final03-regj/f8YpGOL0oo.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754633448/febc11-final03-regj/HNxwlo7SUM.png\"></p></div>",
+      "extra": {
+        "isNew": false,
+        "isBest": true,
+        "category": ["PC01"],
+        "sort": 1
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 28800,
+      "shippingFees": 3000,
+      "show": true,
+      "active": true,
+      "name": "Thence Scrap Book Set",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/diary8.png",
+          "name": "diary8.png",
+          "originalname": "diary8.png"
+        }
+      ],
+      "content": "<div class=\"product-detail\"><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754633584/febc11-final03-regj/-fhDrgAzSd.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754633584/febc11-final03-regj/ul8zbiV7n.png\"></p></div>",
+      "extra": {
+        "isNew": true,
+        "isBest": true,
+        "category": ["PC01"],
+        "sort": 1
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 14560,
+      "shippingFees": 3000,
+      "show": true,
+      "active": true,
+      "name": "2025 레인보우 다이어리 L",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/diary9.png",
+          "name": "diary9.png",
+          "originalname": "diary9.png"
+        }
+      ],
+      "content": "<div class=\"product-detail\"><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754633584/febc11-final03-regj/8nIKycJoZ7.png\"></p></div>",
+      "extra": {
+        "isNew": true,
+        "isBest": false,
+        "today": true,
+        "category": ["PC01"],
+        "sort": 1
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 26000,
+      "shippingFees": 3000,
+      "show": true,
+      "active": true,
+      "name": "Shabby Rose book cover",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/diary10.png",
+          "name": "diary10.png",
+          "originalname": "diary10.png"
+        }
+      ],
+      "content": "<div class=\"product-detail\"><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754633848/febc11-final03-regj/9xQbYLYoTz.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754633848/febc11-final03-regj/7TFNHVok-K.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754633848/febc11-final03-regj/vFhFfLzAdL.png\"></p></div>",
+      "extra": {
+        "isNew": false,
+        "isBest": true,
+        "category": ["PC01"],
+        "sort": 1
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 10620,
+      "shippingFees": 3000,
+      "show": true,
+      "active": true,
+      "name": "2025 동동 다이어리",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/diary11.png",
+          "name": "diary11.png",
+          "originalname": "diary11.png"
+        }
+      ],
+      "content": "<div align=\"product-detail\"><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754633956/febc11-final03-regj/UDSiizEhZq.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754633956/febc11-final03-regj/9g6eSjDyHj.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754633957/febc11-final03-regj/D175FfDYdw.png\"></p></div>",
+      "extra": {
+        "isNew": false,
+        "isBest": false,
+        "today": true,
+        "category": ["PC01"],
+        "sort": 1
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 9000,
+      "shippingFees": 3000,
+      "show": true,
+      "active": true,
+      "name": "큐피드곰 그림 일기장",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/diary12.png",
+          "name": "diary12.png",
+          "originalname": "diary12.png"
+        }
+      ],
+      "content": "<div align=\"product-detail\"><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634066/febc11-final03-regj/nImWCswNWO.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634066/febc11-final03-regj/0o6aG4IJqd.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634066/febc11-final03-regj/SlEDsEwKab.png\"></p></div>",
+      "extra": {
+        "isNew": true,
+        "isBest": true,
+        "category": ["PC01"],
+        "sort": 1
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 6000,
+      "shippingFees": 3000,
+      "show": true,
+      "active": true,
+      "name": "유유클로버 플라워토끼 키링",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/keyring1.png",
+          "name": "keyring1.png",
+          "originalname": "keyring1.png"
+        }
+      ],
+      "content": "<div align=\"product-detail\"><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634127/febc11-final03-regj/FAqalO7Yby.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634127/febc11-final03-regj/23kYBI5lXt.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634127/febc11-final03-regj/kA9rHpGFN-.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634127/febc11-final03-regj/qqQVqtY4Lf.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634127/febc11-final03-regj/201u9Z9XGX.png\"></p></div>",
+      "extra": {
+        "isNew": true,
+        "isBest": false,
+        "category": ["PC05"],
+        "sort": 5
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 6000,
+      "shippingFees": 3000,
+      "show": true,
+      "active": true,
+      "name": "유유클로버 강아지쿠키 키링",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/keyring2.png",
+          "name": "keyring2.png",
+          "originalname": "keyring2.png"
+        }
+      ],
+      "content": "<div align=\"product-detail\"><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634127/febc11-final03-regj/FAqalO7Yby.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634127/febc11-final03-regj/23kYBI5lXt.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634127/febc11-final03-regj/kA9rHpGFN-.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634127/febc11-final03-regj/qqQVqtY4Lf.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634127/febc11-final03-regj/201u9Z9XGX.png\"></p></div>",
+      "extra": {
+        "isNew": true,
+        "isBest": false,
+        "category": ["PC05"],
+        "sort": 5
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 7000,
+      "shippingFees": 3000,
+      "show": true,
+      "active": true,
+      "name": "차냐 자동차 햄스터 키링",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/keyring3.png",
+          "name": "keyring3.png",
+          "originalname": "keyring3.png"
+        }
+      ],
+      "content": "<div class=\"product-detail\"><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634177/febc11-final03-regj/_jYpVNu31Z.png\"></p></div>",
+      "extra": {
+        "isNew": false,
+        "isBest": true,
+        "category": ["PC05"],
+        "sort": 5
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 9000,
+      "shippingFees": 3000,
+      "name": "엑스디 덕이 키링",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/keyring4.png",
+          "name": "keyring4.png",
+          "originalname": "keyring4.png"
+        }
+      ],
+      "content": "<div class=\"product-detail\"><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634177/febc11-final03-regj/mWS8QuF0oG.png\"></p></div>",
+      "extra": {
+        "isNew": false,
+        "isBest": true,
+        "category": ["PC05"],
+        "sort": 5
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 5000,
+      "shippingFees": 3000,
+      "name": "담담 눈사람 스몰 마스킹테이프",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/maskingtape1.png",
+          "name": "maskingtape1.png",
+          "originalname": "maskingtape1.png"
+        }
+      ],
+      "content": "<div class=\"product-detail\"><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634329/febc11-final03-regj/uACWBKTi6.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634329/febc11-final03-regj/ASFf6is_XK.png\"></p></div>",
+      "extra": {
+        "category": ["PC04"],
+        "sort": 4
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 4500,
+      "shippingFees": 3000,
+      "name": "츄로네집 별이내린꿀 글리터 다이컷 마스킹테이프",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/maskingtape2.png",
+          "name": "maskingtape2.png",
+          "originalname": "maskingtape2.png"
+        }
+      ],
+      "content": "<div class=\"product-detail\"><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634329/febc11-final03-regj/fKJiOj4hQt.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634329/febc11-final03-regj/SQ1LlCs9No.png\"></p></div>",
+      "extra": {
+        "category": ["PC04"],
+        "sort": 4
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 4200,
+      "shippingFees": 3000,
+      "name": "조무래기 오늘의 제목 마스킹테이프",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/maskingtape3.png",
+          "name": "maskingtape3.png",
+          "originalname": "maskingtape3.png"
+        }
+      ],
+      "content": "<div class=\"product-detail\"><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634416/febc11-final03-regj/oWjNjM-El.png\"></p></div>",
+      "extra": {
+        "category": ["PC04"],
+        "sort": 4
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 5500,
+      "shippingFees": 3000,
+      "name": "츄로네집 버블 구름 마스킹테이프 5종",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/maskingtape4.png",
+          "name": "maskingtape4.png",
+          "originalname": "maskingtape4.png"
+        }
+      ],
+      "content": "<div class=\"product-detail\"><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634416/febc11-final03-regj/GCIIBC7hd9.png\"></p></div>",
+      "extra": {
+        "category": ["PC04"],
+        "sort": 4
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 5000,
+      "shippingFees": 3000,
+      "name": "보돔보돔 보송블러 키스컷 마스킹테이프",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/maskingtape5.png",
+          "name": "maskingtape5.png",
+          "originalname": "maskingtape5.png"
+        }
+      ],
+      "content": "<div class=\"product-detail\"><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634416/febc11-final03-regj/SUIMLteIF7.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634416/febc11-final03-regj/DxbatdpV9f.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634416/febc11-final03-regj/4mvVqXwzP-.png\"></p></div>",
+      "extra": {
+        "category": ["PC04"],
+        "sort": 4
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 7000,
+      "shippingFees": 3000,
+      "name": "보돔보돔 메모이지컷 마스킹테이프",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/maskingtape6.png",
+          "name": "maskingtape6.png",
+          "originalname": "maskingtape6.png"
+        }
+      ],
+      "content": "<div class=\"product-detail\"><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634529/febc11-final03-regj/huWnVFG4X.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634529/febc11-final03-regj/xnSlTbvuF2.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634529/febc11-final03-regj/cxPhL3b9IG.png\"></p></div>",
+      "extra": {
+        "category": ["PC04"],
+        "sort": 4,
+        "depth": 1,
+        "isBest": true
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 5500,
+      "shippingFees": 3000,
+      "name": "보돔보돔 래빗 마스킹테이프",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/maskingtape7.png",
+          "name": "maskingtape7.png",
+          "originalname": "maskingtape7.png"
+        }
+      ],
+      "content": "<div class=\"product-detail\"><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634529/febc11-final03-regj/j9K528K9cx.png\"></p></div>",
+      "extra": {
+        "category": ["PC04"],
+        "sort": 4,
+        "depth": 1,
+        "isBest": true
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 5500,
+      "shippingFees": 3000,
+      "name": "보돔보돔 클로버 마스킹테이프",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/maskingtape8.png",
+          "name": "maskingtape8.png",
+          "originalname": "maskingtape8.png"
+        }
+      ],
+      "content": "<div class=\"product-detail\"><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634529/febc11-final03-regj/8eWOl1eMah.png\"></p></div>",
+      "extra": {
+        "category": ["PC04"],
+        "sort": 4,
+        "depth": 1
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 4500,
+      "shippingFees": 3000,
+      "name": "츄로네집 별구름 유테 마스킹테이프",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/maskingtape9.png",
+          "name": "maskingtape9.png",
+          "originalname": "maskingtape9.png"
+        }
+      ],
+      "content": "<div class=\"product-detail\"><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634606/febc11-final03-regj/-Kq1ZsaMX.png\"></p></div>",
+      "extra": {
+        "category": ["PC04"],
+        "sort": 4,
+        "depth": 1
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 4500,
+      "shippingFees": 3000,
+      "name": "미찌샵 멍멍 마스킹테이프",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/maskingtape10.png",
+          "name": "maskingtape10.png",
+          "originalname": "maskingtape10.png"
+        }
+      ],
+      "content": "<div class=\"product-detail\"><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634606/febc11-final03-regj/ltbiMV5g9i.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634606/febc11-final03-regj/vh8seB4rmF.png\"></p></div>",
+      "extra": {
+        "category": ["PC04"],
+        "sort": 4,
+        "depth": 1
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 2500,
+      "shippingFees": 3000,
+      "name": "모나니스튜디오 도람이 메모지",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/memo1.png",
+          "name": "memo1.png",
+          "originalname": "memo1.png"
+        }
+      ],
+      "content": "<div class=\"product-detail\"><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634606/febc11-final03-regj/L5NHxunLuf.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634606/febc11-final03-regj/bk5dq8-AUB.png\"></p></div>",
+      "extra": {
+        "category": ["PC03"],
+        "sort": 3,
+        "isBest": true,
+        "isNew": true,
+        "depth": 1
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 3000,
+      "shippingFees": 3000,
+      "name": "모나니스튜디오 모아 클로버 메모지",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/memo2.png",
+          "name": "memo2.png",
+          "originalname": "memo2.png"
+        }
+      ],
+      "content": "<div class=\"product-detail\"><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634606/febc11-final03-regj/L5NHxunLuf.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634669/febc11-final03-regj/jh2FvR1Zmk.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634669/febc11-final03-regj/yITO522zhm.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634669/febc11-final03-regj/i-1j07wDKf.png\"></p></div>",
+      "extra": {
+        "category": ["PC03"],
+        "sort": 3,
+        "isBest": true,
+        "isNew": true,
+        "depth": 1
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 3500,
+      "shippingFees": 3000,
+      "name": "모나니스튜디오 모아 풀밭 메모지",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/memo3.png",
+          "name": "memo3.png",
+          "originalname": "memo3.png"
+        }
+      ],
+      "content": "<div class=\"product-detail\"><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634606/febc11-final03-regj/L5NHxunLuf.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634669/febc11-final03-regj/pKGlie3tql.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634669/febc11-final03-regj/ZgBK7xjQE9.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634669/febc11-final03-regj/AcxPWCWzG1.png\"></p></div>",
+      "extra": {
+        "category": ["PC03"],
+        "sort": 3,
+        "depth": 1
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 5000,
+      "shippingFees": 3000,
+      "name": "컬루 노트패드 메모지",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/memo4.png",
+          "name": "memo4.png",
+          "originalname": "memo4.png"
+        }
+      ],
+      "content": "<div class=\"product-detail\"><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634756/febc11-final03-regj/aoygqaY2O9.png\"></p></div>",
+      "extra": {
+        "category": ["PC03"],
+        "sort": 3,
+        "depth": 1
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 5000,
+      "shippingFees": 3000,
+      "name": "엑스디 에그위클리 메모지",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/memo5.png",
+          "name": "memo5.png",
+          "originalname": "memo5.png"
+        }
+      ],
+      "content": "<div class=\"product-detail\"><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634756/febc11-final03-regj/Es5a-R4-Oj.png\"></p></div>",
+      "extra": {
+        "category": ["PC03"],
+        "depth": 1
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 2000,
+      "shippingFees": 3000,
+      "name": "보돔보돔 포근 메모지",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/memo6.png",
+          "name": "memo6.png",
+          "originalname": "memo6.png"
+        }
+      ],
+      "content": "<div class=\"product-detail\"><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634756/febc11-final03-regj/4YAbmVVL1m.png\"></p></div>",
+      "extra": {
+        "category": ["PC03"],
+        "sort": 3,
+        "depth": 1
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 3200,
+      "shippingFees": 3000,
+      "name": "키치키치 체크리스트 메모지",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/memo7.png",
+          "name": "memo7.png",
+          "originalname": "memo7.png"
+        }
+      ],
+      "content": "<div class=\"product-detail\"><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634830/febc11-final03-regj/VTGoHhezSz.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634830/febc11-final03-regj/y5LlqklaXW.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634830/febc11-final03-regj/82pibD8dZ0.png\"></p></div>",
+      "extra": {
+        "category": ["PC03"],
+        "sort": 3,
+        "depth": 1
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 2500,
+      "shippingFees": 3000,
+      "name": "게이트17 영수증 메모지",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/memo8.png",
+          "name": "memo8.png",
+          "originalname": "memo8.png"
+        }
+      ],
+      "content": "<div class=\"product-detail\"><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634830/febc11-final03-regj/xPS4aej3eP.png\"></p></div>",
+      "extra": {
+        "category": ["PC03"],
+        "sort": 3,
+        "depth": 1
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 2500,
+      "shippingFees": 3000,
+      "name": "게이트17 보딩패스 메모지",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/memo9.png",
+          "name": "memo9.png",
+          "originalname": "memo9.png"
+        }
+      ],
+      "content": "<div class=\"product-detail\"><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634933/febc11-final03-regj/kakCy2o4DF.png\"></p></div>",
+      "extra": {
+        "category": ["PC03"],
+        "sort": 3,
+        "depth": 1
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 2800,
+      "shippingFees": 3000,
+      "name": "모서리스튜디오 햄찌세자매 줄줄이 스티커",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/sticker1.png",
+          "name": "sticker1.png",
+          "originalname": "sticker1.png"
+        }
+      ],
+      "content": "<div class=\"product-detail\"><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634933/febc11-final03-regj/7p_0qvXYVs.png\"></p></div>",
+      "extra": {
+        "category": ["PC02"],
+        "sort": 2,
+        "depth": 1
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 2800,
+      "shippingFees": 3000,
+      "name": "모서리스튜디오 소다냥 스티커",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/sticker2.png",
+          "name": "sticker2.png",
+          "originalname": "sticker2.png"
+        }
+      ],
+      "content": "<div class=\"product-detail\"><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754634933/febc11-final03-regj/XmfVzn4sK7.png\"></p></div>",
+      "extra": {
+        "category": ["PC02"],
+        "sort": 2,
+        "depth": 1
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 2800,
+      "shippingFees": 3000,
+      "name": "모서리스튜디오 미어독 스티커",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/sticker3.png",
+          "name": "sticker3.png",
+          "originalname": "sticker3.png"
+        }
+      ],
+      "content": "<div class=\"product-detail\"><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754635045/febc11-final03-regj/Qyw9KYkBOU.png\"></p></div>",
+      "extra": {
+        "category": ["PC02"],
+        "sort": 2,
+        "depth": 1
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 8000,
+      "shippingFees": 3000,
+      "name": "메이빈 오늘은 뭐할까 스티커팩",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/sticker4.png",
+          "name": "sticker4.png",
+          "originalname": "sticker4.png"
+        }
+      ],
+      "content": "<div class=\"product-detail\"><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754635045/febc11-final03-regj/JmfoCT1zUT.png\"></p></div>",
+      "extra": {
+        "category": ["PC02"],
+        "sort": 2,
+        "depth": 1
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 8000,
+      "shippingFees": 3000,
+      "name": "메이빈 달콤한 여름 간식 스티커팩",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/sticker5.png",
+          "name": "sticker5.png",
+          "originalname": "sticker5.png"
+        }
+      ],
+      "content": "<div class=\"product-detail\"><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754635045/febc11-final03-regj/H0vAJrrGc5.png\"></p></div>",
+      "extra": {
+        "category": ["PC02"],
+        "depth": 1
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 8000,
+      "shippingFees": 3000,
+      "name": "메이빈 꽃 향기 나는 날 스티커팩",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/sticker6.png",
+          "name": "sticker6.png",
+          "originalname": "sticker6.png"
+        }
+      ],
+      "content": "<div class=\"product-detail\"><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754635364/febc11-final03-regj/gD4uEeDhws.png\"></p></div>",
+      "extra": {
+        "category": ["PC02"],
+        "sort": 2,
+        "depth": 1
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 2500,
+      "shippingFees": 3000,
+      "name": "조무래기 폼폼컨페티 메론 씰스티커",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/sticker7.png",
+          "name": "sticker7.png",
+          "originalname": "sticker7.png"
+        }
+      ],
+      "content": "<div class=\"product-detail\"><p>조무래기 폼폼컨페티 메론 씰스티커</p><p>사이즈: 80 * 175 mm</p><p>구성: 1 Sheet</p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754635364/febc11-final03-regj/1ETI-UQ9Nb.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754635364/febc11-final03-regj/I_swWKPLfU.png\"></p></div>",
+      "extra": {
+        "category": ["PC02"],
+        "sort": 2,
+        "depth": 1
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 2500,
+      "shippingFees": 3000,
+      "name": "조무래기 폼폼컨페티 딸기 씰스티커",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/sticker8.png",
+          "name": "sticker8.png",
+          "originalname": "sticker8.png"
+        }
+      ],
+      "content": "<div class=\"product-detail\"><p>조무래기 폼폼컨페티 딸기 씰스티커</p><p>사이즈: 80 * 175 mm</p><p>구성: 1 Sheet</p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754635364/febc11-final03-regj/1ETI-UQ9Nb.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754635364/febc11-final03-regj/I_swWKPLfU.png\"></p></div>",
+      "extra": {
+        "category": ["PC02"],
+        "sort": 2,
+        "depth": 1
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 2500,
+      "shippingFees": 3000,
+      "name": "조무래기 폼폼컨페티 푸딩 씰스티커",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/sticker9.png",
+          "name": "sticker9.png",
+          "originalname": "sticker9.png"
+        }
+      ],
+      "content": "<div class=\"product-detail\"><p>조무래기 폼폼컨페티 푸딩 씰스티커</p><p>사이즈: 80 * 175 mm</p><p>구성: 1 Sheet</p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754635420/febc11-final03-regj/ktFpmahuPH.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754635421/febc11-final03-regj/3Cy6AxyW0h.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754635421/febc11-final03-regj/QMrT4xUJSD.png\"></p></div>",
+      "extra": {
+        "category": ["PC02"],
+        "sort": 2,
+        "depth": 1
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 2500,
+      "shippingFees": 3000,
+      "name": "조무래기 폼폼컨페티 스노우 씰스티커",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/sticker10.png",
+          "name": "sticker10.png",
+          "originalname": "sticker10.png"
+        }
+      ],
+      "content": "<div class=\"product-detail\"><p>조무래기 폼폼컨페티 스노우 씰스티커</p><p>사이즈: 80 * 175 mm</p><p>구성: 1 Sheet</p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754635512/febc11-final03-regj/4m_9SFf_5X.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754635512/febc11-final03-regj/VbKUlx2sYk.png\"></p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754635512/febc11-final03-regj/bPvddFXKds.png\"></p></div>",
+      "extra": {
+        "category": ["PC02"],
+        "sort": 2,
+        "depth": 1
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 2500,
+      "shippingFees": 3000,
+      "name": "게이트17 손글씨 알파벳 스티커",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/sticker11.png",
+          "name": "sticker11.png",
+          "originalname": "sticker11.png"
+        }
+      ],
+      "content": "<div class=\"product-detail\"><p>조무래기 폼폼컨페티 스노우 씰스티커</p><p>사이즈: 80 * 175 mm</p><p>구성: 1 Sheet</p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754635513/febc11-final03-regj/I0huIoWLtP.png\"></p></div>",
+      "extra": {
+        "category": ["PC02"],
+        "sort": 2,
+        "depth": 1
+      }
+    },
+    {
+      "seller_id": 1,
+      "price": 3000,
+      "shippingFees": 3000,
+      "name": "플러피 알파벳 스티커",
+      "quantity": 999999,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/sticker12.png",
+          "name": "sticker12.png",
+          "originalname": "sticker12.png"
+        }
+      ],
+      "content": "<div class=\"product-detail\"><p>조무래기 폼폼컨페티 스노우 씰스티커</p><p>사이즈: 80 * 175 mm</p><p>구성: 1 Sheet</p><p><img src=\"https://res.cloudinary.com/ddedslqvv/image/upload/v1754635513/febc11-final03-regj/A0lEulDf3t.png\"></p></div>",
+      "extra": {
+        "category": ["PC02"],
+        "sort": 2,
+        "depth": 1
+      }
+    }
+  ],
+  "order": [
+    {
+      "user_id": 4,
+      "state": "OS020",
+      "products": [
+        {
+          "_id": 2,
+          "seller_id": 1,
+          "state": "OS020",
+          "name": "[만년형] 러빗띵스 라벨 다이어리 세트",
+          "image": {
+            "path": "uploadFiles/diary7.png",
+            "name": "diary7.png",
+            "originalname": "diary7.png"
+          },
+          "quantity": 1,
+          "price": 16800,
+          "review_id": 3
+        }
+      ],
+      "cost": {
+        "products": 16800,
+        "shippingFees": 3000,
+        "discount": {
+          "products": 0,
+          "shippingFees": 0
+        },
+        "total": 19800
+      },
+      "address": {
+        "name": "회사",
+        "value": "서울시 강남구 신사동 234"
+      }
+    }
+  ],
+  "bookmark": [],
+  "post": [],
+  "code": [
+    {
+      "_id": "productCategory",
+      "title": "상품 카테고리",
+      "codes": [
+        {
+          "sort": 1,
+          "code": "PC01",
+          "value": "다이어리",
+          "depth": 1
+        },
+        {
+          "sort": 2,
+          "code": "PC02",
+          "value": "스티커",
+          "depth": 1
+        },
+        {
+          "sort": 3,
+          "code": "PC03",
+          "value": "메모지",
+          "depth": 1
+        },
+        {
+          "sort": 4,
+          "code": "PC04",
+          "value": "마스킹테이프",
+          "depth": 1
+        },
+        {
+          "sort": 5,
+          "code": "PC05",
+          "value": "키링",
+          "depth": 1
+        }
+      ]
+    },
+    {
+      "_id": "orderState",
+      "title": "주문 상태",
+      "codes": [
+        {
+          "sort": 1,
+          "code": "OS010",
+          "value": "주문 완료"
+        },
+        {
+          "sort": 2,
+          "code": "OS020",
+          "value": "결제 완료"
+        },
+        {
+          "sort": 3,
+          "code": "OS030",
+          "value": "배송 준비중"
+        },
+        {
+          "sort": 4,
+          "code": "OS035",
+          "value": "배송중"
+        },
+        {
+          "sort": 5,
+          "code": "OS040",
+          "value": "배송 완료"
+        },
+        {
+          "sort": 6,
+          "code": "OS110",
+          "value": "반품 요청"
+        },
+        {
+          "sort": 7,
+          "code": "OS120",
+          "value": "반품 처리중"
+        },
+        {
+          "sort": 8,
+          "code": "OS130",
+          "value": "반품 완료"
+        },
+        {
+          "sort": 9,
+          "code": "OS210",
+          "value": "교환 요청"
+        },
+        {
+          "sort": 10,
+          "code": "OS220",
+          "value": "교환 처리중"
+        },
+        {
+          "sort": 11,
+          "code": "OS230",
+          "value": "교환 완료"
+        },
+        {
+          "sort": 12,
+          "code": "OS310",
+          "value": "환불 요청"
+        },
+        {
+          "sort": 13,
+          "code": "OS320",
+          "value": "환불 처리중"
+        },
+        {
+          "sort": 14,
+          "code": "OS330",
+          "value": "환불 완료"
+        }
+      ]
+    },
+    {
+      "_id": "membershipClass",
+      "title": "회원 등급",
+      "codes": [
+        {
+          "sort": 1,
+          "code": "MC01",
+          "value": "일반",
+          "discountRate": 0
+        },
+        {
+          "sort": 2,
+          "code": "MC02",
+          "value": "프리미엄",
+          "discountRate": 10
+        },
+        {
+          "sort": 3,
+          "code": "MC03",
+          "value": "VIP",
+          "discountRate": 20
+        }
+      ]
+    }
+  ],
+  "config": [
+    {
+      "_id": "shippingFees",
+      "title": "배송비",
+      "value": 3000
+    },
+    {
+      "_id": "freeShippingFees",
+      "title": "배송비 무료 금액",
+      "value": 30000
+    }
+  ]
+}

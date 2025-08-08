@@ -100,7 +100,7 @@ export default function Detail() {
             {/* 상품 이미지 */}
             <div className="md:max-w-xl">
               <img
-                src={`https://11.fesp.shop/${data.mainImages[0].path}`}
+                src={data.mainImages[0].path}
                 alt="상품 이미지"
                 className="object-cover"
               />

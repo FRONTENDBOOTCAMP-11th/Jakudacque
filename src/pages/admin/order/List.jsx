@@ -176,7 +176,7 @@ export default function List() {
                 <StyledTd>
                   <div className="flex items-center gap-2">
                     <img
-                      src={"https://11.fesp.shop" + item.products[0].image.path}
+                      src={item.products[0].image.path}
                       alt={item.products[0].name}
                       className="w-12 h-12 rounded"
                     />

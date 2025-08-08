@@ -165,7 +165,7 @@ export default function Edit() {
                 <StyledTd>
                   <div className="flex items-center gap-2">
                     <img
-                      src={"https://11.fesp.shop" + item.image.path}
+                      src={item.image.path}
                       alt={item.image.name}
                       className="w-12 h-12 rounded"
                     />
