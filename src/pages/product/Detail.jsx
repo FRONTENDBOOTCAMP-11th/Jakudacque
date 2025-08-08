@@ -13,6 +13,7 @@ import { useEffect, useState } from "react";
 import AddressModal from "@components/AddressModal";
 import { useAddress } from "@hooks/useAddress";
 import useUserStore from "@zustand/userStore";
+import { IoStar } from "react-icons/io5";
 
 export default function Detail() {
   const { _id } = useParams();
@@ -46,8 +47,10 @@ export default function Detail() {
 
   const { refetchWish } = useHandleWish();
 
+  // 로컬 찜 상태
   const [localWish, setLocalWish] = useState(false);
 
+  // 데이터(상품 아이디)가 변경될 때 myBookmarkId 속성(숫자)을 불리언 값으로 변경하여 로컬 찜 상태 반영
   useEffect(() => {
     setLocalWish(!!data?.myBookmarkId);
   }, [data]);
@@ -91,12 +94,22 @@ export default function Detail() {
   // 로그인한 회원 데이터
   const user = useUserStore(state => state.user);
 
+  // 상세 정보로 이동
+  const scrollToDetail = () => {
+    document.getElementById("detail")?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  // 상품 리뷰로 이동
+  const scrollToReview = () => {
+    document.getElementById("review")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <div className="w-full">
       {isLoading && <Spinner />}
       {data && (
-        <div className="mx-auto max-w-7xl">
-          <div className="flex flex-col items-stretch gap-4 px-0 md:flex-row md:items-center sm:px-4">
+        <div className="mx-auto max-w-7xl min-h-screen">
+          <div className="flex flex-col items-stretch gap-8 px-0 md:flex-row md:items-center sm:px-4 md:mt-8">
             {/* 상품 이미지 */}
             <div className="md:max-w-xl">
               <img
@@ -156,9 +169,9 @@ export default function Detail() {
               </div>
               <div className="flex items-center justify-between my-2">
                 <span className="text-sm sm:text-base">총 상품금액(1개)</span>
-                <span className="text-xl md:text-2xl">{productPrice}원</span>
+                <span className="text-lg md:text-2xl">{productPrice}원</span>
               </div>
-              <div className="flex gap-x-2">
+              <div className="flex gap-x-2 text-sm md:text-base">
                 <button
                   className="flex items-center justify-center py-2 rounded grow basis-48 lg:py-3 bg-secondary-base hover:bg-secondary-dark"
                   onClick={sendInfo}
@@ -185,15 +198,90 @@ export default function Detail() {
               </div>
             </div>
           </div>
-          {/* 상품 디테일 컷 파트 시작 */}
-          <div className="border-y border-neutral-200 bg-neutral-50 text-center py-1.5 mt-10">
-            <p>상세 정보</p>
+          {/* 상품 상세 정보, 상품 리뷰 카테고리 */}
+          <div className="border-y border-neutral-200 bg-neutral-50 mt-8 flex sticky top-16 z-50 text-sm md:text-base">
+            <button className="border-r py-1.5 grow" onClick={scrollToDetail}>
+              상세 정보
+            </button>
+            <button className="py-1.5 grow" onClick={scrollToReview}>
+              상품 리뷰
+            </button>
           </div>
-          {/* 상품 디테일 컷 */}
+          {/* 상품 상세 정보 */}
           <div
-            className="flex justify-center"
+            id="detail"
+            className="flex justify-center mt-10 scroll-mt-28"
             dangerouslySetInnerHTML={{ __html: data.content }}
           ></div>
+          {/* 상품 리뷰 */}
+          <div className="mx-5 mt-10 scroll-mt-28" id="review">
+            <h3 className="border-b-2 border-b-neutral-100 text-lg font-medium pb-2 mb-2 md:text-xl">
+              상품 리뷰(2)
+            </h3>
+            {/* 상품 리뷰 목록*/}
+            <div className="flex flex-col gap-y-2 mb-6">
+              <div className="text-base border-b-2 border-b-neutral-100 pb-1 flex last:border-b-0">
+                <div>
+                  <p className="flex items-baseline gap-x-2">
+                    user1@market.com
+                    <span className="text-gray-500 text-sm">25.03.04</span>
+                  </p>
+                  <div className="flex gap-x-1 items-stretch">
+                    <div className="flex">
+                      <IoStar size="18" className="text-amber-400" />
+                      <IoStar size="18" className="text-amber-400" />
+                      <IoStar size="18" className="text-amber-400" />
+                      <IoStar size="18" className="text-amber-400" />
+                      <IoStar size="18" className="text-neutral-300" />
+                    </div>
+                    <p className="text-sm">4</p>
+                  </div>
+                  <div className="max-w-48">
+                    <img
+                      src="/images/review_img.png"
+                      alt="자동차 햄스터 키링 리뷰 이미지"
+                    />
+                  </div>
+                  <p className="pb-1">귀여워요</p>
+                </div>
+              </div>
+
+              <div className="text-base border-b-2 border-b-neutral-100 pb-1 flex last:border-b-0">
+                <div>
+                  <p className="flex items-baseline gap-x-2">
+                    user1@market.com
+                    <span className="text-gray-500 text-sm">25.03.04</span>
+                  </p>
+                  <div className="flex gap-x-1 items-stretch">
+                    <div className="flex">
+                      <IoStar size="18" className="text-amber-400" />
+                      <IoStar size="18" className="text-amber-400" />
+                      <IoStar size="18" className="text-amber-400" />
+                      <IoStar size="18" className="text-amber-400" />
+                      <IoStar size="18" className="text-neutral-300" />
+                    </div>
+                    <p className="text-sm">4</p>
+                  </div>
+                  <div className="max-w-48">
+                    <img
+                      src="/images/review_img.png"
+                      alt="자동차 햄스터 키링 리뷰 이미지"
+                    />
+                  </div>
+                  <p className="pb-1">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Nostrum dolorum consequuntur rem quos, sint nulla, nihil
+                    provident aliquam ratione, placeat porro minima esse
+                    perspiciatis repudiandae vero! Praesentium inventore ducimus
+                    ea.Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                  </p>
+                </div>
+              </div>
+            </div>
+            {/* <div className="flex flex-col gap-y-2 items-center my-24">
+              <p>작성된 리뷰가 없습니다.</p>
+            </div> */}
+          </div>
         </div>
       )}
       <CartModal
