@@ -17,7 +17,7 @@ export default function Search() {
   const [isOpen, setIsOpen] = useState(false);
 
   const [inputKeyword, setInputKeyword] = useState(
-    queryStr.get("keyword") || "" // URL 쿼리 사용
+    queryStr.get("keyword") || "", // URL 쿼리 사용
   );
   const [searchedKeyword, setSearchedKeyword] = useState(
     queryStr.get("keyword") || "",
@@ -27,7 +27,7 @@ export default function Search() {
     const urlKeyword = queryStr.get("keyword") || "";
     setInputKeyword(urlKeyword);
     setSearchedKeyword(urlKeyword);
-  }, [location.search]); 
+  }, [location.search]);
 
   const handleSearch = event => {
     event.preventDefault();
@@ -82,7 +82,7 @@ export default function Search() {
     id: String(item._id),
     name: item.name,
     price: item.price,
-    image: "https://11.fesp.shop" + item.mainImages[0].path,
+    image: item.mainImages[0].path,
     link: `/product/${item._id}`,
   }));
 
