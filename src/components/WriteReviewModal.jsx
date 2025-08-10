@@ -91,7 +91,7 @@ export default function WriteReviewModal({
             <div className="flex items-center gap-x-5 border-gray-300 border-y py-3">
               <img
                 className="w-20 rounded-md"
-                src={`https://fesp-api.koyeb.app/market/${product.image.path}`}
+                src={product.image.path}
                 alt={product.name}
               />
               <p>{product.name}</p>

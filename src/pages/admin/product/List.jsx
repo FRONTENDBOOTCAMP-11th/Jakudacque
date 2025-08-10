@@ -86,7 +86,7 @@ export default function List() {
                 <StyledTd>{item.name}</StyledTd>
                 <StyledTd>
                   <img
-                    src={"https://11.fesp.shop" + item.mainImages[0].path}
+                    src={item.mainImages[0].path}
                     alt={item.mainImages[0].name}
                     className="w-16 h-16"
                   />

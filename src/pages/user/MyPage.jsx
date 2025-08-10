@@ -73,7 +73,7 @@ export default function MyPage() {
   let product;
   if (data) {
     product = data.map(e => ({
-      image: `https://11.fesp.shop/${e.product.mainImages[0].path}`,
+      image: e.product.mainImages[0].path,
       name: e.product.name,
       price: e.product.price,
       id: String(e.product._id),

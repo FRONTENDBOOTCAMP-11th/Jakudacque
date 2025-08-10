@@ -189,7 +189,7 @@ export default function Cart() {
                   />
                   <Link to={`/list/${items.product_id}`}>
                     <img
-                      src={`https://11.fesp.shop/${items.product.image.path}`}
+                      src={items.product.image.path}
                       alt={items.product.name}
                       className="object-cover w-24 h-24 rounded-md sm:w-36 sm:h-36"
                     />

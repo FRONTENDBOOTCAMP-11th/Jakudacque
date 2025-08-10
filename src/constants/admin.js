@@ -14,7 +14,7 @@ export const CODE_KEYS = {
   orderState: "주문 상태",
   membershipClass: "회원 등급",
 };
-export const IMAGE_URL_PREFIX = "https://11.fesp.shop";
+export const IMAGE_URL_PREFIX = "https://fesp-api.koyeb.app/market";
 
 const CURRENT_YEAR = new Date().getFullYear();
 const DAY_OF_WEEK = ["일", "월", "화", "수", "목", "금", "토"];
