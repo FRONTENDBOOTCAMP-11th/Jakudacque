@@ -1,14 +1,19 @@
 import OrderDetail from "@components/OrderDetail";
 import PropTypes from "prop-types";
 
-export default function OrderProduct({ orderProducts }) {
+export default function OrderProduct({ orderProducts, onReviewComplete }) {
   return (
     <div className="flex flex-col py-5 border-b last:border-none gap-y-4 border-neutral-300 md:px-0">
       <p>{orderProducts.date}</p>
       {orderProducts.products ? (
         <>
           {orderProducts.products.map((e, index) => (
-            <OrderDetail key={index} product={e} />
+            <OrderDetail
+              key={index}
+              product={e}
+              ordererId={orderProducts.id}
+              onReviewComplete={onReviewComplete}
+            />
           ))}
         </>
       ) : (
@@ -26,4 +31,5 @@ OrderProduct.propTypes = {
       products: PropTypes.array.isRequired,
     }.isRequired,
   ),
+  onReviewComplete: PropTypes.func.isRequired,
 };

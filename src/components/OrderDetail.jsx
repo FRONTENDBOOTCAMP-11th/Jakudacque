@@ -2,13 +2,14 @@ import WriteReviewModal from "@components/WriteReviewModal";
 import PropTypes from "prop-types";
 import { useState } from "react";
 
-export default function OrderDetail({ product }) {
+export default function OrderDetail({ product, ordererId, onReviewComplete }) {
   // 리뷰 작성 모달 상태
   const [isWriteReviewModalOpen, setIsWriteReviewModalOpen] = useState(false);
 
   const handleWriteReview = () => {
     setIsWriteReviewModalOpen(true);
   };
+
   return (
     <>
       <div className="flex items-center gap-x-5">
@@ -24,17 +25,21 @@ export default function OrderDetail({ product }) {
             {product.price.toLocaleString()}원
           </li>
         </ul>
-        <button
-          className="ml-auto mt-auto border px-2 py-1.5 rounded text-sm border-neutral-300 hover:border-neutral-400"
-          onClick={handleWriteReview}
-        >
-          리뷰 작성
-        </button>
+        {!product.review_id && (
+          <button
+            className="ml-auto mt-auto border px-2 py-1.5 rounded text-sm border-neutral-300 hover:border-neutral-400"
+            onClick={handleWriteReview}
+          >
+            리뷰 작성
+          </button>
+        )}
       </div>
       <WriteReviewModal
         isWriteReviewModalOpen={isWriteReviewModalOpen}
         setIsWriteReviewModalOpen={setIsWriteReviewModalOpen}
         product={product}
+        ordererId={ordererId}
+        onReviewComplete={onReviewComplete}
       />
     </>
   );
@@ -42,4 +47,6 @@ export default function OrderDetail({ product }) {
 
 OrderDetail.propTypes = {
   product: PropTypes.shape().isRequired,
+  ordererId: PropTypes.number.isRequired,
+  onReviewComplete: PropTypes.func.isRequired,
 };

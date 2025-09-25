@@ -1,7 +1,7 @@
 import Spinner from "@components/Spinner";
 import Product from "@components/Product";
 import useAxiosInstance from "@hooks/useAxiosInstance";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import useUserStore from "@zustand/userStore";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
@@ -17,6 +17,7 @@ import InputField from "@components/InputField";
 import { IoStar } from "react-icons/io5";
 
 export default function MyPage() {
+  const queryClient = useQueryClient();
   const axios = useAxiosInstance();
 
   // 배송지 추가 모달 상태
@@ -88,6 +89,11 @@ export default function MyPage() {
     queryFn: () => axios.get(`/orders`),
     select: res => res.data.item,
   });
+
+  // 주문 내역 쿼리 무효화(리뷰 작성 후 UI 갱신)
+  const refreshOrderData = () => {
+    queryClient.invalidateQueries(["order"]);
+  };
 
   // 주문 내역 데이터 커스텀
   let orderProducts;
@@ -231,7 +237,11 @@ export default function MyPage() {
               {orderProducts.length ? (
                 <div className="px-4">
                   {orderProducts.map(e => (
-                    <OrderProduct key={e.id} orderProducts={e} />
+                    <OrderProduct
+                      key={e.id}
+                      orderProducts={e}
+                      onReviewComplete={refreshOrderData}
+                    />
                   ))}
                 </div>
               ) : (
