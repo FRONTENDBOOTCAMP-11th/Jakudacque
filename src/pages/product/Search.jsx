@@ -83,7 +83,7 @@ export default function Search() {
     name: item.name,
     price: item.price,
     image: item.mainImages[0].path,
-    link: `/product/${item._id}`,
+    link: `/list/${item._id}`,
   }));
 
   if (!products.length) {
