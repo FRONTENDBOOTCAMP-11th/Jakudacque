@@ -6,6 +6,7 @@ import { IoAddSharp } from "react-icons/io5";
 import tw from "tailwind-styled-components";
 import { useReview } from "@hooks/useReview";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 export default function WriteReviewModal({
   isWriteReviewModalOpen,
@@ -40,11 +41,17 @@ export default function WriteReviewModal({
         formData.append("attach", file);
       });
 
-      await uploadFileAndRegisterReview(formData, {
+      const uploadPromise = uploadFileAndRegisterReview(formData, {
         order_id: ordererId,
         product_id: product._id,
         rating: data.rating,
         content: data.content,
+      });
+
+      await toast.promise(uploadPromise, {
+        pending: "리뷰 업로드 중...",
+        success: "리뷰가 등록되었습니다!",
+        error: "리뷰 등록에 실패했습니다. 잠시 후 다시 시도해주세요.",
       });
 
       onReviewComplete(); // 리뷰 작성 완료에 따라 주문 내역 쿼리 무효화

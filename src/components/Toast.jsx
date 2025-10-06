@@ -1,26 +1,23 @@
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { Bounce, ToastContainer } from "react-toastify";
 
 export default function ToastProvider() {
   return (
     <ToastContainer
-      position={"top-center"}
+      position={"bottom-left"}
       autoClose={3000}
-      hideProgressBar
+      hideProgressBar={false}
       newestOnTop
       closeButton={true}
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="light"
+      transition={Bounce}
       toastClassName={() =>
-        "bg-white text-neutral-800 p-5 border-2 rounded-lg border-warning shadow-lg text-center"
+        "bg-white text-neutral-800 min-w-60 p-4 border-2 rounded-lg border-warning shadow-lg flex"
       }
       bodyClassName={() => "text-sm whitespace-normal"}
-      style={{
-        position: "fixed",
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%, -50%)",
-        width: "auto",
-        zIndex: 9999,
-      }}
     />
   );
 }

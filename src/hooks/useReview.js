@@ -11,7 +11,7 @@ export const useReview = () => {
         headers: {
           "Content-Type": "multipart/form-data",
         },
-        timeout: 1000 * 30,
+        timeout: 1000 * 50,
       });
     },
     onSuccess: () => {
@@ -54,6 +54,7 @@ export const useReview = () => {
       await registerReview.mutateAsync(fullReviewData);
     } catch (err) {
       console.error("파일 업로드 또는 리뷰 등록 중 에러:", err);
+      throw err;
     }
   };
 
